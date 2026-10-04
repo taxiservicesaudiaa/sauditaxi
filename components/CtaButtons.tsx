@@ -8,6 +8,8 @@ interface CtaButtonsProps {
   whatsappMessage?: string;
   /** Label for the primary "get a quote" button. */
   whatsappLabel?: string;
+  /** Href for the primary button — Arabic callers pass their own. */
+  quoteHref?: string;
   /** Show a secondary "Contact Us" link. */
   showQuoteLink?: boolean;
   /** Label + href for the secondary link — Arabic callers pass their own. */
@@ -26,6 +28,7 @@ interface CtaButtonsProps {
  */
 export function CtaButtons({
   whatsappLabel = "Get a Quote",
+  quoteHref = "/get-quote",
   showQuoteLink = true,
   contactLabel = "Contact Us",
   contactHref = "/contact",
@@ -35,7 +38,7 @@ export function CtaButtons({
   return (
     <div className={cn("flex flex-wrap gap-3", className)}>
       <Button asChild variant="gold" size="lg">
-        <Link href="/get-quote">
+        <Link href={quoteHref}>
           <Send className="size-5" />
           {whatsappLabel}
         </Link>

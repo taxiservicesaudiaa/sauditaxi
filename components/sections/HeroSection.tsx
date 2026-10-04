@@ -18,6 +18,12 @@ interface HeroSectionProps {
   backgroundAlt?: string;
   /** Optional form card (e.g. the compact quick-quote form) shown beside copy. */
   formCard?: React.ReactNode;
+  /** CtaButtons label overrides — Arabic callers pass their own (existing
+   *  CtaButtons pattern); English pages keep CtaButtons' English defaults. */
+  ctaLabel?: string;
+  ctaHref?: string;
+  contactLabel?: string;
+  contactHref?: string;
 }
 
 export function HeroSection({
@@ -29,6 +35,10 @@ export function HeroSection({
   backgroundImage = heroImages.default,
   backgroundAlt,
   formCard,
+  ctaLabel,
+  ctaHref,
+  contactLabel,
+  contactHref,
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-midnight text-white">
@@ -74,7 +84,15 @@ export function HeroSection({
               </ul>
             )}
 
-            <CtaButtons className="mt-8" whatsappMessage={whatsappMessage} onDark />
+            <CtaButtons
+              className="mt-8"
+              whatsappMessage={whatsappMessage}
+              onDark
+              {...(ctaLabel ? { whatsappLabel: ctaLabel } : {})}
+              {...(ctaHref ? { quoteHref: ctaHref } : {})}
+              {...(contactLabel ? { contactLabel } : {})}
+              {...(contactHref ? { contactHref } : {})}
+            />
           </div>
 
           {formCard && <div className="w-full">{formCard}</div>}

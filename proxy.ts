@@ -51,6 +51,30 @@ for (const p of arPages) {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // http://saudiprivatetransfers.com/ was serving a full 200 instead of
+  // redirecting to HTTPS — Cloudflare terminates TLS and forwards the
+  // original scheme via x-forwarded-proto, so next.config.ts's own redirects
+  // (which only see the already-decrypted internal request) can't see or act
+  // on this; it has to be checked here. Cloudflare's zone-level "Always Use
+  // HTTPS" setting is the normal place for this, but that's a dashboard
+  // setting outside this repo — this is the code-level fallback so the
+  // behavior doesn't depend on that dashboard config being set correctly.
+  const proto = request.headers.get("x-forwarded-proto");
+  if (proto === "http") {
+    const httpsUrl = new URL(request.url);
+    httpsUrl.protocol = "https:";
+    const redirect = NextResponse.redirect(httpsUrl, 301);
+    // Deliberately conservative max-age (1 day, no includeSubDomains/preload)
+    // for this first rollout of forced HTTPS — once HTTPS-only behavior is
+    // confirmed stable in production over time, this can be raised (a long
+    // max-age + includeSubDomains should only be set once every subdomain
+    // that exists is confirmed to serve HTTPS correctly, and preload should
+    // only be added if the site is actually submitted to the HSTS preload
+    // list, since that's very hard to reverse).
+    redirect.headers.set("Strict-Transport-Security", "max-age=86400");
+    return redirect;
+  }
+
   // request.nextUrl.pathname is percent-encoded here (confirmed empirically —
   // an Arabic pathname arrives as "%D9%86%D9%82%D9%84-..." at this layer, not
   // as the decoded string), unlike the page component's `params`, which Next
@@ -83,7 +107,15 @@ export async function proxy(request: NextRequest) {
 
   const headers = new Headers(request.headers);
   headers.set("x-pathname", pathname);
-  const passThrough = () => NextResponse.next({ request: { headers } });
+  const passThrough = () => {
+    const res = NextResponse.next({ request: { headers } });
+    // Same conservative HSTS policy as the HTTP->HTTPS redirect above — set
+    // on every HTTPS response, not just the redirect, so repeat visits (which
+    // never hit the `proto === "http"` branch after the first redirect) still
+    // get it. See that branch's comment for why max-age is short for now.
+    res.headers.set("Strict-Transport-Security", "max-age=86400");
+    return res;
+  };
 
   // Only /admin and /api/admin need the auth check below; everything else
   // (including /ar/*) just gets the pathname header and continues.

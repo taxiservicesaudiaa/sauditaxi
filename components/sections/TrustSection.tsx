@@ -86,7 +86,7 @@ const pillars = [
   {
     icon: CheckCircle2,
     title: "Customer satisfaction",
-    text: `Rated 4.9 / 5 by ${aggregateRating.reviewCount.toLocaleString()}+ travellers, pilgrims, and businesses.`,
+    text: `Rated ${aggregateRating.ratingValue.toFixed(1)} / 5 by our travellers, pilgrims, and businesses.`,
   },
 ];
 

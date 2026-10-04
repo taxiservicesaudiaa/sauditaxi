@@ -55,6 +55,10 @@ export default function ArabicHomePage() {
         ]}
         backgroundImage={heroImages.default}
         formCard={<HeroQuickForm />}
+        ctaLabel="اطلب عرض سعر"
+        ctaHref="/ar/اطلب-عرض-سعر"
+        contactLabel="تواصل معنا"
+        contactHref="/ar/اتصل-بنا"
       />
 
       <TrustBadges

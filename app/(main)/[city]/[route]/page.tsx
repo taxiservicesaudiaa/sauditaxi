@@ -51,19 +51,22 @@ import type { Hotel } from "@/data/hotels";
 
 type Params = { city: string; route: string };
 
-export const dynamicParams = false;
-
+// dynamicParams intentionally left at its default (true) — see the matching
+// comment in cities/[city]/page.tsx. This was the only other route on the
+// site with it set to false, and this page's 61 point-transfer paths showed
+// the same intermittent production 404/503 pattern as that one. Hotel-
+// transfer paths don't need this flag as a safety net: proxy.ts's matcher
+// covers this route and 301-redirects all 174 of them to /cities/{city}#hotels
+// before Next's router ever resolves params here, independent of this flag.
 export function generateStaticParams() {
   // Hotel-transfer pages (t.citySlug/t.slug) are no longer prerendered here —
   // proxy.ts 301-redirects all 174 of them to /cities/{city}#hotels, built
   // from the exact same hotelTransfers array, so every one of these paths is
-  // caught before Next's router ever resolves params for this page. With
-  // dynamicParams = false below, any hotel-transfer path that somehow reached
-  // this page anyway (proxy bypassed or misconfigured) 404s rather than
-  // rendering — the getHotelTransfer() branch in the component below is
-  // consequently unreachable for real traffic; left in place rather than
-  // removed since data/hotels.ts and lib/hotel-transfers.ts stay live for the
-  // city-hub hotel table. Point transfers are unaffected.
+  // caught before Next's router ever resolves params for this page. The
+  // getHotelTransfer() branch in the component below is consequently
+  // unreachable for real traffic; left in place rather than removed since
+  // data/hotels.ts and lib/hotel-transfers.ts stay live for the city-hub
+  // hotel table. Point transfers are unaffected.
   //
   // Point transfers are being migrated one city at a time to pointTransfersV2
   // (new design, see PointTransferV2View) — a slug appears in exactly one of

@@ -31,7 +31,7 @@ export function TestimonialSection({
               {aggregateRating.ratingValue.toFixed(1)}/5
             </span>
             <span className="text-sm text-muted-foreground">
-              from {aggregateRating.reviewCount.toLocaleString()}+ travellers
+              average from our travellers
             </span>
           </div>
         </div>

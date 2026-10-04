@@ -26936,12 +26936,24 @@ export const arPages: ArPage[] = [
   },
 ];
 
-export const arPageMap: Record<string, ArPage> = Object.fromEntries(
-  arPages.map((p) => [p.slug, p])
-);
+// The three lookup maps below used to be built eagerly at module scope —
+// three full Object.fromEntries() passes over all ~219 arPages entries, every
+// time this module is evaluated. Because this file is imported by nearly
+// every page type on the site (including plain static pages with no Arabic
+// content of their own, just for a single getArPathForEnPath() hreflang
+// lookup), that eager cost was paid on every cold Worker isolate start that
+// touched any of those pages — a plausible contributor to the intermittent
+// Cloudflare CPU-limit (error 1102) responses seen in production. Built
+// lazily and cached instead: the first call in a given isolate pays the
+// cost once, and only if something on that request path actually needs an
+// Arabic lookup; subsequent calls in the same (warm) isolate are free.
+let _arPageMap: Record<string, ArPage> | undefined;
+function arPageMap(): Record<string, ArPage> {
+  return (_arPageMap ??= Object.fromEntries(arPages.map((p) => [p.slug, p])));
+}
 
 export function getArPage(slug: string): ArPage | undefined {
-  return arPageMap[slug];
+  return arPageMap()[slug];
 }
 
 /** Full /ar/{slug} path for an ArPage. */
@@ -26949,24 +26961,26 @@ export function arPath(page: ArPage): string {
   return `/ar/${page.slug}`;
 }
 
+let _enToArPathMap: Record<string, string> | undefined;
+function enToArPathMap(): Record<string, string> {
+  return (_enToArPathMap ??= Object.fromEntries(arPages.map((p) => [p.enPath, arPath(p)])));
+}
+
 /**
  * Given an English path (e.g. "/about", "/jeddah/king-abdulaziz-airport-to-..."),
  * returns the matching Arabic path ("/ar/من-نحن") if a translation exists, or
  * undefined. Used to build hreflang alternates and language-switcher targets.
  */
-export const enToArPathMap: Record<string, string> = Object.fromEntries(
-  arPages.map((p) => [p.enPath, arPath(p)])
-);
-
 export function getArPathForEnPath(enPath: string): string | undefined {
-  return enToArPathMap[enPath];
+  return enToArPathMap()[enPath];
 }
 
-export const arToEnPathMap: Record<string, string> = Object.fromEntries(
-  arPages.map((p) => [arPath(p), p.enPath])
-);
+let _arToEnPathMap: Record<string, string> | undefined;
+function arToEnPathMap(): Record<string, string> {
+  return (_arToEnPathMap ??= Object.fromEntries(arPages.map((p) => [arPath(p), p.enPath])));
+}
 
 export function getEnPathForArPath(arPathStr: string): string {
-  return arToEnPathMap[arPathStr] ?? "/";
+  return arToEnPathMap()[arPathStr] ?? "/";
 }
 

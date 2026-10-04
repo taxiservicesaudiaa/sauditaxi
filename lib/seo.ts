@@ -48,6 +48,11 @@ export function buildMetadata({
         ])
       )
     : undefined;
+  // og:locale was hardcoded to siteConfig.locale ("en_US") for every page,
+  // including the Arabic tree — every Arabic page's URL is under /ar, so
+  // detect from the path rather than threading a new param through every one
+  // of the 28 files that call this function.
+  const locale = path.startsWith("/ar") ? "ar_SA" : siteConfig.locale;
 
   return {
     title,
@@ -66,7 +71,7 @@ export function buildMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      locale: siteConfig.locale,
+      locale,
       images: [{ url: ogImg, width: 1200, height: 630, alt: title, type: imageType }],
     },
     twitter: {

@@ -47,9 +47,10 @@ export default function HomePage() {
   return (
     <>
       {/* Homepage FAQ structured data (FAQPage), matching the visible H2 #12
-          FAQ section exactly. LocalBusiness, TaxiService, Organization,
-          WebSite, and Review/AggregateRating schema render site-wide from
-          the root layout — untouched by this update. */}
+          FAQ section exactly. LocalBusiness, TaxiService, Organization, and
+          WebSite schema render site-wide from the root layout — untouched by
+          this update. (LocalBusiness no longer includes Review/AggregateRating
+          nodes — removed as unverifiable, see lib/schema.ts.) */}
       <SchemaScript schema={[faqSchema(homeFaqs)]} />
 
       <HomeHero />

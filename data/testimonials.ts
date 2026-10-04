@@ -8,9 +8,10 @@ export interface Testimonial {
 }
 
 /**
- * Customer testimonials. Used by the homepage TestimonialSection and as the
- * source for Review / AggregateRating structured data, so both the visible
- * reviews and the schema stay in sync.
+ * Customer testimonials. Used by the homepage TestimonialSection and
+ * TrustSection. No longer feeds Review/AggregateRating structured data
+ * (lib/schema.ts) — these are first-party, unverified quotes, which is not
+ * a legitimate basis for Review schema per Google's structured-data policy.
  */
 export const testimonials: Testimonial[] = [
   {
@@ -45,11 +46,17 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-/** Aggregate rating derived from the testimonials, used for Review schema. */
+/**
+ * Average rating derived from the testimonials above — the only figure here
+ * that's directly computed from real data. There used to be a `reviewCount`
+ * field hardcoded to 1280, unconnected to the actual number of testimonials
+ * (5) or any real review platform — that was a fabricated figure and has
+ * been removed. Do not reintroduce a review count here unless it's wired to
+ * a real, independently verifiable source (e.g. the Trustpilot API).
+ */
 export const aggregateRating = {
   ratingValue: Number(
     (testimonials.reduce((s, t) => s + t.rating, 0) / testimonials.length).toFixed(1)
   ),
-  reviewCount: 1280,
   bestRating: 5,
 };

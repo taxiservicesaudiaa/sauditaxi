@@ -6,10 +6,15 @@ export function VehicleOptions({
   heading = "Choose Your Vehicle",
   subheading = "From economy sedans to group minibuses — pick what fits your party and luggage.",
   background = "white",
+  lang = "en",
 }: {
   heading?: string;
   subheading?: string;
   background?: "white" | "muted";
+  /** Arabic callers pass lang="ar" (alongside their own Arabic heading/subheading,
+   *  the existing pattern) to render each vehicle's Arabic name/description/
+   *  passengers/luggage fields from data/vehicles.ts instead of the English ones. */
+  lang?: "en" | "ar";
 }) {
   return (
     <section className={background === "muted" ? "bg-muted py-16 sm:py-20" : "bg-white py-16 sm:py-20"}>
@@ -33,15 +38,17 @@ export function VehicleOptions({
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold text-navy">{v.name}</h3>
+                  <h3 className="text-lg font-semibold text-navy">{lang === "ar" ? v.nameAr : v.name}</h3>
                   <p className="mt-1 text-xs font-medium text-gold">{v.examples}</p>
-                  <p className="mt-3 flex-1 text-sm text-muted-foreground">{v.description}</p>
+                  <p className="mt-3 flex-1 text-sm text-muted-foreground">
+                    {lang === "ar" ? v.descriptionAr : v.description}
+                  </p>
                   <div className="mt-5 flex items-center gap-2">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm font-medium text-navy">
-                      <Users className="size-4 text-gold" /> {v.passengers}
+                      <Users className="size-4 text-gold" /> {lang === "ar" ? v.passengersAr : v.passengers}
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-sm font-medium text-navy">
-                      <Luggage className="size-4 text-gold" /> {v.luggage}
+                      <Luggage className="size-4 text-gold" /> {lang === "ar" ? v.luggageAr : v.luggage}
                     </span>
                   </div>
                 </div>

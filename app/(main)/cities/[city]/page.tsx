@@ -26,8 +26,21 @@ import { cityAirportFacts } from "@/lib/city-hub-facts";
 
 type Params = { city: string };
 
-export const dynamicParams = false;
-
+// dynamicParams intentionally left at its default (true). This page used to
+// set it to false, but that was the one route-segment-config difference
+// between this page (plus [city]/[route]/page.tsx) and every other dynamic
+// route on the site (routes/[slug], blog/[slug], airport-transfer/[airport],
+// taxi-service/[city], border-transfers/[border], distance/[slug] — none of
+// which set dynamicParams and all of which serve reliably in production).
+// With it false, a request for one of the 5 valid cities had no fallback if
+// the Cloudflare/OpenNext edge ever failed to resolve the prebuilt static
+// asset for that exact path — it would hard-404/503 with no recovery path,
+// which matches the intermittent failures observed on these exact URLs
+// against this exact config in production. The `if (!city) notFound()` guard
+// below already rejects invalid slugs, so dropping this flag only adds an
+// on-demand-render fallback for valid cities if a static asset is ever
+// momentarily missing at the edge — it does not change behavior for invalid
+// slugs, which still 404.
 export function generateStaticParams() {
   return citiesWithHotels().map((city) => ({ city }));
 }

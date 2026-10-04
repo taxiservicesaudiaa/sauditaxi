@@ -1,6 +1,5 @@
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import type { Faq } from "@/data/faqs";
-import { testimonials, aggregateRating } from "@/data/testimonials";
 
 /** A single JSON-LD node. Loosely typed on purpose. */
 export type JsonLd = Record<string, unknown>;
@@ -51,31 +50,20 @@ export function localBusinessSchema(): JsonLd {
     telephone: siteConfig.phoneDisplay,
     email: siteConfig.email,
     priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.streetAddress,
-      addressLocality: siteConfig.address.addressLocality,
-      addressRegion: siteConfig.address.addressRegion,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.addressCountry,
-    },
+    // No `address` field — there used to be one asserting a Riyadh street
+    // address that was never a real, verifiable office location (see the
+    // comment on siteConfig.address in lib/site.ts). Do not add one back
+    // unless it's a real, verifiable business address.
     areaServed: { "@type": "Country", name: "Saudi Arabia" },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: aggregateRating.ratingValue,
-      reviewCount: aggregateRating.reviewCount,
-      bestRating: aggregateRating.bestRating,
-    },
-    review: testimonials.map((t) => ({
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: t.rating,
-        bestRating: 5,
-      },
-      author: { "@type": "Person", name: t.name },
-      reviewBody: t.text,
-    })),
+    // No AggregateRating / Review nodes here. This schema used to claim
+    // reviewCount: 1280 against 5 first-party, unverified testimonials — a
+    // fabricated figure with no real review platform behind it, which is
+    // exactly the kind of self-serving review markup Google's structured-data
+    // guidelines prohibit. Removed rather than patched with a smaller number,
+    // since none of the testimonials in data/testimonials.ts are
+    // independently verifiable either (see the comment on that file). Add
+    // these nodes back only if wired to a real, independently verifiable
+    // source (e.g. the Trustpilot API, using its actual rating and count).
   };
 }
 

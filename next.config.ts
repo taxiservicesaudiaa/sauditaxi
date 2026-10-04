@@ -20,8 +20,14 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Canonicalise to the non-www apex domain with a single 301. (Vercel must
-  // also have www.saudiprivatetransfers.com added so it gets a TLS cert.)
+  // Canonicalise to the non-www apex domain with a single 301. This rule is
+  // currently unreachable in production: www.saudiprivatetransfers.com has no
+  // DNS record at all (confirmed via live NXDOMAIN), so no request for that
+  // host ever reaches this app for the rule to fire on. That's a Cloudflare
+  // DNS configuration issue (add a proxied www record pointing at the same
+  // target as the apex) — outside what a code change here can fix. Once that
+  // DNS record exists, this rule already does the right thing and needs no
+  // further change.
   async redirects() {
     return [
       {

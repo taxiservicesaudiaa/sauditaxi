@@ -31,13 +31,14 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/saudiprivatetransfer/",
     reddit: "https://www.reddit.com/user/SaudiPrivateTransfer/",
   },
-  address: {
-    streetAddress: "King Fahd Road",
-    addressLocality: "Riyadh",
-    addressRegion: "Riyadh Province",
-    postalCode: "11564",
-    addressCountry: "SA",
-  },
+  // No street address here. There used to be one ("King Fahd Road, Riyadh,
+  // Riyadh Province, 11564, SA") asserted unconditionally in LocalBusiness
+  // schema on every page, but it was never a real, verifiable office
+  // location — the Contact page deliberately shows no address, and the
+  // only phone/WhatsApp number carries a Pakistani (+92) country code, not
+  // a Saudi one. Confirmed with the business owner (2026-10) that it should
+  // be removed rather than kept or replaced. Do not reintroduce an address
+  // field unless it's a real, verifiable business location.
 } as const;
 
 export type SiteConfig = typeof siteConfig;

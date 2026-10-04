@@ -769,6 +769,7 @@ export default async function ArabicPage({
             heading="اختر مركبتك"
             subheading="من السيارات الاقتصادية إلى الحافلات الصغيرة الجماعية — اختر ما يناسب مجموعتك وأمتعتك."
             background="muted"
+            lang="ar"
           />
           <HowItWorks background="white" />
           <FAQSection faqs={page.faqs} heading="الأسئلة الشائعة" background="muted" />
@@ -2388,6 +2389,7 @@ export default async function ArabicPage({
           heading="اختر مركبتك"
           subheading="من السيارات الاقتصادية إلى الحافلات الصغيرة الجماعية — اختر ما يناسب مجموعتك وأمتعتك."
           background="muted"
+          lang="ar"
         />
         <HowItWorks
           heading={dict.howItWorks.heading}
@@ -2588,6 +2590,7 @@ export default async function ArabicPage({
           heading="اختر مركبتك"
           subheading="من السيارات الاقتصادية إلى الحافلات الصغيرة الجماعية — اختر ما يناسب مجموعتك وأمتعتك."
           background="muted"
+          lang="ar"
         />
       )}
       {page.type !== "distance" && (
