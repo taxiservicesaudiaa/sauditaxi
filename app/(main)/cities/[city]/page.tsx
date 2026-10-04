@@ -14,7 +14,8 @@ import { routes } from "@/data/routes";
 import { hotelsForCity } from "@/data/hotels";
 import type { Faq } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import {
   breadcrumbSchema,
   serviceSchema,
@@ -88,7 +89,7 @@ export async function generateMetadata({
   const airport = city.nearestAirportSlug ? getAirport(city.nearestAirportSlug) : undefined;
   const aName = airport ? airportTransferName(airport) : `${city.name} Airport`;
   const path = `/cities/${city.slug}`;
-  const arPath = getArPathForEnPath(path);
+  const arPath = getArPathForEnPathLight(path);
   const hub = HUB_META[city.slug];
   return buildMetadata({
     title: hub?.title ?? `${city.name} Airport Transfers | Hotel Taxi from ${aName}`,

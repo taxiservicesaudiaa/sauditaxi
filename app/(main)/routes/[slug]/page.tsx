@@ -55,7 +55,8 @@ import { borderToCityRouteContent, borderToCityCrossingFacts } from "@/data/bord
 import { saudiJordanRouteContent, saudiJordanCrossingFacts } from "@/data/saudi-jordan-route-content";
 import type { Faq } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
 
 const gccCountryDisplayName: Record<string, string> = {
@@ -116,7 +117,7 @@ export async function generateMetadata({
   const route = getRoute(slug);
   if (!route) return {};
   const path = `/routes/${route.slug}`;
-  const arPath = getArPathForEnPath(path);
+  const arPath = getArPathForEnPathLight(path);
   return buildMetadata({
     title:
       route.metaTitle ??

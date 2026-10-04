@@ -9,13 +9,18 @@ import { cities } from "@/data/cities";
 import { services } from "@/data/services";
 import { airports } from "@/data/airports";
 import { getDictionary, localeFromPathname } from "@/lib/i18n";
-import { arPages, arPath } from "@/data/translations/ar";
+// The lightweight index, not the full ~26,700-line content dataset — this is
+// a client component, so importing data/translations/ar.ts directly here
+// used to ship that entire dataset in the client JS bundle for every page on
+// the site. See data/translations/ar-index.ts's own comment.
+import { arPageIndex, arIndexPath } from "@/data/translations/ar-index";
 import { cn } from "@/lib/utils";
 
 const popularCities = cities.slice(0, 8);
 const footerServices = services.filter((s) => s.featured);
 const footerAirports = airports.slice(0, 6);
-const arServices = arPages.filter((p) => p.type === "serviceV2");
+const arServices = arPageIndex.filter((p) => p.type === "serviceV2");
+const arCitiesList = arPageIndex.filter((p) => p.type === "city");
 
 /**
  * A client component so the footer can detect /ar/* client-side without
@@ -102,7 +107,7 @@ export function Footer() {
               {isAr
                 ? arServices.map((s) => (
                     <li key={s.slug}>
-                      <Link href={arPath(s)} className="hover:text-brass">
+                      <Link href={arIndexPath(s)} className="hover:text-brass">
                         {s.h1}
                       </Link>
                     </li>
@@ -147,11 +152,9 @@ export function Footer() {
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               {isAr
-                ? arPages
-                    .filter((p) => p.type === "city")
-                    .map((c) => (
+                ? arCitiesList.map((c) => (
                       <li key={c.slug}>
-                        <Link href={arPath(c)} className="hover:text-brass">
+                        <Link href={arIndexPath(c)} className="hover:text-brass">
                           {c.h1}
                         </Link>
                       </li>

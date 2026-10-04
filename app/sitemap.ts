@@ -9,7 +9,9 @@ import { hotelCities } from "@/lib/hotel-transfers";
 import { pointTransfers } from "@/lib/point-transfers";
 import { pointTransfersV2 } from "@/lib/point-transfers-v2";
 import { listPublishedBlogs } from "@/lib/blogs";
-import { arPages, arPath, getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight index (slug/enPath/type/h1), not ar.ts's full ~26,700-line
+// content dataset — sitemap generation only ever needed paths and types.
+import { arPageIndex, arIndexPath, getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { distancePages } from "@/data/distance-pages";
 import { journeyPages } from "@/data/journey-pages";
 import { distanceGuideV2Pages } from "@/data/distance-guide-v2";
@@ -152,7 +154,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pointTransferPaths,
   ].map((entry) => {
     // Cross-link to the Arabic version, when one exists, for hreflang in the sitemap.
-    const ar = getArPathForEnPath(entry.path);
+    const ar = getArPathForEnPathLight(entry.path);
     return {
       url: absoluteUrl(entry.path),
       lastModified: now,
@@ -168,7 +170,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await listPublishedBlogs();
   const blogEntries: MetadataRoute.Sitemap = blogs.map((b) => {
     const path = `/blog/${b.slug}`;
-    const ar = getArPathForEnPath(path);
+    const ar = getArPathForEnPathLight(path);
     return {
       url: absoluteUrl(path),
       lastModified: new Date(b.updatedAt),
@@ -183,14 +185,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // city-hub anchor (proxy.ts) and is excluded here, mirroring hotelTransfers
   // above; type: "city-hub" (5 entries, the Arabic /cities/{city} counterpart)
   // is included normally like every other type.
-  const arEntries: MetadataRoute.Sitemap = arPages
+  const arEntries: MetadataRoute.Sitemap = arPageIndex
     .filter((p) => p.type !== "hotel-transfer")
     .map((p) => ({
-    url: absoluteUrl(arPath(p)),
+    url: absoluteUrl(arIndexPath(p)),
     lastModified: now,
     changeFrequency: "monthly",
     priority: p.type === "about" || p.type === "contact" ? 0.5 : 0.7,
-    alternates: { languages: { en: absoluteUrl(p.enPath), ar: absoluteUrl(arPath(p)) } },
+    alternates: { languages: { en: absoluteUrl(p.enPath), ar: absoluteUrl(arIndexPath(p)) } },
   }));
   // The Arabic homepage itself.
   arEntries.push({

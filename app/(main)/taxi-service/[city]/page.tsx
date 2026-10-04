@@ -5,7 +5,8 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { cities, getCity } from "@/data/cities";
 import { cityHero } from "@/lib/hero";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, faqSchema, serviceSchema, taxiServiceSchema } from "@/lib/schema";
 
 // 2026 deep-content restructuring. Unlike the fixed-architecture hubs built
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const city = getCity(slug);
   if (!city) return {};
   const path = `/taxi-service/${city.slug}`;
-  const arPath = getArPathForEnPath(path);
+  const arPath = getArPathForEnPathLight(path);
   return buildMetadata({
     title: city.metaTitle ?? `Private Transfers in ${city.name} | Saudi Private Transfers`,
     description:

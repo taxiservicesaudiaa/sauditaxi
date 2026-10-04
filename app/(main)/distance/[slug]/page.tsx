@@ -15,7 +15,8 @@ import { JourneyGuideV2View } from "@/components/journey-v2/JourneyGuideV2View";
 import { routeHero } from "@/lib/hero";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 
 /**
  * Informational distance/travel-time pages — /distance/{slug}. Deliberately
@@ -54,7 +55,7 @@ export async function generateMetadata({
   const v2Page = getDistanceGuideV2Page(slug);
   if (v2Page) {
     const enPath = `/distance/${v2Page.slug}`;
-    const arPath = getArPathForEnPath(enPath);
+    const arPath = getArPathForEnPathLight(enPath);
     return buildMetadata({
       title: v2Page.metaTitle,
       description: v2Page.metaDescription,
@@ -66,7 +67,7 @@ export async function generateMetadata({
   const journeyV2Page = getJourneyGuideV2Page(slug);
   if (journeyV2Page) {
     const enPath = `/distance/${journeyV2Page.slug}`;
-    const arPath = getArPathForEnPath(enPath);
+    const arPath = getArPathForEnPathLight(enPath);
     return buildMetadata({
       title: journeyV2Page.metaTitle,
       description: journeyV2Page.metaDescription,
@@ -78,7 +79,7 @@ export async function generateMetadata({
   const journeyPage = getJourneyPage(slug);
   if (journeyPage) {
     const enPath = `/distance/${journeyPage.slug}`;
-    const arPath = getArPathForEnPath(enPath);
+    const arPath = getArPathForEnPathLight(enPath);
     return buildMetadata({
       title: journeyPage.metaTitle,
       description: journeyPage.metaDescription,
@@ -90,7 +91,7 @@ export async function generateMetadata({
   const page = getDistancePage(slug);
   if (!page) return {};
   const enPath = `/distance/${page.slug}`;
-  const arPath = getArPathForEnPath(enPath);
+  const arPath = getArPathForEnPathLight(enPath);
   return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,

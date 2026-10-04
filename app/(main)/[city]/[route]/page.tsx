@@ -28,7 +28,8 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { routes } from "@/data/routes";
 import { cityHero } from "@/lib/hero";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import {
   breadcrumbSchema,
   serviceSchema,
@@ -91,7 +92,7 @@ export async function generateMetadata({
   const v2 = getPointTransferV2(city, route);
   if (v2) {
     const v2Path = `/${v2.citySlug}/${v2.slug}`;
-    const v2ArPath = getArPathForEnPath(v2Path);
+    const v2ArPath = getArPathForEnPathLight(v2Path);
     return buildMetadata({
       title: v2.metaTitle,
       description: v2.metaDescription,
@@ -105,7 +106,7 @@ export async function generateMetadata({
     const pt = getPointTransfer(city, route);
     if (pt) {
       const ptPath = `/${pt.citySlug}/${pt.slug}`;
-      const ptArPath = getArPathForEnPath(ptPath);
+      const ptArPath = getArPathForEnPathLight(ptPath);
       return buildMetadata({
         title: pt.metaTitle,
         description: pt.metaDescription,
@@ -115,7 +116,7 @@ export async function generateMetadata({
     }
     return {};
   }
-  const arPath = getArPathForEnPath(t.path);
+  const arPath = getArPathForEnPathLight(t.path);
   return buildMetadata({
     title: `${t.from} to ${t.to} Taxi | Private Transfer`,
     description: `Book a private ${t.from} to ${t.to} taxi (${t.distance}, approx. ${t.duration}). Fixed price, meet & greet, flight tracking, and 24/7 booking.`,

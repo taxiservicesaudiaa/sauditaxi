@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getDictionary, localeFromPathname } from "@/lib/i18n";
-import { getArPathForEnPath, getEnPathForArPath } from "@/data/translations/ar";
+// The lightweight index's equivalents, not ar.ts's full ~26,700-line content
+// dataset — this is a client component, so importing data/translations/ar.ts
+// directly here used to ship that entire dataset in the client JS bundle for
+// every page on the site. See data/translations/ar-index.ts's own comment.
+import { getArPathForEnPathLight, getEnPathForArPathLight } from "@/data/translations/ar-index";
 
 /**
  * English / Arabic language switcher. Navigates to the real, server-rendered
@@ -31,8 +35,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   };
   const normalizedPathname = CANONICAL_ALIASES[pathname] ?? pathname;
 
-  const enHref = locale === "ar" ? getEnPathForArPath(normalizedPathname) : normalizedPathname;
-  const arHref = locale === "en" ? (getArPathForEnPath(normalizedPathname) ?? "/ar") : normalizedPathname;
+  const enHref = locale === "ar" ? getEnPathForArPathLight(normalizedPathname) : normalizedPathname;
+  const arHref = locale === "en" ? (getArPathForEnPathLight(normalizedPathname) ?? "/ar") : normalizedPathname;
 
   return (
     <div className={cn("flex items-center gap-1", className)}>

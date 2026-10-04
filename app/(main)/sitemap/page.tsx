@@ -18,7 +18,9 @@ import { journeyPages } from "@/data/journey-pages";
 import { distanceGuideV2Pages } from "@/data/distance-guide-v2";
 import { journeyGuideV2Pages } from "@/data/journey-guide-v2";
 import { listPublishedBlogs } from "@/lib/blogs";
-import { arPages, arPath } from "@/data/translations/ar";
+// Lightweight index (slug/enPath/type/h1), not ar.ts's full ~26,700-line
+// content dataset — this view only ever needed labels and paths.
+import { arPageIndex, arIndexPath } from "@/data/translations/ar-index";
 
 /**
  * Visual, user-facing HTML sitemap at /sitemap — entirely separate from the
@@ -256,15 +258,15 @@ export default async function SitemapPage() {
 
   // ── Arabic pages, grouped by type ───────────────────────────────────
   const arByType = new Map<string, Item[]>();
-  for (const p of arPages) {
+  for (const p of arPageIndex) {
     if (p.type === "hotel-transfer") continue; // 301-redirect stubs, never live pages
-    const item: Item = { label: p.h1, href: arPath(p) };
+    const item: Item = { label: p.h1, href: arIndexPath(p) };
     const list = arByType.get(p.type) ?? [];
     list.push(item);
     arByType.set(p.type, list);
   }
   const arHomeItem: Item = { label: "الصفحة الرئيسية", href: "/ar" };
-  const arTotal = arPages.filter((p) => p.type !== "hotel-transfer").length + 1;
+  const arTotal = arPageIndex.filter((p) => p.type !== "hotel-transfer").length + 1;
 
   const totalCount =
     mainPages.length +

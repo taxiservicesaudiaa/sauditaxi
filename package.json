@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:ar-500": "node scripts/check-ar-500-regression.mjs"
+    "check:ar-500": "node scripts/check-ar-500-regression.mjs",
+    "check:ar-index": "node --experimental-strip-types scripts/check-ar-index-sync.mjs",
+    "gen:ar-index": "node --experimental-strip-types scripts/generate-ar-index.mjs"
   },
   "dependencies": {
     "@prisma/client": "^7.8.0",

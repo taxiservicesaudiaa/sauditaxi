@@ -7,7 +7,8 @@ import { getRoute, type Route } from "@/data/routes";
 import type { HomeSectionCard } from "@/components/home/HomeSectionCards";
 import { vehicles } from "@/data/vehicles";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, taxiServiceSchema, faqSchema, howToSchema } from "@/lib/schema";
 
 // 2026 restructuring — new page-specific AirportTransferHub component (see
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const airport = getAirport(slug);
   if (!airport) return {};
   const path = `/airport-transfer/${airport.slug}`;
-  const arPath = getArPathForEnPath(path);
+  const arPath = getArPathForEnPathLight(path);
   return buildMetadata({
     title: airport.metaTitle ?? `Private ${airport.city} Airport Transfer (${airport.code}) | Saudi Private Transfers`,
     description:

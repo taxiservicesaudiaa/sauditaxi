@@ -13,7 +13,11 @@ import { services } from "@/data/services";
 import { airports } from "@/data/airports";
 import { cities } from "@/data/cities";
 import { getDictionary, localeFromPathname, interpolate } from "@/lib/i18n";
-import { arPages, arPath } from "@/data/translations/ar";
+// The lightweight index, not the full ~26,700-line content dataset — this is
+// a client component, so importing data/translations/ar.ts directly here
+// used to ship that entire dataset in the client JS bundle for every page on
+// the site. See data/translations/ar-index.ts's own comment.
+import { arPageIndex, arIndexPath } from "@/data/translations/ar-index";
 
 interface NavChild {
   label: string;
@@ -67,8 +71,8 @@ const navLinksEn: NavItem[] = [
  */
 function buildArNavLinks(): NavItem[] {
   const dict = getDictionary("ar");
-  const services = arPages.filter((p) => p.type === "serviceV2");
-  const airports = arPages.filter((p) => p.type === "airport");
+  const services = arPageIndex.filter((p) => p.type === "serviceV2");
+  const airports = arPageIndex.filter((p) => p.type === "airport");
 
   const children: NavItem[] = [];
   if (services.length) {
@@ -76,7 +80,7 @@ function buildArNavLinks(): NavItem[] {
       label: dict.nav.services,
       href: "/ar/خدماتنا",
       wide: true,
-      children: services.map((s) => ({ label: s.h1, href: arPath(s) })),
+      children: services.map((s) => ({ label: s.h1, href: arIndexPath(s) })),
     });
   }
   if (airports.length) {
@@ -84,7 +88,7 @@ function buildArNavLinks(): NavItem[] {
       label: dict.nav.airportTransfers,
       href: "/ar",
       wide: true,
-      children: airports.map((a) => ({ label: a.h1, href: arPath(a) })),
+      children: airports.map((a) => ({ label: a.h1, href: arIndexPath(a) })),
     });
   }
 

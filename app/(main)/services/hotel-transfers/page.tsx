@@ -4,10 +4,11 @@ import { hotelTransfersContent } from "@/data/service-pages-v2/hotel-transfers";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
 import { SchemaScript } from "@/components/seo/SchemaScript";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 
 const path = "/services/hotel-transfers";
-const arPath = getArPathForEnPath(path);
+const arPath = getArPathForEnPathLight(path);
 const crumbs = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },

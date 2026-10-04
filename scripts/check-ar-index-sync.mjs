@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+/**
+ * Verifies data/translations/ar-index.ts stays in sync with the real source
+ * of truth, data/translations/ar.ts's arPages array. ar-index.ts is a
+ * generated, lightweight (slug/enPath/type/h1 only) copy used by client
+ * components and hot server paths (Header, Footer, LanguageSwitcher,
+ * proxy.ts) specifically so they don't need to import ar.ts's full
+ * ~26,700-line content dataset. If arPages gains, loses, or edits an entry
+ * without ar-index.ts being regenerated, this drifts silently — nav links,
+ * the language switcher, and proxy.ts's redirects would start using stale
+ * slugs/enPaths/types. Run this after any change to ar.ts's arPages.
+ *
+ * Usage: node scripts/check-ar-index-sync.mjs
+ */
+import { arPages } from "../data/translations/ar.ts";
+import { arPageIndex } from "../data/translations/ar-index.ts";
+
+let problems = 0;
+
+if (arPages.length !== arPageIndex.length) {
+  console.error(
+    `FAIL: arPages has ${arPages.length} entries but ar-index.ts has ${arPageIndex.length}. Regenerate ar-index.ts.`
+  );
+  problems++;
+}
+
+const indexBySlug = new Map(arPageIndex.map((p) => [p.slug, p]));
+for (const p of arPages) {
+  const indexed = indexBySlug.get(p.slug);
+  if (!indexed) {
+    console.error(`FAIL: arPages entry "${p.slug}" (${p.enPath}) is missing from ar-index.ts.`);
+    problems++;
+    continue;
+  }
+  if (indexed.enPath !== p.enPath || indexed.type !== p.type || indexed.h1 !== p.h1) {
+    console.error(
+      `FAIL: "${p.slug}" is out of sync — arPages has {enPath: ${p.enPath}, type: ${p.type}, h1: ${p.h1}}, ` +
+        `ar-index.ts has {enPath: ${indexed.enPath}, type: ${indexed.type}, h1: ${indexed.h1}}.`
+    );
+    problems++;
+  }
+}
+
+if (problems === 0) {
+  console.log(`OK: ar-index.ts matches arPages exactly (${arPages.length} entries).`);
+  process.exitCode = 0;
+} else {
+  console.error(`\n${problems} problem(s) found. Regenerate data/translations/ar-index.ts from the current arPages.`);
+  process.exitCode = 1;
+}

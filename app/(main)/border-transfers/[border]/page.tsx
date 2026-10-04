@@ -8,7 +8,8 @@ import { getCity } from "@/data/cities";
 import { borderHero } from "@/lib/hero";
 import type { Faq } from "@/data/faqs";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
 
 // Border Hub redesign — "crossing logistics" editorial identity (see
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const border = getBorder(slug);
   if (!border) return {};
   const path = `/border-transfers/${border.slug}`;
-  const arPath = getArPathForEnPath(path);
+  const arPath = getArPathForEnPathLight(path);
   return buildMetadata({
     title: border.metaTitle ?? `${border.country} Border Taxi | Saudi Cross-Border Transfer`,
     description:

@@ -13,7 +13,8 @@ import { BlogInlineCta } from "@/components/blog/BlogInlineCta";
 import { CTASection } from "@/components/sections/CTASection";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { buildMetadata } from "@/lib/seo";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { formatBlogDate } from "@/lib/format";
@@ -49,7 +50,7 @@ export async function generateMetadata({
   const image = blog.featuredImage || siteConfig.ogImage;
 
   const blogPath = `/blog/${blog.slug}`;
-  const blogArPath = getArPathForEnPath(blogPath);
+  const blogArPath = getArPathForEnPathLight(blogPath);
   const meta = buildMetadata({
     title,
     description,

@@ -4,7 +4,8 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
-import { getArPathForEnPath } from "@/data/translations/ar";
+// Lightweight path-only lookup, not the full ~26,700-line content dataset
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 
 // New design only — legal wording is unchanged from the previous version of
 // this page (same headings, same paragraphs, same lists), just restructured
@@ -12,7 +13,7 @@ import { getArPathForEnPath } from "@/data/translations/ar";
 // preserved. "Last updated" date carried over unchanged (29 May 2026) —
 // not refreshed, since the underlying policy text was not revised.
 const path = "/privacy-policy";
-const arPath = getArPathForEnPath(path);
+const arPath = getArPathForEnPathLight(path);
 const crumbs = [
   { name: "Home", path: "/" },
   { name: "Privacy Policy", path },

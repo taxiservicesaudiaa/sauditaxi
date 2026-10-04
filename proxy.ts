@@ -1,7 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/auth";
 import { hotelTransfers } from "@/lib/hotel-transfers";
-import { arPages } from "@/data/translations/ar";
+// The lightweight index (slug/enPath/type only), not the full arPages content
+// dataset — this file runs on every request, so importing the ~26,700-line
+// data/translations/ar.ts here paid that module's full evaluation cost on
+// every cold Worker isolate start, for every request to the site (not just
+// /ar/* ones). See data/translations/ar-index.ts's own comment.
+import { arPageIndex } from "@/data/translations/ar-index";
 
 /**
  * 1. Protects the admin CRM. Unauthenticated visitors to /admin/* are
@@ -36,12 +41,12 @@ const hotelTransferRedirects = new Map(
 // (English hotel-transfer path, e.g. "/jeddah/...") — never a separate,
 // hand-maintained list, so this can't drift from the data.
 const arCityHubSlugByCity = new Map(
-  arPages
+  arPageIndex
     .filter((p) => p.type === "city-hub")
     .map((p) => [p.enPath.replace("/cities/", ""), p.slug])
 );
 const arHotelTransferRedirects = new Map<string, string>();
-for (const p of arPages) {
+for (const p of arPageIndex) {
   if (p.type !== "hotel-transfer") continue;
   const citySlug = p.enPath.split("/")[1];
   const hubSlug = arCityHubSlugByCity.get(citySlug);
