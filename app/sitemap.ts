@@ -8,7 +8,7 @@ import { services } from "@/data/services";
 import { hotelCities } from "@/lib/hotel-transfers";
 import { pointTransfers } from "@/lib/point-transfers";
 import { pointTransfersV2 } from "@/lib/point-transfers-v2";
-import { listPublishedBlogs } from "@/lib/blogs";
+import { listPublishedBlogsStrict } from "@/lib/blogs";
 // Lightweight index (slug/enPath/type/h1), not ar.ts's full ~26,700-line
 // content dataset — sitemap generation only ever needed paths and types.
 import { arPageIndex, arIndexPath, getArPathForEnPathLight } from "@/data/translations/ar-index";
@@ -167,7 +167,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // Published blog posts (pulled live from the database).
-  const blogs = await listPublishedBlogs();
+  // Strict: throws rather than caching a sitemap with no blog posts (see lib/blogs.ts).
+  const blogs = await listPublishedBlogsStrict();
   const blogEntries: MetadataRoute.Sitemap = blogs.map((b) => {
     const path = `/blog/${b.slug}`;
     const ar = getArPathForEnPathLight(path);

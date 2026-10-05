@@ -19,7 +19,8 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { formatBlogDate } from "@/lib/format";
 import {
-  getPublishedBlogBySlug,
+  getPublishedBlogBySlugStrict,
+  listPublishedBlogsStrict,
   getRelatedBlogs,
   getAdjacentBlogs,
   extractToc,
@@ -29,13 +30,24 @@ export const revalidate = 300;
 
 type Params = { slug: string };
 
+// Without generateStaticParams this route rendered on every request (a full
+// render plus Supabase queries) and was never cached — the main remaining
+// source of Cloudflare 1102 errors once the incremental cache was enabled.
+// Published posts are now prerendered at build time and cached; posts
+// published later still render on first request (dynamicParams defaults to
+// true) and are cached from then on.
+export async function generateStaticParams(): Promise<Params[]> {
+  const blogs = await listPublishedBlogsStrict();
+  return blogs.map((b) => ({ slug: b.slug }));
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = await getPublishedBlogBySlug(slug);
+  const blog = await getPublishedBlogBySlugStrict(slug);
   if (!blog) {
     return buildMetadata({
       title: "Article not found",
@@ -77,7 +89,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const blog = await getPublishedBlogBySlug(slug);
+  const blog = await getPublishedBlogBySlugStrict(slug);
   if (!blog) notFound();
 
   const related = await getRelatedBlogs(blog, 3);

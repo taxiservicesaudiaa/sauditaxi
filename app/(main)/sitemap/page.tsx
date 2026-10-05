@@ -17,7 +17,7 @@ import { distancePages } from "@/data/distance-pages";
 import { journeyPages } from "@/data/journey-pages";
 import { distanceGuideV2Pages } from "@/data/distance-guide-v2";
 import { journeyGuideV2Pages } from "@/data/journey-guide-v2";
-import { listPublishedBlogs } from "@/lib/blogs";
+import { listPublishedBlogsStrict } from "@/lib/blogs";
 // Lightweight index (slug/enPath/type/h1), not ar.ts's full ~26,700-line
 // content dataset — this view only ever needed labels and paths.
 import { arPageIndex, arIndexPath } from "@/data/translations/ar-index";
@@ -162,7 +162,8 @@ const AR_TYPE_LABEL: Record<string, string> = {
 };
 
 export default async function SitemapPage() {
-  const blogs = await listPublishedBlogs().catch(() => []);
+  // Strict: throws rather than caching a sitemap page with no blog posts (see lib/blogs.ts).
+  const blogs = await listPublishedBlogsStrict();
 
   // ── Main pages ───────────────────────────────────────────────────────
   const mainPages: Item[] = [

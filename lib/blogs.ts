@@ -220,6 +220,47 @@ export async function getPublishedBlogBySlug(slug: string): Promise<Blog | null>
   }
 }
 
+// Strict variants for output that gets prerendered and cached (sitemaps, blog
+// post pages). The lenient functions above return []/null on a missing config
+// or failed query — fine for a live render, but cached output would freeze
+// that empty result: a Cloudflare build without the Supabase build variables
+// once shipped a sitemap with zero blog posts. Throwing instead fails the
+// build loudly, and during a background revalidation Next keeps serving the
+// last good cached copy rather than caching a broken one.
+function assertSupabaseConfigured(): void {
+  if (!isSupabaseConfigured()) {
+    throw new Error(
+      "[blogs] Supabase is not configured (SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY). " +
+        "In the Cloudflare build these must be set as build variables, not only runtime variables."
+    );
+  }
+}
+
+export async function listPublishedBlogsStrict(): Promise<Blog[]> {
+  assertSupabaseConfigured();
+  const { data, error } = await getSupabaseAdmin()
+    .from(TABLE)
+    .select("*")
+    .eq("status", "published")
+    .order("published_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false });
+  if (error) throw new Error(`[blogs] list published failed: ${error.message}`);
+  return (data as BlogRow[]).map(rowToBlog);
+}
+
+/** Returns null only when the post genuinely doesn't exist (or isn't published). */
+export async function getPublishedBlogBySlugStrict(slug: string): Promise<Blog | null> {
+  assertSupabaseConfigured();
+  const { data, error } = await getSupabaseAdmin()
+    .from(TABLE)
+    .select("*")
+    .eq("slug", slug)
+    .eq("status", "published")
+    .maybeSingle();
+  if (error) throw new Error(`[blogs] getBySlug(${slug}) failed: ${error.message}`);
+  return data ? rowToBlog(data as BlogRow) : null;
+}
+
 /** Published posts in the same category (fallback to recent), excluding `slug`. */
 /** Stable string hash (djb2) — same convention used in lib/hotel-transfers.ts. */
 function stableHash(input: string): number {
