@@ -81,7 +81,7 @@ function rowToBlog(row: BlogRow): Blog {
     title: row.title,
     slug: row.slug,
     excerpt: row.excerpt,
-    content: row.content,
+    content: row.content ?? "",
     metaTitle: row.meta_title,
     metaDescription: row.meta_description,
     focusKeyword: row.focus_keyword,
@@ -92,7 +92,7 @@ function rowToBlog(row: BlogRow): Blog {
     category: row.category,
     tags: row.tags ?? [],
     faqs: row.faqs ?? [],
-    schemaJson: row.schema_json,
+    schemaJson: row.schema_json ?? null,
     readingTime: row.reading_time,
     status: row.status === "published" ? "published" : "draft",
     publishedAt: row.published_at,
@@ -161,14 +161,28 @@ interface ListOpts {
   category?: string;
   search?: string;
   limit?: number;
+  /** Omit the heavy per-post fields (content, faqs, schema_json) — see SUMMARY_COLUMNS. */
+  summary?: boolean;
 }
+
+// Every column except content, faqs and schema_json. Public list views (related
+// posts, prev/next, sidebar, latest guides, sitemaps) only need titles, slugs,
+// images and dates, but used to select("*") — so one blog post render pulled
+// the full HTML of every published post two or three times over, a CPU spike
+// that tripped Cloudflare's Worker limit (1102) whenever a post re-rendered.
+// Rows fetched this way have content "", faqs [] and schemaJson null; the full
+// post is always loaded on its own via getPublishedBlogBySlug(Strict).
+const SUMMARY_COLUMNS =
+  "id,title,slug,excerpt,meta_title,meta_description,focus_keyword,secondary_keywords," +
+  "featured_image,featured_image_alt,author,category,tags,reading_time,status," +
+  "published_at,created_at,updated_at";
 
 /** All blogs (admin). Returns [] when the database isn't configured. */
 export async function listBlogs(opts: ListOpts = {}): Promise<Blog[]> {
   if (!isSupabaseConfigured()) return [];
   try {
     const supabase = getSupabaseAdmin();
-    let query = supabase.from(TABLE).select("*");
+    let query = supabase.from(TABLE).select(opts.summary ? SUMMARY_COLUMNS : "*");
     if (opts.status) query = query.eq("status", opts.status);
     if (opts.category) query = query.eq("category", opts.category);
     if (opts.search) {
@@ -180,18 +194,19 @@ export async function listBlogs(opts: ListOpts = {}): Promise<Blog[]> {
     if (opts.limit) query = query.limit(opts.limit);
     const { data, error } = await query;
     if (error) throw new Error(error.message);
-    return (data as BlogRow[]).map(rowToBlog);
+    // Summary rows lack content/faqs/schema_json; rowToBlog defaults them.
+    return (data as unknown as BlogRow[]).map(rowToBlog);
   } catch (err) {
     console.error("[blogs] list failed:", err);
     return [];
   }
 }
 
-/** Published blogs only — for the public site. */
+/** Published blogs only — for the public site. Summary rows (no content/faqs/schema). */
 export async function listPublishedBlogs(
-  opts: Omit<ListOpts, "status"> = {}
+  opts: Omit<ListOpts, "status" | "summary"> = {}
 ): Promise<Blog[]> {
-  return listBlogs({ ...opts, status: "published" });
+  return listBlogs({ ...opts, status: "published", summary: true });
 }
 
 export async function getBlogById(id: string): Promise<Blog | null> {
@@ -240,12 +255,12 @@ export async function listPublishedBlogsStrict(): Promise<Blog[]> {
   assertSupabaseConfigured();
   const { data, error } = await getSupabaseAdmin()
     .from(TABLE)
-    .select("*")
+    .select(SUMMARY_COLUMNS)
     .eq("status", "published")
     .order("published_at", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false });
   if (error) throw new Error(`[blogs] list published failed: ${error.message}`);
-  return (data as BlogRow[]).map(rowToBlog);
+  return (data as unknown as BlogRow[]).map(rowToBlog);
 }
 
 /** Returns null only when the post genuinely doesn't exist (or isn't published). */
