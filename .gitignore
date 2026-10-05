@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# OpenNext / Cloudflare Workers build output and local dev state
+/.open-next/
+/.wrangler/
+.dev.vars*
+
 # local-only scripts (never commit — e.g. Bing URL submission)
 /scripts/local/
 

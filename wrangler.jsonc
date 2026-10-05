@@ -1,0 +1,32 @@
+// Committed so the Cloudflare build stops relying on `wrangler deploy`'s
+// automatic Next.js setup. That auto-setup runs `@opennextjs/cloudflare migrate`
+// on every deploy, which (in CI, unable to create an R2 bucket) generated a
+// config with the incremental cache disabled — every request was a cache MISS
+// and a full server render on the Worker, causing the 1102 resource-limit
+// errors. This mirrors what that auto-setup generated (same Worker name and
+// bindings, minus the never-created R2 bucket); caching is configured in
+// open-next.config.ts instead.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "sauditaxi",
+	"compatibility_date": "2026-10-01",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			// Self-reference service binding — must match the Worker name above.
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "sauditaxi"
+		}
+	],
+	"images": {
+		"binding": "IMAGES"
+	},
+	// Environment variables and secrets are managed in the Cloudflare dashboard,
+	// not here — keep_vars stops a deploy from removing dashboard-set variables.
+	"keep_vars": true
+}
