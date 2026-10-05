@@ -6,10 +6,10 @@
  *
  * Usage: node --experimental-strip-types scripts/generate-ar-index.mjs
  */
-import { arPages } from "../data/translations/ar.ts";
+import { getArPages } from "../data/translations/ar.ts";
 import { writeFileSync } from "fs";
 
-const entries = arPages.map((p) => ({
+const entries = getArPages().map((p) => ({
   slug: p.slug,
   enPath: p.enPath,
   type: p.type,

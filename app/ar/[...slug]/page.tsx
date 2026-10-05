@@ -13,7 +13,7 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getDictionary } from "@/lib/i18n";
-import { arPages, getArPage, arPath, getArPathForEnPath, pointTransferCityNameAr, type ArPage } from "@/data/translations/ar";
+import { getArPages, getArPage, arPath, getArPathForEnPath, pointTransferCityNameAr, type ArPage } from "@/data/translations/ar";
 import { pageHeroes } from "@/lib/hero";
 import { getCity } from "@/data/cities";
 import { getAirport } from "@/data/airports";
@@ -342,7 +342,7 @@ export function generateStaticParams() {
   // see lib/city-hub-facts.ts / the "city-hub" type above. Data stays in
   // arPages (needed to build the redirect map); only static generation and
   // the sitemap (app/sitemap.ts) exclude them.
-  return arPages.filter((p) => p.type !== "hotel-transfer").map((p) => ({ slug: p.slug.split("/") }));
+  return getArPages().filter((p) => p.type !== "hotel-transfer").map((p) => ({ slug: p.slug.split("/") }));
 }
 
 // Old Arabic slugs that were only ever referenced from breadcrumbs (never
@@ -577,7 +577,7 @@ export default async function ArabicPage({
 
     let airportCard: CityHubContent["airportCard"];
     if (enCity?.nearestAirportSlug) {
-      const arAirport = arPages.find(
+      const arAirport = getArPages().find(
         (p) => p.type === "airport" && p.enPath === `/airport-transfer/${enCity.nearestAirportSlug}`
       );
       if (arAirport) {
@@ -590,7 +590,7 @@ export default async function ArabicPage({
       }
     }
 
-    const nearbyCities: CityHubLinkItem[] = arPages
+    const nearbyCities: CityHubLinkItem[] = getArPages()
       .filter((p) => p.type === "city" && p.slug !== page.slug)
       .map((p) => ({
         label: p.breadcrumbs[p.breadcrumbs.length - 1]?.name ?? p.h1,
@@ -661,7 +661,7 @@ export default async function ArabicPage({
       const hubDurationRange = durations.length > 0 ? { min: Math.min(...durations), max: Math.max(...durations) } : null;
       const hotelCount = hubHotels.length;
 
-      const cityArPage = arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${hubCity.slug}`);
+      const cityArPage = getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${hubCity.slug}`);
       const airportHref = getArPathForEnPath(`/airport-transfer/${hubAirport.slug}`) ?? `/airport-transfer/${hubAirport.slug}`;
       const hubCityNameAr = pointTransferCityNameAr[hubCity.slug] ?? hubCity.name;
 
@@ -776,7 +776,7 @@ export default async function ArabicPage({
     ];
 
     const cityArPage = enAirport?.citySlug
-      ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${enAirport.citySlug}`)
+      ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${enAirport.citySlug}`)
       : undefined;
 
     return (
@@ -848,7 +848,7 @@ export default async function ArabicPage({
 
       const reverseEnRoute = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const reverseArPage = reverseEnRoute
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${reverseEnRoute.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${reverseEnRoute.slug}`)
         : undefined;
 
       const blocks = buildArabicRouteBlocks(
@@ -875,7 +875,7 @@ export default async function ArabicPage({
         )
         .slice(0, 6);
       const relatedRouteItems = candidateEnSlugs
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .map((p) => {
           const t = parseArabicFromTo(p.h1);
@@ -883,7 +883,7 @@ export default async function ArabicPage({
         });
 
       const relatedCityItems = enRoute.relatedCitySlugs
-        .map((s) => arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${s}`))
+        .map((s) => getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${s}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .map((p) => ({ label: p.breadcrumbs[p.breadcrumbs.length - 1]?.name ?? p.h1, href: arPath(p) }));
 
@@ -955,7 +955,7 @@ export default async function ArabicPage({
       const airportSlug = enRoute.slug.split("-to-")[0];
       const enAirport = getAirport(airportSlug);
       const arAirportPage = enAirport
-        ? arPages.find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${enAirport.slug}`)
+        ? getArPages().find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${enAirport.slug}`)
         : undefined;
       const destinationEnCity = getCity(
         enRoute.relatedCitySlugs.find((s) => getCity(s)?.name.toLowerCase() === enRoute.to.toLowerCase()) ??
@@ -963,17 +963,17 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = destinationEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
         : undefined;
 
       const cityToAirportEnReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = cityToAirportEnReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${cityToAirportEnReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${cityToAirportEnReverse.slug}`)
         : undefined;
 
       const relatedArAirportRoutes = routes
         .filter((r) => r.slug !== enRoute.slug && isAirportToCityRoute(r) && (r.from === enRoute.from || r.to === enRoute.to))
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1091,7 +1091,7 @@ export default async function ArabicPage({
 
       const enAirport = getAirport(enRoute.to.toLowerCase().replace(/ /g, "-"));
       const arAirportPage = enAirport
-        ? arPages.find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${enAirport.slug}`)
+        ? getArPages().find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${enAirport.slug}`)
         : undefined;
       const originEnCity = getCity(
         enRoute.relatedCitySlugs.find((s) => getCity(s)?.name.toLowerCase() === enRoute.from.toLowerCase()) ??
@@ -1099,17 +1099,17 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = originEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
         : undefined;
 
       const airportToCityEnReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = airportToCityEnReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${airportToCityEnReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${airportToCityEnReverse.slug}`)
         : undefined;
 
       const relatedArCityAirportRoutes = routes
         .filter((r) => r.slug !== enRoute.slug && isCityToAirportRoute(r) && (r.from === enRoute.from || r.to === enRoute.to))
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1235,7 +1235,7 @@ export default async function ArabicPage({
 
       const enReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = enReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
         : undefined;
 
       const relatedArGccRoutes = routes
@@ -1246,7 +1246,7 @@ export default async function ArabicPage({
             isSaudiToGccRoute(r) &&
             (r.from === enRoute.from || gccCountryFor(r) === gccCountry)
         )
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1260,9 +1260,9 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = originEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
         : undefined;
-      const arDistancePage = arPages.find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
+      const arDistancePage = getArPages().find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
 
       const hubLinks = [
         ...(arCityPage ? [{ label: `خدمة تاكسي ${arCityPage.breadcrumbs[arCityPage.breadcrumbs.length - 1]?.name ?? ""}`, href: arPath(arCityPage) }] : []),
@@ -1402,7 +1402,7 @@ export default async function ArabicPage({
 
       const enReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = enReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
         : undefined;
 
       const relatedArGccToSaudiRoutes = routes
@@ -1413,7 +1413,7 @@ export default async function ArabicPage({
             isGccToSaudiRoute(r) &&
             (r.to === enRoute.to || gccCountryForOrigin(r) === gccOriginCountry)
         )
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1427,9 +1427,9 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = destinationEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
         : undefined;
-      const arDistancePage = arPages.find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
+      const arDistancePage = getArPages().find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
 
       const hubLinks = [
         ...(arCityPage ? [{ label: `خدمة تاكسي ${arCityPage.breadcrumbs[arCityPage.breadcrumbs.length - 1]?.name ?? ""}`, href: arPath(arCityPage) }] : []),
@@ -1574,7 +1574,7 @@ export default async function ArabicPage({
 
       const enReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = enReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
         : undefined;
 
       const relatedArCityToBorderRoutes = routes
@@ -1585,7 +1585,7 @@ export default async function ArabicPage({
             isCityToBorderRoute(r) &&
             (r.from === enRoute.from || borderCountryFor(r) === borderCountry)
         )
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1599,9 +1599,9 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = originEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${originEnCity.slug}`)
         : undefined;
-      const arDistancePage = arPages.find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
+      const arDistancePage = getArPages().find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
 
       const hubLinks = [
         ...(arCityPage ? [{ label: `خدمة تاكسي ${arCityPage.breadcrumbs[arCityPage.breadcrumbs.length - 1]?.name ?? ""}`, href: arPath(arCityPage) }] : []),
@@ -1754,7 +1754,7 @@ export default async function ArabicPage({
 
       const enReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = enReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
         : undefined;
 
       const relatedArBorderToCityRoutes = routes
@@ -1765,7 +1765,7 @@ export default async function ArabicPage({
             isBorderToCityRoute(r) &&
             (r.to === enRoute.to || borderCountryForOrigin(r) === borderOriginCountry)
         )
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1781,12 +1781,12 @@ export default async function ArabicPage({
           )
         : undefined;
       const arAirportPage = destinationEnAirport
-        ? arPages.find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${destinationEnAirport.slug}`)
+        ? getArPages().find((p) => p.type === "airport" && p.enPath === `/airport-transfer/${destinationEnAirport.slug}`)
         : undefined;
       const arCityPage = destinationEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${destinationEnCity.slug}`)
         : undefined;
-      const arDistancePage = arPages.find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
+      const arDistancePage = getArPages().find((p) => p.type === "distance" && p.enPath === `/distance/${enRoute.slug}-distance`);
 
       const hubLinks = [
         ...(arAirportPage ? [{ label: `مركز ${arAirportPage.breadcrumbs[arAirportPage.breadcrumbs.length - 1]?.name ?? "نقل المطار"}`, href: arPath(arAirportPage) }] : []),
@@ -1940,12 +1940,12 @@ export default async function ArabicPage({
 
       const enReverse = routes.find((r) => r.from === enRoute.to && r.to === enRoute.from);
       const arReversePage = enReverse
-        ? arPages.find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
+        ? getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${enReverse.slug}`)
         : undefined;
 
       const relatedArSaudiJordanRoutes = routes
         .filter((r) => r.slug !== enRoute.slug && r.slug !== enReverse?.slug && isSaudiJordanRoute(r))
-        .map((r) => arPages.find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
+        .map((r) => getArPages().find((p) => p.type === "route" && p.enPath === `/routes/${r.slug}`))
         .filter((p): p is NonNullable<typeof p> => p !== undefined)
         .slice(0, 4)
         .map((p) => {
@@ -1960,7 +1960,7 @@ export default async function ArabicPage({
           ""
       );
       const arCityPage = originSaudiEnCity
-        ? arPages.find((p) => p.type === "city" && p.enPath === `/taxi-service/${originSaudiEnCity.slug}`)
+        ? getArPages().find((p) => p.type === "city" && p.enPath === `/taxi-service/${originSaudiEnCity.slug}`)
         : undefined;
 
       const hubLinks = [

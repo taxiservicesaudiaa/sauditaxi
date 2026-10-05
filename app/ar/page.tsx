@@ -12,7 +12,7 @@ import { SchemaScript } from "@/components/seo/SchemaScript";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { getDictionary } from "@/lib/i18n";
-import { arPages, arPath } from "@/data/translations/ar";
+import { getArPages, arPath } from "@/data/translations/ar";
 import { heroImages } from "@/lib/hero";
 
 const dict = getDictionary("ar");
@@ -33,11 +33,13 @@ const homeFaqs = [
   { question: "كيف أحجز رحلتي؟", answer: "يمكنك تعبئة نموذج طلب عرض السعر في أعلى الصفحة، أو التواصل معنا مباشرة عبر واتساب، وسنرد عليك خلال دقائق بسعر ثابت." },
 ];
 
-const arServices = arPages.filter((p) => p.type === "serviceV2");
 const serviceIcons = [Plane, Car, MapPinned, ShieldCheck, Building2, MapPinned, MapPinned, MapPinned];
 
 export default function ArabicHomePage() {
   const crumbs = [{ name: dict.nav.home, path: "/ar" }];
+  // Inside the component, not at module scope: the page is prerendered, so this
+  // only runs at build time and never on a cache hit (see getArPages in ar.ts).
+  const arServices = getArPages().filter((p) => p.type === "serviceV2");
 
   return (
     <>

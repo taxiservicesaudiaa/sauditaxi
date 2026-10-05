@@ -230,7 +230,23 @@ export interface ArPage {
   pointTransferV2CitySlug?: string;
 }
 
-export const arPages: ArPage[] = [
+// The full Arabic content (~442 pages, ~2.7 MB of source) is built only when
+// something actually needs it, via getArPages(). It used to be a top-level
+// `export const arPages = [...]`, which meant the first Arabic request on every
+// Cloudflare Worker instance allocated the entire dataset just to load the
+// route module — even for prerendered pages served straight from cache, whose
+// render code never runs. Under sustained crawling that initialization failed
+// (HTTP 500 from OpenNext on Arabic URLs only, each fine when requested alone).
+// Behind a function the content is only built at build time and for the rare
+// runtime render; nav/sitemap/redirect code uses the lightweight
+// data/translations/ar-index.ts instead.
+let _arPages: ArPage[] | undefined;
+export function getArPages(): ArPage[] {
+  return (_arPages ??= buildArPages());
+}
+
+function buildArPages(): ArPage[] {
+  return [
   // ── About ──────────────────────────────────────────────────────────────
   {
     slug: "من-نحن",
@@ -26934,7 +26950,8 @@ export const arPages: ArPage[] = [
 <p>وقت وصول غير معتاد لا يعني بالضرورة رحلة أصعب — يعني فقط ترتيب بعض الأمور مسبقًا التي قد تعتبرها بديهية نهارًا: نقلك، واتصالك، وسياسة تسجيل الدخول في فندقك. اضبط هذه الثلاثة، ولن يختلف وصول الثالثة فجرًا فعليًا عن الثالثة عصرًا.</p>
 <p>جاهز للحجز؟ تواصل معنا لطلب عرض سعر ثابت لنقلك، أيًا كان وقت هبوط رحلتك.</p>`,
   },
-];
+  ];
+}
 
 // The three lookup maps below used to be built eagerly at module scope —
 // three full Object.fromEntries() passes over all ~219 arPages entries, every
@@ -26949,7 +26966,7 @@ export const arPages: ArPage[] = [
 // Arabic lookup; subsequent calls in the same (warm) isolate are free.
 let _arPageMap: Record<string, ArPage> | undefined;
 function arPageMap(): Record<string, ArPage> {
-  return (_arPageMap ??= Object.fromEntries(arPages.map((p) => [p.slug, p])));
+  return (_arPageMap ??= Object.fromEntries(getArPages().map((p) => [p.slug, p])));
 }
 
 export function getArPage(slug: string): ArPage | undefined {
@@ -26963,7 +26980,7 @@ export function arPath(page: ArPage): string {
 
 let _enToArPathMap: Record<string, string> | undefined;
 function enToArPathMap(): Record<string, string> {
-  return (_enToArPathMap ??= Object.fromEntries(arPages.map((p) => [p.enPath, arPath(p)])));
+  return (_enToArPathMap ??= Object.fromEntries(getArPages().map((p) => [p.enPath, arPath(p)])));
 }
 
 /**
@@ -26977,7 +26994,7 @@ export function getArPathForEnPath(enPath: string): string | undefined {
 
 let _arToEnPathMap: Record<string, string> | undefined;
 function arToEnPathMap(): Record<string, string> {
-  return (_arToEnPathMap ??= Object.fromEntries(arPages.map((p) => [arPath(p), p.enPath])));
+  return (_arToEnPathMap ??= Object.fromEntries(getArPages().map((p) => [arPath(p), p.enPath])));
 }
 
 export function getEnPathForArPath(arPathStr: string): string {

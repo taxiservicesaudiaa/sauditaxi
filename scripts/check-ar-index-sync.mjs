@@ -12,29 +12,29 @@
  *
  * Usage: node scripts/check-ar-index-sync.mjs
  */
-import { arPages } from "../data/translations/ar.ts";
+import { getArPages } from "../data/translations/ar.ts";
 import { arPageIndex } from "../data/translations/ar-index.ts";
 
 let problems = 0;
 
-if (arPages.length !== arPageIndex.length) {
+if (getArPages().length !== arPageIndex.length) {
   console.error(
-    `FAIL: arPages has ${arPages.length} entries but ar-index.ts has ${arPageIndex.length}. Regenerate ar-index.ts.`
+    `FAIL: getArPages() has ${getArPages().length} entries but ar-index.ts has ${arPageIndex.length}. Regenerate ar-index.ts.`
   );
   problems++;
 }
 
 const indexBySlug = new Map(arPageIndex.map((p) => [p.slug, p]));
-for (const p of arPages) {
+for (const p of getArPages()) {
   const indexed = indexBySlug.get(p.slug);
   if (!indexed) {
-    console.error(`FAIL: arPages entry "${p.slug}" (${p.enPath}) is missing from ar-index.ts.`);
+    console.error(`FAIL: getArPages() entry "${p.slug}" (${p.enPath}) is missing from ar-index.ts.`);
     problems++;
     continue;
   }
   if (indexed.enPath !== p.enPath || indexed.type !== p.type || indexed.h1 !== p.h1) {
     console.error(
-      `FAIL: "${p.slug}" is out of sync — arPages has {enPath: ${p.enPath}, type: ${p.type}, h1: ${p.h1}}, ` +
+      `FAIL: "${p.slug}" is out of sync — getArPages() has {enPath: ${p.enPath}, type: ${p.type}, h1: ${p.h1}}, ` +
         `ar-index.ts has {enPath: ${indexed.enPath}, type: ${indexed.type}, h1: ${indexed.h1}}.`
     );
     problems++;
@@ -42,9 +42,9 @@ for (const p of arPages) {
 }
 
 if (problems === 0) {
-  console.log(`OK: ar-index.ts matches arPages exactly (${arPages.length} entries).`);
+  console.log(`OK: ar-index.ts matches getArPages() exactly (${getArPages().length} entries).`);
   process.exitCode = 0;
 } else {
-  console.error(`\n${problems} problem(s) found. Regenerate data/translations/ar-index.ts from the current arPages.`);
+  console.error(`\n${problems} problem(s) found. Regenerate data/translations/ar-index.ts from the current getArPages().`);
   process.exitCode = 1;
 }
