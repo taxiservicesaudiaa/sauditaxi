@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Disable Next's per-instance in-memory page cache (50 MB by default). On
+  // Cloudflare, OpenNext's incremental cache already serves prerendered pages
+  // from Workers Static Assets — the Next docs say to set this to 0 with a
+  // custom cache handler so reads go to that store. Keeping up to 50 MB of
+  // ~350 KB page entries in memory inside a Worker capped at 128 MB (which
+  // also holds the server bundle) made instances fail after serving a few
+  // hundred distinct pages during a full crawl.
+  cacheMaxMemorySize: 0,
+
   // Serve modern formats (AVIF/WebP) and a sensible set of responsive widths
   // so mobile devices download much smaller hero/blog images.
   images: {
