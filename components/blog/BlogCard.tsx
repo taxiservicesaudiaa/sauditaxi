@@ -4,7 +4,22 @@ import { Clock, ArrowRight } from "lucide-react";
 import type { Blog } from "@/lib/blogs";
 import { formatBlogDate } from "@/lib/format";
 
-export function BlogCard({ blog, featured = false }: { blog: Blog; featured?: boolean }) {
+/** The fields a card actually renders — any full Blog satisfies this too. */
+export type BlogCardData = Pick<
+  Blog,
+  | "id"
+  | "slug"
+  | "title"
+  | "excerpt"
+  | "featuredImage"
+  | "featuredImageAlt"
+  | "category"
+  | "publishedAt"
+  | "createdAt"
+  | "readingTime"
+>;
+
+export function BlogCard({ blog, featured = false }: { blog: BlogCardData; featured?: boolean }) {
   return (
     <article
       className={

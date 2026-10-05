@@ -65,7 +65,12 @@ export async function proxy(request: NextRequest) {
   // setting outside this repo — this is the code-level fallback so the
   // behavior doesn't depend on that dashboard config being set correctly.
   const proto = request.headers.get("x-forwarded-proto");
-  if (proto === "http") {
+  // Never for local development: `next dev` serves plain HTTP and sets
+  // x-forwarded-proto to "http", so redirecting there sent localhost to an
+  // https:// URL the dev server can't answer (ERR_SSL_PROTOCOL_ERROR).
+  const host = request.nextUrl.hostname;
+  const isLocal = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+  if (proto === "http" && !isLocal) {
     const httpsUrl = new URL(request.url);
     httpsUrl.protocol = "https:";
     const redirect = NextResponse.redirect(httpsUrl, 301);

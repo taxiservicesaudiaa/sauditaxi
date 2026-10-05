@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,17 @@ export interface QuoteFormProps {
   className?: string;
   /** Two-column layout on larger screens. */
   twoColumn?: boolean;
+  /**
+   * Fill pickup/dropoff/date/time/passengers from the page's query string in
+   * the browser (the homepage quick form links here with those params).
+   * Reading them client-side instead of from the page's server searchParams
+   * keeps the page prerendered — on the Cloudflare Workers Free plan a
+   * server render per visit exceeds the CPU limit (error 1102).
+   */
+  prefillFromQuery?: boolean;
 }
+
+const QUERY_PREFILL_FIELDS = ["pickup", "dropoff", "date", "time", "passengers"] as const;
 
 const passengerOptions = ["1", "2", "3", "4", "5", "6", "7+"];
 const luggageOptions = ["0", "1", "2", "3", "4", "5+"];
@@ -47,8 +57,22 @@ export function QuoteForm({
   route = "",
   className,
   twoColumn = true,
+  prefillFromQuery = false,
 }: QuoteFormProps) {
   const pathname = usePathname();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (!prefillFromQuery || !formRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    for (const name of QUERY_PREFILL_FIELDS) {
+      const value = params.get(name);
+      const field = formRef.current.elements.namedItem(name);
+      if (value && (field instanceof HTMLInputElement || field instanceof HTMLSelectElement)) {
+        field.value = value;
+      }
+    }
+  }, [prefillFromQuery]);
   const dict = getDictionary(localeFromPathname(pathname));
   const t = dict.quoteForm;
   const [status, setStatus] = useState<Status>("idle");
@@ -183,6 +207,7 @@ export function QuoteForm({
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className={cn("space-y-4", className)}
       aria-label={t.ariaLabel}

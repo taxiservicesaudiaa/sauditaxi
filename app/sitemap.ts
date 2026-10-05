@@ -17,9 +17,9 @@ import { journeyPages } from "@/data/journey-pages";
 import { distanceGuideV2Pages } from "@/data/distance-guide-v2";
 import { journeyGuideV2Pages } from "@/data/journey-guide-v2";
 
-// Regenerate hourly so newly published blogs/pages enter the sitemap without a
-// full redeploy (the sitemap pulls published posts live from the database).
-export const revalidate = 3600;
+// Prerendered at deploy time with no `revalidate`: on the Cloudflare Workers
+// Free plan an hourly regeneration render exceeded the CPU limit (error 1102).
+// Newly published blog posts enter the sitemap on the next deploy.
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();

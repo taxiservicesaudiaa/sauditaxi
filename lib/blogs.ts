@@ -334,14 +334,6 @@ export async function getAdjacentBlogs(
   return { next: all[i - 1] ?? null, prev: all[i + 1] ?? null };
 }
 
-/** Distinct categories that have at least one published post, with counts. */
-export async function listPublishedCategories(): Promise<{ name: string; count: number }[]> {
-  const all = await listPublishedBlogs();
-  const counts = new Map<string, number>();
-  for (const b of all) counts.set(b.category, (counts.get(b.category) ?? 0) + 1);
-  return [...counts.entries()].map(([name, count]) => ({ name, count }));
-}
-
 // ── Mutations ────────────────────────────────────────────────────────────────
 
 export async function createBlog(input: NewBlogInput): Promise<Blog> {

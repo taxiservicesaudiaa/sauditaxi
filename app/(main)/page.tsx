@@ -30,9 +30,9 @@ import { homeFaqs } from "@/data/faqs";
 // component). No form, API, routing, or interactive behaviour changed —
 // see the per-component comments for what each edit actually touched.
 
-// Refresh hourly — kept from the previous homepage (no freshness-dependent
-// content on the new page, but harmless to leave).
-export const revalidate = 3600;
+// No `revalidate`: nothing on this page is freshness-dependent, and an hourly
+// regeneration means a full server render on the Worker, which exceeds the
+// Cloudflare Workers Free plan's CPU limit (error 1102). Updates on deploy.
 
 // Metadata preserved exactly as before — the heading-structure update does not change SEO signals.
 export const metadata: Metadata = buildMetadata({

@@ -26,16 +26,16 @@ import {
   extractToc,
 } from "@/lib/blogs";
 
-export const revalidate = 300;
-
 type Params = { slug: string };
 
 // Without generateStaticParams this route rendered on every request (a full
 // render plus Supabase queries) and was never cached — the main remaining
 // source of Cloudflare 1102 errors once the incremental cache was enabled.
-// Published posts are now prerendered at build time and cached; posts
-// published later still render on first request (dynamicParams defaults to
-// true) and are cached from then on.
+// Published posts are prerendered at deploy time and served from cache with
+// no `revalidate`: on the Cloudflare Workers Free plan any server render
+// exceeds the CPU limit, so edits to a post appear on the next deploy. Posts
+// published after a deploy still render on first request (dynamicParams
+// defaults to true), but may intermittently fail until they're redeployed.
 export async function generateStaticParams(): Promise<Params[]> {
   const blogs = await listPublishedBlogsStrict();
   return blogs.map((b) => ({ slug: b.slug }));

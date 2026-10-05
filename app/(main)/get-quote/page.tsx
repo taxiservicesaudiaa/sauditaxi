@@ -25,23 +25,7 @@ export const metadata: Metadata = buildMetadata({
   alternateLanguages: { en: "/get-quote", ar: "/ar/اطلب-عرض-سعر" },
 });
 
-type SearchParams = {
-  pickup?: string;
-  dropoff?: string;
-  date?: string;
-  time?: string;
-  passengers?: string;
-};
-
-export default async function GetQuotePage({
-  searchParams,
-}: {
-  searchParams: Promise<SearchParams>;
-}) {
-  // Pre-fill from the homepage hero quick form (passed as query params) —
-  // same mechanism as before, untouched.
-  const sp = await searchParams;
-
+export default function GetQuotePage() {
   return (
     <>
       <SchemaScript schema={breadcrumbSchema(crumbs)} />
@@ -52,14 +36,9 @@ export default async function GetQuotePage({
         heroImage={pageHeroes.intercity}
         heroAlt="Planning a private transfer journey in Saudi Arabia"
         formSlot={
-          <QuoteForm
-            serviceType="Get Quote page"
-            defaultPickup={sp.pickup ?? ""}
-            defaultDropoff={sp.dropoff ?? ""}
-            defaultDate={sp.date ?? ""}
-            defaultTime={sp.time ?? ""}
-            defaultPassengers={sp.passengers || "2"}
-          />
+          // Pre-fill from the homepage hero quick form's query params happens
+          // in the browser (prefillFromQuery) so this page stays prerendered.
+          <QuoteForm serviceType="Get Quote page" prefillFromQuery />
         }
         infoHeading="What Information Should I Provide?"
         infoItems={[

@@ -414,20 +414,10 @@ const serviceTypeFor = (type: ArPage["type"]): string =>
     pointTransferV2: "Private Transfer",
   })[type];
 
-type QuoteSearchParams = {
-  pickup?: string;
-  dropoff?: string;
-  date?: string;
-  time?: string;
-  passengers?: string;
-};
-
 export default async function ArabicPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slug: string[] }>;
-  searchParams: Promise<QuoteSearchParams>;
 }) {
   const { slug } = await params;
   const key = safeSlug(slug);
@@ -556,7 +546,6 @@ export default async function ArabicPage({
   }
 
   if (page.type === "quoteV2" && page.quoteV2) {
-    const sp = await searchParams;
     return (
       <>
         <SchemaScript schema={breadcrumbSchema(page.breadcrumbs)} />
@@ -564,14 +553,9 @@ export default async function ArabicPage({
           {...page.quoteV2}
           crumbs={page.breadcrumbs}
           formSlot={
-            <QuoteForm
-              serviceType="صفحة اطلب عرض سعر"
-              defaultPickup={sp.pickup ?? ""}
-              defaultDropoff={sp.dropoff ?? ""}
-              defaultDate={sp.date ?? ""}
-              defaultTime={sp.time ?? ""}
-              defaultPassengers={sp.passengers || "2"}
-            />
+            // Query-param prefill happens in the browser (prefillFromQuery) so
+            // this page stays prerendered — see QuoteForm.
+            <QuoteForm serviceType="صفحة اطلب عرض سعر" prefillFromQuery />
           }
         />
       </>

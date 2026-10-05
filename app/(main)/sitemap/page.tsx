@@ -27,10 +27,10 @@ import { arPageIndex, arIndexPath } from "@/data/translations/ar-index";
  * machine-readable /sitemap.xml (app/sitemap.ts, untouched by this page).
  * Every link here is a plain server-rendered <a> (via next/link, which SSRs
  * to a real anchor), reusing the exact same data sources /sitemap.xml reads
- * from so the two never drift apart. Revalidates hourly so newly published
- * blog posts appear without a full redeploy, matching sitemap.ts's own cadence.
+ * from so the two never drift apart. Prerendered at deploy with no
+ * `revalidate`, matching sitemap.ts — on the Cloudflare Workers Free plan a
+ * regeneration render exceeds the CPU limit. New posts appear after a deploy.
  */
-export const revalidate = 3600;
 
 const crumbs = [
   { name: "Home", path: "/" },
