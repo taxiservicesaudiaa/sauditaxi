@@ -29,14 +29,8 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Canonicalise to the non-www apex domain with a single 301. This rule is
-  // currently unreachable in production: www.saudiprivatetransfers.com has no
-  // DNS record at all (confirmed via live NXDOMAIN), so no request for that
-  // host ever reaches this app for the rule to fire on. That's a Cloudflare
-  // DNS configuration issue (add a proxied www record pointing at the same
-  // target as the apex) — outside what a code change here can fix. Once that
-  // DNS record exists, this rule already does the right thing and needs no
-  // further change.
+  // Canonicalise www.saudiprivatetransfers.com to the non-www apex domain in a
+  // single permanent redirect (www is attached to the Worker as a custom domain).
   async redirects() {
     return [
       {
@@ -52,6 +46,16 @@ const nextConfig: NextConfig = {
       {
         source: "/index.php",
         destination: "/",
+        permanent: true,
+      },
+      // The bare "/" needs its own rule: with "/:path*" below, OpenNext's
+      // redirect handling left the empty :path* unsubstituted for the root, so
+      // www.saudiprivatetransfers.com/ redirected to the literal
+      // https://saudiprivatetransfers.com/:path* (a 404).
+      {
+        source: "/",
+        has: [{ type: "host", value: "www.saudiprivatetransfers.com" }],
+        destination: "https://saudiprivatetransfers.com/",
         permanent: true,
       },
       {
