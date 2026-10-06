@@ -154,7 +154,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...pointTransferPaths,
   ].map((entry) => {
     // Cross-link to the Arabic version, when one exists, for hreflang in the sitemap.
-    const ar = getArPathForEnPathLight(entry.path);
+    // The Arabic homepage (/ar) isn't an arPageIndex entry, so pair "/" with it
+    // explicitly — reciprocating the /ar entry below, as the page HTML does.
+    const ar = entry.path === "/" ? "/ar" : getArPathForEnPathLight(entry.path);
     return {
       url: absoluteUrl(entry.path),
       lastModified: now,
