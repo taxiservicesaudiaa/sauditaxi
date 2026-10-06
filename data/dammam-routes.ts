@@ -382,28 +382,77 @@ export const dammamRoutes: Route[] = [
     duration: "25 min",
     lastUpdated: "2026-08-05",
     intro:
-      "The Saihat to Dammam taxi is a quick private transfer from the coastal town into the Eastern Province capital.",
+      "Saihat sits on the Gulf coast in Qatif Governorate, right on Dammam's northern side, so most trips into Dammam are short everyday ones — to work, a hospital or government appointment, the train station, or a family visit — where a fixed-price car you've booked ahead beats waiting for a ride at the kerb.",
     about:
-      "Our private Saihat to Dammam transfer covers the short coastal route in about 25 minutes, taking you directly into Dammam's city centre, Corniche, or airport, with a fixed price agreed before you travel.",
+      "Our private Saihat to Dammam transfer collects you from your home or business in Saihat and drives you directly to your Dammam address — the city centre, the Corniche, an office, or the railway station for an onward train to Riyadh — with a fixed price agreed before you travel. If you're actually heading for King Fahd International Airport, that's a longer drive to the north-west and has its own transfer.",
     notes: [
       "Pickup from any address in Saihat",
       "Fast, direct route into central Dammam",
-      "Onward connections to Dammam Airport",
+      "Drop-off at Dammam railway station for SAR trains to Riyadh",
       "Reverse Dammam to Saihat transfers available",
+    ],
+    whoSuits: [
+      { title: "Commuters and appointments in Dammam", description: "A booked, fixed-price car for work, hospital or government appointments, without waiting for an on-demand ride at busy times." },
+      { title: "Rail travellers heading to Riyadh", description: "Drop-off at Dammam railway station timed to your SAR departure." },
+      { title: "Families visiting relatives", description: "A van for the whole family between Saihat and Dammam's residential districts, with no second car needed." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Saihat pickup", detail: "Your home, workplace or a Saihat Corniche address." },
+        { label: "South into Dammam", detail: "A short coastal drive through the Qatif–Dammam corridor." },
+        { label: "Dammam drop-off", detail: "City centre, Corniche, an office or the railway station." },
+      ],
+      journeyFacts: [
+        { label: "Where Saihat is", value: "Qatif Governorate, on Dammam's northern side", emphasis: true },
+        { label: "Rail connection", value: "SAR trains to Riyadh from Dammam station" },
+        { label: "Airport trips", value: "King Fahd Int'l (DMM) is a separate, longer transfer" },
+        { label: "Main delay", value: "Weekday commuter peaks into Dammam" },
+      ],
+      mapOrigin: "Saihat, Saudi Arabia",
+      mapDestination: "Dammam, Saudi Arabia",
+      mapNote: "Town centre to city centre. Your actual pickup and drop-off addresses set the final distance on such a short route.",
+      pickupPoints: [
+        "Homes and businesses anywhere in Saihat",
+        "Saihat Corniche",
+        "Neighbouring Qatif-area addresses, on request",
+      ],
+      dropoffPoints: [
+        "Central Dammam offices and businesses",
+        "Dammam Corniche",
+        "Dammam railway station (SAR trains to Riyadh)",
+        "Hospitals, government offices and residential districts across Dammam",
+      ],
+    },
+    sections: [
+      {
+        heading: "A short trip, planned like a longer one",
+        paragraphs: [
+          "Saihat and Dammam run into each other along the coast, so this transfer is about convenience rather than distance: being collected at a set time, going straight to the right entrance in Dammam, and knowing the price before you leave. Weekday commuter peaks are the main thing that slows it down, so an early appointment or a train to catch is worth booking ahead rather than leaving to chance.",
+          "Tell us exactly where in Dammam you're going — an office, a hospital entrance, the Corniche, or <a href='/taxi-service/dammam'>anywhere else in the city</a> — and whether you'll need a return. For trips the other way, our <a href='/routes/dammam-to-saihat'>Dammam to Saihat</a> transfer covers the reverse journey.",
+        ],
+      },
+      {
+        heading: "Onward travel from Dammam",
+        paragraphs: [
+          "Dammam's railway station is where SAR passenger trains leave for Riyadh, via Hofuf, so a drop-off timed to your train is a common booking on this route. If you'd rather go all the way by road, see our <a href='/routes/dammam-to-riyadh'>Dammam to Riyadh</a> transfer.",
+          "For flights, King Fahd International Airport is well north-west of Dammam itself, so it isn't a stop on the way into the city. Book the <a href='/routes/saihat-to-dammam-airport'>Saihat to Dammam Airport</a> transfer instead, which plans the pickup around your departure time.",
+        ],
+      },
     ],
     relatedCitySlugs: ["dammam", "khobar"],
     metaTitle: "Saihat to Dammam Private Transfer – Fixed-Price Taxi",
     metaDescription:
-      "Book a private taxi from Saihat to Dammam (30 km, about 25 min). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
+      "Private taxi from Saihat to Dammam — city centre, Corniche, offices or the railway station. Short coastal trip, fixed price agreed before you travel, sedans to family vans.",
     faqs: [
       { question: "How far is Saihat from Dammam?", answer: "It is around 30 kilometres, about a 25-minute drive." },
-      { question: "Can you take me straight to Dammam Airport from Saihat?", answer: "Yes, we can route your Saihat to Dammam transfer directly to King Fahd International Airport if you are flying onward." },
-      { question: "Is this trip available at any time of day?", answer: "Yes, we operate 24/7 with fixed pricing regardless of pickup time." },
+      { question: "Can you take me straight to Dammam Airport from Saihat?", answer: "Yes, but King Fahd International Airport lies well north-west of Dammam, so it's a longer trip than one into the city — see our <a href='/routes/saihat-to-dammam-airport'>Saihat to Dammam Airport</a> transfer, which is timed around your flight." },
+      { question: "Can you take me to Dammam railway station?", answer: "Yes. Give us your train time when booking and the pickup in Saihat is set to get you to the station with time to spare for the SAR service to Riyadh." },
       { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel with no meter or surge pricing." },
       { question: "How far in advance should I book the Saihat to Dammam taxi?", answer: "Same-day booking is usually available for this short route, though booking a little ahead gives more vehicle choice at busy times." },
       { question: "What vehicle should I choose for Saihat to Dammam?", answer: "A standard sedan suits most solo and business travellers on this short hop; for families or groups with extra luggage, a larger SUV or van is available — mention your group size when requesting a quote." },
       { question: "Is the 25 min journey time from Saihat to Dammam accurate at busy times?", answer: "25 min reflects normal traffic conditions; peak commuting hours can add a few minutes, though your fixed price agreed before travel never changes." },
-      { question: "Can I book the Saihat to Dammam transfer for early morning or late night?", answer: "Yes, this route is available 24/7 with the same fixed-price, door-to-door standard at any hour." },
+      { question: "Can I book the Saihat to Dammam transfer for early morning or late night?", answer: "Yes — tell us the time you need when you request a quote. The price is fixed when you book and doesn't change with the hour." },
+      { question: "How do I pay?", answer: "No payment is needed to get a quote. The payment method — cash, card or another option — and any deposit are confirmed when you book." },
     ],
   },
   {

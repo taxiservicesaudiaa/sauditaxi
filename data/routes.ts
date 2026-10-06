@@ -48,6 +48,9 @@ export interface Route {
   /** H1 override for a small batch of routes needing a distinct headline
    * instead of the generic "{from} to {to} Taxi Service". */
   h1?: string;
+  /** Route-specific "Who This Route Suits" items for domestic city-to-city
+   * pages (lib/route-composer.ts), replacing the journey-type defaults. */
+  whoSuits?: { title: string; description: string }[];
   /**
    * Fully custom, ordered editorial composition for a small batch of routes
    * that need a genuinely distinct page structure rather than the shared
@@ -147,7 +150,7 @@ const baseRoutes: Route[] = [
   {
     slug: "jeddah-to-makkah",
     metaTitle: "Jeddah to Makkah Taxi – Private Umrah Airport Transfer",
-    metaDescription: "Book a private taxi from Jeddah Airport to Makkah (85 km, about 1h 15m). Professional driver, door-to-door hotel drop-off near the Haram, 24/7.",
+    metaDescription: "Private taxi from Jeddah or Jeddah Airport (JED) to your Makkah hotel — about 85 km, roughly 1h 15m. Fixed price agreed before you travel, sedans to family vans.",
     from: "Jeddah",
     to: "Makkah",
     category: "religious",
@@ -156,13 +159,48 @@ const baseRoutes: Route[] = [
     intro:
       "Nearly every pilgrim who flies into the Kingdom for Umrah starts their journey on this exact road — from the arrivals hall at Jeddah's King Abdulaziz International Airport straight to a hotel near the Haram. It's also the route business travellers use when they extend a Jeddah trip with a same-day Umrah visit, and the one families rely on when they need a single vehicle for the whole group instead of splitting across shared vans.",
     about:
-      "Most pilgrims land at Jeddah's King Abdulaziz International Airport and travel straight to Makkah to begin Umrah. Your driver waits at the terminal matching your flight — the Hajj Terminal during pilgrimage season, Terminal 1 (North) the rest of the year — tracks your landing time in case of delay, helps with luggage, and drives you directly to your hotel near the Haram, without the transfers or waiting rooms of a shared shuttle.",
+      "Most pilgrims land at Jeddah's King Abdulaziz International Airport and travel straight to Makkah to begin Umrah. Your driver waits at the terminal your flight actually uses — Terminal 1, the North Terminal, or the Hajj Terminal, depending on the airline and season — follows your landing time in case of delay, helps with luggage, and drives you directly to your hotel near the Haram, without the transfers or waiting rooms of a shared shuttle.",
     notes: [
-      "Pickup available from JED airport (Hajj Terminal or Terminal 1) or any Jeddah hotel",
-      "Drop-off at a designated point near the Haram, confirmed with you in advance",
+      "Pickup from any JED terminal (Terminal 1, North Terminal or Hajj Terminal) or any Jeddah hotel or address",
+      "Drop-off at your hotel or the nearest point vehicles are allowed to reach, confirmed with you in advance",
       "Family vans available for pilgrims with luggage",
-      "Available 24/7 to match flight arrival times, including delayed landings",
+      "Pickup time follows your actual landing — share your flight number when you book",
     ],
+    whoSuits: [
+      { title: "Umrah pilgrims landing at JED", description: "Straight from the arrivals hall to a Makkah hotel, with no shuttle connection or luggage hand-off on the way." },
+      { title: "Families and groups with luggage", description: "One van for the whole party instead of splitting across taxis — typical for an Umrah trip with suitcases and Zamzam allowance on the way home." },
+      { title: "Jeddah residents and visitors", description: "A same-day trip from a Jeddah hotel or home address for Umrah or a visit to the Haram, without driving and parking in central Makkah yourself." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Arrival at JED or Jeddah pickup", detail: "Driver waits at your terminal (T1, North or Hajj) or collects you from your Jeddah address." },
+        { label: "Jeddah–Makkah expressway", detail: "About 85 km east on a direct highway with no tolls." },
+        { label: "Makkah approach", detail: "Traffic builds near the central area, especially in Ramadan and Hajj season." },
+        { label: "Hotel drop-off", detail: "At your hotel or the closest point vehicles may reach, agreed before you travel." },
+      ],
+      journeyFacts: [
+        { label: "Airport", value: "King Abdulaziz International (JED)", emphasis: true },
+        { label: "JED terminals", value: "Terminal 1, North Terminal, Hajj Terminal" },
+        { label: "Miqat on this road", value: "None — Jeddah is inside the miqat boundary" },
+        { label: "Rail alternative", value: "Haramain train to Makkah station (taxi still needed to the Haram)" },
+      ],
+      mapOrigin: "King Abdulaziz International Airport, Jeddah",
+      mapDestination: "Masjid al-Haram, Makkah",
+      mapNote: "Shown from the airport. Starting from central Jeddah shortens the drive slightly; your exact hotel and the access arrangements on the day determine the final drop-off point.",
+      pickupPoints: [
+        "JED Terminal 1 arrivals",
+        "JED North Terminal arrivals",
+        "JED Hajj Terminal (seasonal pilgrim flights)",
+        "Jeddah hotels — Corniche, Al Balad, Tahlia and the city's other districts",
+        "Haramain station, Jeddah (Al Sulaymaniyah)",
+        "Residential addresses anywhere in Jeddah",
+      ],
+      dropoffPoints: [
+        "Hotels around the Haram — Ajyad, Ibrahim Al Khalil Road and the Clock Tower area",
+        "Hotels and apartments in Al Aziziyah and other districts outside the central area",
+        "Private addresses anywhere in Makkah",
+      ],
+    },
     relatedCitySlugs: ["jeddah", "makkah"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -176,7 +214,7 @@ const baseRoutes: Route[] = [
       {
         heading: "Arriving at Jeddah Airport and reaching your Makkah hotel",
         paragraphs: [
-          "Your driver checks your flight number before you land and waits at the correct terminal — the dedicated Hajj Terminal handles the seasonal surge of pilgrim charters during Hajj, while Terminal 1 (North) serves most scheduled international arrivals the rest of the year. If you haven't yet entered ihram and plan to at one of the recognised miqat points en route, mention it when booking so your driver can build the stop into the route without you needing to ask twice.",
+          "Your driver checks your flight number before you land and waits at the correct terminal. JED runs three: Terminal 1, which handles most scheduled international and Saudia flights; the older North Terminal, used by a number of foreign airlines; and the Hajj Terminal, which takes pilgrim charters and some Umrah flights in season. Your ticket or airline confirms which one applies — give us the flight number and we match it. Note that there is no miqat on the road from Jeddah to Makkah: Jeddah lies inside the miqat boundary, which is why pilgrims flying in normally enter ihram on the plane before landing. If you need to travel out to a miqat first, tell us when booking — that is a longer, separately quoted journey.",
           "Private vehicles can't drive into the pedestrian zone that surrounds the Masjid al-Haram, so the last stretch of every Makkah drop-off is on foot from a fixed point your driver will confirm with you — usually a short, well-marked walk from your hotel entrance. Travellers planning to book a full <a href='/umrah-taxi-service'>Umrah taxi service</a> for the rest of their stay, or who'll need local transport once they're settled in Makkah, can arrange that alongside this transfer so pickup and city travel are handled by the same team.",
         ],
       },
@@ -184,19 +222,20 @@ const baseRoutes: Route[] = [
         heading: "Vehicle options and pilgrim travel advice",
         paragraphs: [
           "Solo travellers and couples are comfortably served by a standard sedan, while families and small groups travelling with the extra luggage typical of an Umrah trip usually prefer a larger SUV or van — let us know your group size and luggage volume so we assign the right vehicle from the start. Vehicles serving Makkah are driven by chauffeurs familiar with the hotel districts around the Clock Tower and the designated pickup points near the Haram.",
-          "Because flight arrival times vary and immigration queues at Jeddah airport can run long, we track your flight and adjust pickup timing automatically rather than working from a fixed clock time. During Ramadan and peak Umrah season, booking a day ahead — rather than on arrival — gives you a wider choice of vehicle size.",
+          "Because flight arrival times vary and immigration queues at Jeddah airport can run long, we track your flight and adjust pickup timing automatically rather than working from a fixed clock time. During Ramadan and peak Umrah season, booking a day ahead — rather than on arrival — gives you a wider choice of vehicle size. For more on the airport itself, see our <a href='/airport-transfer/jeddah-airport'>Jeddah Airport transfer guide</a>; for the trip home, the <a href='/routes/makkah-to-jeddah-airport'>Makkah to Jeddah Airport</a> transfer is planned around your flight time.",
         ],
       },
     ],
     faqs: [
       { question: "How far is Jeddah Airport from Makkah?", answer: "About 85 kilometres, which typically takes around an hour and fifteen minutes, though this can extend during Umrah season or Hajj when traffic near Makkah is heavier." },
-      { question: "Which terminal should I select for pickup?", answer: "Choose the Hajj Terminal if you're arriving on a pilgrim charter during Hajj season, or Terminal 1 (North) for a standard scheduled international flight — your driver waits at whichever one matches your booking." },
-      { question: "Can the driver stop for miqat on the way?", answer: "Yes — if you haven't yet entered ihram, mention this when booking and your driver will plan a stop at the appropriate miqat point on the route." },
+      { question: "Which terminal should I select for pickup?", answer: "The one printed on your ticket or airline booking: Terminal 1, the North Terminal, or the Hajj Terminal for seasonal pilgrim flights. If you're unsure, just send us your flight number and we confirm the terminal for you." },
+      { question: "Is there a miqat on the way from Jeddah to Makkah?", answer: "No. Jeddah is inside the miqat boundary, so pilgrims arriving by air normally enter ihram on the plane before landing. If you need to go out to a miqat before Makkah, mention it when booking — that is a longer journey and is quoted separately." },
       { question: "How long does the journey take during Ramadan?", answer: "Traffic converging on Makkah is noticeably heavier during Ramadan and the weeks around Hajj, so allow extra time beyond the usual hour and fifteen minutes — your fare stays fixed regardless." },
       { question: "Do you offer family vans for pilgrims with extra luggage?", answer: "Yes, family and group vans are available for pilgrims travelling with more luggage than a standard sedan comfortably fits — mention your group size when requesting a quote." },
       { question: "Where does my driver drop me off near the Haram?", answer: "Since vehicles can't enter the pedestrian zone directly around the Haram, your driver will confirm a nearby designated drop-off point with you in advance, usually a short walk from your hotel." },
-      { question: "Is booking available for late-night or early-morning flights?", answer: "Yes, pickup is available 24/7 and we track your flight so timing adjusts automatically to your actual landing time." },
-      { question: "Can I book a return Makkah to Jeddah transfer at the same time?", answer: "Yes, you can book both legs together, or arrange the return separately once your Makkah stay is confirmed — see our Makkah to Jeddah route page for the reverse leg." },
+      { question: "Can I book a pickup for a late-night or early-morning flight?", answer: "Yes — give your flight number and arrival time when you request a quote. The pickup follows your actual landing, so a delayed flight doesn't leave you without a driver." },
+      { question: "Do I need Saudi riyals to pay the driver when I land?", answer: "Not necessarily. No payment is needed to get a quote, and the payment method — cash, card or another option — plus any deposit is confirmed with you when you book, so you know before you fly whether you need cash on arrival." },
+      { question: "Can I book a return Makkah to Jeddah transfer at the same time?", answer: "Yes, you can book both legs together, or arrange the return separately once your Makkah stay is confirmed. If your return is to catch a flight, the dedicated Makkah to Jeddah Airport transfer is timed around your departure." },
     ],
     keywords: ["jeddah to makkah taxi", "jeddah airport to makkah transfer", "jeddah makkah private car", "hajj terminal to makkah taxi", "umrah transfer jeddah makkah"],
   },
@@ -219,6 +258,38 @@ const baseRoutes: Route[] = [
       "Hotel-to-hotel private service, door to door",
       "Onward connection to Madinah's airport available if you're flying home from there",
     ],
+    whoSuits: [
+      { title: "Pilgrims moving on after Umrah", description: "Collected at your Makkah hotel on checkout day and taken straight to your Madinah hotel, without carrying luggage through two train stations." },
+      { title: "Elderly or less mobile travellers", description: "A paced drive with stops when the group needs them, rather than a fixed train or coach timetable." },
+      { title: "Families with heavy luggage", description: "One van for everyone and everything, which matters more on this leg than on the way in — bags tend to be fuller after a long stay." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Makkah hotel pickup", detail: "Timed to your checkout, from your hotel or the nearest point vehicles can reach." },
+        { label: "Al-Hijrah road north", detail: "About 450 km on the main Makkah–Madinah expressway, no tolls." },
+        { label: "Rest stop on request", detail: "Usually around halfway — agreed with you, not fixed in advance." },
+        { label: "Madinah hotel drop-off", detail: "Direct to your hotel, including the central area around the Prophet's Mosque." },
+      ],
+      journeyFacts: [
+        { label: "Ihram on this leg", value: "Not required — no miqat stop travelling north" },
+        { label: "Rail alternative", value: "Haramain high-speed train (Makkah station to Madinah station)" },
+        { label: "Why go by car instead", value: "Hotel to hotel, no station transfers with luggage at either end" },
+        { label: "Onward from Madinah", value: "Madinah airport (MED) flights home" },
+      ],
+      mapOrigin: "Masjid al-Haram, Makkah",
+      mapDestination: "Al-Masjid an-Nabawi, Madinah",
+      mapNote: "A typical route along the Makkah–Madinah expressway. Your actual pickup and drop-off are your two hotels, which shifts the total slightly either way.",
+      pickupPoints: [
+        "Hotels around the Haram — Ajyad, Ibrahim Al Khalil Road and the Clock Tower area",
+        "Hotels and apartments in Al Aziziyah, Al Awali and other Makkah districts",
+        "Private addresses anywhere in Makkah",
+      ],
+      dropoffPoints: [
+        "Hotels in Madinah's central area around the Prophet's Mosque",
+        "Hotels and apartments elsewhere in Madinah",
+        "Prince Mohammad bin Abdulaziz Airport (MED), if you're flying home",
+      ],
+    },
     relatedCitySlugs: ["makkah", "madinah"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -240,7 +311,14 @@ const baseRoutes: Route[] = [
         heading: "Vehicle options and pilgrim travel advice",
         paragraphs: [
           "A comfortable sedan suits solo travellers and couples, while families and small groups usually prefer a larger SUV or van for the four-and-a-half-hour drive, especially with the extra luggage many pilgrims carry after an extended Umrah stay. Elderly or less mobile travellers are well served by our more spacious vehicles — mention any mobility needs when requesting your quote.",
-          "If you're planning to fly home from Madinah rather than Jeddah, let us know your departure time when booking; we can time the Makkah pickup to leave a comfortable buffer before your flight rather than cutting it close.",
+          "If you're planning to fly home from Madinah rather than Jeddah, let us know your departure time when booking; we can time the Makkah pickup to leave a comfortable buffer before your flight rather than cutting it close. In that case the drop-off can be <a href='/airport-transfer/madinah-airport'>Madinah airport</a> directly instead of a hotel.",
+        ],
+      },
+      {
+        heading: "Private car or the Haramain train?",
+        paragraphs: [
+          "The Haramain high-speed railway links Makkah and Madinah and is quicker on the track itself. What it doesn't do is go hotel to hotel: Makkah's station is in Al Rusaifah, some distance from the Haram, and Madinah's station is outside the central area too, so you still need a taxi at each end and have to manage luggage through both stations and onto the train. Trains also run to a timetable and popular departures can sell out in Ramadan and peak Umrah season.",
+          "For a couple travelling light who are comfortable with stations, the train is a good option. For families, elderly pilgrims, or anyone with several large suitcases, a single private vehicle from one hotel door to the other is usually the simpler day, even though the drive itself is longer.",
         ],
       },
     ],
@@ -252,6 +330,8 @@ const baseRoutes: Route[] = [
       { question: "Can this transfer be timed for a flight home from Madinah?", answer: "Yes, tell us your departure time from Madinah's airport when booking and we'll plan the Makkah pickup to leave a comfortable buffer." },
       { question: "Can I book this transfer for a family with a lot of luggage?", answer: "Yes, larger SUVs and vans are available for families and groups carrying extra luggage after an extended Umrah stay." },
       { question: "Is same-day booking possible for this route?", answer: "Same-day booking is often possible, though booking a day ahead gives more vehicle choice, especially during Ramadan or peak Umrah season." },
+      { question: "Do I need to stop at a miqat going from Makkah to Madinah?", answer: "No. A miqat stop applies when travelling towards Makkah to begin Umrah or Hajj — this direction needs no ihram stop. If you're returning to Makkah later, the Madinah to Makkah transfer includes the Dhul Hulaifah stop." },
+      { question: "Is the Haramain train faster than a taxi?", answer: "On the track, yes. But the stations sit outside both central areas, so you'll still need a taxi at each end and must handle luggage through the stations. A private car takes longer on the road but goes directly from hotel to hotel." },
       { question: "Can I book a return Madinah to Makkah transfer?", answer: "Yes, see our Madinah to Makkah route page for the reverse leg, or ask us to arrange both directions in one booking." },
     ],
     keywords: ["makkah to madinah taxi", "makkah madinah private transfer", "hijra highway taxi", "umrah makkah madinah transfer", "makkah to madinah private car"],
@@ -273,8 +353,40 @@ const baseRoutes: Route[] = [
       "Miqat stop at Dhul Hulaifah (Abyar Ali) confirmed and planned before departure",
       "Pickup from your Madinah hotel once you're ready to begin ihram",
       "Comfortable vehicles for the 450 km journey south",
-      "Available 24/7 for any arrival time into Madinah",
+      "Pickup time set by you — tell us when you plan to leave your Madinah hotel",
     ],
+    whoSuits: [
+      { title: "Pilgrims starting Umrah after Madinah", description: "The miqat stop at Dhul Hulaifah is part of the booking, so you arrive in Makkah in ihram and ready to begin." },
+      { title: "Groups entering ihram together", description: "Everyone is collected from one Madinah hotel and changes at the same miqat, so nobody waits alone at the roadside." },
+      { title: "Travellers arriving at Madinah airport", description: "A pickup from MED can go straight to Makkah — with the miqat stop — if your plan is to begin Umrah without staying in Madinah first." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Madinah hotel pickup", detail: "From your hotel or address, at the time you choose." },
+        { label: "Dhul Hulaifah (Abyar Ali)", detail: "Miqat stop on Madinah's southern edge to change, pray and make intention." },
+        { label: "Al-Hijrah road south", detail: "About 450 km on the Makkah–Madinah expressway, no tolls." },
+        { label: "Makkah hotel drop-off", detail: "At your hotel or the closest point vehicles can reach, agreed in advance." },
+      ],
+      journeyFacts: [
+        { label: "Miqat", value: "Dhul Hulaifah — Masjid Al-Shajarah, Abyar Ali", emphasis: true },
+        { label: "Time at the miqat", value: "Typically 20–40 minutes, depending on group size" },
+        { label: "Rail alternative", value: "Haramain train — but ihram must be entered before boarding" },
+        { label: "Arrival", value: "Makkah hotel, ready to begin Umrah" },
+      ],
+      mapOrigin: "Al-Masjid an-Nabawi, Madinah",
+      mapDestination: "Masjid al-Haram, Makkah",
+      mapNote: "A typical route via the Makkah–Madinah expressway. The miqat at Abyar Ali sits just south of Madinah, close to the start of the drive.",
+      pickupPoints: [
+        "Hotels in Madinah's central area around the Prophet's Mosque",
+        "Hotels and apartments elsewhere in Madinah",
+        "Prince Mohammad bin Abdulaziz Airport (MED) arrivals",
+      ],
+      dropoffPoints: [
+        "Hotels around the Haram — Ajyad, Ibrahim Al Khalil Road and the Clock Tower area",
+        "Hotels and apartments in Al Aziziyah and other Makkah districts",
+        "Private addresses anywhere in Makkah",
+      ],
+    },
     relatedCitySlugs: ["madinah", "makkah"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -308,6 +420,8 @@ const baseRoutes: Route[] = [
       { question: "Is this a direct hotel-to-hotel service?", answer: "Yes, your driver collects you from your Madinah hotel and drops you directly at your Makkah hotel, with the miqat stop built into the same journey." },
       { question: "Do you offer vehicles suited to elderly pilgrims?", answer: "Yes, more spacious, comfortable vehicles are available for elderly or less mobile travellers, including assistance at the miqat stop — mention any needs when booking." },
       { question: "Is the price fixed even with the miqat stop?", answer: "Yes, we agree a fixed price before you travel covering the complete 450 km journey and the Dhul Hulaifah stop, with no toll charges or extra fees." },
+      { question: "Can you pick me up at Madinah airport and go straight to Makkah?", answer: "Yes. Tell us your flight number and that you'll be entering ihram, and the driver plans the Dhul Hulaifah stop on the way south before continuing to your Makkah hotel." },
+      { question: "If I take the Haramain train instead, where do I enter ihram?", answer: "The train doesn't stop at a miqat, so pilgrims going by rail normally enter ihram before boarding — many do so at Dhul Hulaifah or their hotel. By car, the stop at Dhul Hulaifah is simply part of the journey." },
       { question: "Can I book a return Makkah to Madinah transfer as well?", answer: "Yes, see our Makkah to Madinah route page for the reverse leg, or ask us to arrange both directions together." },
     ],
     keywords: ["madinah to makkah taxi", "madinah makkah private transfer", "miqat taxi madinah", "abyar ali to makkah taxi", "madinah to makkah private car"],
@@ -329,8 +443,40 @@ const baseRoutes: Route[] = [
       "Pickup from Jeddah airport (any terminal) or city hotels",
       "Direct drop-off at Madinah hotels near the Prophet's Mosque",
       "Comfortable vehicles for the 420 km journey after a long flight",
-      "Available for late and early flight arrivals, with automatic delay tracking",
+      "Late-night and early-morning arrivals can be booked — the pickup follows your actual landing time",
     ],
+    whoSuits: [
+      { title: "Pilgrims visiting Madinah first", description: "Land at JED and go straight north to the Prophet's Mosque, leaving Umrah in Makkah for later in the trip." },
+      { title: "Families after a long-haul flight", description: "A rest stop planned in from the start, and one vehicle for the group's luggage, instead of a station transfer at both ends of the train." },
+      { title: "Visitors who aren't entering ihram", description: "Heading north means no miqat stop on this leg — ihram only becomes relevant when you later travel from Madinah to Makkah." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Arrival at JED or Jeddah pickup", detail: "Driver waits at your terminal, or collects you from your Jeddah hotel." },
+        { label: "North out of Jeddah", detail: "Onto the inland expressway towards Madinah — about 420 km, no tolls." },
+        { label: "Halfway rest stop", detail: "Recommended after a long-haul flight; timing agreed with you." },
+        { label: "Madinah hotel drop-off", detail: "Direct to your hotel, including the central area around the Prophet's Mosque." },
+      ],
+      journeyFacts: [
+        { label: "Airport", value: "King Abdulaziz International (JED)", emphasis: true },
+        { label: "Miqat on this leg", value: "None — you're travelling away from Makkah" },
+        { label: "Rail alternative", value: "Haramain train from JED's airport station to Madinah" },
+        { label: "Next leg, if continuing", value: "Madinah to Makkah, with the Dhul Hulaifah miqat stop" },
+      ],
+      mapOrigin: "King Abdulaziz International Airport, Jeddah",
+      mapDestination: "Al-Masjid an-Nabawi, Madinah",
+      mapNote: "Shown from the airport, which sits on the north side of Jeddah and so already saves part of the drive compared with central Jeddah.",
+      pickupPoints: [
+        "JED arrivals — Terminal 1, North Terminal or Hajj Terminal",
+        "Jeddah hotels and residential addresses",
+        "Haramain station, Jeddah (Al Sulaymaniyah)",
+      ],
+      dropoffPoints: [
+        "Hotels in Madinah's central area around the Prophet's Mosque",
+        "Hotels and apartments elsewhere in Madinah",
+        "Private addresses anywhere in Madinah",
+      ],
+    },
     relatedCitySlugs: ["jeddah", "madinah"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -345,7 +491,7 @@ const baseRoutes: Route[] = [
         heading: "Landing in Jeddah and heading straight to Madinah",
         paragraphs: [
           "Because flight schedules vary widely and long-haul routings often land at odd hours, we track your flight and adjust pickup timing automatically for both early-morning and late-night arrivals — there's no need to call ahead if your landing time shifts. Your driver meets you at whichever Jeddah terminal matches your flight, helps with luggage, and gets you on the road north with minimal delay.",
-          "If your itinerary has you visiting Madinah first and Makkah afterward, our <a href='/routes/madinah-to-makkah'>Madinah to Makkah route</a> covers the next leg once you're ready to continue, including the miqat stop if you haven't yet entered ihram. Travellers wanting local transport once settled in Madinah can also use our <a href='/taxi-service/madinah'>Madinah taxi service</a>.",
+          "If your itinerary has you visiting Madinah first and Makkah afterward, our <a href='/routes/madinah-to-makkah'>Madinah to Makkah route</a> covers the next leg once you're ready to continue, including the miqat stop if you haven't yet entered ihram. Travellers wanting local transport once settled in Madinah can also use our <a href='/taxi-service/madinah'>Madinah taxi service</a>. If you're booking straight from the arrivals hall, our <a href='/routes/jeddah-airport-to-madinah'>Jeddah Airport to Madinah</a> page covers the airport pickup itself in more detail.",
         ],
       },
       {
@@ -359,7 +505,8 @@ const baseRoutes: Route[] = [
     faqs: [
       { question: "Should I visit Madinah or Makkah first after landing in Jeddah?", answer: "Both are common — some pilgrims prefer to visit the Prophet's Mosque first and begin Umrah in Makkah afterward, which is exactly what this route is for; others go straight to Makkah. Either itinerary is fine, it's simply your choice." },
       { question: "How long does the Jeddah to Madinah taxi take?", answer: "The drive covers about 420 kilometres and takes roughly four hours under normal traffic conditions, longer with a rest stop after a long-haul flight." },
-      { question: "Is pickup available for early-morning or late-night flights into Jeddah?", answer: "Yes, we track your flight and adjust pickup timing automatically, and pickup is available 24/7 regardless of when you land." },
+      { question: "Is pickup available for early-morning or late-night flights into Jeddah?", answer: "Yes — give your flight number and arrival time when you request a quote. The pickup follows your actual landing, so a delay doesn't leave you without a driver." },
+      { question: "Is the Haramain train a better option from Jeddah Airport?", answer: "The train runs from a station at JED to Madinah and is quicker on the track, but Madinah's station is outside the central area, so you'll still need a taxi to your hotel and must handle luggage through both stations. A private car takes longer but goes from the arrivals hall straight to your hotel." },
       { question: "Is a rest stop included given how long the drive is after a flight?", answer: "Yes, we build in rest-stop flexibility as standard on this route rather than rushing straight through — mention your preference when booking." },
       { question: "Is the price fixed for the full 420 km journey?", answer: "Yes, we agree a fixed price before you travel that covers the complete highway journey, with no toll charges." },
       { question: "Do you offer larger vehicles for families with extra luggage?", answer: "Yes, SUVs and vans are available for families and groups carrying more luggage than a standard sedan comfortably fits." },
@@ -387,13 +534,46 @@ const baseRoutes: Route[] = [
       "Comfortable vehicles for the 400 km desert-highway drive",
       "Reverse Dammam to Riyadh transfers available",
     ],
+    whoSuits: [
+      { title: "Same-day business trips to Dhahran or Khobar", description: "Under four hours each way makes a morning departure, an afternoon meeting and an evening return realistic — with the car as a place to work." },
+      { title: "Families heading to the Gulf coast", description: "One vehicle from your Riyadh home to a Khobar or Dammam hotel, with the luggage a coastal break involves." },
+      { title: "Travellers continuing to Bahrain", description: "The King Fahd Causeway is just beyond Khobar, so the transfer can carry straight on rather than stopping in Dammam." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Riyadh pickup", detail: "From your home, hotel or office — or King Khalid Airport (RUH) arrivals." },
+        { label: "East on Highway 40", detail: "The Riyadh–Dammam expressway, crossing the red Ad-Dahna sand belt." },
+        { label: "Rest stop if wanted", detail: "Or straight through, if you're working to a meeting time." },
+        { label: "Dammam, Khobar or Dhahran", detail: "Drop-off at your exact address in the tri-city area." },
+      ],
+      journeyFacts: [
+        { label: "Main road", value: "Riyadh–Dammam expressway (Highway 40)", emphasis: true },
+        { label: "Tolls", value: "None" },
+        { label: "Rail alternative", value: "SAR passenger train, Riyadh to Dammam via Hofuf" },
+        { label: "Beyond Dammam", value: "Khobar, Dhahran and the King Fahd Causeway to Bahrain" },
+      ],
+      mapOrigin: "Riyadh, Saudi Arabia",
+      mapDestination: "Dammam, Saudi Arabia",
+      mapNote: "City centre to city centre. A drop-off in Khobar or Dhahran adds a short distance at the Eastern Province end.",
+      pickupPoints: [
+        "Homes, hotels and offices anywhere in Riyadh — Olaya, King Fahd Road, the Diplomatic Quarter and beyond",
+        "King Khalid International Airport (RUH) arrivals",
+        "Riyadh railway station, if your plans change from rail to road",
+      ],
+      dropoffPoints: [
+        "Dammam addresses and hotels",
+        "Dhahran business district and offices",
+        "Khobar hotels, the Corniche and residential compounds",
+        "King Fahd Causeway, for onward travel to Bahrain",
+      ],
+    },
     relatedCitySlugs: ["riyadh", "dammam"],
     lastUpdated: "2026-08-05",
     sections: [
       {
         heading: "Riyadh to Dammam: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to Dammam covers about 400 kilometres along Highway 95, crossing the Ad-Dahna desert corridor before reaching the Eastern Province. In free-flowing traffic the journey takes roughly three hours forty-five minutes, and it's one of the most travelled intercity corridors in the Kingdom for both business and family trips.",
+          "The drive from Riyadh to Dammam covers about 400 kilometres along the Riyadh–Dammam expressway (Highway 40), crossing the Ad-Dahna desert corridor before reaching the Eastern Province. In free-flowing traffic the journey takes roughly three hours forty-five minutes, and it's one of the most travelled intercity corridors in the Kingdom for both business and family trips.",
           "There's also a passenger rail line connecting Riyadh and Dammam, which is worth knowing about even though most of our bookings choose the road: a private car gets you door to door from your exact starting point rather than to a station, carries as much luggage as you need without separate handling, and lets you work, rest, or make calls in privacy for the whole trip. There are no tolls on this route — the fixed price you agree before travelling covers the complete journey regardless of how the drive goes.",
         ],
       },
@@ -414,7 +594,7 @@ const baseRoutes: Route[] = [
     ],
     faqs: [
       { question: "Is it practical to travel from Riyadh to Dammam by private car for a same-day business trip?", answer: "Yes — at under four hours each way, a same-day round trip for a meeting in Khobar or Dhahran is realistic by road, and you can work or rest in the car rather than managing an airport transfer on both ends." },
-      { question: "How long does the Riyadh to Dammam taxi take?", answer: "The drive covers about 400 kilometres via Highway 95 and takes roughly three hours forty-five minutes under normal traffic conditions." },
+      { question: "How long does the Riyadh to Dammam taxi take?", answer: "The drive covers about 400 kilometres via the Riyadh–Dammam expressway (Highway 40) and takes roughly three hours forty-five minutes under normal traffic conditions." },
       { question: "Is there a train option between Riyadh and Dammam?", answer: "Yes, a passenger rail line connects the two cities, though most of our bookings prefer a private car for door-to-door pickup, luggage flexibility, and privacy on the drive." },
       { question: "Can this transfer continue on to Khobar or the Bahrain Causeway?", answer: "Yes, many travellers continue on to Khobar, Dhahran, or the Causeway — mention your onward destination when booking and we'll quote accordingly." },
       { question: "What vehicle suits a business trip to Dammam?", answer: "A comfort sedan suits most business travellers; for groups or families with more luggage, we recommend an SUV or van." },
@@ -422,7 +602,7 @@ const baseRoutes: Route[] = [
       { question: "Is the price fixed regardless of desert-highway conditions?", answer: "Yes, the fare is agreed before you travel and doesn't change with traffic or weather conditions on the day." },
       { question: "Can I book a return Dammam to Riyadh transfer?", answer: "Yes, see our Dammam to Riyadh route page for the reverse leg, or ask us to arrange both directions in one booking." },
     ],
-    keywords: ["riyadh to dammam taxi", "riyadh dammam private transfer", "highway 95 taxi", "riyadh to eastern province taxi", "riyadh dammam intercity transfer"],
+    keywords: ["riyadh to dammam taxi", "riyadh dammam private transfer", "riyadh dammam highway taxi", "riyadh to eastern province taxi", "riyadh dammam intercity transfer"],
   },
   {
     slug: "dammam-to-riyadh",
@@ -441,15 +621,47 @@ const baseRoutes: Route[] = [
       "Meet-and-greet pickup at King Fahd International Airport or the Bahrain Causeway crossing",
       "Also available from Dammam or Khobar hotels and offices",
       "Direct drop-off anywhere in Riyadh, including a same-day onward flight",
-      "Available 24/7 with fixed quotes regardless of arrival time",
+      "Fixed quote agreed before you travel, whatever time you arrive",
     ],
+    whoSuits: [
+      { title: "Arrivals at King Fahd International Airport", description: "Straight from DMM arrivals to Riyadh, without first heading into Dammam or arranging a second car." },
+      { title: "Travellers crossing from Bahrain", description: "Collected on the Saudi side once you've cleared the King Fahd Causeway, then on to the capital in the same vehicle." },
+      { title: "Eastern Province residents with a Riyadh flight", description: "A drop-off at King Khalid Airport timed to your departure, as an alternative to a connecting domestic flight." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Pickup in the Eastern Province", detail: "DMM airport arrivals, the Causeway's Saudi side, or a Dammam, Khobar or Dhahran address." },
+        { label: "West on Highway 40", detail: "The Riyadh–Dammam expressway across the Ad-Dahna sands." },
+        { label: "Rest stop if wanted", detail: "Agreed with you — or straight through for a flight or meeting." },
+        { label: "Riyadh drop-off", detail: "Hotel, office, home or King Khalid Airport (RUH)." },
+      ],
+      journeyFacts: [
+        { label: "Main road", value: "Riyadh–Dammam expressway (Highway 40)", emphasis: true },
+        { label: "Common starting points", value: "DMM airport, King Fahd Causeway, Khobar and Dhahran" },
+        { label: "Tolls", value: "None" },
+        { label: "Rail alternative", value: "SAR passenger train, Dammam to Riyadh via Hofuf" },
+      ],
+      mapOrigin: "Dammam, Saudi Arabia",
+      mapDestination: "Riyadh, Saudi Arabia",
+      mapNote: "City centre to city centre. Starting from King Fahd International Airport or the Causeway changes the first part of the route, not the main highway.",
+      pickupPoints: [
+        "King Fahd International Airport (DMM) arrivals",
+        "Saudi side of the King Fahd Causeway, after the border",
+        "Dammam, Khobar and Dhahran hotels, offices and homes",
+      ],
+      dropoffPoints: [
+        "Riyadh hotels and offices — Olaya, King Fahd Road, KAFD and the Diplomatic Quarter",
+        "King Khalid International Airport (RUH), timed to your flight",
+        "Residential addresses anywhere in Riyadh",
+      ],
+    },
     relatedCitySlugs: ["dammam", "riyadh"],
     lastUpdated: "2026-08-05",
     sections: [
       {
         heading: "Dammam to Riyadh: route overview and distance",
         paragraphs: [
-          "The drive from Dammam to Riyadh covers about 400 kilometres, running the length of Highway 95 west across the Ad-Dahna desert corridor into the capital. The journey takes roughly three hours forty-five minutes in free-flowing traffic, and is popular with travellers connecting from the Bahrain Causeway or King Fahd International Airport onward to Riyadh the same day.",
+          "The drive from Dammam to Riyadh covers about 400 kilometres, running west along the Riyadh–Dammam expressway (Highway 40) across the Ad-Dahna desert corridor into the capital. The journey takes roughly three hours forty-five minutes in free-flowing traffic, and is popular with travellers connecting from the Bahrain Causeway or King Fahd International Airport onward to Riyadh the same day.",
           "There are no tolls on this route, so your fixed price covers the complete journey. Because this leg often follows an international flight or a border crossing, we plan around your actual arrival time rather than a scheduled pickup — your driver tracks flight status if you're arriving by air.",
         ],
       },
@@ -471,11 +683,12 @@ const baseRoutes: Route[] = [
     faqs: [
       { question: "Do you offer pickup directly from King Fahd International Airport?", answer: "Yes, your driver waits in the arrivals hall with a name board and tracks your flight, so timing adjusts automatically if you land late." },
       { question: "Can I book this transfer from the Bahrain Causeway directly?", answer: "Yes, we can collect you on the Saudi side of the Causeway once you clear the crossing and drive directly on to Riyadh in the same booking." },
-      { question: "How long does the Dammam to Riyadh taxi take?", answer: "The drive covers about 400 kilometres via Highway 95 and takes roughly three hours forty-five minutes under normal traffic conditions." },
+      { question: "How long does the Dammam to Riyadh taxi take?", answer: "The drive covers about 400 kilometres via the Riyadh–Dammam expressway (Highway 40) and takes roughly three hours forty-five minutes under normal traffic conditions." },
       { question: "Can you time the drop-off for a same-day Riyadh flight connection?", answer: "Yes, tell us your onward flight details and we'll plan the timing to get you to King Khalid International Airport comfortably ahead of departure." },
       { question: "What vehicle suits a family connecting from the Causeway?", answer: "An SUV or van is generally the better choice for families with extra luggage from a Causeway crossing — mention your group size when requesting a quote." },
       { question: "Are there tolls on the Dammam to Riyadh route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
       { question: "Is the price fixed for the whole journey to Riyadh?", answer: "Yes, the fare is agreed before you travel and doesn't change with traffic, weather, or a delayed flight on the day." },
+      { question: "I'm arriving from Bahrain or abroad — do I need riyals for the fare?", answer: "No payment is needed to get a quote, and the payment method — cash, card or another option — plus any deposit is confirmed when you book. That way you know before you travel whether you need Saudi riyals on arrival." },
       { question: "Can I book a return Riyadh to Dammam transfer for the same trip?", answer: "Yes, see our Riyadh to Dammam route page for the outbound leg, or ask us to arrange both directions in one booking." },
     ],
     keywords: ["dammam to riyadh taxi", "dammam riyadh private transfer", "eastern province to riyadh taxi", "king fahd airport to riyadh taxi", "dammam riyadh intercity transfer"],
@@ -483,7 +696,7 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-to-jeddah",
     metaTitle: "Riyadh to Jeddah Transfer – Private Chauffeur Service",
-    metaDescription: "Get a private Riyadh to Jeddah transfer (950 km, about 9 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+    metaDescription: "Private Riyadh to Jeddah transfer by road (950 km, about 9 hours) via Taif, with rest stops planned with you and a fixed price — one vehicle for your group and luggage.",
     from: "Riyadh",
     to: "Jeddah",
     category: "intercity",
@@ -499,6 +712,38 @@ const baseRoutes: Route[] = [
       "Onward connections to Makkah and Taif without a separate airport transfer",
       "Best suited to groups and families with luggage who'd rather not fly",
     ],
+    whoSuits: [
+      { title: "Families moving with a full load of luggage", description: "Everything in one vehicle, with no baggage allowance, check-in or repacking for airport security." },
+      { title: "Groups travelling together", description: "A van for six or more often compares well with buying the same number of seats on a flight, and keeps the group together door to door." },
+      { title: "Pilgrims heading for Makkah", description: "The highway approaches the west via Taif and the Makkah area, so the journey can end at a Makkah hotel instead of Jeddah." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Riyadh pickup", detail: "Early start recommended — from your home, hotel or office." },
+        { label: "West across the Najd plateau", detail: "Long desert stretches; fuel and meal stops agreed with you." },
+        { label: "Taif and the escarpment", detail: "The road reaches the western highlands around Taif before descending towards the coast." },
+        { label: "Jeddah drop-off", detail: "Or Makkah or Taif, if that's where your trip actually ends." },
+      ],
+      journeyFacts: [
+        { label: "Main road", value: "Highway 40 west, via Taif", emphasis: true },
+        { label: "Typical stops", value: "Two or three, agreed at booking" },
+        { label: "Non-Muslim passengers", value: "Routed on the Makkah bypass into Jeddah" },
+        { label: "Flight alternative", value: "Roughly 1h 45m in the air, plus airport time at both ends" },
+      ],
+      mapOrigin: "Riyadh, Saudi Arabia",
+      mapDestination: "Jeddah, Saudi Arabia",
+      mapNote: "A typical cross-country route via Taif. Non-Muslim passengers are taken on the bypass that avoids Makkah's restricted area, which changes the final approach to Jeddah.",
+      pickupPoints: [
+        "Homes, hotels and offices anywhere in Riyadh",
+        "King Khalid International Airport (RUH)",
+      ],
+      dropoffPoints: [
+        "Jeddah hotels, the Corniche and residential districts",
+        "King Abdulaziz International Airport (JED)",
+        "Makkah hotels (Muslim passengers only)",
+        "Taif, on the way west",
+      ],
+    },
     relatedCitySlugs: ["riyadh", "jeddah"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -513,7 +758,7 @@ const baseRoutes: Route[] = [
         heading: "Planning a journey of this length",
         paragraphs: [
           "Nine hours is a real commitment, so we treat the planning conversation as seriously as the drive itself: how many people, how much luggage, whether you'd prefer one long push with two or three short stops or a more relaxed day with a proper meal break, and what time you actually need to arrive in Jeddah. None of this changes the fixed price — it just changes how the day feels.",
-          "For pilgrims and tourists, the most common onward step is continuing straight to Makkah rather than stopping in Jeddah first — our <a href='/routes/jeddah-to-makkah'>Jeddah to Makkah route</a> covers that final 85 kilometres if you'd rather quote the whole itinerary in one booking. Travellers heading up into the hills afterward can also see our <a href='/routes/jeddah-to-taif'>Jeddah to Taif route</a> for the mountain leg.",
+          "For pilgrims and tourists, the most common onward step is continuing straight to Makkah rather than stopping in Jeddah first — our <a href='/routes/jeddah-to-makkah'>Jeddah to Makkah route</a> covers that final 85 kilometres if you'd rather quote the whole itinerary in one booking. If Taif is your real destination, there's no need to go on to Jeddah and double back: the highway passes Taif on the way west, so it can simply be the drop-off — see our <a href='/taxi-service/taif'>Taif taxi service</a> for getting around once you're there.",
         ],
       },
       {
@@ -530,7 +775,8 @@ const baseRoutes: Route[] = [
       { question: "Which vehicle is best for a long journey like this?", answer: "We generally recommend an SUV or van for the extra comfort and luggage space a journey of this length calls for, though a sedan is available for lighter loads." },
       { question: "How long does the Riyadh to Jeddah taxi take?", answer: "The drive covers about 950 kilometres and takes roughly nine hours in free-flowing traffic; we plan rest and fuel stops into the journey given the distance." },
       { question: "Are there tolls on the Riyadh to Jeddah route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
-      { question: "Can I continue on to Makkah after reaching Jeddah?", answer: "Yes, many travellers continue on to Makkah or Taif after arriving in Jeddah — mention your onward plans when booking and we'll quote the full itinerary." },
+      { question: "Can I end the journey in Makkah or Taif instead of Jeddah?", answer: "Yes. The highway reaches Taif and the Makkah area before Jeddah, so a drop-off at a Makkah hotel (for Muslim passengers) or in Taif is on the way rather than an extra leg — mention it when booking and we quote that destination directly." },
+      { question: "Is this route possible for non-Muslim passengers?", answer: "Yes. Non-Muslims can't enter Makkah's restricted area, so the driver uses the designated bypass road into Jeddah. Let us know when booking so the route is planned that way from the start." },
       { question: "Can I choose an overnight departure for this route?", answer: "Yes, we can plan an overnight or early-morning departure to suit your schedule — let us know your preference when booking." },
       { question: "Can I book a return Jeddah to Riyadh transfer?", answer: "Yes, we cover both directions — contact us with your travel dates and we can arrange the return leg as well." },
     ],
@@ -664,9 +910,40 @@ const baseRoutes: Route[] = [
     notes: [
       "Scenic Al Hada mountain road, climbing to Taif's cooler elevation",
       "Pickup from Jeddah airport or hotels",
-      "Cable-car and Al Shafa stop options for families",
+      "Cable-car stop at Al Hada possible on the way up; Al Shafa is a separate trip south of Taif",
       "Comfortable vehicles paced for the winding mountain climb",
     ],
+    whoSuits: [
+      { title: "Families escaping the Jeddah summer", description: "A paced climb to Taif's cooler highland air, with a stop at the Al Hada cable car if the children want it." },
+      { title: "Non-Muslim residents and visitors", description: "The fastest road passes through Makkah, so the driver plans the bypass via the As-Sayl road instead — tell us when booking." },
+      { title: "Weekend and rose-season visitors", description: "A drop-off at your Taif hotel, farm stay or resort, which are spread across the highlands rather than one town centre." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Jeddah pickup", detail: "From your hotel, home or JED airport." },
+        { label: "East past Makkah", detail: "Muslim passengers via Makkah; non-Muslim passengers via the bypass." },
+        { label: "The climb", detail: "Al Hada's hairpin road up the escarpment — or the gentler As-Sayl road." },
+        { label: "Taif drop-off", detail: "Your hotel or resort in the highlands." },
+      ],
+      journeyFacts: [
+        { label: "Scenic route", value: "Al Hada mountain road (hairpin bends)", emphasis: true },
+        { label: "Alternative route", value: "As-Sayl road — longer, less winding" },
+        { label: "Non-Muslim passengers", value: "Bypass that avoids Makkah, usually via As-Sayl" },
+        { label: "Taif elevation", value: "Roughly 1,700–1,900 m above sea level" },
+      ],
+      mapOrigin: "Jeddah, Saudi Arabia",
+      mapDestination: "Taif, Saudi Arabia",
+      mapNote: "Map routing varies between the Al Hada and As-Sayl roads. Your driver chooses based on your passengers, road status on the day and whether you want to stop at the Al Hada cable car.",
+      pickupPoints: [
+        "Jeddah hotels, the Corniche and residential districts",
+        "King Abdulaziz International Airport (JED)",
+      ],
+      dropoffPoints: [
+        "Hotels in central Taif",
+        "Resorts and farm stays in Al Hada and the surrounding highlands",
+        "Taif cable car station at Al Hada, as a stop on the way",
+      ],
+    },
     relatedCitySlugs: ["jeddah", "taif"],
     lastUpdated: "2026-08-05",
     sections: [
@@ -680,14 +957,14 @@ const baseRoutes: Route[] = [
       {
         heading: "Travelling with families and children on the mountain road",
         paragraphs: [
-          "The Al Hada road's steady sequence of curves is easy for an experienced driver but can be tiring for young children on a long car journey, so we're happy to plan the ascent around your kids' needs — a stop partway up, a slower pace, or simply timing departure for a cooler part of the day. Families heading up specifically for the cable car or the Al Shafa viewpoint should mention it at booking so the stop is built into the route rather than requested on the road.",
+          "The Al Hada road's steady sequence of curves is easy for an experienced driver but can be tiring for young children on a long car journey, so we're happy to plan the ascent around your kids' needs — a stop partway up, a slower pace, or simply timing departure for a cooler part of the day. Families heading up specifically for the Al Hada cable car should mention it at booking so the stop is built into the climb rather than requested on the road; Al Shafa, south of Taif, is better kept for a separate outing once you've arrived.",
           "Taif's hotels and resorts sit at a range of elevations across the highland area, so tell us your specific accommodation when booking — drop-off points vary more here than on a flatter city route. Once you've arrived, our <a href='/taxi-service/taif'>Taif taxi service</a> covers local sightseeing for the rest of your stay.",
         ],
       },
       {
         heading: "Vehicle options and mountain-road travel advice",
         paragraphs: [
-          "A standard sedan handles the Al Hada road comfortably for most travellers, while families wanting to add stops at the cable car or Al Shafa often prefer an SUV for the extra space. Mention any planned stops when booking so your driver can build them into the route.",
+          "A standard sedan handles the Al Hada road comfortably for most travellers, while families planning a stop at the Al Hada cable car often prefer an SUV for the extra space. Mention any planned stops when booking so your driver can build them into the route.",
           "The best time to travel this route for comfort is outside the height of the afternoon, when the coastal heat in Jeddah is at its most intense before the climb begins — drivers experienced with the road pace the ascent comfortably rather than rushing it either way.",
         ],
       },
@@ -697,7 +974,9 @@ const baseRoutes: Route[] = [
       { question: "Is the mountain road manageable for young children?", answer: "Yes, though the steady curves on the climb can be tiring for kids on a long drive — mention this when booking and your driver can plan a slower pace or a stop partway up." },
       { question: "How long does the Jeddah to Taif taxi take?", answer: "The drive covers about 170 kilometres and takes roughly two hours, including the climb up the Al Hada mountain road." },
       { question: "Is the mountain road difficult for those prone to motion sickness?", answer: "The road involves a steady climb with curves, so if you're prone to motion sickness, mention it when booking and your driver can plan a short stop along the way." },
-      { question: "Can I add a stop at the Taif Cable Car or Al Shafa?", answer: "Yes, mention any planned stops when booking and your driver will build them into the route." },
+      { question: "Can I add a stop at the Taif Cable Car or Al Shafa?", answer: "The cable car station is at Al Hada, on the climb itself, so it's an easy stop on the way up. Al Shafa lies south of Taif rather than on this route, so it works better as a separate trip once you've arrived — or mention it when booking and we quote it as an extra leg." },
+      { question: "Can non-Muslims travel from Jeddah to Taif?", answer: "Yes. Non-Muslims can't enter Makkah's restricted area, which the quickest road passes through, so the driver uses the bypass route — usually joining the As-Sayl road rather than climbing Al Hada. Tell us when booking so the route is planned that way." },
+      { question: "What if the Al Hada road is closed?", answer: "Al Hada is occasionally closed for maintenance or bad weather. When it is, the drive uses the As-Sayl road instead, which is longer but less steep — the fixed price you agreed doesn't change." },
       { question: "Do I need to specify which Taif hotel or resort for drop-off?", answer: "Yes — accommodation in Taif is spread across a range of elevations in the highland area, so tell us your specific hotel or resort when booking." },
       { question: "Are there tolls on the Jeddah to Taif route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
       { question: "Can I book a return Taif to Jeddah transfer?", answer: "Yes, see our Taif to Jeddah route page for the reverse leg, or ask us to arrange both directions together." },
@@ -924,10 +1203,42 @@ const baseRoutes: Route[] = [
       "Flight-timed departures with luggage assistance after an extended Umrah stay",
       "Reverse Jeddah to Makkah transfers also available",
     ],
+    whoSuits: [
+      { title: "Pilgrims flying home after Umrah", description: "Pickup from your Makkah hotel timed back from your departure, so check-in and security aren't squeezed by Haram-area traffic." },
+      { title: "Families carrying Zamzam and extra luggage", description: "A van sized for suitcases plus Zamzam containers, without splitting the group across taxis." },
+      { title: "Pilgrims spending a few days in Jeddah", description: "A drop-off at a Jeddah hotel or the Corniche instead of the airport, if the trip continues before you fly." },
+    ],
+    richLayout: {
+      journeyFlow: [
+        { label: "Makkah hotel pickup", detail: "From your hotel or a pickup point agreed in advance, timed from your flight." },
+        { label: "Out of central Makkah", detail: "The slowest part at peak times, especially around prayers and in Ramadan." },
+        { label: "Makkah–Jeddah expressway", detail: "About 85 km west, no tolls." },
+        { label: "JED terminal or Jeddah address", detail: "Dropped at the terminal your airline uses, or your Jeddah hotel." },
+      ],
+      journeyFacts: [
+        { label: "Main destination", value: "King Abdulaziz International Airport (JED)", emphasis: true },
+        { label: "Pickup timing", value: "Worked back from your departure time" },
+        { label: "Peak-time factor", value: "Leaving central Makkah after prayers and in Ramadan" },
+        { label: "Rail alternative", value: "Haramain train, Makkah station to JED's airport station" },
+      ],
+      mapOrigin: "Masjid al-Haram, Makkah",
+      mapDestination: "King Abdulaziz International Airport, Jeddah",
+      mapNote: "Shown to the airport. Dropping at a Jeddah hotel or the Corniche ends the route further south, in the city itself.",
+      pickupPoints: [
+        "Hotels around the Haram — Ajyad, Ibrahim Al Khalil Road and the Clock Tower area",
+        "Hotels and apartments in Al Aziziyah and other Makkah districts",
+        "Private addresses anywhere in Makkah",
+      ],
+      dropoffPoints: [
+        "JED Terminal 1, North Terminal or Hajj Terminal — whichever your airline uses",
+        "Jeddah hotels and the Corniche",
+        "Residential addresses anywhere in Jeddah",
+      ],
+    },
     relatedCitySlugs: ["makkah", "jeddah"],
     metaTitle: "Makkah to Jeddah Airport Taxi – Private Departure Transfer",
     metaDescription:
-      "Private taxi from your Makkah hotel to Jeddah Airport (85 km, about 1h 15m) timed to your flight. Fixed price, professional driver, 24/7 booking.",
+      "Private taxi from your Makkah hotel to Jeddah Airport (85 km, about 1h 15m), with pickup timed back from your flight. Fixed price, sedans to family vans for Zamzam and luggage.",
     lastUpdated: "2026-08-05",
     sections: [
       {
@@ -941,7 +1252,7 @@ const baseRoutes: Route[] = [
         heading: "Pickup logistics near the Haram, and airport vs. city drop-off",
         paragraphs: [
           "Your driver collects you from a confirmed pickup point near your Haram-area hotel — since vehicles can't drive into the pedestrian zone directly around the mosque, this is arranged in advance rather than left to figure out on the day, which matters more when you're timing a departure than when you're arriving with no schedule pressure.",
-          "Not every traveller on this route is going straight to the airport: some are dropped at a Jeddah hotel to continue their trip, or at the Corniche for a day or two before flying home. Confirm your exact destination when booking so your driver routes to the right one rather than defaulting to the airport.",
+          "Not every traveller on this route is going straight to the airport: some are dropped at a Jeddah hotel to continue their trip, or at the Corniche for a day or two before flying home. Confirm your exact destination when booking so your driver routes to the right one rather than defaulting to the airport. If you're booking specifically for a flight, our <a href='/routes/makkah-to-jeddah-airport'>Makkah to Jeddah Airport</a> page goes into departure timing in more detail.",
         ],
       },
     ],
@@ -952,7 +1263,9 @@ const baseRoutes: Route[] = [
       { question: "How long does the Makkah to Jeddah taxi take?", answer: "The drive covers about 85 kilometres and typically takes around an hour and fifteen minutes, though this can extend during Umrah season or Hajj." },
       { question: "Is the price fixed regardless of Umrah season traffic?", answer: "Yes, we agree a fixed price before you travel, so heavier seasonal traffic doesn't change your fare." },
       { question: "Do you offer family vans for pilgrims with extra luggage?", answer: "Yes, family and group vans are available for pilgrims travelling with more luggage than a standard sedan comfortably fits after an extended Umrah stay." },
-      { question: "Is booking available for late-night or early-morning flights?", answer: "Yes, pickup is available 24/7 and we track your flight so timing adjusts automatically." },
+      { question: "Can I book a pickup for a late-night or early-morning flight?", answer: "Yes — tell us your flight time when you request a quote and we confirm a pickup time that suits it." },
+      { question: "Which JED terminal will I be dropped at?", answer: "The one your airline departs from — Terminal 1, the North Terminal, or the Hajj Terminal for seasonal pilgrim flights. Send us your flight number and we confirm it before the day." },
+      { question: "Can I bring Zamzam water in the car?", answer: "Yes. Just include it in your luggage count when booking so we send a vehicle with enough space. Airlines set their own rules for carrying Zamzam on the flight, so check yours before you pack." },
       { question: "Can I book a return Jeddah to Makkah transfer at the same time?", answer: "Yes, see our Jeddah to Makkah route page for the inbound leg, or ask us to arrange both directions together." },
     ],
   },
@@ -4899,13 +5212,80 @@ const baseRoutes: Route[] = [
     intro:
       "The Riyadh to Khobar taxi is a direct private highway transfer connecting the capital with the Eastern Province's coastal business hub, popular with commuters, families, and travellers heading on to Bahrain.",
     about:
-      "Our private Riyadh to Khobar transfer runs the full length of Highway 95 door to door, collecting you anywhere in Riyadh and dropping you at your Khobar address, hotel, or the Corniche — no changing vehicles, no shared waiting room, and a fixed price agreed before you travel.",
+      "Our private Riyadh to Khobar transfer runs door to door along the Riyadh–Dammam expressway (Highway 40), collecting you anywhere in Riyadh and dropping you at your Khobar address, hotel, or the Corniche — no changing vehicles, no shared waiting room, and a fixed price agreed before you travel.",
     notes: [
       "Door-to-door pickup anywhere in Riyadh",
       "Direct drop-off in Khobar, including the Corniche and Half Moon Bay area",
       "Comfortable vehicles for the roughly four-hour highway drive",
       "Onward connection to the Bahrain Causeway available",
     ],
+    whoSuits: [
+      {
+        title: "Families visiting the Gulf coast",
+        description: "From a Riyadh home to a Corniche hotel or a Half Moon Bay resort in one vehicle, luggage included."
+      },
+      {
+        title: "Compound residents and visitors",
+        description: "Dropped at the compound gate you specify, following its visitor procedure, instead of finding a taxi on arrival."
+      },
+      {
+        title: "Travellers heading on to Bahrain",
+        description: "Khobar is the last stop before the King Fahd Causeway, so the trip can continue to Manama rather than end in Khobar."
+      }
+    ],
+    richLayout: {
+      journeyFlow: [
+        {
+          label: "Riyadh pickup",
+          detail: "Home, hotel or office — or King Khalid Airport (RUH) arrivals."
+        },
+        {
+          label: "East on Highway 40",
+          detail: "The Riyadh–Dammam expressway across the Ad-Dahna sands."
+        },
+        {
+          label: "Into the tri-city area",
+          detail: "Past Dammam and Dhahran to Khobar at the southern end."
+        },
+        {
+          label: "Khobar drop-off",
+          detail: "Corniche, King Fahd Road, your compound gate — or onward to the Causeway."
+        }
+      ],
+      journeyFacts: [
+        {
+          label: "Main road",
+          value: "Riyadh–Dammam expressway (Highway 40)",
+          emphasis: true
+        },
+        {
+          label: "Further than Dammam?",
+          value: "Slightly — Khobar is at the southern end of the tri-city area"
+        },
+        {
+          label: "Beyond Khobar",
+          value: "Half Moon Bay to the south; King Fahd Causeway to Bahrain"
+        },
+        {
+          label: "Tolls",
+          value: "None"
+        }
+      ],
+      mapOrigin: "Riyadh, Saudi Arabia",
+      mapDestination: "Al Khobar, Saudi Arabia",
+      mapNote: "City centre to city centre. Half Moon Bay or the King Fahd Causeway extends the route beyond central Khobar.",
+      pickupPoints: [
+        "Homes, hotels and offices anywhere in Riyadh",
+        "King Khalid International Airport (RUH) arrivals"
+      ],
+      dropoffPoints: [
+        "Khobar Corniche hotels and apartments",
+        "Offices on King Fahd Road and in Dhahran",
+        "Residential compound gates in Khobar and Dhahran",
+        "Half Moon Bay resorts",
+        "King Fahd Causeway, for onward travel to Bahrain"
+      ]
+    },
     relatedCitySlugs: ["riyadh", "khobar", "dammam"],
     metaTitle: "Riyadh to Khobar Taxi Service – Reliable Private Transfer",
     metaDescription:
@@ -4914,93 +5294,52 @@ const baseRoutes: Route[] = [
       {
         heading: "Riyadh to Khobar: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to Khobar covers approximately 405 kilometres, almost entirely along Highway 95, the main artery linking the capital to the Eastern Province. In free-flowing traffic the journey takes about four hours, a little longer than the well-known Riyadh–Dammam run since Khobar sits a further 15–20 kilometres south along the coast once you reach the tri-city area of Dammam, Dhahran, and Khobar.",
-          "A private transfer covers this distance door to door: we collect you from your home, office, or hotel anywhere in Riyadh and take you straight to your destination in Khobar, whether that's a residential compound, a business tower on King Fahd Road, or a hotel along the Corniche. There is no need to arrange a second taxi at either end, and the price is agreed before you set off, so a longer break or heavier traffic on the day never changes what you pay.",
+          "The drive from Riyadh to Khobar covers approximately 405 kilometres and takes about four hours in free-flowing traffic. The route runs east on the Riyadh–Dammam expressway (Highway 40), across the reddish Ad-Dahna sand belt, and into the Dammam–Dhahran–Khobar area, with Khobar at its southern end — which is why it takes slightly longer than the Riyadh–Dammam run.",
+          "There are no toll roads on the way, so the fixed price agreed before you set off covers the whole journey, including any rest stop. Time on the day depends mostly on getting out of Riyadh at rush hour and on how far into Khobar you're going, not on the highway itself.",
         ],
       },
       {
-        heading: "The fastest route: Highway 95",
+        heading: "Arriving in Khobar: Corniche, compounds and the business district",
         paragraphs: [
-          "Highway 95 is a modern, multi-lane divided highway for essentially its entire length, and it is the route every private transfer and commercial vehicle uses between the two regions — there is no meaningfully faster alternative. From Riyadh, the highway runs east, skirting the edge of the city before opening into open desert, and continues in a broadly straight line until the terrain changes near the Eastern Province, where it feeds into the road network serving Dammam, Dhahran, and Khobar.",
-          "Because it is the single primary route, the road is well signed and drivers who cover it regularly know exactly where the rest areas, fuel stations, and any temporary diversions are. Our drivers make this specific run often, which matters on a four-hour drive — knowing where the reliable stops are, and pacing the journey accordingly, is part of what makes the trip comfortable rather than simply long.",
+          "Khobar drop-offs vary more than most cities. Hotels and apartments line the Corniche, offices cluster along King Fahd Road, and many residents live in gated compounds where the driver follows the compound's own gate procedure — share the compound name and any instructions when you book.",
+          "Half Moon Bay lies south of Khobar itself, so a beach or resort drop-off there adds some extra driving beyond the city. Mention it when booking and it's included in the fixed price from the start.",
         ],
       },
       {
-        heading: "Scenic highlights along the way",
+        heading: "Continuing to Bahrain over the King Fahd Causeway",
         paragraphs: [
-          "For most of the drive, the landscape is open Najd and Eastern Province desert — wide horizons, occasional low ridgelines, and the kind of scale that's genuinely striking if you haven't driven across the Arabian Peninsula's interior before. The road passes near the edge of the Ad-Dahna desert corridor, the reddish sand belt that separates central Arabia from the Eastern Province, visible as a shift in the sand's colour and dune shape roughly midway through the journey.",
-          "Travellers with a little flexibility in their schedule sometimes use a Riyadh–Khobar transfer as an opportunity to add a short stop near Al-Ahsa (Hofuf), home to one of the largest oasis regions in the world and a UNESCO World Heritage site, a modest detour from the main highway. Arriving in Khobar itself, the Corniche and Half Moon Bay give the trip a genuinely different scenic finish — open Gulf coastline after several hours of desert driving.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "Highway 95 is generally in good condition — a well-maintained, well-lit divided highway with clear lane markings for the vast majority of its length. The main practical considerations are the ones that apply to any long, straight desert highway: speed enforcement cameras are present at various points and are strictly observed, and the long, monotonous stretches mean driver fatigue is a genuine factor after two to three hours behind the wheel, which is exactly why a professional driver on a fixed schedule, rather than a solo self-drive, tends to make the journey more comfortable for passengers who want to arrive rested.",
-          "Winter mornings occasionally bring patchy fog near the coastal approach into the Eastern Province, and summer heat is intense in the exposed desert sections during the day — neither is a serious obstacle for an air-conditioned private vehicle, but both are reasons the timing of departure is worth a little thought, covered in the next section.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads or toll booths anywhere on the Riyadh to Khobar route, or indeed anywhere on Saudi Arabia's national highway network at present. The fixed price you agree for your transfer is genuinely all-in — no toll surcharges, no hidden road fees, and no need to carry cash for tolls along the way.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "Timing matters more for comfort than for the drive itself, since the highway performs the same regardless of hour. In summer, an early-morning or evening departure avoids the worst of the midday desert heat during any rest stop, though the vehicle's air conditioning handles the drive itself without issue. In winter, the route is comfortable at any hour, with only the small caveat of occasional early-morning coastal fog near the Eastern Province end.",
-          "If your trip falls on a Friday, bear in mind that Friday prayer (Jumu'ah) shifts the rhythm of the day in both Riyadh and the Eastern Province — departing well before or comfortably after the midday prayer window avoids the small pocket of local traffic around mosques near the highway's urban start and end points.",
+          "The King Fahd Causeway to Bahrain starts on Khobar's western side, so many travellers combine the two: Riyadh to Khobar, a night or a meeting, then across to Manama. The crossing needs a valid passport and whatever Bahrain entry permission applies to your nationality, and border queues vary a lot by day and time.",
+          "If you're going on to Bahrain, see our <a href='/routes/khobar-to-bahrain'>Khobar to Bahrain</a> transfer or the <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway</a> page, or ask us to quote the whole journey when booking.",
         ],
       },
       {
         heading: "Vehicle options for a four-hour highway drive",
         paragraphs: [
-          "For a journey of this length, most travellers choose a comfort sedan or SUV for the extra legroom on a multi-hour drive, while families and small groups with luggage often prefer a full-size SUV or minivan so bags don't need to be repacked or split across vehicles. Business travellers making the trip for a meeting in Khobar's commercial district frequently request a business-class sedan, valuing a quiet cabin for calls or rest before arrival.",
-          "For larger groups — a family reunion, a company team travelling together, or a group continuing on to the Bahrain Causeway — a minibus keeps everyone in one vehicle for the full four hours rather than splitting across multiple cars, which is both more sociable and noticeably better value per person.",
-        ],
-      },
-      {
-        heading: "A note for business and VIP travellers",
-        paragraphs: [
-          "Khobar is one of the Eastern Province's main commercial centres, and a meaningful share of Riyadh–Khobar transfers are business trips timed tightly around a meeting schedule. For these journeys, a VIP or executive vehicle with a professional driver who tracks your flight or original departure time (if connecting from an earlier flight into Riyadh) removes the uncertainty of self-driving after a long day, and the fixed price makes expense reporting straightforward.",
-          "The same applies in reverse for travellers based in Khobar attending meetings in Riyadh — see our <a href='/routes/khobar-to-riyadh'>Khobar to Riyadh transfer</a> for that direction.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Once you're in Khobar, the Corniche and Half Moon Bay are the two destinations most transfers head to for leisure, while King Fahd Road and the surrounding business district are the typical drop-off points for commercial travel. Khobar also sits close enough to the Bahrain Causeway that many travellers combine the two: arriving from Riyadh, resting or completing business in Khobar, then continuing onward. See our <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway transfers</a> for that onward leg.",
-          "Travellers whose final destination is actually Dammam or Dhahran rather than Khobar specifically should also check our dedicated <a href='/routes/riyadh-to-dammam'>Riyadh to Dammam</a> transfer, since the three cities sit close together but have genuinely different typical drop-off points.",
-        ],
-      },
-      {
-        heading: "Safety on a long highway transfer",
-        paragraphs: [
-          "The single biggest safety factor on any four-hour desert highway drive is driver fatigue and speed discipline, not the road surface or route itself. Our drivers are familiar with this specific run, take the drive at a measured pace rather than rushing to save a few minutes, and build in a rest stop for a genuinely long journey like this one rather than pushing straight through.",
-          "Vehicles used for intercity transfers are maintained specifically with long highway distances in mind, and every trip is tracked so a delay — whether from traffic, a border formality further along your journey, or simply road conditions on the day — is visible and communicated rather than leaving you wondering.",
+          "Most travellers choose a comfort sedan or SUV for the legroom on a four-hour drive. Families and small groups with luggage often prefer a full-size SUV or minivan so bags don't need to be split across vehicles, and business travellers heading to a Khobar meeting frequently pick a business sedan for a quieter cabin.",
+          "For larger groups — a family visit or a company team — one minibus keeps everyone together for the whole journey and usually works out better value per person than several cars. If you're travelling home to Riyadh later, see our <a href='/routes/khobar-to-riyadh'>Khobar to Riyadh transfer</a> for the opposite direction.",
         ],
       },
       {
         heading: "Booking your Riyadh to Khobar transfer",
         paragraphs: [
-          "Booking takes a couple of minutes: share your Riyadh pickup address, your Khobar destination, your preferred departure time, and your group size and luggage, and we confirm a suitable vehicle and a fixed, all-in price before you travel. We operate 24/7, and no deposit is required simply to see a quote.",
-          "Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form, and we'll confirm your pickup time and vehicle ahead of the day. Payment is accepted in cash or by card at the end of the trip, and our <a href='/terms-and-conditions'>cancellation terms</a> allow free changes with reasonable notice — see the FAQs below for the specifics most travellers ask about.",
+          "Send your Riyadh pickup address, your Khobar destination (including any compound name or gate instructions), the date and time you want to leave, and how many passengers and bags are travelling. We reply with a fixed price for the whole journey and a suggested vehicle.",
+          "No payment is needed to receive a quote. The payment method and any deposit are confirmed when you book, and cancellation terms for your booking are shared at the same time — see our <a href='/terms-and-conditions'>terms and conditions</a>. Request your quote on WhatsApp or through the <a href='/get-quote'>get a quote</a> form.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Khobar from Riyadh, and how long does the drive take?", answer: "The distance is approximately 405 kilometres, and the drive takes about four hours in free-flowing traffic along Highway 95. We build a small buffer into scheduling for a rest stop, so plan on roughly four to four and a half hours door to door." },
+      { question: "How far is Khobar from Riyadh, and how long does the drive take?", answer: "The distance is approximately 405 kilometres, and the drive takes about four hours in free-flowing traffic along the Riyadh–Dammam expressway (Highway 40). We build a small buffer into scheduling for a rest stop, so plan on roughly four to four and a half hours door to door." },
       { question: "Is the price fixed for the whole journey?", answer: "Yes. The fare is agreed before you travel and covers the complete door-to-door trip, including any rest stop. There is no meter, no surge pricing, and no toll charges to add, since Saudi Arabia's highways have no toll roads." },
       { question: "Do you drop off anywhere in Khobar, or only at specific hotels?", answer: "We drop off anywhere in Khobar — a private residence, a business address on King Fahd Road, a hotel, or the Corniche and Half Moon Bay area. Just share your exact destination when booking." },
       { question: "Can I be picked up from Riyadh airport instead of a city address?", answer: "Yes. We collect from King Khalid International Airport just as readily as from a home, hotel, or office address anywhere in Riyadh — simply share your flight details so we can track your arrival." },
       { question: "Are there rest stops on the way?", answer: "Yes. On a drive of this length we build in a rest stop for refreshments and a stretch as needed, particularly for families and older travellers. Because the fare is fixed, a longer break never adds to the cost." },
       { question: "What vehicle should I choose for four passengers with luggage?", answer: "A full-size SUV comfortably handles four passengers with standard luggage for a highway drive of this length. For five or more, or unusually large amounts of luggage, a minivan gives more room to spread out over the four-hour journey." },
-      { question: "Is this route safe to drive at night?", answer: "Yes, Highway 95 is a well-lit, well-maintained divided highway and our drivers regularly cover it at all hours. Night driving on this route is routine and not treated differently from a daytime transfer, beyond the driver pacing the journey sensibly either way." },
+      { question: "Is this route safe to drive at night?", answer: "Yes. The Riyadh–Dammam expressway is a divided multi-lane highway, and evening and night departures are common, especially in summer. Tell us your preferred departure time when booking." },
       { question: "Can you continue from Khobar to the Bahrain Causeway?", answer: "Yes, this is a common onward request. Let us know when booking if you're continuing to the Causeway, and we can either route the full journey through or arrange a connecting transfer from Khobar." },
       { question: "How does this differ from booking a Riyadh to Dammam transfer?", answer: "Dammam and Khobar are close neighbours in the same coastal metro area but have different typical destinations — Dammam for the airport and central business district, Khobar for the Corniche, Half Moon Bay, and its own commercial district. Book whichever matches your actual destination; both are the same approximate distance and drive time from Riyadh." },
       { question: "What documents or information do I need to provide when booking?", answer: "Your exact pickup address, your destination in Khobar, preferred date and time, passenger count, and luggage amount. If you're being picked up from an airport, your flight number lets us track your arrival and adjust automatically for any delay." },
       { question: "Do you offer a return Khobar to Riyadh transfer as well?", answer: "Yes, we cover both directions. See our <a href='/routes/khobar-to-riyadh'>Khobar to Riyadh</a> page to book the return leg, whether immediately or for a later date." },
-      { question: "Is the vehicle air-conditioned for the desert sections of the drive?", answer: "Yes, every vehicle used for this transfer is fully air-conditioned, which matters given the exposed desert stretches of Highway 95, particularly during summer months." },
+      { question: "Is the vehicle air-conditioned for the desert sections of the drive?", answer: "Yes, every vehicle used for this transfer is fully air-conditioned, which matters given the exposed desert stretches of the Riyadh–Dammam expressway, particularly during summer months." },
     ],
     keywords: ["riyadh to khobar taxi", "riyadh to khobar transfer", "riyadh khobar private car", "riyadh to khobar distance", "riyadh eastern province taxi"],
   },
@@ -5014,92 +5353,118 @@ const baseRoutes: Route[] = [
     intro:
       "The Khobar to Riyadh taxi is a direct private highway transfer from the Eastern Province's coastal business hub to the capital, popular with business travellers, families, and residents connecting to Riyadh's airport.",
     about:
-      "Our private Khobar to Riyadh transfer collects you from your home, hotel, or office anywhere in Khobar and drives you the full length of Highway 95 to your exact destination in Riyadh, whether that's King Khalid International Airport, a business address, or a family home — one vehicle, one fixed price, no changes along the way.",
+      "Our private Khobar to Riyadh transfer collects you from your home, hotel, or office anywhere in Khobar and drives you along the Riyadh–Dammam expressway (Highway 40) to your exact destination in Riyadh, whether that's King Khalid International Airport, a business address, or a family home — one vehicle, one fixed price, no changes along the way.",
     notes: [
       "Door-to-door pickup anywhere in Khobar, including the Corniche",
       "Direct drop-off anywhere in Riyadh, including the airport",
       "Comfortable vehicles for the roughly four-hour highway drive",
       "Timed pickups available for onward Riyadh flight connections",
     ],
+    whoSuits: [
+      {
+        title: "Khobar residents flying out of Riyadh",
+        description: "A drop-off at King Khalid Airport timed from your departure, instead of a connecting domestic flight from Dammam."
+      },
+      {
+        title: "Business travellers with a Riyadh meeting",
+        description: "Door to door from a Khobar office or compound to Olaya or KAFD, with a quiet cabin to work in on the way."
+      },
+      {
+        title: "Travellers arriving from Bahrain",
+        description: "Collected after the King Fahd Causeway and taken straight on to the capital in the same vehicle."
+      }
+    ],
+    richLayout: {
+      journeyFlow: [
+        {
+          label: "Khobar pickup",
+          detail: "Home, hotel, compound or office — or the Saudi side of the Causeway."
+        },
+        {
+          label: "Onto Highway 40",
+          detail: "Out through the Dhahran and Dammam road network to the Riyadh–Dammam expressway."
+        },
+        {
+          label: "Across the Ad-Dahna sands",
+          detail: "The long desert stretch; a rest stop if you want one."
+        },
+        {
+          label: "Riyadh or RUH drop-off",
+          detail: "Your Riyadh address, or King Khalid Airport timed to your flight."
+        }
+      ],
+      journeyFacts: [
+        {
+          label: "Main road",
+          value: "Riyadh–Dammam expressway (Highway 40)",
+          emphasis: true
+        },
+        {
+          label: "Slowest parts",
+          value: "Khobar/Dhahran rush hour and Riyadh's ring roads"
+        },
+        {
+          label: "Airport note",
+          value: "RUH is on Riyadh's northern edge — plan extra time"
+        },
+        {
+          label: "Tolls",
+          value: "None"
+        }
+      ],
+      mapOrigin: "Al Khobar, Saudi Arabia",
+      mapDestination: "Riyadh, Saudi Arabia",
+      mapNote: "City centre to city centre. A drop-off at King Khalid International Airport ends the route on Riyadh's northern edge instead.",
+      pickupPoints: [
+        "Khobar homes, hotels and the Corniche",
+        "Residential compounds in Khobar and Dhahran",
+        "Offices on King Fahd Road and in the Dhahran business district",
+        "Saudi side of the King Fahd Causeway"
+      ],
+      dropoffPoints: [
+        "King Khalid International Airport (RUH), timed to your flight",
+        "Riyadh hotels and offices — Olaya, King Fahd Road and KAFD",
+        "Residential addresses anywhere in Riyadh"
+      ]
+    },
     relatedCitySlugs: ["khobar", "riyadh", "dammam"],
     metaTitle: "Khobar to Riyadh Transfer – Private Chauffeur Service",
     metaDescription:
-      "Get a private Khobar to Riyadh transfer (~405 km, about 4 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+      "Get a private Khobar to Riyadh transfer (~405 km, about 4 hours) via the Riyadh–Dammam expressway, with drop-offs anywhere in Riyadh including King Khalid Airport. Fixed price agreed before you travel.",
     sections: [
       {
         heading: "Khobar to Riyadh: route overview and distance",
         paragraphs: [
-          "The drive from Khobar to Riyadh covers approximately 405 kilometres, running the length of Highway 95 west across the Eastern Province and central Najd desert into the capital. In free-flowing traffic, the journey takes about four hours — the same route as the outbound Riyadh to Khobar transfer, simply reversed, though many travellers making this leg are timing it around a flight out of Riyadh rather than a leisure arrival.",
-          "A private transfer handles the whole distance door to door: collection from your exact address in Khobar — a home, hotel, or office on King Fahd Road — and drop-off precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport if you're connecting onward. The price is fixed before you travel, so there's no surprise regardless of traffic on the day.",
+          "The drive from Khobar to Riyadh covers approximately 405 kilometres and takes about four hours in free-flowing traffic. From Khobar the route works out through the Dhahran and Dammam road network to join the Riyadh–Dammam expressway (Highway 40), then runs west across the reddish Ad-Dahna sand belt into the capital. There are no toll roads on the way, so the fixed price you agree covers the whole trip.",
+          "Most of the variation in journey time comes at the two ends rather than on the open highway: weekday rush hour getting out of Khobar and Dhahran, and the ring roads on the way into Riyadh. A pickup outside the morning and evening peaks usually saves more time than anything on the desert stretch itself.",
         ],
       },
       {
-        heading: "The fastest route: Highway 95 westbound",
+        heading: "Making a flight at King Khalid International Airport",
         paragraphs: [
-          "Highway 95 remains the only sensible route for this journey, and heading west from Khobar it first threads through the Dammam–Dhahran–Khobar tri-city road network before opening into the long desert stretch toward Riyadh. There's no faster alternative road, and every commercial and private transfer vehicle on this corridor uses the same highway.",
-          "Drivers who make this specific westbound run regularly develop a good sense of pacing — where the reliable fuel and rest stops sit, and roughly how the drive breaks into manageable sections rather than one undifferentiated four-hour block. That familiarity is part of what makes the return leg feel shorter than the numbers alone suggest.",
+          "King Khalid International Airport sits on the northern edge of Riyadh, well away from the city centre, so an airport drop-off isn't simply 'arriving in Riyadh'. Coming in from the east, the driver takes the ring road north to the airport instead of crossing the city, but the extra distance still needs to be in the plan.",
+          "Give us your flight number and terminal when booking. We work the Khobar pickup time back from your departure, allowing for the drive, the airport approach and check-in, rather than quoting a fixed four hours and hoping. If the flight changes before you leave, message us and the pickup moves with it.",
         ],
       },
       {
-        heading: "Scenic highlights along the way",
+        heading: "Vehicle options for the four-hour drive",
         paragraphs: [
-          "Leaving Khobar, the drive briefly holds the Gulf coastal feel before the road turns properly inland, crossing toward Al-Ahsa's outskirts — a worthwhile mention for travellers with a little flexibility, since Al-Ahsa's oasis region is a UNESCO World Heritage site and a short detour from the direct highway. From there, the drive settles into the open Najd desert, crossing the reddish Ad-Dahna sand corridor roughly midway before the terrain shifts again approaching Riyadh.",
-          "For travellers who haven't made this crossing before, the sheer scale of open desert between the coast and the capital is genuinely one of the more memorable parts of the trip, quite different from the urban, coastal character of Khobar itself.",
+          "A comfort sedan or SUV suits one or two travellers who want legroom over four hours, while families with luggage usually prefer a full-size SUV or minivan so nothing has to be squeezed in. Business travellers heading to a Riyadh meeting often choose a business sedan for a quieter cabin to work or rest in.",
+          "Groups — a family, a work team, or travellers who've just crossed from Bahrain and are continuing to the capital — are usually better off in one minibus than split across several cars, both for convenience and on price.",
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Khobar, Dammam or Dhahran — which page to book",
         paragraphs: [
-          "The highway is a well-maintained, multi-lane divided road for essentially its whole length, with clear markings and reasonably frequent fuel and rest facilities. Speed cameras are present at intervals and consistently enforced, and — as with any long, straight desert drive — fatigue on a self-driven trip builds noticeably after two to three hours, which is exactly the case for a professional driver taking the journey at a measured, comfortable pace rather than rushing.",
-          "Winter mornings can bring brief patchy fog on the coastal side near Khobar and Dammam, clearing well before the desert stretch, and summer daytime heat is intense in the open sections — neither affects an air-conditioned private vehicle meaningfully, though both factor into the timing advice below.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads anywhere on this route, or on Saudi Arabia's highway network generally. Your fixed transfer price is genuinely all-in, with nothing extra to budget for along the way.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "If your Khobar to Riyadh trip is timed around a flight, we build in a generous buffer against the roughly four-hour drive plus airport processes, and track your booking so the departure time adjusts if anything shifts. For leisure travel, an early-morning or evening start in summer avoids the worst midday heat during any rest stop, while winter is comfortable at any hour.",
-          "As with the outbound direction, a Friday departure is worth timing around midday Jumu'ah prayer, both to avoid the small pocket of local traffic near mosques at either end of the highway and simply because rest stops and fuel stations are naturally quieter outside that window.",
-        ],
-      },
-      {
-        heading: "Vehicle options for the return highway drive",
-        paragraphs: [
-          "The same vehicle logic applies as the outbound leg: a comfort sedan or SUV suits solo and paired travellers who value legroom on a multi-hour drive, while families and groups with luggage generally prefer a full-size SUV or minivan so nothing needs repacking. Business travellers heading to a Riyadh meeting or an onward flight frequently choose a business-class sedan for a quiet cabin to work or rest in before arrival.",
-          "For larger groups making the return journey together — a family, a work team, or a group who arrived via the Bahrain Causeway and are now continuing to Riyadh — a minibus is the more comfortable and better-value option than splitting across multiple cars.",
-        ],
-      },
-      {
-        heading: "A note for business and airport-connection travel",
-        paragraphs: [
-          "A significant share of Khobar to Riyadh transfers are business trips or airport connections rather than pure leisure travel, and both benefit from the same things: a professional driver, a fixed price for expense reporting, and — for airport drop-offs specifically — flight tracking so your pickup time adjusts automatically if your onward flight schedule changes before you even leave Khobar.",
-          "If your journey started elsewhere and Khobar is simply a stop before continuing to Riyadh, see our <a href='/routes/riyadh-to-khobar'>Riyadh to Khobar transfer</a> for the outbound direction, or our <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway transfers</a> if you're arriving into Khobar from Bahrain.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Most Khobar to Riyadh transfers begin from the Corniche, Half Moon Bay area, or a King Fahd Road business address, and end either at a Riyadh airport terminal for onward flights or a city address for business or family visits. Travellers whose trip actually starts in Dammam or Dhahran rather than Khobar specifically should check our dedicated <a href='/routes/dammam-to-riyadh'>Dammam to Riyadh</a> transfer instead, since drop-off points and typical traffic patterns differ slightly between the three neighbouring cities.",
-          "Once in Riyadh, common onward needs include a same-day or next-day flight from King Khalid International Airport, a connection to a business district hotel, or a family address in one of the city's residential districts. If your trip continues beyond Riyadh itself — say, toward Qassim or Hail further north — mention this when booking, since a single longer transfer can sometimes be arranged rather than treating Riyadh as a hard stop.",
-        ],
-      },
-      {
-        heading: "Safety on a long highway transfer",
-        paragraphs: [
-          "As with any four-hour desert highway crossing, driver fatigue and speed discipline are the main safety factors, not the road surface itself. Our drivers pace this specific run at a measured speed, build in a rest stop rather than pushing straight through, and keep every trip tracked so any delay — traffic, a rest stop running a little long, or road conditions on the day — is visible rather than left to guesswork.",
-          "Vehicles are maintained specifically with long intercity distances in mind, which matters more on a route like this one than it would for a short city transfer.",
+          "Khobar, Dammam and Dhahran sit side by side, but they're separate pickup areas. If your trip really starts in Dammam, use our <a href='/routes/dammam-to-riyadh'>Dammam to Riyadh</a> transfer; if you're crossing from Bahrain, the pickup can be on the Saudi side of the <a href='/border-transfers/bahrain-causeway'>King Fahd Causeway</a> instead of a Khobar address.",
+          "At the Riyadh end, typical drop-offs are King Khalid Airport, hotels and offices in Olaya, King Fahd Road and the King Abdullah Financial District, and family homes across the city's residential districts. If your trip continues beyond Riyadh — towards Qassim or Hail, for example — mention it when booking, as a single longer transfer can sometimes be arranged.",
         ],
       },
       {
         heading: "Booking your Khobar to Riyadh transfer",
         paragraphs: [
-          "Booking takes a couple of minutes: share your Khobar pickup address, your Riyadh destination (including airport and flight details if relevant), your preferred time, and your group size and luggage. We confirm a suitable vehicle and a fixed, all-in price before you travel, and operate 24/7 with no deposit required simply to see a quote.",
-          "Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form, and we'll confirm your pickup time and vehicle ahead of the day. Payment is accepted in cash or by card at the end of the trip.",
+          "Send your Khobar pickup address, your Riyadh destination (including flight details if you're going to the airport), the date and time you want to leave, and how many passengers and bags are travelling. We reply with a fixed price for the whole journey and a suggested vehicle.",
+          "No payment is needed to receive a quote. The payment method and any deposit are confirmed when you book, and cancellation terms for your booking are shared at the same time — see our <a href='/terms-and-conditions'>terms and conditions</a>. Request your quote on WhatsApp or through the <a href='/get-quote'>get a quote</a> form.",
         ],
       },
     ],
@@ -5111,7 +5476,7 @@ const baseRoutes: Route[] = [
       { question: "Do you make rest stops on such a long drive?", answer: "Yes, we build in a rest stop for refreshments and a stretch, particularly for families and older travellers, at no extra cost since the fare is fixed." },
       { question: "What if my flight from Riyadh gets delayed and I haven't left Khobar yet?", answer: "Share your flight number when booking and we track it; if your departure shifts, we simply adjust your pickup time from Khobar accordingly, so you're not left waiting unnecessarily early or rushing." },
       { question: "Which vehicle suits a family of five with luggage?", answer: "A minivan gives the most comfortable space for five passengers plus standard luggage over a four-hour drive; a full-size SUV can also work for four passengers with moderate luggage." },
-      { question: "Is night driving on this route safe?", answer: "Yes, Highway 95 is well-lit and well-maintained, and our drivers regularly cover this route at all hours as a matter of routine." },
+      { question: "Is night driving on this route safe?", answer: "Yes. The Riyadh–Dammam expressway is a divided multi-lane highway, and night departures are common — for early-morning flights out of Riyadh or to avoid the summer heat. Tell us your preferred departure time when booking." },
       { question: "How is this different from booking a Dammam to Riyadh transfer?", answer: "Khobar and Dammam are neighbouring cities in the same coastal metro area, but pickup points and typical routes into each differ slightly. Book based on your actual starting point — both take approximately the same distance and time to reach Riyadh." },
       { question: "What information do you need when I book?", answer: "Your exact Khobar pickup address, your Riyadh destination, preferred date and time, passenger count, luggage amount, and — for airport drop-offs — your flight details." },
       { question: "Can I book the outbound Riyadh to Khobar leg with the same provider?", answer: "Yes, we cover both directions. See our <a href='/routes/riyadh-to-khobar'>Riyadh to Khobar</a> page to book that leg for a separate trip." },
@@ -5129,13 +5494,78 @@ const baseRoutes: Route[] = [
     intro:
       "The Riyadh to Jubail taxi is a private highway transfer connecting the capital with one of the world's largest industrial cities, popular with engineers, contractors, and families based in the Eastern Province's northern industrial belt.",
     about:
-      "Our private Riyadh to Jubail transfer runs the length of Highway 95 to the Eastern Province before continuing north along the coastal route into Jubail Industrial City, delivering you door to door to a compound, office, or hotel — one vehicle, one fixed price, no changes along the way.",
+      "Our private Riyadh to Jubail transfer runs east on the Riyadh–Dammam expressway (Highway 40) towards the Eastern Province before turning north up the Gulf coast to Jubail, delivering you door to door to a compound, office, or hotel — one vehicle, one fixed price, no changes along the way.",
     notes: [
       "Door-to-door pickup anywhere in Riyadh",
       "Direct drop-off in Jubail, including the industrial city and residential compounds",
       "Comfortable vehicles for the roughly five-hour drive",
-      "Familiar with compound and site-gate access procedures",
+      "Drop-off at the compound or facility gate you specify",
     ],
+    whoSuits: [
+      {
+        title: "Engineers and contractors starting a project",
+        description: "Door to door from Riyadh to the facility gate or contractor office, with room for tools and equipment."
+      },
+      {
+        title: "Companies moving small teams",
+        description: "One minivan, or several vehicles on one schedule, so a crew arrives together for a rotation."
+      },
+      {
+        title: "Families relocating to a Jubail compound",
+        description: "A large SUV or minivan for a full load of luggage, ending at your compound gate rather than a hotel."
+      }
+    ],
+    richLayout: {
+      journeyFlow: [
+        {
+          label: "Riyadh pickup",
+          detail: "Home, hotel, office or King Khalid Airport (RUH)."
+        },
+        {
+          label: "East on Highway 40",
+          detail: "The Riyadh–Dammam expressway across the Ad-Dahna sands."
+        },
+        {
+          label: "North up the Gulf coast",
+          detail: "Turning off before Dammam onto the busy industrial corridor."
+        },
+        {
+          label: "Jubail drop-off",
+          detail: "Town, compound gate, or the facility gate you specify."
+        }
+      ],
+      journeyFacts: [
+        {
+          label: "Route",
+          value: "Highway 40 east, then north along the Gulf coast",
+          emphasis: true
+        },
+        {
+          label: "Two Jubails",
+          value: "The older town, and Jubail Industrial City to the north"
+        },
+        {
+          label: "Site access",
+          value: "Visitor passes arranged by your employer or host"
+        },
+        {
+          label: "Busiest times",
+          value: "Industrial shift changes, early morning and late afternoon"
+        }
+      ],
+      mapOrigin: "Riyadh, Saudi Arabia",
+      mapDestination: "Jubail, Saudi Arabia",
+      mapNote: "Shown to Jubail town. Destinations inside Jubail Industrial City lie further north along the coast and depend on the facility or compound gate.",
+      pickupPoints: [
+        "Homes, hotels and offices anywhere in Riyadh",
+        "King Khalid International Airport (RUH)"
+      ],
+      dropoffPoints: [
+        "Jubail town hotels, the Corniche and Fanateer Beach area",
+        "Residential compound gates",
+        "Facility and contractor-office gates in Jubail Industrial City"
+      ]
+    },
     relatedCitySlugs: ["riyadh", "jubail", "dammam"],
     metaTitle: "Riyadh to Jubail Taxi Service – Reliable Private Transfer",
     metaDescription:
@@ -5144,75 +5574,44 @@ const baseRoutes: Route[] = [
       {
         heading: "Riyadh to Jubail: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to Jubail covers approximately 480 kilometres, the longest of the main Eastern Province routes from the capital, since Jubail sits roughly 100 kilometres north of Dammam along the Gulf coast. The journey follows Highway 95 east to the Dammam area before joining the coastal Route 5 corridor north into Jubail, and takes around four hours forty-five minutes in free-flowing traffic.",
-          "A private transfer covers the full distance door to door, which matters more on this route than most, since a large share of Jubail traffic is workforce travel to specific industrial-city gates, residential compounds, or contractor offices that aren't always straightforward to reach without local knowledge of the site layout.",
+          "The drive from Riyadh to Jubail covers approximately 480 kilometres and takes around four hours forty-five minutes in free-flowing traffic — the longest of the main Eastern Province runs from the capital, because Jubail sits roughly 100 kilometres north of Dammam along the Gulf coast. The route follows the Riyadh–Dammam expressway (Highway 40) east across the Ad-Dahna sands, then turns north up the coast instead of continuing into Dammam.",
+          "There are no toll roads on the way, so the fixed price you agree covers the whole trip. The coastal stretch towards Jubail carries much more heavy freight than the roads into Dammam or Khobar, which is where most of the variation in journey time comes from.",
         ],
       },
       {
-        heading: "The fastest route: Highway 95 then coastal Route 5",
+        heading: "Jubail town or Jubail Industrial City?",
         paragraphs: [
-          "Highway 95 handles the first, longer leg of the journey exactly as it does for Dammam and Khobar transfers, before the route branches onto the coastal highway running north to Jubail. This northern stretch is a well-maintained multi-lane road serving one of the Kingdom's most important industrial corridors, so it sees heavy commercial traffic alongside private vehicles, particularly around shift-change hours at the major petrochemical facilities.",
-          "Drivers who cover this specific route regularly know both the highway itself and the internal road layout of Jubail Industrial City, which is considerably larger and more compartmentalised than a typical city centre — knowing which gate or checkpoint corresponds to which facility saves real time on arrival.",
+          "'Jubail' covers two quite different places. The older town, with its Corniche and Fanateer Beach, is where many hotels and family homes are; Jubail Industrial City, run by the Royal Commission, stretches north along the coast and contains the plants, contractor offices and many of the residential compounds. A precise address — facility name, gate number or compound — matters far more here than in most cities.",
+          "Industrial sites and compounds control their own entry. The driver takes you to the gate you specify and follows its visitor procedure, but any site pass or visitor clearance has to be arranged by your employer or host beforehand — we can't obtain it on your behalf.",
         ],
       },
       {
-        heading: "Scenic highlights along the way",
+        heading: "Timing around shift changes",
         paragraphs: [
-          "The first stretch mirrors the Riyadh–Dammam desert crossing, including the Ad-Dahna sand corridor roughly midway. North of Dammam, the coastal approach into Jubail brings the Gulf back into view, and the final stretch runs close enough to the water that the change from open desert to coastal industrial and residential development is one of the more noticeable transitions on any Eastern Province route from Riyadh.",
-          "Jubail itself rewards a short break before or after work commitments — the Jubail Corniche and Fanateer Beach offer a genuinely pleasant coastal stretch that contrasts with the industrial skyline the city is best known for.",
+          "Traffic on the final approach follows the industrial shift pattern: the roads into and around the plants are busiest at the main shift changes, typically early morning and late afternoon. Arriving outside those windows usually makes the last part of the drive noticeably smoother, even though it makes little difference to the desert highway.",
+          "Winter mornings can bring patchy fog on the coastal approach, so very early arrivals are worth an extra allowance in the plan.",
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Work teams, equipment and family moves",
         paragraphs: [
-          "Both the desert highway leg and the coastal industrial corridor are well-surfaced and clearly marked, though the Jubail approach carries noticeably more heavy commercial vehicle traffic than the Dammam or Khobar routes, given the volume of freight serving the petrochemical complexes. Speed enforcement is consistent throughout, and the near-five-hour duration means driver fatigue management matters as much here as on any of the other long Eastern Province crossings.",
-          "Coastal fog is slightly more common on the Jubail approach specifically than further south, given the proximity to the water, and is worth a small allowance in early-morning winter scheduling.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere on Saudi Arabia's highway network. The fixed price you agree covers the full journey with nothing additional to budget for.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "Given how much of Jubail's traffic relates to industrial shift patterns, timing a transfer to avoid the immediate shift-change windows at the largest facilities — typically early morning and late afternoon — tends to make the final approach into the city noticeably smoother, even though it barely affects the desert-highway portion of the drive. Outside of that, the general summer-heat and winter-fog guidance that applies to the wider Eastern Province corridor applies here too.",
-        ],
-      },
-      {
-        heading: "Vehicle options, group travel, and workforce transfers",
-        paragraphs: [
-          "Individual engineers and contractors travelling for a specific project window typically choose a comfort sedan or SUV, while companies moving small teams together often request a minivan so the group arrives together at the same compound or office gate. For larger workforce moves — a full crew rotation, for instance — we can arrange multiple vehicles departing together on a coordinated schedule.",
-          "Families relocating to or from a Jubail compound, often with a significant amount of luggage, are well served by a full-size SUV or minivan, and we're familiar with the residential compound access procedures that this kind of trip typically involves.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Within Jubail, the Corniche and Fanateer Beach are the main leisure destinations, while the industrial city itself has numerous distinct gates and zones depending on the specific employer or facility. Travellers whose actual base is Dammam or Khobar rather than Jubail should check our dedicated <a href='/routes/riyadh-to-dammam'>Riyadh to Dammam</a> or <a href='/routes/riyadh-to-khobar'>Riyadh to Khobar</a> transfers instead, since Jubail sits a further hour up the coast from both.",
-        ],
-      },
-      {
-        heading: "Safety on a long highway transfer",
-        paragraphs: [
-          "The combination of a near-five-hour drive and a busier industrial approach at the end makes driver experience specifically on this route genuinely valuable — our drivers who cover Jubail regularly know both the highway fatigue-management basics common to every Eastern Province route and the additional care needed navigating heavier freight traffic on the final stretch.",
+          "Individual engineers and contractors usually choose a comfort sedan or SUV, while companies moving a small team often book a minivan so everyone arrives at the same gate together. For larger crew rotations, several vehicles can be arranged to leave together on one schedule.",
+          "If you're carrying tools, samples or bulky equipment, mention it when booking so we send a vehicle with enough luggage space. Families relocating to or from a Jubail compound with a lot of luggage are best served by a full-size SUV or minivan. If your base is actually Dammam or Khobar, see our <a href='/routes/riyadh-to-dammam'>Riyadh to Dammam</a> or <a href='/routes/riyadh-to-khobar'>Riyadh to Khobar</a> transfers instead — both are about an hour shorter.",
         ],
       },
       {
         heading: "Booking your Riyadh to Jubail transfer",
         paragraphs: [
-          "Share your Riyadh pickup point, your exact Jubail destination — including compound name or facility gate if applicable — your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit simply to see a quote.",
-          "Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form, and we'll confirm the details ahead of your travel day.",
+          "Send your Riyadh pickup address, your Jubail destination (including the compound name or facility gate), the date and time you want to leave, and how many passengers and bags are travelling. We reply with a fixed price for the whole journey and a suggested vehicle.",
+          "No payment is needed to receive a quote. The payment method and any deposit are confirmed when you book, and cancellation terms for your booking are shared at the same time — see our <a href='/terms-and-conditions'>terms and conditions</a>. Request your quote on WhatsApp or through the <a href='/get-quote'>get a quote</a> form.",
         ],
       },
     ],
     faqs: [
       { question: "How far is Jubail from Riyadh, and how long does the drive take?", answer: "The distance is approximately 480 kilometres, and the drive takes about four hours forty-five minutes in free-flowing traffic — slightly longer than the Riyadh–Dammam or Riyadh–Khobar runs, since Jubail sits roughly 100 kilometres further north along the coast." },
-      { question: "Can you drop me at a specific gate inside Jubail Industrial City?", answer: "Yes. Jubail Industrial City has multiple distinct gates and zones depending on the facility, and our drivers are familiar with the layout — just specify your exact destination, including any gate or facility name, when booking." },
+      { question: "Can you drop me at a specific gate inside Jubail Industrial City?", answer: "Yes. Yes — give the facility name and gate number when booking and the driver takes you to that gate. Entry beyond it depends on the site's own security, so any visitor pass needs to be arranged by your employer or host in advance." },
       { question: "Is the fare fixed regardless of the industrial traffic near Jubail?", answer: "Yes. The price is agreed before you travel and covers the complete journey, including any delay from heavier freight traffic on the final approach, with no meter, no surge, and no toll charges." },
-      { question: "Do you handle residential compound access procedures?", answer: "Yes, our drivers are familiar with the typical access procedures for Jubail's residential compounds and coordinate with your compound's security or reception as needed for a smooth arrival." },
+      { question: "Do you handle residential compound access procedures?", answer: "Each compound runs its own gate procedure — usually a visitor registration by the resident or the compound office. Share the compound name and any instructions you've been given, and the driver follows them on arrival." },
       { question: "What's the best time of day to arrive in Jubail?", answer: "Avoiding the immediate shift-change windows at the major industrial facilities — typically early morning and late afternoon — tends to make the final approach into the city smoother, though it doesn't meaningfully affect the desert-highway portion of the drive." },
       { question: "Can a small work team travel together in one vehicle?", answer: "Yes, a minivan comfortably seats a small team together with luggage, and for larger crew moves we can coordinate multiple vehicles departing on the same schedule." },
       { question: "Are rest stops included on this longer route?", answer: "Yes, given the near-five-hour distance we build in a rest stop as needed, at no extra cost since the fare is fixed." },

@@ -97,7 +97,7 @@ export function buildRouteBlocks(route: Route, type: JourneyType, reverseHref?: 
   blocks.push({
     type: "scenarios",
     heading: "Who This Route Suits",
-    items: whoThisRouteSuits(route, type),
+    items: route.whoSuits && route.whoSuits.length > 0 ? route.whoSuits : whoThisRouteSuits(route, type),
   });
 
   if (route.notes.length > 0) {
