@@ -35,7 +35,13 @@
 		// distinct pages. The cache only dedupes requests within a 10 s window, so
 		// a small size loses nothing. Read at module load from process.env, which
 		// nodejs_compat populates from these vars before any module code runs.
-		"NEXT_PRIVATE_RESPONSE_CACHE_MAX_SIZE": "10"
+		"NEXT_PRIVATE_RESPONSE_CACHE_MAX_SIZE": "10",
+		// Email (lib/email.ts sends nothing unless RESEND_API_KEY and FROM_EMAIL
+		// are both set; the lead notification also needs ADMIN_EMAIL). FROM_EMAIL
+		// must be "address" or "Name <address>" on the domain verified in Resend —
+		// Resend rejects a bare "<address>". RESEND_API_KEY stays a dashboard secret.
+		"FROM_EMAIL": "Saudi Private Transfers <bookings@saudiprivatetransfers.com>",
+		"ADMIN_EMAIL": "taxiservicesaudiaa@gmail.com"
 	},
 	// Environment variables and secrets are managed in the Cloudflare dashboard,
 	// not here — keep_vars stops a deploy from removing dashboard-set variables.
