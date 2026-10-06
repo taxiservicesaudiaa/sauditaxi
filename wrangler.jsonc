@@ -26,6 +26,17 @@
 	"images": {
 		"binding": "IMAGES"
 	},
+	"vars": {
+		// Next's ResponseCache (minimal mode, as OpenNext runs it) keeps up to 150
+		// rendered responses in memory per Worker instance, and an entry expires
+		// only when the same URL is requested again — so a crawl of distinct URLs
+		// retains the last 150 full pages (~350 KB+ each). Inside the 128 MB Worker
+		// memory cap that made instances fail with 1102 after a few hundred
+		// distinct pages. The cache only dedupes requests within a 10 s window, so
+		// a small size loses nothing. Read at module load from process.env, which
+		// nodejs_compat populates from these vars before any module code runs.
+		"NEXT_PRIVATE_RESPONSE_CACHE_MAX_SIZE": "10"
+	},
 	// Environment variables and secrets are managed in the Cloudflare dashboard,
 	// not here — keep_vars stops a deploy from removing dashboard-set variables.
 	"keep_vars": true
