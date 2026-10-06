@@ -18,6 +18,8 @@ export interface ArPageIndexEntry {
   enPath: string;
   type: string;
   h1: string;
+  /** Mirrors ArPage.notEnTranslation: not hreflang-paired with enPath. */
+  notEnTranslation?: true;
 }
 
 export const arPageIndex: ArPageIndexEntry[] = [
@@ -583,7 +585,8 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "slug": "دليل-تاكسي-مكة-الى-المدينة-الخاص",
     "enPath": "/blog/makkah-to-madinah-private-taxi-guide",
     "type": "blog",
-    "h1": "تاكسي مكة إلى المدينة المنورة: التكلفة ووقت الرحلة ودليل الحجز"
+    "h1": "تاكسي مكة إلى المدينة المنورة: التكلفة ووقت الرحلة ودليل الحجز",
+    "notEnTranslation": true
   },
   {
     "slug": "دليل-تاكسي-الرياض-الى-الدمام",
@@ -2685,7 +2688,9 @@ export function arIndexPath(entry: ArPageIndexEntry): string {
 // warm isolate/bundle load, only if something actually calls them.
 let _enToAr: Record<string, string> | undefined;
 function enToAr(): Record<string, string> {
-  return (_enToAr ??= Object.fromEntries(arPageIndex.map((p) => [p.enPath, arIndexPath(p)])));
+  return (_enToAr ??= Object.fromEntries(
+    arPageIndex.filter((p) => !p.notEnTranslation).map((p) => [p.enPath, arIndexPath(p)])
+  ));
 }
 
 /** Lightweight equivalent of ar.ts's getArPathForEnPath — same result, without

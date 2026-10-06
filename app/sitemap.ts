@@ -193,7 +193,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
     changeFrequency: "monthly",
     priority: p.type === "about" || p.type === "contact" ? 0.5 : 0.7,
-    alternates: { languages: { en: absoluteUrl(p.enPath), ar: absoluteUrl(arIndexPath(p)) } },
+    alternates: {
+      languages: p.notEnTranslation
+        ? { ar: absoluteUrl(arIndexPath(p)) }
+        : { en: absoluteUrl(p.enPath), ar: absoluteUrl(arIndexPath(p)) },
+    },
   }));
   // The Arabic homepage itself.
   arEntries.push({

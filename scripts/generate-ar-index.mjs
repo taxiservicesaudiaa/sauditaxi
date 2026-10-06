@@ -14,6 +14,9 @@ const entries = getArPages().map((p) => ({
   enPath: p.enPath,
   type: p.type,
   h1: p.h1,
+  // Only emitted when set, so the generated file stays unchanged for every
+  // other entry.
+  ...(p.notEnTranslation ? { notEnTranslation: true } : {}),
 }));
 
 const out = `/**
@@ -36,6 +39,8 @@ export interface ArPageIndexEntry {
   enPath: string;
   type: string;
   h1: string;
+  /** Mirrors ArPage.notEnTranslation: not hreflang-paired with enPath. */
+  notEnTranslation?: true;
 }
 
 export const arPageIndex: ArPageIndexEntry[] = ${JSON.stringify(entries, null, 2)};
@@ -50,7 +55,9 @@ export function arIndexPath(entry: ArPageIndexEntry): string {
 // warm isolate/bundle load, only if something actually calls them.
 let _enToAr: Record<string, string> | undefined;
 function enToAr(): Record<string, string> {
-  return (_enToAr ??= Object.fromEntries(arPageIndex.map((p) => [p.enPath, arIndexPath(p)])));
+  return (_enToAr ??= Object.fromEntries(
+    arPageIndex.filter((p) => !p.notEnTranslation).map((p) => [p.enPath, arIndexPath(p)])
+  ));
 }
 
 /** Lightweight equivalent of ar.ts's getArPathForEnPath — same result, without

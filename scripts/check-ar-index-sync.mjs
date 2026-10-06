@@ -32,13 +32,35 @@ for (const p of getArPages()) {
     problems++;
     continue;
   }
-  if (indexed.enPath !== p.enPath || indexed.type !== p.type || indexed.h1 !== p.h1) {
+  if (
+    indexed.enPath !== p.enPath ||
+    indexed.type !== p.type ||
+    indexed.h1 !== p.h1 ||
+    Boolean(indexed.notEnTranslation) !== Boolean(p.notEnTranslation)
+  ) {
     console.error(
       `FAIL: "${p.slug}" is out of sync — getArPages() has {enPath: ${p.enPath}, type: ${p.type}, h1: ${p.h1}}, ` +
         `ar-index.ts has {enPath: ${indexed.enPath}, type: ${indexed.type}, h1: ${indexed.h1}}.`
     );
     problems++;
   }
+}
+
+// hreflang must be one-to-one: an English page can have only one Arabic
+// translation. A second Arabic page on the same enPath must be marked
+// notEnTranslation, or the English page's hreflang can only point at one of
+// them and the other's link back is non-reciprocal.
+const pairedByEnPath = new Map();
+for (const p of getArPages()) {
+  if (p.notEnTranslation || p.type === "hotel-transfer") continue;
+  const other = pairedByEnPath.get(p.enPath);
+  if (other) {
+    console.error(
+      `FAIL: "${other}" and "${p.slug}" both claim ${p.enPath} as their English original. ` +
+        `Mark the one that is not its translation with notEnTranslation: true.`
+    );
+    problems++;
+  } else pairedByEnPath.set(p.enPath, p.slug);
 }
 
 if (problems === 0) {

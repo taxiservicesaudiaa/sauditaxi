@@ -386,7 +386,9 @@ export async function generateMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
     path: arPath(page),
-    alternateLanguages: { en: page.enPath, ar: arPath(page) },
+    alternateLanguages: page.notEnTranslation
+      ? { ar: arPath(page) }
+      : { en: page.enPath, ar: arPath(page) },
   });
 }
 

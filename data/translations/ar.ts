@@ -124,6 +124,15 @@ export interface ArPage {
   type: ArPageType;
   /** The canonical English path this page is the Arabic translation of (drives hreflang). */
   enPath: string;
+  /**
+   * Set when this is a second Arabic article on the same topic as `enPath`
+   * rather than its translation — the English page already pairs with a
+   * different entry. Such a page emits no hreflang to `enPath` (only its own
+   * Arabic self-reference) and is skipped by the English→Arabic lookups, so
+   * every hreflang pair stays one-to-one and reciprocal. `enPath` is still
+   * used for non-hreflang purposes (language switcher, related-guide keys).
+   */
+  notEnTranslation?: true;
   /** <title> / metaTitle (≤60 chars is the target, Arabic character count). */
   metaTitle: string;
   metaDescription: string;
@@ -6093,6 +6102,10 @@ function buildArPages(): ArPage[] {
     slug: "دليل-تاكسي-مكة-الى-المدينة-الخاص",
     type: "blog",
     enPath: "/blog/makkah-to-madinah-private-taxi-guide",
+    // The English guide's translation is the Tier-1 entry
+    // "دليل-نقل-مكة-المدينة-بالتاكسي-الخاص" below; this is a separate Arabic
+    // article on the same journey, so it must not claim the hreflang pair.
+    notEnTranslation: true,
     metaTitle: "تاكسي مكة إلى المدينة: التكلفة والوقت وطريقة الحجز",
     metaDescription:
       "خطط لرحلتك من مكة إلى المدينة: وقت الرحلة، الأسعار الثابتة، خيارات المركبات، توقفات الطريق، ونصائح الحجز لنقل مريح بين المدينتين.",
@@ -26980,7 +26993,11 @@ export function arPath(page: ArPage): string {
 
 let _enToArPathMap: Record<string, string> | undefined;
 function enToArPathMap(): Record<string, string> {
-  return (_enToArPathMap ??= Object.fromEntries(getArPages().map((p) => [p.enPath, arPath(p)])));
+  return (_enToArPathMap ??= Object.fromEntries(
+    getArPages()
+      .filter((p) => !p.notEnTranslation)
+      .map((p) => [p.enPath, arPath(p)])
+  ));
 }
 
 /**
