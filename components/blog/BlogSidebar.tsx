@@ -66,6 +66,14 @@ const topicServiceLinks: { match: string[]; links: { label: string; href: string
     ],
   },
   {
+    match: ["saudi-arabian-grand-prix-2027-jeddah-transfer"],
+    links: [
+      { label: "Jeddah Airport Transfer", href: "/airport-transfer/jeddah-airport", icon: Plane },
+      { label: "Private Chauffeur Service in Jeddah", href: "/jeddah/private-chauffeur-service-jeddah", icon: RouteIcon },
+      { label: "Jeddah to Makkah Transfer", href: "/routes/jeddah-to-makkah", icon: RouteIcon },
+    ],
+  },
+  {
     match: ["wwe-crown-jewel-riyadh-transfer"],
     links: [
       { label: "Riyadh Airport to KAFD Transfer", href: "/riyadh/king-khalid-airport-to-kafd", icon: Plane },

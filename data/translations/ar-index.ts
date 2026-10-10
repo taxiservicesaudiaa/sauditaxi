@@ -2641,6 +2641,12 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "h1": "دليل النقل والسائق الخاص لكأس الخليج 27 في جدة 2026"
   },
   {
+    "slug": "نقل-سباق-جائزة-السعودية-الكبرى-فورمولا-1-جدة-2027",
+    "enPath": "/blog/saudi-arabian-grand-prix-2027-jeddah-transfer",
+    "type": "blog",
+    "h1": "دليل التنقل إلى سباق جائزة السعودية الكبرى للفورمولا 1 في جدة 2027"
+  },
+  {
     "slug": "نقل-رالي-السعودية-دبليو-آر-سي",
     "enPath": "/blog/wrc-rally-saudi-arabia-transfer",
     "type": "blog",
