@@ -35,7 +35,17 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   };
   const normalizedPathname = CANONICAL_ALIASES[pathname] ?? pathname;
 
-  const enHref = locale === "ar" ? getEnPathForArPathLight(normalizedPathname) : normalizedPathname;
+  // usePathname() can return Arabic slugs percent-encoded, while the index is
+  // keyed by the decoded Arabic path — decode before the lookup, or every
+  // Arabic page's "EN" link falls back to the English homepage.
+  let decodedPathname = normalizedPathname;
+  try {
+    decodedPathname = decodeURIComponent(normalizedPathname);
+  } catch {
+    // Malformed escape sequence — keep the raw pathname.
+  }
+
+  const enHref = locale === "ar" ? getEnPathForArPathLight(decodedPathname) : normalizedPathname;
   const arHref = locale === "en" ? (getArPathForEnPathLight(normalizedPathname) ?? "/ar") : normalizedPathname;
 
   return (

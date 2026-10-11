@@ -2641,6 +2641,12 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "h1": "دليل النقل والسائق الخاص لكأس الخليج 27 في جدة 2026"
   },
   {
+    "slug": "إغلاق-مطار-الرياض-أكتوبر-2026",
+    "enPath": "/blog/riyadh-airport-closure-october-2026",
+    "type": "blog",
+    "h1": "إغلاق مطار الرياض في أكتوبر 2026: آخر المستجدات وإرشادات السفر"
+  },
+  {
     "slug": "نقل-سباق-جائزة-السعودية-الكبرى-فورمولا-1-جدة-2027",
     "enPath": "/blog/saudi-arabian-grand-prix-2027-jeddah-transfer",
     "type": "blog",

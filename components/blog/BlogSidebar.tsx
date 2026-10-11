@@ -74,6 +74,14 @@ const topicServiceLinks: { match: string[]; links: { label: string; href: string
     ],
   },
   {
+    match: ["riyadh-airport-closure-october-2026"],
+    links: [
+      { label: "Riyadh Airport Transfer", href: "/airport-transfer/riyadh-airport", icon: Plane },
+      { label: "Dammam Airport to Riyadh", href: "/routes/dammam-airport-to-riyadh", icon: RouteIcon },
+      { label: "Jeddah Airport to Riyadh", href: "/routes/jeddah-airport-to-riyadh", icon: RouteIcon },
+    ],
+  },
+  {
     match: ["wwe-crown-jewel-riyadh-transfer"],
     links: [
       { label: "Riyadh Airport to KAFD Transfer", href: "/riyadh/king-khalid-airport-to-kafd", icon: Plane },

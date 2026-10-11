@@ -10,8 +10,9 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SchemaScript } from "@/components/seo/SchemaScript";
-import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema, faqSchema, articleSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 import { getDictionary } from "@/lib/i18n";
 import { getArPages, getArPage, arPath, getArPathForEnPath, pointTransferCityNameAr, type ArPage } from "@/data/translations/ar";
 import { pageHeroes } from "@/lib/hero";
@@ -2298,13 +2299,23 @@ export default async function ArabicPage({
         <SchemaScript
           schema={[
             breadcrumbSchema(page.breadcrumbs),
-            serviceSchema({
-              name: page.h1,
-              description: page.intro,
-              path: arPath(page),
-              serviceType: serviceTypeFor(page.type),
-              areaServed: "المملكة العربية السعودية",
-            }),
+            page.datePublished
+              ? articleSchema({
+                  title: page.h1,
+                  description: page.metaDescription,
+                  path: arPath(page),
+                  image: siteConfig.ogImage,
+                  author: siteConfig.name,
+                  datePublished: page.datePublished,
+                  dateModified: page.dateModified ?? page.datePublished,
+                })
+              : serviceSchema({
+                  name: page.h1,
+                  description: page.intro,
+                  path: arPath(page),
+                  serviceType: serviceTypeFor(page.type),
+                  areaServed: "المملكة العربية السعودية",
+                }),
             faqSchema(blogFaqs),
           ]}
         />
