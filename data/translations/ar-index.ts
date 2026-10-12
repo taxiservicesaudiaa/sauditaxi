@@ -2641,6 +2641,12 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "h1": "دليل النقل والسائق الخاص لكأس الخليج 27 في جدة 2026"
   },
   {
+    "slug": "الهجوم-على-مطار-الدمام-أكتوبر-2026",
+    "enPath": "/blog/dammam-airport-attack-october-2026",
+    "type": "blog",
+    "h1": "الهجوم على مطار الدمام في أكتوبر 2026: آخر المستجدات وإرشادات السفر"
+  },
+  {
     "slug": "إغلاق-مطار-الرياض-أكتوبر-2026",
     "enPath": "/blog/riyadh-airport-closure-october-2026",
     "type": "blog",

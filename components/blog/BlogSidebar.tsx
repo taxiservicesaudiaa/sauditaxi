@@ -74,6 +74,14 @@ const topicServiceLinks: { match: string[]; links: { label: string; href: string
     ],
   },
   {
+    match: ["dammam-airport-attack-october-2026"],
+    links: [
+      { label: "Dammam Airport Transfer", href: "/airport-transfer/dammam-airport", icon: Plane },
+      { label: "Dammam Taxi Service", href: "/taxi-service/dammam", icon: RouteIcon },
+      { label: "Riyadh Airport Closure Update", href: "/blog/riyadh-airport-closure-october-2026", icon: BookOpen },
+    ],
+  },
+  {
     match: ["riyadh-airport-closure-october-2026"],
     links: [
       { label: "Riyadh Airport Transfer", href: "/airport-transfer/riyadh-airport", icon: Plane },

@@ -64,6 +64,13 @@ const topicLinks: { match: string[]; links: { label: string; href: string }[] }[
     ],
   },
   {
+    match: ["dammam-airport-attack-october-2026"],
+    links: [
+      { label: "Dammam Airport Transfer", href: "/airport-transfer/dammam-airport" },
+      { label: "Dammam Taxi Service", href: "/taxi-service/dammam" },
+    ],
+  },
+  {
     match: ["riyadh-airport-closure-october-2026"],
     links: [
       { label: "Riyadh Airport Transfer", href: "/airport-transfer/riyadh-airport" },
