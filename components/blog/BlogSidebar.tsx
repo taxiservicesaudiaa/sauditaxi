@@ -74,6 +74,14 @@ const topicServiceLinks: { match: string[]; links: { label: string; href: string
     ],
   },
   {
+    match: ["alula-skies-festival-2026-travel-guide"],
+    links: [
+      { label: "AlUla Airport to AlUla", href: "/routes/alula-airport-to-alula", icon: Plane },
+      { label: "AlUla Airport to Ashar Valley Resorts", href: "/alula/alula-airport-to-habitas-and-banyan-tree", icon: Plane },
+      { label: "AlUla Taxi Service", href: "/taxi-service/alula", icon: RouteIcon },
+    ],
+  },
+  {
     match: ["dammam-airport-attack-october-2026"],
     links: [
       { label: "Dammam Airport Transfer", href: "/airport-transfer/dammam-airport", icon: Plane },

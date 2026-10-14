@@ -2641,6 +2641,12 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "h1": "دليل النقل والسائق الخاص لكأس الخليج 27 في جدة 2026"
   },
   {
+    "slug": "مهرجان-سماء-العلا-2026",
+    "enPath": "/blog/alula-skies-festival-2026-travel-guide",
+    "type": "blog",
+    "h1": "مهرجان سماء العلا 2026: المواعيد ودليل السفر والنقل الخاص"
+  },
+  {
     "slug": "الهجوم-على-مطار-الدمام-أكتوبر-2026",
     "enPath": "/blog/dammam-airport-attack-october-2026",
     "type": "blog",
