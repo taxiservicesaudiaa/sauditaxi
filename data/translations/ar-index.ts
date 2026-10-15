@@ -2641,6 +2641,12 @@ export const arPageIndex: ArPageIndexEntry[] = [
     "h1": "دليل النقل والسائق الخاص لكأس الخليج 27 في جدة 2026"
   },
   {
+    "slug": "دليل-التنقل-بين-الدمام-والجبيل",
+    "enPath": "/blog/dammam-to-jubail-transfer-guide",
+    "type": "blog",
+    "h1": "من الدمام إلى الجبيل: دليل التنقل من الدمام والخبر ومطار الملك فهد"
+  },
+  {
     "slug": "مهرجان-سماء-العلا-2026",
     "enPath": "/blog/alula-skies-festival-2026-travel-guide",
     "type": "blog",

@@ -74,6 +74,14 @@ const topicServiceLinks: { match: string[]; links: { label: string; href: string
     ],
   },
   {
+    match: ["dammam-to-jubail-transfer-guide"],
+    links: [
+      { label: "Dammam Airport to Jubail", href: "/routes/dammam-airport-to-jubail", icon: Plane },
+      { label: "Dammam to Jubail Route", href: "/routes/dammam-to-jubail", icon: RouteIcon },
+      { label: "Jubail Taxi Service", href: "/taxi-service/jubail", icon: RouteIcon },
+    ],
+  },
+  {
     match: ["alula-skies-festival-2026-travel-guide"],
     links: [
       { label: "AlUla Airport to AlUla", href: "/routes/alula-airport-to-alula", icon: Plane },
