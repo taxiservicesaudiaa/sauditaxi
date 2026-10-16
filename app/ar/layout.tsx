@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     locale: "ar_SA",
     url: siteConfig.url,
   },
-  twitter: { card: "summary_large_image", site: siteConfig.twitterHandle },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

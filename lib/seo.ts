@@ -79,7 +79,6 @@ export function buildMetadata({
       title,
       description,
       images: [ogImg],
-      site: siteConfig.twitterHandle,
     },
   };
 }

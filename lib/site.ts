@@ -24,7 +24,6 @@ export const siteConfig = {
   // Raster (PNG) OG image — Facebook, LinkedIn, WhatsApp, and X do not render
   // SVG social previews, so the share image must be a PNG/JPG.
   ogImage: "/og-image.png",
-  twitterHandle: "@sauditaxi",
   social: {
     pinterest: "https://www.pinterest.com/saudiprivate",
     facebook: "https://www.facebook.com/profile.php?id=61588795481731",
