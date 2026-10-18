@@ -1683,9 +1683,9 @@ const baseRoutes: Route[] = [
       "Drop-off at a Dammam address or King Fahd Airport — tell us which",
     ],
     relatedCitySlugs: ["dammam", "khobar"],
-    metaTitle: "Bahrain Airport to Dammam Private Transfer – Book Your Taxi",
+    metaTitle: "Bahrain International Airport to Dammam Private Transfer",
     metaDescription:
-      "Reserve a private Bahrain Airport to Dammam taxi (~100 km, 1 hr 45 min). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+      "Private taxi transfer from Bahrain International Airport to Dammam across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "Starting from Muharraq, not from Manama",
@@ -1752,7 +1752,7 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["khobar", "dammam"],
     metaTitle: "Bahrain to Al Khobar Taxi – Private Cross-Border Transfer",
     metaDescription:
-      "Book a private cross-border transfer from Bahrain to Al Khobar (~55 km, 1 hr). Door-to-door service into Bahrain, fixed fare.",
+      "Private cross-border taxi transfer from Bahrain to Al Khobar across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "The shortest crossing between Bahrain and Saudi Arabia",
@@ -1819,7 +1819,7 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["dammam", "khobar"],
     metaTitle: "Manama to Dammam Transfer – Private Cross-Border Taxi",
     metaDescription:
-      "Reserve a private Manama to Dammam taxi (~90 km, 1 hr 30 min). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+      "Private taxi transfer from Manama to Dammam across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "Central Manama: the natural starting point",
@@ -1953,7 +1953,7 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["riyadh", "dammam"],
     metaTitle: "Bahrain to Riyadh Taxi – Private Cross-Border Transfer",
     metaDescription:
-      "Reserve a private Bahrain to Riyadh taxi (~450 km, 4.5-5 hours). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+      "Private long-distance taxi transfer from Bahrain to Riyadh across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "This journey starts with the border, not ends with it",
@@ -9285,8 +9285,8 @@ const baseRoutes: Route[] = [
       "Fixed price agreed before you travel, including the causeway toll"
     ],
     relatedCitySlugs: ["khobar","dammam"],
-    metaTitle: "Khobar to Bahrain Airport Private Transfer – Book Your Taxi",
-    metaDescription: "Reserve a private Khobar to Bahrain Airport taxi (70 km, 1 hr 15 min). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+    metaTitle: "Khobar to Bahrain International Airport Private Transfer",
+    metaDescription: "Private taxi transfer from Khobar to Bahrain International Airport across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     faqs: [
       {
             "question": "How much time should I allow for the Causeway crossing to Bahrain Airport?",
@@ -9332,8 +9332,8 @@ const baseRoutes: Route[] = [
       "One continuous journey across the King Fahd Causeway, no vehicle change"
     ],
     relatedCitySlugs: ["khobar","dammam"],
-    metaTitle: "Bahrain Airport to Khobar Private Transfer – Book Your Taxi",
-    metaDescription: "Reserve a private Bahrain Airport to Khobar taxi (70 km, 1 hr 15 min). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+    metaTitle: "Bahrain International Airport to Khobar Private Transfer",
+    metaDescription: "Private taxi transfer from Bahrain International Airport to Khobar across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "Starting from Muharraq, not from Manama",
@@ -9402,8 +9402,8 @@ const baseRoutes: Route[] = [
       "Fixed price agreed before you travel, including the causeway toll"
     ],
     relatedCitySlugs: ["dammam","khobar"],
-    metaTitle: "Dammam to Bahrain Airport Transfer – Private Cross-Border Taxi",
-    metaDescription: "Reserve a private Dammam to Bahrain Airport taxi (85 km, 1 hr 30 min). Comfortable vehicle for the long-distance drive toward Bahrain, fixed price.",
+    metaTitle: "Dammam to Bahrain International Airport Private Transfer",
+    metaDescription: "Private taxi transfer from Dammam to Bahrain International Airport across the King Fahd Causeway. Request a quote — your confirmed quotation sets the price.",
     faqs: [
       {
             "question": "Can you pick up from anywhere in Dammam for Bahrain Airport?",
