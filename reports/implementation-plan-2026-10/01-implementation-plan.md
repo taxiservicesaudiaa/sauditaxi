@@ -18,7 +18,9 @@ Files in this directory:
 |---|---|---|
 | 16 Oct 2026 | A1 robots.txt (G01) | **Applied locally, validated, not committed, not deployed** — awaiting deployment review |
 | 16 Oct 2026 | C5b remove `twitter:site` / `twitterHandle` (G10) | **Approved; applied locally as a separate change, validated, not committed, not deployed** — awaiting review. Share-card metadata (`twitter:card/title/description/image`, all `og:*`) preserved |
-| 16 Oct 2026 | A1 + C5b committed | Branch `seo/robots-and-x-metadata`: `85cf334` (A1 robots.txt), `682d88f` (C5b twitter:site). Fast-forwarded into local `main` (now `682d88f`, 2 commits ahead of `origin/main`). **Not pushed, not deployed** |
+| 16 Oct 2026 | A1 + C5b committed | Branch `seo/robots-and-x-metadata`: `85cf334` (A1 robots.txt), `682d88f` (C5b twitter:site). Fast-forwarded into `main`; pushed by the owner together with commit `bdeb47e` ("v1", reports) on 16 Oct |
+| 18 Oct 2026 | A1 + C5b live check | Production robots.txt has no `/_next/` line (`/api/`, `/admin/` kept); `twitter:site` absent and `twitter:card` present on `/`, `/ar`, `/routes/qassim-to-riyadh`. **Remaining post-deploy checks from `05-a1-robots-change-proposal.md` §5–§6 (GSC robots report, URL Inspection, `check:ar-500`, private routes, Workers usage) not yet run** |
+| 18 Oct 2026 | Content opportunity analysis | `06-content-opportunity-analysis.md`, `07-content-opportunities.csv`, `08-gsc-top-pages-2026-07-16_2026-10-15.tsv` — planning only |
 | 16 Oct 2026 | C5 `sameAs` policy | Confirmed by owner: only Instagram, Facebook, Pinterest, Reddit, plus the Trustpilot profile once verified. **Not implemented** (C5 not yet approved for implementation) |
 
 Validation details: `02-test-plan-and-access-checklist.md` → "Local validation results — A1 and C5b".

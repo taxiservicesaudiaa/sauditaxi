@@ -63,6 +63,7 @@ export const cityGuides: Record<string, CityGuide> = {
             { title: "Riyadh to Madinah", body: "A private long-distance transfer to the Prophet's Mosque.", href: "/routes/riyadh-to-madinah", linkLabel: "Riyadh to Madinah route" },
             { title: "Riyadh to Dammam", body: "A private transfer across to the Eastern Province and Khobar metro area.", href: "/routes/riyadh-to-dammam", linkLabel: "Riyadh to Dammam route" },
             { title: "Riyadh to AlUla", body: "A private long-distance transfer to the heritage sites and resorts of AlUla.", href: "/routes/riyadh-to-alula", linkLabel: "Riyadh to AlUla route" },
+            { title: "Riyadh to Qassim", body: "A private transfer north to Buraidah, Unaizah and the wider Qassim region.", href: "/routes/riyadh-to-qassim", linkLabel: "Riyadh to Qassim route" },
           ],
         },
       },

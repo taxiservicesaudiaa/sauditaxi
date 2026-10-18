@@ -1,0 +1,506 @@
+diff --git a/data/routes.ts b/data/routes.ts
+index 06ca3d5..2cb88ba 100644
+--- a/data/routes.ts
++++ b/data/routes.ts
+@@ -5951,48 +5951,58 @@ const baseRoutes: Route[] = [
+     intro:
+       "The Riyadh to Qassim taxi is a private highway transfer north to Buraidah and the Qassim region, the Kingdom's agricultural heartland, popular with families, business travellers, and visitors to the region's famous camel markets.",
+     about:
+-      "Our private Riyadh to Qassim transfer takes Highway 65 north to Buraidah and the wider Qassim region, delivering you door to door to a home, hotel, or farm — one vehicle, fixed price, and no changes along the way.",
++      "Our private Riyadh to Qassim transfer collects you from your address in Riyadh and drives you north to Buraidah, Unaizah or elsewhere in the Qassim region, door to door to a home, hotel, or farm — one vehicle for your whole group, priced in a quotation you confirm before you travel.",
+     notes: [
+       "Door-to-door pickup anywhere in Riyadh",
+-      "Direct drop-off in Buraidah, Unaizah, or elsewhere in Qassim",
+-      "Comfortable vehicles for the roughly three-and-a-half-hour drive",
+-      "Familiar with the region's camel market and farm-visit schedules",
++      "Direct drop-off in Buraidah, Unaizah, elsewhere in Qassim, or at Qassim's Prince Naif bin Abdulaziz International Airport",
++      "Vehicle matched to your passenger and luggage count",
++      "Return journey available on the Qassim to Riyadh route",
+     ],
+     relatedCitySlugs: ["riyadh", "buraidah"],
++    richLayout: {
++      journeyFlow: [],
++      journeyFacts: [],
++      mapOrigin: "",
++      mapDestination: "",
++      mapNote: "",
++      pickupPoints: ["Home address", "Hotel", "Business location"],
++      dropoffPoints: ["Home address", "Hotel", "Farm or other address", "Business location", "Qassim airport (Prince Naif bin Abdulaziz International)"],
++    },
++    lastUpdated: "2026-10-18",
+     metaTitle: "Book a Riyadh to Qassim Transfer – Private Car Service",
+     metaDescription:
+-      "Travel from Riyadh to Qassim (~345 km, about 3 hours 30 min) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
++      "Private transfer from Riyadh to Buraidah, Unaizah or anywhere in Qassim. Send pickup, passengers and luggage — your confirmed quotation sets the price.",
+     sections: [
+       {
+         heading: "Riyadh to Qassim: route overview and distance",
+         paragraphs: [
+-          "The drive from Riyadh to Qassim, centred on the city of Buraidah, covers approximately 345 kilometres heading north on Highway 65. In free-flowing traffic the journey takes about three and a half hours, making it one of the more manageable long-distance routes from the capital.",
++          "The drive from Riyadh to Qassim, centred on the city of Buraidah, heads north on the main Riyadh–Qassim highway. Your door-to-door time depends on your exact pickup and drop-off addresses, traffic on the day and any stops you ask for.",
+           "A private transfer takes you door to door, whether your destination is a home or hotel in Buraidah, the historic town of Unaizah nearby, or a farm elsewhere in the region — no need to arrange separate local transport once you arrive.",
+         ],
+       },
+       {
+-        heading: "The fastest route: Highway 65 north",
++        heading: "The main route north",
+         paragraphs: [
+-          "Highway 65 is the direct, well-maintained route north from Riyadh through the Qassim region, and it's the same road that continues further north toward Hail. It's a multi-lane divided highway for the vast majority of its length, clearly signed, and used daily by both commercial traffic serving the region's agricultural trade and private transfers.",
++          "The usual road route runs north from Riyadh on the main Riyadh–Qassim highway, the same corridor that continues further north toward Hail.",
+         ],
+       },
+       {
+         heading: "Scenic highlights along the way",
+         paragraphs: [
+           "The landscape shifts noticeably as you head north — from Riyadh's surrounding desert to the greener, more cultivated farmland that gives Qassim its reputation as the Kingdom's agricultural heartland. Extensive centre-pivot irrigation fields become visible well before reaching Buraidah itself, a genuinely different sight from the desert corridors of the Eastern Province routes.",
+-          "Qassim is famous nationally for its camel markets — Buraidah's is among the largest livestock markets in the world — and for date and wheat production. Unaizah, a short distance from Buraidah, offers a well-preserved historic old town worth a visit for travellers with time to spare.",
++          "Qassim is famous nationally for its camel markets and for date and wheat production. Unaizah, a short distance from Buraidah, offers a well-preserved historic old town worth a visit for travellers with time to spare.",
+         ],
+       },
+       {
+-        heading: "Road conditions and driving comfort",
++        heading: "Rest stops and comfort",
+         paragraphs: [
+-          "Highway 65 is in good condition throughout, with clear markings and regular rest facilities. As with any long highway drive, speed cameras are present and enforced, and the roughly three-and-a-half-hour duration is comfortable in a single stretch for most travellers, with a rest stop available if preferred.",
++          "If you would like a rest stop on the way, or you are travelling with young children or older relatives, mention it when you request your quote so it can be agreed in advance.",
+         ],
+       },
+       {
+-        heading: "Tolls and highway fees",
++        heading: "Price and what your quotation covers",
+         paragraphs: [
+-          "There are no toll roads on this route or anywhere on Saudi Arabia's highway network. Your fixed transfer price is fully inclusive.",
++          "You receive a quotation for your specific journey before you travel. The confirmed quotation sets the price and shows what it covers — if your plans include extra stops, waiting time or a change of address, mention it when you request the quote so it can be reflected in the quotation.",
+         ],
+       },
+       {
+@@ -6010,7 +6020,7 @@ const baseRoutes: Route[] = [
+       {
+         heading: "A note for business travel",
+         paragraphs: [
+-          "Qassim's economy is built substantially around agriculture and livestock trade, and business travellers working with the region's farms, markets, or food-processing sector find the same fixed-price, reliable service valuable as on any other intercity route.",
++          "Qassim's economy is built substantially around agriculture and livestock trade, and business travellers working with the region's farms, markets, or food-processing sector book it the same way as any other transfer, with the price set in a quotation you confirm before you travel.",
+         ],
+       },
+       {
+@@ -6019,32 +6029,28 @@ const baseRoutes: Route[] = [
+           "Buraidah's camel market, Unaizah's historic old town, and the region's extensive farmland are the main draws for visitors. Travellers continuing further north toward Hail can do so as an extension of the same trip — see our <a href='/routes/riyadh-to-hail'>Riyadh to Hail transfer</a> for that longer journey.",
+         ],
+       },
+-      {
+-        heading: "Safety on the drive",
+-        paragraphs: [
+-          "At three and a half hours, this is a manageable single-stretch drive, and our drivers pace it comfortably with a rest stop available on request, applying the same fatigue-awareness standard as any of our longer intercity routes.",
+-        ],
+-      },
+       {
+         heading: "Booking your Riyadh to Qassim transfer",
+         paragraphs: [
+-          "Share your Riyadh pickup point, your destination in Buraidah, Unaizah, or elsewhere in Qassim, your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
++          "Share your Riyadh pickup point, your destination in Buraidah, Unaizah, or elsewhere in Qassim, your preferred time, and your group size and luggage. We reply with a quotation for a suitable vehicle, and the confirmed quotation sets the price. Support is available 24/7 and no payment is needed to receive a quote. If you also need the return journey, add its date in the message field. Request your quote on WhatsApp or through our <a href='/get-quote?pickup=Riyadh&dropoff=Qassim'>Riyadh to Qassim quote form</a>.",
+         ],
+       },
+     ],
+     faqs: [
+-      { question: "How far is Qassim from Riyadh, and how long does the drive take?", answer: "The distance is approximately 345 kilometres, and the drive takes about three and a half hours via Highway 65 north." },
+-      { question: "Is the price fixed for the whole journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, with no meter, no surge, and no toll charges." },
++      { question: "How long does the Riyadh to Qassim journey take?", answer: "It depends on your exact addresses in Riyadh and Qassim, traffic on the day and any rest stops you ask for. When you request a quote, share your preferred departure time and any time you need to arrive by, so the pickup time can be planned around it." },
++      { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check it includes anything you need, such as extra stops or waiting time." },
+       { question: "Can you drop me at the Buraidah camel market specifically?", answer: "Yes, we drop off anywhere in Buraidah, including the camel market area — just share the exact destination when booking." },
+       { question: "What's the best time to visit the camel market?", answer: "Trading activity is typically most active in the early morning, so an early departure from Riyadh or an overnight stay makes the most of a market visit." },
+       { question: "Can you also take me to Unaizah?", answer: "Yes, Unaizah's historic old town is a short distance from Buraidah and we cover drop-offs anywhere in the wider Qassim region." },
+-      { question: "Is this route suitable for a farm visit?", answer: "Yes, we regularly serve farm visits across the Qassim region — an SUV or minivan generally suits this kind of trip well given the extra space." },
+-      { question: "Are rest stops available on this drive?", answer: "Yes, on request, though most travellers find the three-and-a-half-hour drive comfortable in a single stretch." },
+-      { question: "Can I continue from Qassim to Hail?", answer: "Yes, this is a common extension — see our <a href='/routes/riyadh-to-hail'>Riyadh to Hail transfer</a> for that longer onward journey." },
+-      { question: "Is there a return Qassim to Riyadh transfer?", answer: "Yes, see our <a href='/routes/qassim-to-riyadh'>Qassim to Riyadh</a> page to book the return leg." },
++      { question: "Is this route suitable for a farm visit?", answer: "Yes. Drop-off at a farm address in the Qassim region can be requested — share the location when you book, and choose an SUV or Van in the quote form if you need extra space." },
++      { question: "Can we stop for a break on the way?", answer: "Ask for a rest stop when you request your quote, so it can be agreed in advance." },
++      { question: "Can I continue from Qassim to Hail?", answer: "Yes. The Riyadh to Hail transfer covers that longer journey north through Qassim." },
++      { question: "Is there a return Qassim to Riyadh transfer?", answer: "Yes. The Qassim to Riyadh transfer covers the return leg — you can add your return date in the message field when you request a quote." },
+       { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your destination in Qassim, preferred date and time, passenger count, and luggage amount." },
+-      { question: "Do you serve business travellers connected to the agriculture sector?", answer: "Yes, Qassim's economy is built substantially around agriculture and livestock trade, and we provide the same reliable, fixed-price service for business trips as for leisure visits." },
+-      { question: "Is the drive comfortable for children and elderly travellers?", answer: "Yes, at three and a half hours it's a manageable single stretch for most travellers, and we're happy to include a rest stop if helpful." },
++      { question: "Do you serve business travellers connected to the agriculture sector?", answer: "Yes. Business trips are booked the same way as any other transfer — share your pickup point, destination and timing, and the price is set in the quotation you confirm." },
++      { question: "Is this transfer suitable for children and older travellers?", answer: "Tell us about any needs when you request your quote — for example, a rest stop on the way. If you are travelling with young children, ask about child seats before you confirm." },
++      { question: "Which vehicle types can I request?", answer: "The quote form lets you choose Economy, Comfort, Business, SUV, Van or Minibus. The vehicle offered for your journey is confirmed in your quotation." },
++      { question: "Can you take me to Qassim airport?", answer: "Yes. Drop-off at Prince Naif bin Abdulaziz International Airport (Qassim) is available. Share your flight number and departure time when you request a quote so the pickup time in Riyadh can be planned around it, and check your flight status with your airline before you set off." },
+     ],
+     keywords: ["riyadh to qassim taxi", "riyadh to buraidah taxi", "riyadh to qassim transfer", "riyadh buraidah private car", "riyadh qassim camel market taxi"],
+   },
+@@ -6056,31 +6062,41 @@ const baseRoutes: Route[] = [
+     distance: "~345 km",
+     duration: "About 3 hours 30 min",
+     intro:
+-      "The Qassim to Riyadh taxi is a private highway transfer from Buraidah and the Qassim region south to the capital, popular with residents, farm and market visitors heading home, and business travellers connecting to Riyadh's airport.",
++      "The Qassim to Riyadh taxi is a private highway transfer from Buraidah and the Qassim region south to the capital, popular with residents, farm and market visitors heading home, and business travellers heading to Riyadh.",
+     about:
+-      "Our private Qassim to Riyadh transfer collects you from your home, hotel, or farm anywhere in Buraidah, Unaizah, or the wider region and drives you south on Highway 65 to your exact destination in Riyadh — one vehicle, one fixed price.",
++      "Our private Qassim to Riyadh transfer collects you from your home, hotel, or farm anywhere in Buraidah, Unaizah, or the wider region and drives you south to your exact destination in Riyadh — one vehicle for your whole group, priced in a quotation you confirm before you travel.",
+     notes: [
+-      "Door-to-door pickup anywhere in Qassim, including Buraidah and Unaizah",
+-      "Direct drop-off anywhere in Riyadh, including the airport",
+-      "Comfortable vehicles for the roughly three-and-a-half-hour drive",
+-      "Timed pickups available for onward Riyadh flight connections",
++      "Door-to-door pickup anywhere in Qassim, including Buraidah, Unaizah and Qassim's Prince Naif bin Abdulaziz International Airport",
++      "Direct drop-off at your address in Riyadh",
++      "Vehicle matched to your passenger and luggage count",
++      "Pickup time planned around your flight if you share its details",
+     ],
+     relatedCitySlugs: ["buraidah", "riyadh"],
++    richLayout: {
++      journeyFlow: [],
++      journeyFacts: [],
++      mapOrigin: "",
++      mapDestination: "",
++      mapNote: "",
++      pickupPoints: ["Home address", "Hotel", "Farm or other address", "Business location", "Qassim airport (Prince Naif bin Abdulaziz International)"],
++      dropoffPoints: ["Home address", "Hotel", "Business location"],
++    },
++    lastUpdated: "2026-10-18",
+     metaTitle: "Qassim to Riyadh Taxi – Private Transfer & Chauffeur",
+     metaDescription:
+-      "Get a private Qassim to Riyadh transfer (~345 km, about 3 hours 30 min) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
++      "Private transfer from Buraidah, Unaizah or anywhere in Qassim to Riyadh. Send pickup, passengers and luggage — your confirmed quotation sets the price.",
+     sections: [
+       {
+         heading: "Qassim to Riyadh: route overview and distance",
+         paragraphs: [
+-          "The drive from Qassim to Riyadh covers approximately 345 kilometres heading south on Highway 65, taking about three and a half hours in free-flowing traffic. Many travellers making this leg are heading home after a market or farm visit, or connecting onward from Riyadh by air.",
+-          "A private transfer collects you from your exact address in Qassim and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport.",
++          "The drive from Qassim to Riyadh heads south on the main Riyadh–Qassim highway. Your door-to-door time depends on your exact pickup and drop-off addresses, traffic on the day and any stops you ask for. Many travellers making this leg are heading home after a market or farm visit, or connecting onward from Riyadh by air.",
++          "A private transfer collects you from your exact address in Qassim and delivers you to your address in Riyadh.",
+         ],
+       },
+       {
+-        heading: "The fastest route: Highway 65 south",
++        heading: "The main route south",
+         paragraphs: [
+-          "This route runs the same Highway 65 corridor as the outbound leg, in reverse — a direct, well-maintained multi-lane highway used daily by both agricultural trade traffic and private transfers.",
++          "The usual road route is the main Riyadh–Qassim highway — the same corridor as the Riyadh to Qassim journey, in reverse.",
+         ],
+       },
+       {
+@@ -6090,21 +6106,21 @@ const baseRoutes: Route[] = [
+         ],
+       },
+       {
+-        heading: "Road conditions and driving comfort",
++        heading: "Rest stops and comfort",
+         paragraphs: [
+-          "Highway 65 is well-maintained throughout, with clear markings and regular rest facilities. The roughly three-and-a-half-hour duration is comfortable in a single stretch for most travellers.",
++          "If you would like a rest stop on the way, or you are travelling with young children or older relatives, mention it when you request your quote so it can be agreed in advance.",
+         ],
+       },
+       {
+-        heading: "Tolls and highway fees",
++        heading: "Price and what your quotation covers",
+         paragraphs: [
+-          "No toll roads apply on this route or anywhere in Saudi Arabia. Your fixed price is fully inclusive.",
++          "You receive a quotation for your specific journey before you travel. The confirmed quotation sets the price and shows what it covers — if your plans include extra stops, waiting time or a change of address, mention it when you request the quote so it can be reflected in the quotation.",
+         ],
+       },
+       {
+         heading: "Best time to travel this route",
+         paragraphs: [
+-          "If your trip connects to a Riyadh flight, we build in a sensible buffer for the drive plus airport processing, and track your booking so pickup adjusts if your schedule shifts. Otherwise, timing is flexible given the manageable distance.",
++          "If your trip connects to a flight from Riyadh, share the flight number and departure time when you request your quote. Whether a drop-off at King Khalid International Airport can be arranged depends on the airport's current operations and is confirmed in your quotation. Check your flight status with your airline before you set off. Otherwise, choose the departure time that suits you.",
+         ],
+       },
+       {
+@@ -6116,41 +6132,37 @@ const baseRoutes: Route[] = [
+       {
+         heading: "A note for business and airport-connection travel",
+         paragraphs: [
+-          "Business travellers connected to Qassim's agricultural and livestock trade sector making the trip to Riyadh, along with those connecting onward by air, benefit from the same fixed-price, tracked service standard across our intercity routes.",
++          "Business travellers connected to Qassim's agricultural and livestock trade sector making the trip to Riyadh, along with those connecting onward by air, book the same way: share your pickup point, timing and any flight details, and the price is set in a quotation you confirm before you travel.",
+         ],
+       },
+       {
+         heading: "Popular stops and onward connections",
+         paragraphs: [
+-          "Most transfers from Qassim begin in Buraidah or Unaizah and end at a Riyadh airport terminal or city address. Travellers whose journey started further north in Hail can extend the same trip — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route.",
+-        ],
+-      },
+-      {
+-        heading: "Safety on the drive",
+-        paragraphs: [
+-          "At three and a half hours, this is a manageable single-stretch drive, and our drivers pace it comfortably, with a rest stop available on request.",
++          "Most transfers from Qassim begin in Buraidah or Unaizah and end at a home, hotel or business address in Riyadh. Travellers whose journey started further north in Hail can extend the same trip — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route.",
+         ],
+       },
+       {
+         heading: "Booking your Qassim to Riyadh transfer",
+         paragraphs: [
+-          "Share your pickup point in Buraidah, Unaizah, or elsewhere in Qassim, your Riyadh destination or flight details, preferred time, and group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
++          "Share your pickup point in Buraidah, Unaizah, or elsewhere in Qassim, your Riyadh destination or flight details, preferred time, and group size and luggage. We reply with a quotation for a suitable vehicle, and the confirmed quotation sets the price. Support is available 24/7 and no payment is needed to receive a quote. If you also need the return journey, add its date in the message field. Request your quote on WhatsApp or through our <a href='/get-quote?pickup=Qassim&dropoff=Riyadh'>Qassim to Riyadh quote form</a>.",
+         ],
+       },
+     ],
+     faqs: [
+-      { question: "How far is Riyadh from Qassim, and how long does the drive take?", answer: "The distance is approximately 345 kilometres, and the drive takes about three and a half hours via Highway 65 south." },
+-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
+-      { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel and covers the complete journey with no meter, no surge, and no toll charges." },
++      { question: "How long does the Qassim to Riyadh journey take?", answer: "It depends on your exact addresses in Qassim and Riyadh, traffic on the day and any rest stops you ask for. If you need to reach Riyadh by a set time — for example, for a flight — share that time when you request a quote so the pickup can be planned around it." },
++      { question: "Can you drop me directly at Riyadh airport?", answer: "Drop-offs at King Khalid International Airport depend on the airport's current operations, so they are confirmed case by case. Share your flight number and departure time when you request a quote, and your quotation will confirm whether an airport drop-off can be arranged." },
++      { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check it includes anything you need, such as extra stops or waiting time." },
+       { question: "Where can I be picked up in Qassim?", answer: "Anywhere — a home, hotel, farm, or a location in Buraidah or Unaizah. Just share your exact pickup point when booking." },
+-      { question: "Can I bring farm produce or dates purchased in Qassim?", answer: "Yes, our vehicles have ample luggage space for purchases from the region — let us know if you have an unusually large amount when booking." },
+-      { question: "Are rest stops available?", answer: "Yes, on request, though most travellers complete the roughly three-and-a-half-hour drive comfortably in one stretch." },
+-      { question: "Is there a return Riyadh to Qassim transfer?", answer: "Yes, see our <a href='/routes/riyadh-to-qassim'>Riyadh to Qassim</a> page to book that direction." },
++      { question: "Can I bring farm produce or dates purchased in Qassim?", answer: "Yes. Enter your luggage in the quote form and mention any large items or produce in the message, so a vehicle with enough space can be offered in your quotation." },
++      { question: "Can we stop for a break on the way?", answer: "Ask for a rest stop when you request your quote, so it can be agreed in advance." },
++      { question: "Is there a return Riyadh to Qassim transfer?", answer: "Yes. The Riyadh to Qassim transfer covers that direction — you can add your return date in the message field when you request a quote." },
+       { question: "What information do you need when booking?", answer: "Your pickup point in Qassim, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage amount." },
+-      { question: "Do you serve business travel connected to agriculture and livestock trade?", answer: "Yes, we provide the same fixed-price, tracked service for business travellers in Qassim's agricultural sector as for leisure visitors." },
+-      { question: "Is this route suitable for elderly travellers?", answer: "Yes, at three and a half hours it's a manageable drive for most travellers, and we're happy to include a rest stop if helpful." },
+-      { question: "Can I connect this trip from Hail?", answer: "Yes, travellers coming from further north can extend the same journey — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route." },
+-      { question: "Is night travel on this route routine?", answer: "Yes, our drivers cover this route at all hours as a matter of routine." },
++      { question: "Do you serve business travel connected to agriculture and livestock trade?", answer: "Yes. Business trips are booked the same way as any other transfer — share your pickup point, destination and timing, and the price is set in the quotation you confirm." },
++      { question: "Is this transfer suitable for older travellers and children?", answer: "Tell us about any needs when you request your quote — for example, a rest stop on the way. If you are travelling with young children, ask about child seats before you confirm." },
++      { question: "Can I connect this trip from Hail?", answer: "Yes. Travellers starting further north can use the Hail to Riyadh transfer, which covers that longer journey through Qassim." },
++      { question: "Can I travel at night?", answer: "Yes, you can request a night-time departure — share your preferred pickup time when you request a quote. Support is available 24/7." },
++      { question: "Which vehicle types can I request?", answer: "The quote form lets you choose Economy, Comfort, Business, SUV, Van or Minibus. The vehicle offered for your journey is confirmed in your quotation." },
++      { question: "Can you pick me up at Qassim airport?", answer: "Yes. Pickup at Prince Naif bin Abdulaziz International Airport (Qassim) is available. Share your flight number and expected arrival time when you request a quote; the pickup time and meeting arrangements are confirmed in your quotation." },
+     ],
+     keywords: ["qassim to riyadh taxi", "buraidah to riyadh taxi", "qassim to riyadh transfer", "buraidah riyadh private car", "qassim to riyadh airport taxi"],
+   },
+diff --git a/data/translations/ar.ts b/data/translations/ar.ts
+index 62a6137..d869c0a 100644
+--- a/data/translations/ar.ts
++++ b/data/translations/ar.ts
+@@ -7452,8 +7452,8 @@ function buildArPages(): ArPage[] {
+     slug: "نقل-من-الرياض-الى-القصيم",
+     type: "route",
+     enPath: "/routes/riyadh-to-qassim",
+-    metaTitle: "تاكسي من الرياض إلى القصيم (بريدة) | نقل خاص (~3 ساعات و30 دقيقة)",
+-    metaDescription: "احجز تاكسي خاص من الرياض إلى القصيم وبريدة (~345 كم). سعر ثابت، من الباب إلى الباب، بدون رسوم طرق.",
++    metaTitle: "تاكسي من الرياض إلى القصيم وبريدة | نقل خاص من الباب إلى الباب",
++    metaDescription: "نقل خاص من عنوانك في الرياض إلى بريدة أو عنيزة أو أي مكان في القصيم. أرسل نقطة الانطلاق وعدد الركاب والأمتعة، ويحدد عرض السعر المؤكد قيمة رحلتك.",
+     h1: "تاكسي خاص من الرياض إلى القصيم",
+     intro: "النقل الخاص من الرياض إلى القصيم رحلة عبر الطريق السريع شمالًا إلى بريدة ومنطقة القصيم، القلب الزراعي للمملكة، خيار شائع للعائلات ورجال الأعمال وزوار أسواق الإبل الشهيرة في المنطقة.",
+     distance: "~345 كم",
+@@ -7462,47 +7462,67 @@ function buildArPages(): ArPage[] {
+       {
+         heading: "نظرة سريعة",
+         paragraphs: [
+-          "نأخذ طريق 65 شمالًا إلى بريدة ومنطقة القصيم الأوسع، لنوصلك من الباب إلى الباب لمنزل أو فندق أو مزرعة — مركبة واحدة وسعر ثابت دون تغييرات في الطريق.",
++          "ننقلك من عنوانك في الرياض شمالًا إلى بريدة أو عنيزة أو أي مكان في منطقة القصيم، من الباب إلى الباب حتى المنزل أو الفندق أو المزرعة أو مطار الأمير نايف بن عبدالعزيز الدولي بالقصيم — في مركبة واحدة لمجموعتك كاملة، وبسعر يحدده عرض السعر الذي تؤكده قبل السفر.",
++        ],
++      },
++      {
++        heading: "كيف يُحدَّد السعر",
++        paragraphs: [
++          "يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. إن كانت خطتك تتضمن توقفًا إضافيًا أو وقت انتظار أو تغييرًا في العنوان، فاذكر ذلك عند طلب العرض ليُضمَّن فيه.",
++        ],
++      },
++      {
++        heading: "المعلومات المطلوبة لطلب عرض السعر",
++        paragraphs: [
++          "أرسل نقطة الانطلاق في الرياض، ووجهتك في القصيم، وتاريخ الرحلة ووقتها، وعدد الركاب والحقائب، ونوع المركبة المفضّل. وإن كنت تخطط للعودة، فاذكر موعد رحلة العودة في خانة الرسالة.",
++        ],
++      },
++      {
++        heading: "الاستراحة والسفر مع العائلة",
++        paragraphs: [
++          "إن رغبت في استراحة على الطريق، أو كان معك أطفال صغار أو كبار في السن، فاذكر ذلك عند طلب عرض السعر ليُتفق عليه مسبقًا.",
+         ],
+       },
+     ],
+     faqs: [
+-      { question: "كم تبلغ المسافة بين الرياض والقصيم، وكم تستغرق الرحلة؟", answer: "المسافة تقريبًا 345 كم، وتستغرق الرحلة حوالي 3 ساعات ونصف عبر طريق 65 شمالًا." },
+-      { question: "هل السعر ثابت طوال الرحلة؟", answer: "نعم، تُتفق الأجرة قبل السفر وتغطي الرحلة الكاملة من الباب إلى الباب، دون عداد أو تسعير ذروة أو رسوم طرق." },
++      { question: "كم تستغرق الرحلة من الرياض إلى القصيم؟", answer: "تعتمد المدة على عنوانك في الرياض ووجهتك في القصيم وحركة المرور وأي استراحة تطلبها. اذكر وقت الانطلاق المفضّل وأي موعد وصول تحتاجه عند طلب عرض السعر، ليُخطَّط وقت الاستلام على أساسه." },
++      { question: "كيف يُحدَّد سعر الرحلة؟", answer: "يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. راجعه للتأكد من تضمين ما تحتاجه، مثل التوقفات الإضافية أو وقت الانتظار." },
+       { question: "هل يمكن التنزيل عند سوق الإبل في بريدة تحديدًا؟", answer: "نعم، ننزلك في أي مكان ببريدة، متضمنًا منطقة سوق الإبل — فقط شارك الوجهة الدقيقة عند الحجز." },
+       { question: "ما أفضل وقت لزيارة سوق الإبل؟", answer: "النشاط التجاري عادة أكثر حيوية في الصباح الباكر، فانطلاق مبكر من الرياض أو مبيت ليلة سابقة يحقق أفضل استفادة من زيارة السوق." },
+       { question: "هل يمكن أيضًا أخذي إلى عنيزة؟", answer: "نعم، بلدة عنيزة التاريخية تبعد مسافة قصيرة عن بريدة، ونغطي التنزيل في أي مكان بمنطقة القصيم الأوسع." },
+-      { question: "هل هذا الطريق مناسب لزيارة مزرعة؟", answer: "نعم، نخدم زيارات المزارع بانتظام عبر منطقة القصيم — SUV أو حافلة صغيرة تناسب عادة هذا النوع من الرحلات جيدًا نظرًا للمساحة الإضافية." },
+-      { question: "هل تتوفر توقفات راحة في هذه الرحلة؟", answer: "نعم عند الطلب، رغم أن معظم المسافرين يجدون رحلة الثلاث ساعات ونصف مريحة في جلسة واحدة." },
+-      { question: "هل يمكن المتابعة من القصيم إلى حائل؟", answer: "نعم، هذا امتداد شائع — راجع صفحة نقل من الرياض إلى حائل لتلك الرحلة الأطول." },
+-      { question: "هل تتوفر رحلة عودة من القصيم إلى الرياض؟", answer: "نعم، راجع صفحة نقل من القصيم إلى الرياض لحجز رحلة العودة." },
++      { question: "هل هذا الطريق مناسب لزيارة مزرعة؟", answer: "نعم، يمكن طلب التنزيل في مزرعة داخل منطقة القصيم — أرسل الموقع عند الحجز، واختر SUV أو Van في نموذج عرض السعر إن احتجت مساحة إضافية." },
++      { question: "هل يمكن التوقف للاستراحة في الطريق؟", answer: "اطلب الاستراحة عند طلب عرض السعر ليُتفق عليها مسبقًا." },
++      { question: "هل يمكن المتابعة من القصيم إلى حائل؟", answer: "نعم، تغطي صفحة النقل من الرياض إلى حائل هذه الرحلة الأطول شمالًا مرورًا بالقصيم." },
++      { question: "هل تتوفر رحلة عودة من القصيم إلى الرياض؟", answer: "نعم، تغطي صفحة النقل من القصيم إلى الرياض رحلة العودة، ويمكنك ذكر موعد العودة في خانة الرسالة عند طلب عرض السعر." },
+       { question: "ما المعلومات المطلوبة عند الحجز؟", answer: "نقطة استلامك في الرياض، وجهتك في القصيم، التاريخ والوقت المفضلين، عدد الركاب، وكمية الأمتعة." },
+-      { question: "هل تخدمون رجال الأعمال المرتبطين بقطاع الزراعة؟", answer: "نعم، يقوم اقتصاد القصيم بشكل كبير على الزراعة وتجارة المواشي، ونقدم نفس الخدمة الموثوقة بسعر ثابت لرحلات العمل كما لزيارات الترفيه." },
+-      { question: "هل الرحلة مريحة للأطفال وكبار السن؟", answer: "نعم، بمدة ثلاث ساعات ونصف تقريبًا، هي رحلة يمكن التعامل معها لمعظم المسافرين، ويسعدنا إدراج استراحة إن كان ذلك مفيدًا." },
++      { question: "هل تخدمون رجال الأعمال المرتبطين بقطاع الزراعة؟", answer: "نعم، تُحجز رحلات العمل بالطريقة نفسها: أرسل نقطة الانطلاق والوجهة والتوقيت، ويحدد عرض السعر المؤكد قيمة الرحلة." },
++      { question: "هل تناسب الرحلة الأطفال وكبار السن؟", answer: "اذكر احتياجاتك عند طلب عرض السعر، مثل استراحة على الطريق. وإن كنت تسافر مع أطفال صغار، فاسأل عن مقاعد الأطفال قبل تأكيد الحجز." },
++      { question: "ما أنواع المركبات التي يمكن طلبها؟", answer: "يتيح نموذج طلب عرض السعر اختيار Economy أو Comfort أو Business أو SUV أو Van أو Minibus، وتُؤكَّد المركبة المقدَّمة لرحلتك في عرض السعر." },
++      { question: "هل يمكن توصيلي إلى مطار القصيم؟", answer: "نعم، يتوفر التوصيل إلى مطار الأمير نايف بن عبدالعزيز الدولي بالقصيم. أرسل رقم رحلتك وموعد إقلاعها عند طلب عرض السعر ليُحدَّد وقت الاستلام في الرياض على أساسه، وتحقّق من حالة رحلتك لدى شركة الطيران قبل الانطلاق." },
+     ],
+     breadcrumbs: [
+       { name: "الرئيسية", path: "/ar" },
+       { name: "النقل بين المدن", path: "/ar/النقل-بين-المدن" },
+       { name: "الرياض إلى القصيم", path: "/ar/نقل-من-الرياض-الى-القصيم" },
+     ],
+-    contentHtml: `<p>النقل الخاص من الرياض إلى القصيم رحلة عبر الطريق السريع شمالًا إلى بريدة ومنطقة القصيم الأوسع، القلب الزراعي للمملكة، خيار شائع للعائلات ورجال الأعمال وزوار أسواق الإبل الشهيرة في المنطقة. نأخذ طريق 65 شمالًا لنوصلك من الباب إلى الباب لمنزل أو فندق أو مزرعة — مركبة واحدة وسعر ثابت دون أي تغييرات في الطريق.</p>
++    contentHtml: `<p>النقل الخاص من الرياض إلى القصيم رحلة عبر الطريق السريع شمالًا إلى بريدة ومنطقة القصيم الأوسع، القلب الزراعي للمملكة، خيار شائع للعائلات ورجال الأعمال وزوار أسواق الإبل الشهيرة في المنطقة. نوصلك من الباب إلى الباب لمنزل أو فندق أو مزرعة — في مركبة واحدة، وبسعر يحدده عرض السعر الذي تؤكده قبل السفر.</p>
+ 
+ <h2 id="overview">نظرة عامة على الطريق والمسافة</h2>
+-<p>تبلغ المسافة من الرياض إلى القصيم، متمركزة حول مدينة بريدة، حوالي 345 كيلومترًا شمالًا على طريق 65. في حركة مرور طبيعية، تستغرق الرحلة حوالي ثلاث ساعات ونصف، ما يجعلها من أكثر طرق السفر الطويل من العاصمة قابلية للتعامل.</p>
++<p>تتجه الرحلة من الرياض شمالًا إلى القصيم، ومركزها مدينة بريدة، عبر طريق الرياض–القصيم الرئيسي. وتعتمد المدة الفعلية على عنوانَي الانطلاق والوصول وحركة المرور وأي استراحة تطلبها.</p>
+ <p>النقل الخاص يأخذك من الباب إلى الباب، سواء كانت وجهتك منزلًا أو فندقًا في بريدة، بلدة عنيزة التاريخية القريبة، أو مزرعة في مكان آخر بالمنطقة — دون حاجة لترتيب نقل محلي منفصل بمجرد الوصول.</p>
+ 
+-<h2 id="fastest-route">أسرع طريق: طريق 65 شمالًا</h2>
+-<p>طريق 65 هو الطريق المباشر والمُصان جيدًا شمال الرياض عبر منطقة القصيم، وهو نفس الطريق الذي يستمر شمالًا أبعد نحو حائل. طريق متعدد المسارات ومقسّم لمعظم طوله، مُعلَّم بوضوح، ويُستخدم يوميًا من قِبل حركة تجارية تخدم تجارة المنطقة الزراعية والنقل الخاص.</p>
++<h2 id="fastest-route">الطريق الرئيسي شمالًا</h2>
++<p>يمر الطريق المعتاد شمالًا من الرياض عبر طريق الرياض–القصيم الرئيسي، وهو الممر نفسه الذي يستمر شمالًا نحو حائل.</p>
+ 
+ <h2 id="scenic">معالم طبيعية على طول الطريق</h2>
+ <p>يتغيّر المشهد بوضوح كلما اتجهت شمالًا — من صحراء الرياض المحيطة إلى الأراضي الزراعية الأكثر خضرة التي تمنح القصيم سمعتها كالقلب الزراعي للمملكة. حقول الري المحوري الواسعة تصبح مرئية قبل الوصول لبريدة نفسها بوقت طويل، منظر مختلف فعليًا عن ممرات صحراء المنطقة الشرقية.</p>
+-<p>تشتهر القصيم وطنيًا بأسواق الإبل — سوق بريدة من أكبر أسواق المواشي في العالم — وبإنتاج التمور والقمح. عنيزة، على مسافة قصيرة من بريدة، تقدم بلدة قديمة محفوظة جيدًا تستحق الزيارة للمسافرين الذين لديهم وقت إضافي.</p>
++<p>تشتهر القصيم وطنيًا بأسواق الإبل وبإنتاج التمور والقمح. عنيزة، على مسافة قصيرة من بريدة، تقدم بلدة قديمة محفوظة جيدًا تستحق الزيارة للمسافرين الذين لديهم وقت إضافي.</p>
+ 
+ <h2 id="road-conditions">حالة الطريق وراحة القيادة</h2>
+-<p>طريق 65 في حالة جيدة طوال الطريق، بعلامات واضحة ومرافق راحة منتظمة. كما في أي قيادة طريق سريع طويلة، كاميرات السرعة موجودة ومُطبَّقة، والمدة التي تقارب ثلاث ساعات ونصف مريحة في جلسة واحدة لمعظم المسافرين، مع استراحة متاحة إن فُضّلت.</p>
++<p>إن رغبت في استراحة على الطريق، أو كان معك أطفال صغار أو كبار في السن، فاذكر ذلك عند طلب عرض السعر ليُتفق عليه مسبقًا.</p>
+ 
+-<h2 id="tolls">رسوم الطرق</h2>
+-<p>لا توجد رسوم طرق على هذا المسار أو في أي مكان على شبكة الطرق السريعة السعودية. سعر نقلك الثابت شامل بالكامل.</p>
++<h2 id="tolls">كيف يُحدَّد السعر</h2>
++<p>يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. إن كانت خطتك تتضمن توقفًا إضافيًا أو وقت انتظار أو تغييرًا في العنوان، فاذكر ذلك عند طلب العرض ليُضمَّن فيه.</p>
+ 
+ <h2 id="best-time">أفضل وقت للسفر على هذا الطريق</h2>
+ <p>إن كانت زيارتك منسّقة حول سوق الإبل ببريدة، لاحظ أن النشاط التجاري عادة أكثر حيوية في الصباح الباكر، فانطلاق مبكر من الرياض أو مبيت ليلة سابقة يحقق أفضل استفادة من الزيارة. خلاف ذلك، تنطبق نصيحة توقيت الصيف والشتاء العامة كما في أي طريق سعودي سريع — الانطلاق الصباحي أو المسائي يتجنب حرارة الصيف القصوى خلال أي توقف راحة.</p>
+@@ -7511,16 +7531,13 @@ function buildArPages(): ArPage[] {
+ <p>سيارة سيدان مريحة أو SUV تناسب معظم المسافرين، بينما العائلات الزائرة لأقارب في مزرعة، أو المجموعات الجائلة بين سوق الإبل والمواقع التاريخية معًا، غالبًا تفضل SUV أو حافلة صغيرة للمساحة والمرونة الإضافية بمجرد الوصول للمنطقة.</p>
+ 
+ <h2 id="business">ملاحظة لسفر الأعمال</h2>
+-<p>يقوم اقتصاد القصيم بشكل كبير على الزراعة وتجارة المواشي، ورجال الأعمال المتعاملون مع مزارع المنطقة وأسواقها وقطاع تصنيع الغذاء يجدون نفس الخدمة الموثوقة بسعر ثابت قيّمة كما في أي طريق آخر بين المدن.</p>
++<p>يقوم اقتصاد القصيم بشكل كبير على الزراعة وتجارة المواشي، ورجال الأعمال المتعاملون مع مزارع المنطقة وأسواقها وقطاع تصنيع الغذاء يحجزون الرحلة بالطريقة نفسها، ويحدد عرض السعر المؤكد قيمتها.</p>
+ 
+ <h2 id="stops">توقفات شائعة واتصالات لاحقة</h2>
+ <p>سوق الإبل ببريدة، بلدة عنيزة التاريخية القديمة، وأراضي المنطقة الزراعية الواسعة هي أهم ما يجذب الزوار. المسافرون المتابعون شمالًا نحو حائل يمكنهم فعل ذلك كامتداد للرحلة نفسها — راجع نقلنا من الرياض إلى حائل لتلك الرحلة الأطول.</p>
+ 
+-<h2 id="safety">السلامة في الرحلة</h2>
+-<p>بمدة ثلاث ساعات ونصف، هذه رحلة يمكن التعامل معها في جلسة واحدة، وسائقونا يأخذونها بوتيرة مريحة مع استراحة متاحة عند الطلب، مطبّقين نفس معيار الوعي بالإرهاق كأي من طرقنا الأطول بين المدن.</p>
+-
+ <h2 id="booking">حجز نقلك من الرياض إلى القصيم</h2>
+-<p>شارك نقطة استلامك في الرياض، وجهتك في بريدة أو عنيزة أو أي مكان آخر بالقصيم، وقتك المفضل، وعدد ركابك وأمتعتك. نؤكد مركبة مناسبة وسعرًا ثابتًا قبل سفرك، ولا يلزم أي دفع لمجرد معرفة السعر. اطلب عرض سعر ثابت عبر واتساب أو من خلال نموذج طلب عرض السعر.</p>
++<p>شارك نقطة استلامك في الرياض، وجهتك في بريدة أو عنيزة أو أي مكان آخر بالقصيم، وقتك المفضل، وعدد ركابك وأمتعتك. نرد بعرض سعر لمركبة مناسبة، ويحدد عرض السعر المؤكد قيمة الرحلة، ولا يلزم أي دفع للحصول على العرض. اطلب عرض السعر عبر واتساب أو من خلال نموذج طلب عرض السعر.</p>
+ 
+ <h2 id="faq">الأسئلة الشائعة</h2>
+ <p>الأسئلة المحددة التي يطرحها المسافرون عند التخطيط الفعلي لرحلة من الرياض إلى القصيم.</p>`,
+@@ -7531,74 +7548,91 @@ function buildArPages(): ArPage[] {
+     slug: "نقل-من-القصيم-الى-الرياض",
+     type: "route",
+     enPath: "/routes/qassim-to-riyadh",
+-    metaTitle: "تاكسي من القصيم (بريدة) إلى الرياض | نقل خاص (~3 ساعات و30 دقيقة)",
+-    metaDescription: "احجز تاكسي خاص من القصيم وبريدة إلى الرياض (~345 كم). سعر ثابت، توصيل للمطار، بدون رسوم طرق.",
++    metaTitle: "تاكسي من القصيم وبريدة إلى الرياض | نقل خاص من الباب إلى الباب",
++    metaDescription: "نقل خاص من بريدة أو عنيزة أو أي مكان في القصيم إلى عنوانك في الرياض. أرسل نقطة الانطلاق وعدد الركاب والأمتعة، ويحدد عرض السعر المؤكد قيمة رحلتك.",
+     h1: "تاكسي خاص من القصيم إلى الرياض",
+-    intro: "النقل الخاص من القصيم إلى الرياض رحلة عبر الطريق السريع من بريدة ومنطقة القصيم جنوبًا إلى العاصمة، خيار شائع للمقيمين وزوار الأسواق والمزارع العائدين وضيوف الأعمال المتصلين بمطار الرياض.",
++    intro: "النقل الخاص من القصيم إلى الرياض رحلة برية من بريدة ومنطقة القصيم جنوبًا إلى العاصمة، يختارها المقيمون، والعائدون من زيارة الأسواق والمزارع، ورجال الأعمال المتجهون إلى الرياض.",
+     distance: "~345 كم",
+     duration: "حوالي 3 ساعات و30 دقيقة",
+     sections: [
+       {
+         heading: "نظرة سريعة",
+         paragraphs: [
+-          "نستلمك من منزلك أو فندقك أو مزرعتك في أي مكان ببريدة أو عنيزة أو المنطقة الأوسع وننقلك جنوبًا على طريق 65 إلى وجهتك الدقيقة في الرياض — مركبة واحدة وسعر ثابت واحد.",
++          "نستلمك من منزلك أو فندقك أو مزرعتك في بريدة أو عنيزة أو أي مكان في منطقة القصيم، أو من مطار الأمير نايف بن عبدالعزيز الدولي بالقصيم، وننقلك جنوبًا إلى وجهتك في الرياض — في مركبة واحدة لمجموعتك كاملة، وبسعر يحدده عرض السعر الذي تؤكده قبل السفر.",
++        ],
++      },
++      {
++        heading: "كيف يُحدَّد السعر",
++        paragraphs: [
++          "يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. إن كانت خطتك تتضمن توقفًا إضافيًا أو وقت انتظار أو تغييرًا في العنوان، فاذكر ذلك عند طلب العرض ليُضمَّن فيه.",
++        ],
++      },
++      {
++        heading: "المعلومات المطلوبة لطلب عرض السعر",
++        paragraphs: [
++          "أرسل نقطة الانطلاق في القصيم، ووجهتك في الرياض، وتاريخ الرحلة ووقتها، وعدد الركاب والحقائب، ونوع المركبة المفضّل. وإن كانت لديك رحلة طيران من الرياض، فأضف رقم الرحلة وموعدها.",
++        ],
++      },
++      {
++        heading: "إذا كانت رحلتك متصلة برحلة طيران",
++        paragraphs: [
++          "أرسل رقم رحلتك وموعد إقلاعها عند طلب عرض السعر. ويعتمد التوصيل إلى مطار الملك خالد الدولي على وضع تشغيل المطار حاليًا، ويُؤكَّد في عرض السعر. وتحقّق من حالة رحلتك لدى شركة الطيران قبل الانطلاق.",
+         ],
+       },
+     ],
+     faqs: [
+-      { question: "كم تبلغ المسافة من القصيم إلى الرياض، وكم تستغرق الرحلة؟", answer: "المسافة تقريبًا 345 كم، وتستغرق الرحلة حوالي 3 ساعات ونصف عبر طريق 65 جنوبًا." },
+-      { question: "هل يمكن التنزيل مباشرة في مطار الرياض؟", answer: "نعم، وإن شاركت تفاصيل رحلتك، نتابع موعد مغادرتك ونعدّل وقت الاستلام تلقائيًا إن تغيّر أي شيء." },
+-      { question: "هل الأجرة ثابتة بغض النظر عن حركة المرور؟", answer: "نعم، يُتفق على السعر قبل السفر ويغطي الرحلة الكاملة دون عداد أو تسعير ذروة أو رسوم طرق." },
++      { question: "كم تستغرق الرحلة من القصيم إلى الرياض؟", answer: "تعتمد المدة على عنوانك في القصيم ووجهتك في الرياض وحركة المرور وأي استراحة تطلبها. وإن كنت تحتاج الوصول إلى الرياض في موعد محدد، كرحلة طيران مثلًا، فاذكره عند طلب عرض السعر ليُخطَّط وقت الاستلام على أساسه." },
++      { question: "هل يمكن التنزيل مباشرة في مطار الرياض؟", answer: "يعتمد التوصيل إلى مطار الملك خالد الدولي على وضع تشغيل المطار حاليًا، لذا يُؤكَّد لكل رحلة على حدة. أرسل رقم رحلتك وموعد إقلاعها عند طلب عرض السعر، وسيوضح عرض السعر إن كان التوصيل إلى المطار ممكنًا." },
++      { question: "كيف يُحدَّد سعر الرحلة؟", answer: "يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. راجعه للتأكد من تضمين ما تحتاجه، مثل التوقفات الإضافية أو وقت الانتظار." },
+       { question: "أين يمكن استلامي في القصيم؟", answer: "في أي مكان — منزل، فندق، مزرعة، أو موقع في بريدة أو عنيزة. فقط شارك نقطة استلامك الدقيقة عند الحجز." },
+-      { question: "هل يمكن إحضار منتجات مزرعية أو تمور اشتريتها في القصيم؟", answer: "نعم، مركباتنا توفر مساحة أمتعة كافية للمشتريات من المنطقة — أخبرنا إن كانت كمية كبيرة بشكل غير معتاد عند الحجز." },
+-      { question: "هل تتوفر توقفات راحة؟", answer: "نعم عند الطلب، رغم أن معظم المسافرين يكملون رحلة الثلاث ساعات ونصف براحة في جلسة واحدة." },
+-      { question: "هل تتوفر رحلة عودة من الرياض إلى القصيم؟", answer: "نعم، راجع صفحة نقل من الرياض إلى القصيم لحجز ذلك الاتجاه." },
++      { question: "هل يمكن إحضار منتجات مزرعية أو تمور اشتريتها في القصيم؟", answer: "نعم، أدخل عدد الحقائب في نموذج عرض السعر، واذكر في خانة الرسالة أي أغراض كبيرة أو منتجات زراعية، ليُقترح في عرض السعر مركبة بمساحة كافية." },
++      { question: "هل يمكن التوقف للاستراحة في الطريق؟", answer: "اطلب الاستراحة عند طلب عرض السعر ليُتفق عليها مسبقًا." },
++      { question: "هل تتوفر رحلة عودة من الرياض إلى القصيم؟", answer: "نعم، تغطي صفحة النقل من الرياض إلى القصيم هذا الاتجاه، ويمكنك ذكر موعد العودة في خانة الرسالة عند طلب عرض السعر." },
+       { question: "ما المعلومات المطلوبة عند الحجز؟", answer: "نقطة استلامك في القصيم، وجهتك في الرياض أو تفاصيل رحلتك، التاريخ والوقت المفضلين، عدد الركاب، وكمية الأمتعة." },
+-      { question: "هل تخدمون سفر الأعمال المرتبط بتجارة الزراعة والمواشي؟", answer: "نعم، نقدم نفس الخدمة الموثوقة بسعر ثابت لرجال الأعمال في قطاع القصيم الزراعي كما لزوار الترفيه." },
+-      { question: "هل هذا الطريق مناسب لكبار السن؟", answer: "نعم، بمدة ثلاث ساعات ونصف، هي رحلة يمكن التعامل معها لمعظم المسافرين، ويسعدنا إدراج استراحة إن كان ذلك مفيدًا." },
+-      { question: "هل يمكن ربط هذه الرحلة من حائل؟", answer: "نعم، المسافرون القادمون من أبعد شمالًا يمكنهم تمديد الرحلة نفسها — راجع نقلنا من حائل إلى الرياض لتلك الرحلة الأطول." },
+-      { question: "هل السفر الليلي على هذا الطريق روتيني؟", answer: "نعم، الطريق السريع مقسّم ومتعدد المسارات، والانطلاق ليلًا ممكن — أخبرنا بوقت الانطلاق المفضل عند الحجز." },
++      { question: "هل تخدمون سفر الأعمال المرتبط بتجارة الزراعة والمواشي؟", answer: "نعم، تُحجز رحلات العمل بالطريقة نفسها: أرسل نقطة الانطلاق والوجهة والتوقيت، ويحدد عرض السعر المؤكد قيمة الرحلة." },
++      { question: "هل تناسب الرحلة كبار السن والأطفال؟", answer: "اذكر احتياجاتك عند طلب عرض السعر، مثل استراحة على الطريق. وإن كنت تسافر مع أطفال صغار، فاسأل عن مقاعد الأطفال قبل تأكيد الحجز." },
++      { question: "هل يمكن ربط هذه الرحلة من حائل؟", answer: "نعم، تغطي صفحة النقل من حائل إلى الرياض هذه الرحلة الأطول مرورًا بالقصيم." },
++      { question: "هل يمكن السفر ليلًا؟", answer: "نعم، يمكنك طلب الانطلاق ليلًا — اذكر وقت الاستلام المفضّل عند طلب عرض السعر. خدمة العملاء متاحة على مدار الساعة." },
++      { question: "ما أنواع المركبات التي يمكن طلبها؟", answer: "يتيح نموذج طلب عرض السعر اختيار Economy أو Comfort أو Business أو SUV أو Van أو Minibus، وتُؤكَّد المركبة المقدَّمة لرحلتك في عرض السعر." },
++      { question: "هل يمكن استلامي من مطار القصيم؟", answer: "نعم، يتوفر الاستلام من مطار الأمير نايف بن عبدالعزيز الدولي بالقصيم. أرسل رقم رحلتك وموعد وصولها المتوقع عند طلب عرض السعر، ويُؤكَّد وقت الاستلام وترتيبات اللقاء في عرض السعر." },
+     ],
+     breadcrumbs: [
+       { name: "الرئيسية", path: "/ar" },
+       { name: "النقل بين المدن", path: "/ar/النقل-بين-المدن" },
+       { name: "القصيم إلى الرياض", path: "/ar/نقل-من-القصيم-الى-الرياض" },
+     ],
+-    contentHtml: `<p>النقل الخاص من القصيم إلى الرياض رحلة عبر الطريق السريع من بريدة ومنطقة القصيم جنوبًا إلى العاصمة، خيار شائع للمقيمين وزوار الأسواق والمزارع العائدين وضيوف الأعمال المتصلين بمطار الرياض. نستلمك من منزلك أو فندقك أو مزرعتك في أي مكان ببريدة أو عنيزة أو المنطقة الأوسع وننقلك جنوبًا على طريق 65 إلى وجهتك الدقيقة في الرياض — مركبة واحدة وسعر ثابت واحد.</p>
++    contentHtml: `<p>النقل الخاص من القصيم إلى الرياض رحلة برية من بريدة ومنطقة القصيم جنوبًا إلى العاصمة، يختارها المقيمون، والعائدون من زيارة الأسواق والمزارع، ورجال الأعمال المتجهون إلى الرياض. نستلمك من منزلك أو فندقك أو مزرعتك في أي مكان ببريدة أو عنيزة أو المنطقة الأوسع وننقلك جنوبًا إلى وجهتك في الرياض — في مركبة واحدة، وبسعر يحدده عرض السعر الذي تؤكده قبل السفر.</p>
+ 
+ <h2 id="overview">نظرة عامة على الطريق والمسافة</h2>
+-<p>تبلغ المسافة من القصيم إلى الرياض حوالي 345 كيلومترًا جنوبًا على طريق 65، وتستغرق حوالي ثلاث ساعات ونصف في حركة مرور طبيعية. كثير من المسافرين في هذا الاتجاه عائدون إلى منازلهم بعد زيارة سوق أو مزرعة، أو متصلون لاحقًا جوًا من الرياض.</p>
+-<p>النقل الخاص يستلمك من عنوانك الدقيق في القصيم ويوصلك بالضبط حيث تحتاج في الرياض، متضمنًا توصيلة مباشرة لمطار الملك خالد الدولي.</p>
++<p>تتجه الرحلة من القصيم جنوبًا إلى الرياض عبر طريق الرياض–القصيم الرئيسي، وتعتمد المدة الفعلية على عنوانَي الانطلاق والوصول وحركة المرور وأي استراحة تطلبها. كثير من المسافرين في هذا الاتجاه عائدون إلى منازلهم بعد زيارة سوق أو مزرعة، أو متصلون لاحقًا جوًا من الرياض.</p>
++<p>النقل الخاص يستلمك من عنوانك في القصيم، أو من مطار الأمير نايف بن عبدالعزيز الدولي بالقصيم، ويوصلك إلى عنوانك في الرياض.</p>
+ 
+-<h2 id="fastest-route">أسرع طريق: طريق 65 جنوبًا</h2>
+-<p>يسير هذا المسار على ممر طريق 65 نفسه كرحلة الذهاب، معكوسًا — طريق سريع مباشر ومُصان جيدًا يُستخدم يوميًا من قِبل حركة التجارة الزراعية والنقل الخاص.</p>
++<h2 id="fastest-route">الطريق الرئيسي جنوبًا</h2>
++<p>الطريق المعتاد هو طريق الرياض–القصيم الرئيسي، وهو الممر نفسه لرحلة الذهاب ولكن في الاتجاه المعاكس.</p>
+ 
+ <h2 id="scenic">معالم طبيعية على طول الطريق</h2>
+ <p>عند مغادرة القصيم، تمر الرحلة عبر الأراضي الزراعية المميزة للمنطقة وحقول الري المحوري قبل أن تعود التضاريس للصحراء المفتوحة عند الاقتراب من الرياض — تحول بصري واضح معكوس عن رحلة الذهاب.</p>
+ 
+ <h2 id="road-conditions">حالة الطريق وراحة القيادة</h2>
+-<p>طريق 65 مُصان جيدًا طوال الطريق، بعلامات واضحة ومرافق راحة منتظمة. المدة التي تقارب ثلاث ساعات ونصف مريحة في جلسة واحدة لمعظم المسافرين.</p>
++<p>إن رغبت في استراحة على الطريق، أو كان معك أطفال صغار أو كبار في السن، فاذكر ذلك عند طلب عرض السعر ليُتفق عليه مسبقًا.</p>
+ 
+-<h2 id="tolls">رسوم الطرق</h2>
+-<p>لا توجد رسوم طرق على هذا المسار أو في أي مكان بالسعودية. سعرك الثابت شامل بالكامل.</p>
++<h2 id="tolls">كيف يُحدَّد السعر</h2>
++<p>يصلك قبل السفر عرض سعر خاص برحلتك، ويحدد عرض السعر المؤكد قيمة الرحلة وما تشمله. إن كانت خطتك تتضمن توقفًا إضافيًا أو وقت انتظار أو تغييرًا في العنوان، فاذكر ذلك عند طلب العرض ليُضمَّن فيه.</p>
+ 
+ <h2 id="best-time">أفضل وقت للسفر على هذا الطريق</h2>
+-<p>إن كانت رحلتك متصلة برحلة طيران من الرياض، نضيف هامشًا معقولًا مقابل الرحلة زائد إجراءات المطار، ونتابع حجزك بحيث يتعدّل الاستلام إن تغيّر جدولك. خلاف ذلك، التوقيت مرن نظرًا للمسافة التي يمكن التعامل معها.</p>
++<p>إن كانت رحلتك متصلة برحلة طيران من الرياض، فأرسل رقم الرحلة وموعد إقلاعها عند طلب عرض السعر. ويعتمد التوصيل إلى مطار الملك خالد الدولي على وضع تشغيل المطار حاليًا، ويُؤكَّد في عرض السعر. وتحقّق من حالة رحلتك لدى شركة الطيران قبل الانطلاق. وفي غير ذلك، اختر وقت الانطلاق الذي يناسبك.</p>
+ 
+ <h2 id="vehicles">خيارات المركبات لرحلة العودة</h2>
+ <p>ينطبق النطاق نفسه كما في اتجاه الذهاب — سيارة سيدان مريحة أو SUV لمعظم المسافرين، وحافلة صغيرة للعائلات أو المجموعات، مفيدة خاصة عند العودة بمنتجات مزرعية أو تمور أو مشتريات من المنطقة.</p>
+ 
+ <h2 id="business">ملاحظة لسفر الأعمال والاتصال بالمطار</h2>
+-<p>رجال الأعمال المرتبطون بقطاع القصيم الزراعي وتجارة المواشي المتوجهون للرياض، إضافة للمتصلين لاحقًا جوًا، يستفيدون من نفس الخدمة بسعر ثابت ومتابعة قياسية عبر طرقنا بين المدن.</p>
++<p>رجال الأعمال المرتبطون بقطاع القصيم الزراعي وتجارة المواشي المتوجهون للرياض، إضافة للمتصلين لاحقًا جوًا، يحجزون الرحلة بالطريقة نفسها، ويحدد عرض السعر المؤكد قيمتها.</p>
+ 
+ <h2 id="stops">توقفات شائعة واتصالات لاحقة</h2>
+-<p>معظم الرحلات من القصيم تبدأ من بريدة أو عنيزة، وتنتهي في محطة مطار بالرياض أو عنوان بالمدينة. المسافرون الذين بدأت رحلتهم أبعد شمالًا في حائل يمكنهم تمديد الرحلة نفسها — راجع نقلنا من حائل إلى الرياض لتلك الرحلة الأطول.</p>
+-
+-<h2 id="safety">السلامة في الرحلة</h2>
+-<p>بمدة ثلاث ساعات ونصف، هذه رحلة يمكن التعامل معها في جلسة واحدة، ولا يزال سائقونا يأخذونها بوتيرة مريحة مع استراحة متاحة عند الطلب.</p>
++<p>معظم الرحلات من القصيم تبدأ من بريدة أو عنيزة، وتنتهي في منزل أو فندق أو مقر عمل في الرياض. المسافرون الذين بدأت رحلتهم أبعد شمالًا في حائل يمكنهم تمديد الرحلة نفسها — راجع نقلنا من حائل إلى الرياض لتلك الرحلة الأطول.</p>
+ 
+ <h2 id="booking">حجز نقلك من القصيم إلى الرياض</h2>
+-<p>شارك نقطة استلامك في بريدة أو عنيزة أو أي مكان آخر بالقصيم، وجهتك في الرياض أو تفاصيل رحلتك، وقتك المفضل، وعدد ركابك وأمتعتك. نؤكد مركبة مناسبة وسعرًا ثابتًا قبل سفرك، ولا يلزم أي دفع لمجرد معرفة السعر. اطلب عرض سعر ثابت عبر واتساب أو من خلال نموذج طلب عرض السعر.</p>
++<p>شارك نقطة استلامك في بريدة أو عنيزة أو أي مكان آخر بالقصيم، وجهتك في الرياض أو تفاصيل رحلتك، وقتك المفضل، وعدد ركابك وأمتعتك. نرد بعرض سعر لمركبة مناسبة، ويحدد عرض السعر المؤكد قيمة الرحلة، ولا يلزم أي دفع للحصول على العرض. اطلب عرض السعر عبر واتساب أو من خلال نموذج طلب عرض السعر.</p>
+ 
+ <h2 id="faq">الأسئلة الشائعة</h2>
+ <p>الأسئلة المحددة التي يطرحها المسافرون عند التخطيط الفعلي لرحلة من القصيم إلى الرياض.</p>`,
