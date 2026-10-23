@@ -1,4 +1,6 @@
 import type { Faq } from "./faqs";
+import type { AirportRouteOverrides } from "./airport-route-content";
+import { RUH_STATUS_NOTICE } from "./airport-status";
 
 /**
  * Route-specific editorial content for the 17 Saudi domestic City -> Airport
@@ -27,11 +29,27 @@ export interface CityAirportRouteContent {
   comparison?: { mode: string; note: string }[];
   checklist: string[];
   faqs: Faq[];
+  /** Optional per-route overrides of the shared template copy; each falls back to the default. */
+  overrides?: AirportRouteOverrides;
 }
+
+const ruhDepartureOverrides: AirportRouteOverrides = {
+  notice: RUH_STATUS_NOTICE,
+  bookingSteps: [
+    { label: "Share your flight details", detail: "Flight number, departure date and time, and your pickup address in Riyadh." },
+    { label: "Receive your quotation", detail: "The confirmed quotation sets the price and shows what it covers." },
+    { label: "Confirm the drop-off", detail: "Whether a drop-off at King Khalid International Airport can be arranged is confirmed in your quotation while its operations are disrupted." },
+    { label: "Travel", detail: "Your driver collects you at the time confirmed in your quotation." },
+  ],
+  ctaText: "Share your flight details and pickup address — we reply with a quotation, and the confirmed quotation sets the price.",
+  ctaHref: "/get-quote?pickup=Riyadh",
+  formSubheading: "Your confirmed quotation sets the price.",
+};
 
 export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = {
   // ── Local departures (same city) ──────────────────────────────────────
   "riyadh-to-riyadh-airport": {
+    overrides: ruhDepartureOverrides,
     departureIntro:
       "King Khalid International Airport is far enough from central Riyadh that traffic, not distance, is usually what decides whether you arrive comfortably or rushed. Riyadh's road network moves very differently at 6am than at 5pm.",
     departurePoints: [
@@ -48,13 +66,13 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
       "The drive north to the airport runs along Riyadh's main airport expressway. At around 35 km, it's a manageable drive on its own — the variable is how busy that expressway and the connecting roads are at your departure time.",
     ],
     airportDropoff: [
-      "Your driver drops you at the terminal matching your airline, with time to unload luggage before you head to check-in. Confirm your terminal if you already know it, so the driver can go directly there rather than a general drop-off point.",
+      "Whether a drop-off at King Khalid International Airport can be arranged, and where, is confirmed case by case in your quotation; share your airline and terminal if you know them.",
     ],
     vehicleLuggage:
       "A sedan suits a solo traveller or couple with standard luggage. Families or anyone with several large suitcases should consider an SUV — mention your numbers when booking.",
     whoSuits: [
       { title: "Business travellers", description: "Predictable, direct pickup from an office or hotel timed to an early or late flight." },
-      { title: "Families departing together", description: "One vehicle for the whole group and luggage, with a driver who already knows the destination terminal area." },
+      { title: "Families departing together", description: "One vehicle for the whole group and luggage, with a driver who already knows the route." },
     ],
     delayIntro: "The 35 km distance itself is short — what actually varies is traffic on the approach roads.",
     delayFactors: [
@@ -74,7 +92,7 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
       { question: "How early should I leave for my flight from Riyadh?", answer: "It depends on your flight time and traffic — tell us your flight details when booking and we'll help plan a sensible pickup time, with extra buffer for evening rush hour." },
       { question: "Can I be picked up from my hotel or office?", answer: "Yes, we collect from any hotel, home, or office address in Riyadh." },
       { question: "What if traffic causes delays on the way?", answer: "We build a reasonable buffer into the pickup time based on your flight, but traffic is genuinely unpredictable — the earlier you can leave, the more margin you have." },
-      { question: "Can I book an early-morning airport transfer?", answer: "Yes, this route is available 24/7, including very early departures." },
+      { question: "Can I book an early-morning airport transfer?", answer: "Early departures can be requested; any drop-off at King Khalid International Airport is confirmed case by case in your quotation while its operations are disrupted." },
       { question: "How much luggage can the vehicle take?", answer: "A sedan handles standard luggage for 1-2 travellers; for more bags or a family, mention it when booking and we'll arrange an SUV." },
       { question: "Is this a private or shared transfer?", answer: "Fully private for your booking, with no other passengers." },
     ],

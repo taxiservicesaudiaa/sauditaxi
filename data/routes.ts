@@ -7722,15 +7722,15 @@ const baseRoutes: Route[] = [
   },
   {
     slug: "riyadh-airport-to-jeddah",
-    metaTitle: "Riyadh Airport Taxi to Jeddah – Fixed-Price Transfer",
-    metaDescription: "Get a fixed-price private transfer from Riyadh Airport to Jeddah (950 km, about 9 hours). Comfortable vehicles, English-speaking drivers, easy booking.",
+    metaTitle: "Riyadh Airport to Jeddah Private Transfer",
+    metaDescription: "Riyadh Airport (RUH) to Jeddah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
     from: "Riyadh Airport",
     to: "Jeddah",
     category: "airport",
     distance: "950 km",
     duration: "9 hours",
     intro:
-      "Private airport chauffeur transfer from King Khalid International Airport (RUH) to Jeddah with meet-and-greet service and fixed pricing.",
+      "Private transfer from King Khalid International Airport (RUH) to Jeddah, confirmed case by case in your quotation while airport operations are disrupted.",
     about:
       "Arriving at King Khalid International Airport (RUH) and heading to Jeddah? Our dedicated long-distance transfer service meets you directly at Terminal 1, 2, 3, 4, or 5 and transports you straight to Jeddah in a private, late-model vehicle. Ideal for travellers with heavy luggage, families, or those seeking an overland journey without flight transfers.",
     notes: [
@@ -7934,7 +7934,7 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-airport-to-makkah",
     metaTitle: "Private Taxi: Riyadh Airport to Makkah",
-    metaDescription: "Private car from Riyadh Airport to Makkah (880 km, about 8 hours 30 min) with meet-and-greet pickup and a fixed fare agreed before you travel. Book online.",
+    metaDescription: "Riyadh Airport (RUH) to Makkah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
     from: "Riyadh Airport",
     to: "Makkah",
     category: "airport",
@@ -8074,7 +8074,7 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-airport-to-madinah",
     metaTitle: "Private Taxi: Riyadh Airport to Madinah",
-    metaDescription: "Travel from Riyadh Airport to Madinah (850 km, about 8 hours) in a comfortable private vehicle with a professional driver. No shared rides, fixed price.",
+    metaDescription: "Riyadh Airport (RUH) to Madinah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
     from: "Riyadh Airport",
     to: "Madinah",
     category: "airport",
@@ -8214,35 +8214,35 @@ const baseRoutes: Route[] = [
   {
     slug: "dammam-airport-to-riyadh",
     metaTitle: "Private Taxi: Dammam Airport to Riyadh",
-    metaDescription: "Book a private transfer from Dammam Airport to Riyadh (420 km, about 4 hours). Professional driver, flight tracking, fixed price, 24/7 availability.",
+    metaDescription: "Private transfer from King Fahd Airport (DMM) to Riyadh, about 400 km by road. Flight tracking included; your confirmed quotation sets the price.",
     from: "Dammam Airport",
     to: "Riyadh",
     category: "airport",
-    distance: "420 km",
+    distance: "400 km",
     duration: "4 hours",
     intro:
-      "Private meet-and-greet airport transfer from King Fahd International Airport (DMM) in Dammam directly to any location in Riyadh.",
+      "Private airport transfer from King Fahd International Airport (DMM) in Dammam directly to any location in Riyadh, with flight tracking.",
     about:
-      "Arriving at King Fahd International Airport (DMM) with an onward destination in Riyadh? Skip train and flight connection schedules with our direct private airport transfer. Your driver tracks your flight, meets you at DMM arrivals, and delivers you directly to your hotel, office, or residence in Riyadh.",
+      "Arriving at King Fahd International Airport (DMM) with an onward destination in Riyadh? Skip train and flight connection schedules with our direct private airport transfer. We track your flight, your driver meets you at the confirmed meeting point at DMM, and delivers you directly to your hotel, office, or residence in Riyadh.",
     notes: [
-      "Meet-and-greet service inside King Fahd Airport (DMM) arrivals",
-      "Direct 4-hour highway transfer to all Riyadh districts and corporate parks",
+      "Pickup at King Fahd Airport (DMM) at the meeting point confirmed in your booking",
+      "Direct highway transfer of about 400 km to all Riyadh districts and corporate parks",
       "Live flight tracking with complimentary wait time included",
       "Spacious vehicles with generous luggage room for international arrivals",
     ],
     relatedCitySlugs: ["dammam", "riyadh"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-10-22",
     sections: [
       {
         heading: "Direct airport transfer from King Fahd International (DMM)",
         paragraphs: [
-          "The 420 km drive along the modern Dammam–Riyadh Expressway takes approximately 4 hours, offering an efficient, private link between Eastern Province arrivals and the capital.",
+          "The drive of about 400 km along the Dammam–Riyadh Expressway takes roughly four hours without stops, offering an efficient, private link between Eastern Province arrivals and the capital.",
         ],
       },
     ],
     faqs: [
-      { question: "Where will my driver meet me at Dammam Airport?", answer: "Your chauffeur will wait in the arrivals hall holding a sign with your name after you clear baggage claim." },
-      { question: "How long is the transfer from Dammam Airport to Riyadh?", answer: "The 420 km journey takes approximately 4 hours in normal highway traffic conditions." },
+      { question: "Where will my driver meet me at Dammam Airport?", answer: "Your driver meets you at the meeting point confirmed in your booking after you clear baggage claim." },
+      { question: "How long is the transfer from Dammam Airport to Riyadh?", answer: "The journey is about 400 km, roughly four hours of driving in normal highway conditions, plus any stops." },
     ],
     keywords: ["dammam airport to riyadh taxi", "dmm to riyadh transfer", "king fahd airport to riyadh private car"],
   },
@@ -9003,7 +9003,7 @@ const baseRoutes: Route[] = [
     ],
     relatedCitySlugs: ["riyadh"],
     metaTitle: "Private Taxi: Riyadh Airport to Riyadh",
-    metaDescription: "Book a private transfer from Riyadh Airport to Riyadh (35 km, about 30-45 min). Professional driver, flight tracking, fixed price, 24/7 availability.",
+    metaDescription: "Transfers from Riyadh Airport (RUH) into the city are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
     faqs: [
       {
             "question": "Where will my driver meet me at King Khalid International Airport?",
@@ -9032,7 +9032,7 @@ const baseRoutes: Route[] = [
     distance: "35 km",
     duration: "30-45 min",
     lastUpdated: "2026-08-19",
-    intro: "Book a private Riyadh to King Khalid International Airport (RUH) transfer for punctual, comfortable door-to-door hotel and office pickup.",
+    intro: "Private transfer from Riyadh hotels and offices to King Khalid International Airport (RUH), confirmed case by case in your quotation while airport operations are disrupted.",
     about: "Our private Riyadh to RUH Airport transfer collects you from your hotel, home, or office across Riyadh, handles your luggage, and drives you directly to Terminals 1, 2, 3, 4, or 5 at a fixed price agreed before you travel.",
     notes: [
       "Punctual pickup from all Riyadh hotels, compounds, and business towers",
@@ -9042,7 +9042,7 @@ const baseRoutes: Route[] = [
     ],
     relatedCitySlugs: ["riyadh"],
     metaTitle: "Private Taxi: Riyadh to Riyadh Airport (RUH)",
-    metaDescription: "Travel from Riyadh to Riyadh Airport (35 km, about 30-45 min) in a comfortable private vehicle with a professional driver. No shared rides, fixed price.",
+    metaDescription: "Transfers from Riyadh to King Khalid International Airport (RUH) are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
     faqs: [
       {
             "question": "How far in advance should I arrange pickup before my flight?",

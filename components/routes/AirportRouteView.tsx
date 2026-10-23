@@ -5,6 +5,7 @@ import { ArrowRight, Check, Clock, Luggage, MapPin, Plane } from "lucide-react";
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
+import { RouteStatusNotice, type RouteStatusNoticeContent } from "@/components/routes/RouteStatusNotice";
 
 /**
  * "Airport Arrival Journey Guide" — the dedicated visual identity for
@@ -95,6 +96,8 @@ export interface AirportRouteViewProps {
   formSubheading: string;
   formSlot: ReactNode;
   crumbs: Crumb[];
+  /** Optional dated status notice under the hero; omitted routes render unchanged. */
+  notice?: RouteStatusNoticeContent;
 }
 
 export function AirportRouteView({
@@ -147,6 +150,7 @@ export function AirportRouteView({
   formSubheading,
   formSlot,
   crumbs,
+  notice,
 }: AirportRouteViewProps) {
   return (
     <>
@@ -193,6 +197,8 @@ export function AirportRouteView({
           </div>
         )}
       </section>
+
+      {notice && <RouteStatusNotice notice={notice} />}
 
       {/* Journey snapshot — explicit pure-driving vs total-journey distinction. */}
       <section className="bg-sand/40 py-10">

@@ -57,6 +57,7 @@ function routeDestinationName(r: Route, airport: Airport): string {
 function buildPopularCards(airport: Airport): HomeSectionCard[] {
   const seen = new Set<string>();
   const cards: HomeSectionCard[] = [];
+  const o = airport.hubOverrides;
   for (const slug of airport.popularRoutes ?? []) {
     const r = getRoute(slug);
     if (!r) continue;
@@ -65,8 +66,10 @@ function buildPopularCards(airport: Airport): HomeSectionCard[] {
     if (seen.has(key)) continue;
     seen.add(key);
     cards.push({
-      title: `${airport.city} Airport to ${destination}`,
-      body: `${r.distance} · about ${r.duration}. A private, direct transfer with a fixed price agreed before you travel — no meter, no surge pricing.`,
+      title: `${o?.popularTitlePrefix ?? `${airport.city} Airport to`} ${destination}`,
+      body:
+        o?.popularCardBody ??
+        `${r.distance} · about ${r.duration}. A private, direct transfer with a fixed price agreed before you travel — no meter, no surge pricing.`,
       href: `/routes/${slug}`,
       linkLabel: `${destination} transfer details`,
     });
@@ -148,9 +151,10 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
   ];
 
   const h1 = `Private ${airport.city} Airport Transfers (${airport.code})`;
+  const o = airport.hubOverrides;
   const popularCards = buildPopularCards(airport);
-  const meetGreet = meetGreetSteps(airport);
-  const booking = bookingSteps(airport);
+  const meetGreet = o?.meetGreetSteps ?? meetGreetSteps(airport);
+  const booking = o?.bookingSteps ?? bookingSteps(airport);
 
   const content: AirportTransferHubContent = {
     eyebrow: "Airport Transfer",
@@ -163,8 +167,9 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
       { label: "City", value: airport.city },
       { label: "Region", value: airport.region },
     ],
-    primaryCtaLabel: `Get a ${airport.city} Airport Quote`,
-    primaryCtaHref: `/get-quote?pickup=${encodeURIComponent(`${airport.name} (${airport.code})`)}`,
+    notice: o?.notice,
+    primaryCtaLabel: o?.primaryCtaLabel ?? `Get a ${airport.city} Airport Quote`,
+    primaryCtaHref: o?.primaryCtaHref ?? `/get-quote?pickup=${encodeURIComponent(`${airport.name} (${airport.code})`)}`,
     secondaryCtaLabel: airport.citySlug ? `${airport.city} Taxi Service` : undefined,
     secondaryCtaHref: airport.citySlug ? `/taxi-service/${airport.citySlug}` : undefined,
 
@@ -173,20 +178,22 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
       airport.coreServiceParagraph ??
       `We provide private, pre-booked transportation from ${airport.name} to your hotel or destination. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination at a fixed price agreed before you travel.`,
 
-    popularHeading: `Popular Transfers from ${airport.city} Airport`,
+    popularHeading: o?.popularHeading ?? `Popular Transfers from ${airport.city} Airport`,
     popularIntro:
-      popularCards.length > 0
+      o?.popularIntro ??
+      (popularCards.length > 0
         ? `Fixed-price private transfers directly from ${airport.name} to these destinations, booked before you land and ready the moment you arrive.`
-        : `Explore ${airport.city}'s local taxi service for transportation around the city and to nearby destinations, booked before you land.`,
+        : `Explore ${airport.city}'s local taxi service for transportation around the city and to nearby destinations, booked before you land.`),
     popularCards,
 
-    arrivingHeading: `Arriving at ${airport.name}`,
+    arrivingHeading: o?.arrivingHeading ?? `Arriving at ${airport.name}`,
     arrivingParagraphs: airport.arrivingParagraphs ?? [
       `After landing at ${airport.name}, clear immigration and collect your luggage, then head to the arrivals hall where your driver is waiting with a name board.`,
     ],
 
-    meetGreetHeading: "Airport Pickup and Driver Meet & Greet",
-    meetGreetIntro: `Here's exactly what happens between booking and getting in the car at ${airport.code}, so there are no surprises on arrival.`,
+    meetGreetHeading: o?.meetGreetHeading ?? "Airport Pickup and Driver Meet & Greet",
+    meetGreetIntro:
+      o?.meetGreetIntro ?? `Here's exactly what happens between booking and getting in the car at ${airport.code}, so there are no surprises on arrival.`,
     meetGreetSteps: meetGreet,
 
     destinationsHeading: `Transfers from ${airport.city} Airport to Major Destinations`,
@@ -196,7 +203,7 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
     destinationClusters: airport.destinationClusters ?? [],
 
     familyHeading: "Private Airport Transfers for Families and Groups",
-    familyParagraph: familyParagraph(airport),
+    familyParagraph: o?.familyParagraph ?? familyParagraph(airport),
 
     vehiclesHeading: `Choosing the Right Vehicle for Your ${airport.city} Transfer`,
     vehiclesIntro:
@@ -204,14 +211,15 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
     vehicleCards: vehicleCards(),
 
     bookingHeading: `How to Book a ${airport.city} Airport Transfer`,
-    bookingIntro: "A simple four-step process from first message to confirmed pickup, usually completed in a few minutes.",
+    bookingIntro: o?.bookingIntro ?? "A simple four-step process from first message to confirmed pickup, usually completed in a few minutes.",
     bookingSteps: booking,
 
     faqHeading: `${airport.city} Airport Transfer Questions`,
     faqs,
 
-    finalCtaHeading: `Book Your Private ${airport.city} Airport Transfer`,
-    finalCtaText: `Add your flight number and destination — we reply with a fixed price and meet you in arrivals at ${airport.code}.`,
+    finalCtaHeading: o?.finalCtaHeading ?? `Book Your Private ${airport.city} Airport Transfer`,
+    finalCtaText:
+      o?.finalCtaText ?? `Add your flight number and destination — we reply with a fixed price and meet you in arrivals at ${airport.code}.`,
   };
 
   return (

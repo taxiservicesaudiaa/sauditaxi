@@ -1,0 +1,402 @@
+diff --git a/app/(main)/airport-transfer/[airport]/page.tsx b/app/(main)/airport-transfer/[airport]/page.tsx
+index 7e63f4f..a9f8935 100644
+--- a/app/(main)/airport-transfer/[airport]/page.tsx
++++ b/app/(main)/airport-transfer/[airport]/page.tsx
+@@ -57,6 +57,7 @@ function routeDestinationName(r: Route, airport: Airport): string {
+ function buildPopularCards(airport: Airport): HomeSectionCard[] {
+   const seen = new Set<string>();
+   const cards: HomeSectionCard[] = [];
++  const o = airport.hubOverrides;
+   for (const slug of airport.popularRoutes ?? []) {
+     const r = getRoute(slug);
+     if (!r) continue;
+@@ -65,8 +66,10 @@ function buildPopularCards(airport: Airport): HomeSectionCard[] {
+     if (seen.has(key)) continue;
+     seen.add(key);
+     cards.push({
+-      title: `${airport.city} Airport to ${destination}`,
+-      body: `${r.distance} · about ${r.duration}. A private, direct transfer with a fixed price agreed before you travel — no meter, no surge pricing.`,
++      title: `${o?.popularTitlePrefix ?? `${airport.city} Airport to`} ${destination}`,
++      body:
++        o?.popularCardBody ??
++        `${r.distance} · about ${r.duration}. A private, direct transfer with a fixed price agreed before you travel — no meter, no surge pricing.`,
+       href: `/routes/${slug}`,
+       linkLabel: `${destination} transfer details`,
+     });
+@@ -148,9 +151,10 @@ export default async function AirportPage({ params }: { params: Promise<Params>
+   ];
+ 
+   const h1 = `Private ${airport.city} Airport Transfers (${airport.code})`;
++  const o = airport.hubOverrides;
+   const popularCards = buildPopularCards(airport);
+-  const meetGreet = meetGreetSteps(airport);
+-  const booking = bookingSteps(airport);
++  const meetGreet = o?.meetGreetSteps ?? meetGreetSteps(airport);
++  const booking = o?.bookingSteps ?? bookingSteps(airport);
+ 
+   const content: AirportTransferHubContent = {
+     eyebrow: "Airport Transfer",
+@@ -163,8 +167,9 @@ export default async function AirportPage({ params }: { params: Promise<Params>
+       { label: "City", value: airport.city },
+       { label: "Region", value: airport.region },
+     ],
+-    primaryCtaLabel: `Get a ${airport.city} Airport Quote`,
+-    primaryCtaHref: `/get-quote?pickup=${encodeURIComponent(`${airport.name} (${airport.code})`)}`,
++    notice: o?.notice,
++    primaryCtaLabel: o?.primaryCtaLabel ?? `Get a ${airport.city} Airport Quote`,
++    primaryCtaHref: o?.primaryCtaHref ?? `/get-quote?pickup=${encodeURIComponent(`${airport.name} (${airport.code})`)}`,
+     secondaryCtaLabel: airport.citySlug ? `${airport.city} Taxi Service` : undefined,
+     secondaryCtaHref: airport.citySlug ? `/taxi-service/${airport.citySlug}` : undefined,
+ 
+@@ -173,20 +178,22 @@ export default async function AirportPage({ params }: { params: Promise<Params>
+       airport.coreServiceParagraph ??
+       `We provide private, pre-booked transportation from ${airport.name} to your hotel or destination. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination at a fixed price agreed before you travel.`,
+ 
+-    popularHeading: `Popular Transfers from ${airport.city} Airport`,
++    popularHeading: o?.popularHeading ?? `Popular Transfers from ${airport.city} Airport`,
+     popularIntro:
+-      popularCards.length > 0
++      o?.popularIntro ??
++      (popularCards.length > 0
+         ? `Fixed-price private transfers directly from ${airport.name} to these destinations, booked before you land and ready the moment you arrive.`
+-        : `Explore ${airport.city}'s local taxi service for transportation around the city and to nearby destinations, booked before you land.`,
++        : `Explore ${airport.city}'s local taxi service for transportation around the city and to nearby destinations, booked before you land.`),
+     popularCards,
+ 
+-    arrivingHeading: `Arriving at ${airport.name}`,
++    arrivingHeading: o?.arrivingHeading ?? `Arriving at ${airport.name}`,
+     arrivingParagraphs: airport.arrivingParagraphs ?? [
+       `After landing at ${airport.name}, clear immigration and collect your luggage, then head to the arrivals hall where your driver is waiting with a name board.`,
+     ],
+ 
+-    meetGreetHeading: "Airport Pickup and Driver Meet & Greet",
+-    meetGreetIntro: `Here's exactly what happens between booking and getting in the car at ${airport.code}, so there are no surprises on arrival.`,
++    meetGreetHeading: o?.meetGreetHeading ?? "Airport Pickup and Driver Meet & Greet",
++    meetGreetIntro:
++      o?.meetGreetIntro ?? `Here's exactly what happens between booking and getting in the car at ${airport.code}, so there are no surprises on arrival.`,
+     meetGreetSteps: meetGreet,
+ 
+     destinationsHeading: `Transfers from ${airport.city} Airport to Major Destinations`,
+@@ -196,7 +203,7 @@ export default async function AirportPage({ params }: { params: Promise<Params>
+     destinationClusters: airport.destinationClusters ?? [],
+ 
+     familyHeading: "Private Airport Transfers for Families and Groups",
+-    familyParagraph: familyParagraph(airport),
++    familyParagraph: o?.familyParagraph ?? familyParagraph(airport),
+ 
+     vehiclesHeading: `Choosing the Right Vehicle for Your ${airport.city} Transfer`,
+     vehiclesIntro:
+@@ -204,14 +211,15 @@ export default async function AirportPage({ params }: { params: Promise<Params>
+     vehicleCards: vehicleCards(),
+ 
+     bookingHeading: `How to Book a ${airport.city} Airport Transfer`,
+-    bookingIntro: "A simple four-step process from first message to confirmed pickup, usually completed in a few minutes.",
++    bookingIntro: o?.bookingIntro ?? "A simple four-step process from first message to confirmed pickup, usually completed in a few minutes.",
+     bookingSteps: booking,
+ 
+     faqHeading: `${airport.city} Airport Transfer Questions`,
+     faqs,
+ 
+-    finalCtaHeading: `Book Your Private ${airport.city} Airport Transfer`,
+-    finalCtaText: `Add your flight number and destination — we reply with a fixed price and meet you in arrivals at ${airport.code}.`,
++    finalCtaHeading: o?.finalCtaHeading ?? `Book Your Private ${airport.city} Airport Transfer`,
++    finalCtaText:
++      o?.finalCtaText ?? `Add your flight number and destination — we reply with a fixed price and meet you in arrivals at ${airport.code}.`,
+   };
+ 
+   return (
+diff --git a/components/airport-transfer/AirportTransferHub.tsx b/components/airport-transfer/AirportTransferHub.tsx
+index 79293e4..53062bb 100644
+--- a/components/airport-transfer/AirportTransferHub.tsx
++++ b/components/airport-transfer/AirportTransferHub.tsx
+@@ -25,6 +25,9 @@ export interface AirportTransferHubContent {
+   heroImage: string;
+   heroAlt: string;
+   facts: { label: string; value: string }[];
++  /** Optional dated status notice shown directly under the hero (e.g. airport
++   * disruption). Rendered only when supplied, so airports without one are unchanged. */
++  notice?: { heading: string; paragraphs: string[]; links?: { label: string; href: string }[] };
+   primaryCtaLabel: string;
+   primaryCtaHref: string;
+   secondaryCtaLabel?: string;
+@@ -86,6 +89,7 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
+     heroImage,
+     heroAlt,
+     facts,
++    notice,
+     primaryCtaLabel,
+     primaryCtaHref,
+     secondaryCtaLabel,
+@@ -162,6 +166,34 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
+         )}
+       </section>
+ 
++      {notice && (
++        <section className="border-b border-brass/30 bg-brass/10 py-8 sm:py-10" aria-labelledby="airport-status-notice">
++          <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
++            <div className="max-w-3xl">
++              <h2 id="airport-status-notice" className="text-lg font-bold tracking-tight text-ink sm:text-xl">
++                {notice.heading}
++              </h2>
++              {notice.paragraphs.map((p, i) => (
++                <p key={i} className="mt-3 text-[15px] leading-relaxed text-ink-soft">
++                  {p}
++                </p>
++              ))}
++              {notice.links && notice.links.length > 0 && (
++                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
++                  {notice.links.map((l) => (
++                    <li key={l.href}>
++                      <Link href={l.href} className="text-ink underline decoration-brass underline-offset-4 hover:text-brass">
++                        {l.label}
++                      </Link>
++                    </li>
++                  ))}
++                </ul>
++              )}
++            </div>
++          </div>
++        </section>
++      )}
++
+       {/* H2 #1 — Private Transfers from [Airport] (no H3s) */}
+       <section className="bg-white py-14 sm:py-20">
+         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+diff --git a/data/airport-guides.ts b/data/airport-guides.ts
+index b7ebaa3..61806c0 100644
+--- a/data/airport-guides.ts
++++ b/data/airport-guides.ts
+@@ -46,80 +46,80 @@ export interface AirportGuide {
+ export const airportGuides: Record<string, AirportGuide> = {
+   // ── RIYADH · RUH ──────────────────────────────────────────────────────────
+   "riyadh-airport": {
+-    lastUpdated: "2026-09-17",
++    lastUpdated: "2026-10-22",
+     keywords: ["riyadh airport taxi", "king khalid airport transfer", "RUH airport pickup", "riyadh airport to hotel", "private transfer from riyadh airport"],
+     coreServiceParagraph:
+-      "We provide private, pre-booked transportation from King Khalid International Airport to any hotel, office, or address in Riyadh, and onward to other Saudi cities. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination at a fixed price agreed before you travel — with room for luggage and, on request, a larger vehicle for families or groups. There's no meter running and no negotiating a fare on arrival; the price you're quoted is the price you pay, whether traffic on Airport Road is light or heavy that day.",
++      "We provide private, pre-booked road transfers to and from Riyadh — hotels, offices and homes in the city, and onward journeys to other Saudi cities and neighbouring countries. Tell us your pickup point, destination, travel date, passengers and luggage, and we reply with a quotation; the confirmed quotation sets the price and shows what it covers. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport itself is confirmed case by case in your quotation.",
+     arrivingParagraphs: [
+-      "King Khalid International Airport is organised across five terminals, so share your airline and flight number when you book — it's the fastest way for your driver to be waiting at the right arrivals hall rather than another terminal, especially on a late-night landing when walking between terminals with luggage is inconvenient.",
+-      "After passport control and baggage claim, head into the arrivals hall with your bags. Your driver waits there with a name board and helps carry your luggage to the vehicle, so there's no taxi rank to find and no queue to join after a long flight.",
++      "Before arranging anything, confirm with your airline that your flight is operating and which airport and terminal it now uses. King Khalid International Airport is organised across several terminals, so share your airline and flight number when you request a quote.",
++      "If your flight now uses a different airport, tell us which one — we can quote a road transfer between that airport and your address in Riyadh. Whether a pickup or drop-off at King Khalid International Airport can be arranged, and where you would meet your driver, is confirmed in your quotation.",
+     ],
+     destinationClusters: [
+       {
+         title: "Riyadh Business and Corporate Transfers",
+-        body: "Direct, on-time transfers to Olaya, King Abdullah Financial District, and the diplomatic quarter for executives and visiting teams, with a driver who knows the fastest route at any hour.",
++        body: "Private transfers to Olaya, King Abdullah Financial District and the Diplomatic Quarter for business travellers and visiting teams, priced in a quotation you confirm before you travel.",
+         href: "/taxi-service/riyadh",
+         linkLabel: "Riyadh taxi service",
+       },
+       {
+         title: "Riyadh Hotel Transfers",
+-        body: "Fixed-price pickup and drop-off at hotels across the capital, arranged before you land so there's nothing to book or negotiate on arrival.",
++        body: "Pickup and drop-off at hotels across the capital, arranged and priced in a quotation before you travel.",
+         href: "/cities/riyadh",
+         linkLabel: "Riyadh hotel coverage",
+       },
+       {
+         title: "Eastern Province and Qassim Intercity",
+-        body: "Private long-distance transfers from RUH toward Dammam, Khobar, Qassim, and Hail for travellers continuing overland rather than by a connecting flight.",
++        body: "Private long-distance transfers from Riyadh toward Dammam, Khobar, Qassim and Hail, including Qassim airport on the Qassim–Riyadh route.",
+         href: "/intercity-transfers",
+         linkLabel: "Intercity transfer service",
+       },
+       {
+         title: "Jeddah, Makkah, and Madinah Connections",
+-        body: "Direct overland transfers from Riyadh Airport toward the western region, including Umrah journeys to Makkah and Madinah for pilgrims continuing their trip by road.",
++        body: "Overland transfers from Riyadh toward the western region, including Umrah journeys to Makkah and Madinah for pilgrims travelling by road.",
+         href: "/umrah-taxi-service",
+         linkLabel: "Umrah transfer service",
+       },
+     ],
+     faqs: [
+       {
+-        question: "Which terminal will my driver meet me at RUH?",
++        question: "Is King Khalid International Airport operating?",
+         answer:
+-          "Your driver waits at the terminal matching your flight — RUH is organised across five terminals. Share your airline and flight number when booking so we position the driver at the correct arrivals hall.",
++          "GACA announced a temporary suspension of operations at King Khalid International Airport on 10 October 2026 and extended it on 12 October for safety checks. We have not found an official announcement that scheduled flights have resumed (last checked 22 October 2026). Confirm your flight's status directly with your airline.",
+       },
+       {
+-        question: "Where will I meet my driver at Riyadh Airport?",
++        question: "Can you pick me up or drop me off at Riyadh airport?",
+         answer:
+-          "In the arrivals hall, holding a name board. Your driver assists with luggage and walks you to the vehicle in the car park — there's no taxi rank or shared shuttle to find.",
++          "We are not confirming airport pickups or drop-offs in advance while operations are disrupted. Send us your flight details; whether an airport pickup or drop-off can be arranged, and where you would meet your driver, is confirmed in your quotation.",
+       },
+       {
+-        question: "Can I book a transfer to another Saudi city from RUH?",
++        question: "My flight was moved to another airport. Can you drive me to Riyadh?",
+         answer:
+-          "Yes. Besides Riyadh hotels, we run private intercity transfers from King Khalid Airport toward Dammam, Qassim, Hail, and the western region, including Jeddah, Makkah, and Madinah.",
++          "Yes. We can quote road transfers to Riyadh from Qassim (including Prince Naif bin Abdulaziz International Airport), Dammam Airport, Madinah Airport and Jeddah Airport. Share the airport, your flight number and your Riyadh address.",
+       },
+       {
+-        question: "What happens if my flight to Riyadh is delayed?",
++        question: "Can I travel by road from Riyadh to another Saudi city or a neighbouring country?",
+         answer:
+-          "We track your flight number in real time and adjust the pickup time automatically, with free wait time included, so a delay never costs you the ride or changes your price.",
++          "Yes. We arrange private transfers from Riyadh to other Saudi cities, and on our listed routes to Bahrain, Qatar, Kuwait and the UAE. For cross-border journeys we coordinate the transport; passengers and drivers must confirm the applicable travel documents, entry requirements, insurance, permits, border-crossing requirements and fees.",
+       },
+       {
+-        question: "Can families or groups book private transfers from RUH?",
++        question: "How is the price for a Riyadh transfer set?",
+         answer:
+-          "Yes. Tell us your passenger and luggage count when you book and we'll recommend an SUV, van, or minibus sized for your group, plus child seats on request.",
++          "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check that it includes anything you need, such as extra stops or waiting time.",
+       },
+       {
+-        question: "Can I book a Riyadh Airport to hotel transfer?",
++        question: "Can families or groups book a private transfer?",
+         answer:
+-          "Yes. Share your hotel name and address, flight details, and pickup time — we'll confirm a fixed price and a driver assigned to your specific flight.",
++          "Yes. Tell us your passenger and luggage numbers when you request a quote and a suitable vehicle is offered in your quotation. If you need child seats, ask before you confirm.",
+       },
+       {
+-        question: "How far in advance should I book a Riyadh airport transfer?",
++        question: "What information do you need for a quote?",
+         answer:
+-          "A day or two ahead is comfortable for most travellers, though same-day requests are usually possible. During major events or conferences, book earlier to guarantee your preferred vehicle class.",
++          "Your pickup point and destination, travel date and preferred time, number of passengers and pieces of luggage, and your airline and flight number if your journey connects to a flight.",
+       },
+       {
+-        question: "How much luggage can I bring in a private transfer from RUH?",
++        question: "How far in advance should I request a transfer?",
+         answer:
+-          "A standard sedan comfortably fits two to three bags. For more luggage, sports equipment, or a larger group, choose an SUV or van when you book.",
++          "Send your request as soon as your plans are confirmed. Availability for your date and time is confirmed in your quotation.",
+       },
+     ],
+   },
+diff --git a/data/airports.ts b/data/airports.ts
+index d5e78b5..4eb7ec7 100644
+--- a/data/airports.ts
++++ b/data/airports.ts
+@@ -52,6 +52,35 @@ export interface Airport {
+   images?: GalleryImage[];
+   /** ISO date this page's content was last substantively reviewed/updated. */
+   lastUpdated?: string;
++  /**
++   * Optional per-airport replacements for the shared hub copy built in
++   * app/(main)/airport-transfer/[airport]/page.tsx (e.g. while an airport's
++   * operations are disrupted). Every field falls back to the shared default,
++   * so airports without overrides render exactly as before.
++   */
++  hubOverrides?: AirportHubOverrides;
++}
++
++export interface AirportHubOverrides {
++  /** Dated status notice rendered under the hero. */
++  notice?: { heading: string; paragraphs: string[]; links?: { label: string; href: string }[] };
++  primaryCtaLabel?: string;
++  primaryCtaHref?: string;
++  popularHeading?: string;
++  popularIntro?: string;
++  /** Card title prefix, e.g. "Riyadh to" instead of "Riyadh Airport to". */
++  popularTitlePrefix?: string;
++  /** Card body used for every popular-route card. */
++  popularCardBody?: string;
++  arrivingHeading?: string;
++  meetGreetHeading?: string;
++  meetGreetIntro?: string;
++  meetGreetSteps?: { title: string; detail: string }[];
++  familyParagraph?: string;
++  bookingIntro?: string;
++  bookingSteps?: { title: string; detail: string }[];
++  finalCtaHeading?: string;
++  finalCtaText?: string;
+ }
+ 
+ const baseAirports: Airport[] = [
+@@ -63,28 +92,74 @@ const baseAirports: Airport[] = [
+     citySlug: "riyadh",
+     region: "Riyadh Province",
+     intro:
+-      "King Khalid International Airport (RUH) is the main gateway to the Saudi capital, with private meet-and-greet transfers to every Riyadh district and beyond.",
++      "King Khalid International Airport (RUH) is the main airport serving the Saudi capital. Check your flight with your airline, then tell us your journey — we confirm what can be arranged in a quotation.",
+     about:
+-      "We track your flight and meet you in the arrivals hall at RUH with a name board, then drive you directly to your hotel, office, or onward city. Fixed quotes mean no surge pricing, and our drivers know all five terminals plus the route into central Riyadh and the highways to Dammam and Qassim.",
++      "We arrange private, pre-booked road transfers to and from Riyadh. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport is confirmed case by case in the customer's quotation.",
+     terminals: ["Terminal 1 & 2 (international)", "Terminal 3 & 4 (domestic)", "Terminal 5 (low-cost)"],
+     popularDestinations: ["Riyadh city", "Diriyah", "Dammam", "Qassim", "AlUla"],
++    // City-origin routes while RUH operations are disrupted (the riyadh-airport-to-* routes
++    // advertise airport pickups that are not currently confirmed). Restore when RUH service is confirmed.
+     popularRoutes: [
+-      "riyadh-airport-to-riyadh",
+-      "riyadh-airport-to-jeddah",
+-      "riyadh-airport-to-makkah",
+-      "riyadh-airport-to-madinah",
+-      "riyadh-to-khobar",
+-      "riyadh-to-jubail",
+-      "riyadh-to-hofuf",
+       "riyadh-to-qassim",
+-      "riyadh-to-hail",
+-      "riyadh-to-taif",
+-      "riyadh-to-tabuk",
+-      "riyadh-to-neom",
++      "riyadh-to-dammam",
++      "riyadh-to-jeddah",
++      "riyadh-to-bahrain",
++      "riyadh-to-doha",
+     ],
+     metaTitle: "Private Riyadh Airport Transfer (RUH) | Saudi Private Transfers",
+     metaDescription:
+-      "Private transfer from King Khalid Airport (RUH) to your Riyadh hotel or onward to Jeddah, Makkah, Madinah, and the Eastern Province. Fixed price, meet-and-greet.",
++      "Riyadh airport (RUH) transfers and onward road travel. Check your flight with your airline, then request a quote — your confirmed quotation sets the price.",
++    hubOverrides: {
++      notice: {
++        heading: "Riyadh airport status — last checked 22 October 2026",
++        paragraphs: [
++          "Saudi Arabia's General Authority of Civil Aviation (GACA) announced on 10 October 2026 that operations at King Khalid International Airport were temporarily suspended, and on 12 October that the suspension had been extended for safety checks. We have not found an official GACA announcement that scheduled flights have resumed, and reports since then have differed. Confirm your flight's status directly with your airline before you travel.",
++          "Airport operations and our road transfers are separate matters. We are not confirming pickups or drop-offs at King Khalid International Airport in advance; if your journey involves the airport, send us your flight details and any airport pickup or drop-off is confirmed case by case in your quotation.",
++          "If your airline has moved your flight to another airport, we can quote a road transfer to or from Riyadh:",
++        ],
++        links: [
++          { label: "Qassim (incl. Qassim airport) to Riyadh", href: "/routes/qassim-to-riyadh" },
++          { label: "Dammam Airport to Riyadh", href: "/routes/dammam-airport-to-riyadh" },
++          { label: "Madinah Airport to Riyadh", href: "/routes/madinah-airport-to-riyadh" },
++          { label: "Jeddah Airport to Riyadh", href: "/routes/jeddah-airport-to-riyadh" },
++          { label: "Intercity transfers during flight disruptions", href: "/blog/saudi-arabia-intercity-transfers-flight-disruptions" },
++        ],
++      },
++      primaryCtaLabel: "Request a Riyadh Transfer Quote",
++      primaryCtaHref: "/get-quote?dropoff=Riyadh",
++      popularHeading: "Popular Transfers from Riyadh",
++      popularIntro: "Private road transfers we arrange from Riyadh. Each journey is confirmed in a quotation before you travel.",
++      popularTitlePrefix: "Riyadh to",
++      popularCardBody: "A private, direct transfer for your group. Your confirmed quotation sets the price and shows what it covers.",
++      arrivingHeading: "If Your Journey Involves King Khalid International Airport",
++      meetGreetHeading: "Airport Pickups While RUH Operations Are Disrupted",
++      meetGreetIntro: "What to check before you request a transfer that involves King Khalid International Airport.",
++      meetGreetSteps: [
++        {
++          title: "Check Your Flight",
++          detail: "Confirm with your airline that your flight is operating, which airport it now uses, and its arrival or departure time.",
++        },
++        {
++          title: "Share Your Details",
++          detail: "Send your airline, flight number, the airport, your pickup or destination address, and your passenger and luggage numbers.",
++        },
++        {
++          title: "Confirm the Meeting Point",
++          detail: "If an airport pickup or drop-off can be arranged, the meeting point and time are confirmed in your quotation before you travel.",
++        },
++      ],
++      familyParagraph:
++        "Travelling with children, older relatives or a larger group? Tell us your passenger and luggage numbers when you request a quote so a suitable vehicle can be offered in your quotation. If you need child seats, ask before you confirm.",
++      bookingIntro: "Four steps from first message to a confirmed transfer.",
++      bookingSteps: [
++        { title: "1. Send Your Journey Details", detail: "Your pickup point, destination, travel date and time, passengers, luggage, and any flight details — by WhatsApp or our quote form." },
++        { title: "2. Receive Your Quotation", detail: "A quotation with a vehicle recommendation. The confirmed quotation sets the price and shows what it covers." },
++        { title: "3. Confirm Your Transfer", detail: "Approve the quotation to book; its terms explain what is needed to confirm." },
++        { title: "4. Travel", detail: "Your driver meets you at the pickup point and time confirmed in your quotation." },
++      ],
++      finalCtaHeading: "Request a Riyadh Transfer Quote",
++      finalCtaText: "Tell us your pickup point, destination and travel date — we reply with a quotation, and the confirmed quotation sets the price.",
++    },
+   },
+   {
+     slug: "jeddah-airport",

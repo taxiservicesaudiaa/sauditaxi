@@ -5,6 +5,7 @@ import { AlertTriangle, ArrowRight, Check, Clock, Luggage, MapPin, Plane } from 
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
+import { RouteStatusNotice, type RouteStatusNoticeContent } from "@/components/routes/RouteStatusNotice";
 
 /**
  * "Airport Departure Planner" — the dedicated visual identity for Saudi
@@ -100,6 +101,8 @@ export interface CityAirportRouteViewProps {
   formSubheading: string;
   formSlot: ReactNode;
   crumbs: Crumb[];
+  /** Optional dated status notice under the hero; omitted routes render unchanged. */
+  notice?: RouteStatusNoticeContent;
 }
 
 export function CityAirportRouteView({
@@ -156,6 +159,7 @@ export function CityAirportRouteView({
   formSubheading,
   formSlot,
   crumbs,
+  notice,
 }: CityAirportRouteViewProps) {
   return (
     <>
@@ -190,6 +194,8 @@ export function CityAirportRouteView({
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">{dek}</p>
         </div>
       </section>
+
+      {notice && <RouteStatusNotice notice={notice} />}
 
       {/* "When should I leave?" — the signature departure-planning panel, placed
           directly under the hero rather than buried mid-page. */}

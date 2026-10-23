@@ -1,6 +1,7 @@
 import type { Faq } from "@/data/faqs";
 import type { GalleryImage } from "@/components/sections/ImageGallery";
 import { airportGuides } from "@/data/airport-guides";
+import { DMM_STATUS_NOTICE } from "@/data/airport-status";
 
 export interface Airport {
   slug: string;
@@ -52,6 +53,35 @@ export interface Airport {
   images?: GalleryImage[];
   /** ISO date this page's content was last substantively reviewed/updated. */
   lastUpdated?: string;
+  /**
+   * Optional per-airport replacements for the shared hub copy built in
+   * app/(main)/airport-transfer/[airport]/page.tsx (e.g. while an airport's
+   * operations are disrupted). Every field falls back to the shared default,
+   * so airports without overrides render exactly as before.
+   */
+  hubOverrides?: AirportHubOverrides;
+}
+
+export interface AirportHubOverrides {
+  /** Dated status notice rendered under the hero. */
+  notice?: { heading: string; paragraphs: string[]; links?: { label: string; href: string }[] };
+  primaryCtaLabel?: string;
+  primaryCtaHref?: string;
+  popularHeading?: string;
+  popularIntro?: string;
+  /** Card title prefix, e.g. "Riyadh to" instead of "Riyadh Airport to". */
+  popularTitlePrefix?: string;
+  /** Card body used for every popular-route card. */
+  popularCardBody?: string;
+  arrivingHeading?: string;
+  meetGreetHeading?: string;
+  meetGreetIntro?: string;
+  meetGreetSteps?: { title: string; detail: string }[];
+  familyParagraph?: string;
+  bookingIntro?: string;
+  bookingSteps?: { title: string; detail: string }[];
+  finalCtaHeading?: string;
+  finalCtaText?: string;
 }
 
 const baseAirports: Airport[] = [
@@ -63,28 +93,74 @@ const baseAirports: Airport[] = [
     citySlug: "riyadh",
     region: "Riyadh Province",
     intro:
-      "King Khalid International Airport (RUH) is the main gateway to the Saudi capital, with private meet-and-greet transfers to every Riyadh district and beyond.",
+      "King Khalid International Airport (RUH) is the main airport serving the Saudi capital. Check your flight with your airline, then tell us your journey — we confirm what can be arranged in a quotation.",
     about:
-      "We track your flight and meet you in the arrivals hall at RUH with a name board, then drive you directly to your hotel, office, or onward city. Fixed quotes mean no surge pricing, and our drivers know all five terminals plus the route into central Riyadh and the highways to Dammam and Qassim.",
+      "We arrange private, pre-booked road transfers to and from Riyadh. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport is confirmed case by case in the customer's quotation.",
     terminals: ["Terminal 1 & 2 (international)", "Terminal 3 & 4 (domestic)", "Terminal 5 (low-cost)"],
     popularDestinations: ["Riyadh city", "Diriyah", "Dammam", "Qassim", "AlUla"],
+    // City-origin routes while RUH operations are disrupted (the riyadh-airport-to-* routes
+    // advertise airport pickups that are not currently confirmed). Restore when RUH service is confirmed.
     popularRoutes: [
-      "riyadh-airport-to-riyadh",
-      "riyadh-airport-to-jeddah",
-      "riyadh-airport-to-makkah",
-      "riyadh-airport-to-madinah",
-      "riyadh-to-khobar",
-      "riyadh-to-jubail",
-      "riyadh-to-hofuf",
       "riyadh-to-qassim",
-      "riyadh-to-hail",
-      "riyadh-to-taif",
-      "riyadh-to-tabuk",
-      "riyadh-to-neom",
+      "riyadh-to-dammam",
+      "riyadh-to-jeddah",
+      "riyadh-to-bahrain",
+      "riyadh-to-doha",
     ],
     metaTitle: "Private Riyadh Airport Transfer (RUH) | Saudi Private Transfers",
     metaDescription:
-      "Private transfer from King Khalid Airport (RUH) to your Riyadh hotel or onward to Jeddah, Makkah, Madinah, and the Eastern Province. Fixed price, meet-and-greet.",
+      "Riyadh airport (RUH) transfers and onward road travel. Check your flight with your airline, then request a quote — your confirmed quotation sets the price.",
+    hubOverrides: {
+      notice: {
+        heading: "Riyadh airport status — last checked 22 October 2026",
+        paragraphs: [
+          "Saudi Arabia's General Authority of Civil Aviation (GACA) announced on 10 October 2026 that operations at King Khalid International Airport were temporarily suspended, and on 12 October that the suspension had been extended for safety checks. We have not found an official GACA announcement that scheduled flights have resumed, and reports since then have differed. Confirm your flight's status directly with your airline before you travel.",
+          "Airport operations and our road transfers are separate matters. We are not confirming pickups or drop-offs at King Khalid International Airport in advance; if your journey involves the airport, send us your flight details and any airport pickup or drop-off is confirmed case by case in your quotation.",
+          "If your airline has moved your flight to another airport, we can quote a road transfer to or from Riyadh:",
+        ],
+        links: [
+          { label: "Qassim (incl. Qassim airport) to Riyadh", href: "/routes/qassim-to-riyadh" },
+          { label: "Dammam Airport to Riyadh", href: "/routes/dammam-airport-to-riyadh" },
+          { label: "Madinah Airport to Riyadh", href: "/routes/madinah-airport-to-riyadh" },
+          { label: "Jeddah Airport to Riyadh", href: "/routes/jeddah-airport-to-riyadh" },
+          { label: "Intercity transfers during flight disruptions", href: "/blog/saudi-arabia-intercity-transfers-flight-disruptions" },
+        ],
+      },
+      primaryCtaLabel: "Request a Riyadh Transfer Quote",
+      primaryCtaHref: "/get-quote?dropoff=Riyadh",
+      popularHeading: "Popular Transfers from Riyadh",
+      popularIntro: "Private road transfers we arrange from Riyadh. Each journey is confirmed in a quotation before you travel.",
+      popularTitlePrefix: "Riyadh to",
+      popularCardBody: "A private, direct transfer for your group. Your confirmed quotation sets the price and shows what it covers.",
+      arrivingHeading: "If Your Journey Involves King Khalid International Airport",
+      meetGreetHeading: "Airport Pickups While RUH Operations Are Disrupted",
+      meetGreetIntro: "What to check before you request a transfer that involves King Khalid International Airport.",
+      meetGreetSteps: [
+        {
+          title: "Check Your Flight",
+          detail: "Confirm with your airline that your flight is operating, which airport it now uses, and its arrival or departure time.",
+        },
+        {
+          title: "Share Your Details",
+          detail: "Send your airline, flight number, the airport, your pickup or destination address, and your passenger and luggage numbers.",
+        },
+        {
+          title: "Confirm the Meeting Point",
+          detail: "If an airport pickup or drop-off can be arranged, the meeting point and time are confirmed in your quotation before you travel.",
+        },
+      ],
+      familyParagraph:
+        "Travelling with children, older relatives or a larger group? Tell us your passenger and luggage numbers when you request a quote so a suitable vehicle can be offered in your quotation. If you need child seats, ask before you confirm.",
+      bookingIntro: "Four steps from first message to a confirmed transfer.",
+      bookingSteps: [
+        { title: "1. Send Your Journey Details", detail: "Your pickup point, destination, travel date and time, passengers, luggage, and any flight details — by WhatsApp or our quote form." },
+        { title: "2. Receive Your Quotation", detail: "A quotation with a vehicle recommendation. The confirmed quotation sets the price and shows what it covers." },
+        { title: "3. Confirm Your Transfer", detail: "Approve the quotation to book; its terms explain what is needed to confirm." },
+        { title: "4. Travel", detail: "Your driver meets you at the pickup point and time confirmed in your quotation." },
+      ],
+      finalCtaHeading: "Request a Riyadh Transfer Quote",
+      finalCtaText: "Tell us your pickup point, destination and travel date — we reply with a quotation, and the confirmed quotation sets the price.",
+    },
   },
   {
     slug: "jeddah-airport",
@@ -145,7 +221,7 @@ const baseAirports: Airport[] = [
     intro:
       "King Fahd International Airport (DMM) is the gateway to the Eastern Province and the Bahrain Causeway, with private transfers across the Dammam metro and beyond.",
     about:
-      "DMM is the largest airport in the world by land area and serves the energy capital of the Kingdom. We provide meet-and-greet pickups, transfers to Khobar, Dhahran, and Jubail, and cross-border rides to Bahrain via the King Fahd Causeway.",
+      "DMM is the largest airport in the world by land area and serves the energy capital of the Kingdom. We provide private airport pickups with flight tracking, transfers to Khobar, Dhahran, and Jubail, and cross-border rides to Bahrain via the King Fahd Causeway.",
     terminals: ["Main terminal (international & domestic)"],
     popularDestinations: ["Dammam", "Khobar", "Jubail", "Bahrain", "Riyadh"],
     popularRoutes: [
@@ -158,7 +234,43 @@ const baseAirports: Airport[] = [
     ],
     metaTitle: "Private Dammam Airport Transfer (DMM) | Saudi Private Transfers",
     metaDescription:
-      "Private transfer from King Fahd Airport (DMM) to Khobar, Jubail, Dhahran, Riyadh, or across the Bahrain Causeway. Fixed price, meet-and-greet pickup.",
+      "Private transfers from King Fahd Airport (DMM) to Khobar, Jubail, Dhahran, Riyadh and Bahrain, with flight tracking. Your confirmed quotation sets the price.",
+    // DMM service rules (owner, Oct 2026): flight tracking and free waiting are offered (no stated
+    // duration); name-board meet-and-greet is not. Card figures removed until each is verified.
+    hubOverrides: {
+      notice: DMM_STATUS_NOTICE,
+      popularIntro:
+        "Private transfers from King Fahd International Airport to these destinations, priced in a quotation you confirm before you travel.",
+      popularCardBody: "A private, direct transfer with flight tracking. Your confirmed quotation sets the price and shows what it covers.",
+      meetGreetHeading: "Airport Pickup at King Fahd International Airport",
+      meetGreetSteps: [
+        {
+          title: "Before Your Flight",
+          detail:
+            "Share your flight number, arrival date, and destination when you book. We track your flight from that point, so an early or delayed landing is already accounted for before you travel.",
+        },
+        {
+          title: "After Landing",
+          detail:
+            "Clear immigration and collect your luggage as normal at King Fahd International Airport, then head to the meeting point confirmed in your booking.",
+        },
+        {
+          title: "Meeting Your Driver",
+          detail:
+            "Your driver meets you at the confirmed meeting point and helps carry your luggage to the vehicle. Free waiting time is included if your flight lands late.",
+        },
+      ],
+      familyParagraph:
+        "Travelling with children, an elderly relative, or a larger group? Tell us your passenger and luggage numbers when you book so an SUV, van, or minibus is ready rather than assumed on the day. Child seats can be requested for your Dammam Airport transfer, and drivers help with luggage from the meeting point to the vehicle, so nobody is left managing bags alone.",
+      bookingSteps: [
+        { title: "1. Send Your Journey Details", detail: "Your flight number, arrival date, and destination — hotel, city, or onward route — sent by WhatsApp or our quote form." },
+        { title: "2. Receive Your Quotation", detail: "A price and a vehicle recommendation. The confirmed quotation sets the price and shows what it covers." },
+        { title: "3. Confirm Your Transfer", detail: "Approve your quotation and a driver is scheduled for your flight; the quotation sets out its payment and cancellation terms." },
+        { title: "4. Meet Your Driver", detail: "We track your flight, and your driver meets you at the confirmed meeting point at King Fahd International Airport, ready to help with luggage." },
+      ],
+      finalCtaText:
+        "Add your flight number and destination — we track your flight and reply with a quotation; the confirmed quotation sets the price.",
+    },
   },
   {
     slug: "taif-airport",

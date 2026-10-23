@@ -1,4 +1,5 @@
 import type { Faq } from "./faqs";
+import { DMM_STATUS_NOTICE, RUH_STATUS_NOTICE } from "./airport-status";
 
 /**
  * Route-specific editorial content for the 31 Saudi domestic Airport -> City
@@ -28,19 +29,78 @@ export interface AirportRouteContent {
   comparison?: { mode: string; note: string }[];
   checklist: string[];
   faqs: Faq[];
+  /** Optional per-route overrides of the shared template copy (see app/(main)/routes/[slug]/page.tsx).
+   * Each falls back to the shared default, so routes without them render unchanged. */
+  overrides?: AirportRouteOverrides;
+}
+
+export interface AirportRouteOverrides {
+  /** Dated status notice shown under the hero. */
+  notice?: { heading: string; paragraphs: string[]; links?: { label: string; href: string }[] };
+  arrivalSteps?: { label: string; detail: string }[];
+  bookingSteps?: { label: string; detail: string }[];
+  ctaText?: string;
+  ctaHref?: string;
+  formSubheading?: string;
+  /** Facts-box "Pure driving time" value, used when route.duration is not supported for this route. */
+  pureDrivingValue?: string;
+}
+
+/** RUH arrivals while airport operations are disrupted: no tracking or name-board promises; pickups confirmed case by case. */
+function ruhArrivalOverrides(city: string, pureDrivingValue?: string): AirportRouteOverrides {
+  return {
+    notice: RUH_STATUS_NOTICE,
+    pureDrivingValue,
+    arrivalSteps: [
+      { label: "Check your flight", detail: "Confirm with your airline that your flight is operating and which airport it now uses." },
+      { label: "Share your details", detail: `Send your airline, flight number, the airport, your destination in ${city}, and your passenger and luggage numbers.` },
+      { label: "Receive your quotation", detail: "Whether a pickup at King Khalid International Airport can be arranged, the meeting point and the price are confirmed in your quotation." },
+      { label: "Travel", detail: `Your driver meets you at the point and time confirmed in your quotation and drives you directly to ${city}.` },
+    ],
+    bookingSteps: [
+      { label: "Share your journey details", detail: `Flight number, arrival date and time, and your destination in ${city}.` },
+      { label: "Receive your quotation", detail: "The confirmed quotation sets the price and shows what it covers." },
+      { label: "Confirm the meeting point", detail: "Any pickup at King Khalid International Airport is confirmed case by case while its operations are disrupted." },
+      { label: "Travel directly to your destination", detail: "Door-to-door, with luggage assistance along the way." },
+    ],
+    ctaText: "Share your flight details and destination — we reply with a quotation, and the confirmed quotation sets the price.",
+    ctaHref: `/get-quote?dropoff=${encodeURIComponent(city)}`,
+    formSubheading: "Your confirmed quotation sets the price.",
+  };
+}
+
+/** DMM arrivals (owner-confirmed): flight tracking and free waiting (no stated duration); no name board. */
+function dmmArrivalOverrides(city: string, meeting: string): AirportRouteOverrides {
+  return {
+    notice: DMM_STATUS_NOTICE,
+    arrivalSteps: [
+      { label: "Flight tracking begins", detail: "We track your flight from the moment you book, so the pickup is planned around your actual landing time." },
+      { label: "Your driver meets you", detail: meeting },
+      { label: "Direct transfer begins", detail: `Your driver helps with luggage and you're driven directly toward ${city}, at the price in your confirmed quotation.` },
+    ],
+    bookingSteps: [
+      { label: "Share your journey details", detail: `Flight number, arrival date and time, and your destination in ${city}.` },
+      { label: "Receive your quotation", detail: "The confirmed quotation sets the price and shows what it covers." },
+      { label: "Meet your driver on arrival", detail: "We track your flight, and your driver meets you at the confirmed meeting point. Free waiting time is included." },
+      { label: "Travel directly to your destination", detail: "Door-to-door, with luggage assistance along the way." },
+    ],
+    ctaText: "Share your flight number and destination — we reply with a quotation, and the confirmed quotation sets the price.",
+    formSubheading: "Your confirmed quotation sets the price.",
+  };
 }
 
 export const airportRouteContent: Record<string, AirportRouteContent> = {
   // ── Local airport transfers (same city) ──────────────────────────────
   "riyadh-airport-to-riyadh": {
+    overrides: ruhArrivalOverrides("Riyadh"),
     intro:
       "King Khalid International Airport sits well north of central Riyadh, so the first thing most arrivals need isn't a taxi rank — it's a driver who already knows exactly where they're going, whether that's a downtown hotel, an office in the King Abdullah Financial District, or a family home in one of the capital's outer districts.",
     arrivalPickup: [
-      "Your flight is tracked from the moment you book, so the pickup time adjusts automatically if you land early or late. Your driver waits for you after you clear customs, holding a name board so you're easy to spot.",
+      "Confirm your flight with your airline first. Whether a pickup at King Khalid International Airport can be arranged, and where you would meet your driver, is confirmed in your quotation.",
       "If your flight schedule changes, message us as soon as you know — we plan around your actual landing time rather than the one printed on the ticket.",
     ],
     roadJourney: [
-      "The drive from the airport into the city runs south on the main airport expressway before splitting toward whichever district you're heading to — Olaya and the business core, the Diplomatic Quarter, KAFD, or the residential areas further out. Traffic is the main variable: a quiet mid-morning run can be notably quicker than a weekday evening one, which is one reason we track your flight rather than quoting a single fixed clock time.",
+      "The drive from the airport into the city runs south on the main airport expressway before splitting toward whichever district you're heading to — Olaya and the business core, the Diplomatic Quarter, KAFD, or the residential areas further out. Traffic is the main variable: a quiet mid-morning run can be notably quicker than a weekday evening one, so share your flight details and destination when you request a quote.",
     ],
     destinationArrival: [
       "Because Riyadh is spread across a wide grid of districts rather than one compact center, tell us your exact hotel or address when you book — the driver plans the route to that specific point, not just a general zone.",
@@ -59,11 +119,11 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "A contact number for the day of travel",
     ],
     faqs: [
-      { question: "How far is King Khalid International Airport from central Riyadh?", answer: "Around 35 km, which typically takes 30–45 minutes of driving depending on traffic and your exact destination in the city." },
-      { question: "Will someone be waiting for me after I land?", answer: "Yes. We track your flight and your driver waits in the arrivals area with a name board, adjusting for early or delayed landings." },
+      { question: "How far is King Khalid International Airport from central Riyadh?", answer: "Around 35 km. Driving time depends on traffic and your exact destination in the city." },
+      { question: "Will someone be waiting for me after I land?", answer: "Airport pickups are confirmed case by case while operations at King Khalid International Airport are disrupted. Send your flight details and the meeting point is confirmed in your quotation." },
       { question: "Can the driver take me straight to KAFD or the Diplomatic Quarter?", answer: "Yes — tell us the exact address when you book and the driver plans directly to it." },
-      { question: "What if my flight is delayed?", answer: "No issue. We adjust the pickup time to your actual landing time, so a delay doesn't cost you the transfer." },
-      { question: "Is the price fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel. Traffic can affect how long the drive takes, not what you pay." },
+      { question: "What if my flight is delayed?", answer: "Tell us as soon as your airline confirms a new time, and we'll review the pickup with you." },
+      { question: "How is the price set?", answer: "You receive a quotation before you travel. The confirmed quotation sets the price and shows what it covers." },
       { question: "Can I book a family van for a larger group?", answer: "Yes — tell us your passenger and luggage count and we'll arrange a vehicle sized to your group." },
     ],
   },
@@ -665,13 +725,14 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
   },
 
   "riyadh-airport-to-jeddah": {
+    overrides: ruhArrivalOverrides("Jeddah", "Confirmed in your quotation"),
     intro:
       "This route serves the reverse direction of the Kingdom's longest domestic corridor — travellers landing at King Khalid International Airport in the capital who are continuing straight to Jeddah, often diplomatic or business visitors whose itinerary starts in Riyadh before the coast.",
     arrivalPickup: [
-      "King Khalid International Airport has five terminals — your flight is tracked and the pickup matched to whichever one you land at.",
+      "King Khalid International Airport has several terminals — share your flight number and terminal. Any airport pickup is confirmed case by case in your quotation.",
     ],
     roadJourney: [
-      "At 950 km and roughly 9 hours, this mirrors the return direction of the Jeddah to Riyadh route, but starts from the airport. We plan rest and fuel stops into every booking rather than treating it as a single unbroken drive, and the exact pacing is worked out with you when you book.",
+      "At about 950–990 km, this mirrors the return direction of the Jeddah to Riyadh route, but starts from the airport. We plan rest and fuel stops into every booking rather than treating it as a single unbroken drive, and the exact pacing is worked out with you when you book.",
     ],
     destinationArrival: [
       "Jeddah's Corniche hotels, business districts, and residential areas are spread along the coast — confirm your exact address so the driver plans directly to it rather than a general area.",
@@ -680,33 +741,34 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "Given the length of the journey, an SUV or van is generally the more comfortable choice, particularly for business travellers with equipment or families relocating between cities.",
     whoSuits: [
       { title: "Business and diplomatic travellers", description: "A direct, private option for those whose trip starts in the capital before continuing to the coast." },
-      { title: "Families and groups with luggage", description: "One vehicle for the full nine-hour journey rather than a domestic connecting flight." },
+      { title: "Families and groups with luggage", description: "One vehicle for the whole long-distance journey rather than a domestic connecting flight." },
     ],
     comparison: [
       { mode: "Domestic connecting flight", note: "Quicker in the air, but requires a second check-in and boarding process straight after landing." },
-      { mode: "Private road transfer", note: "No second flight, flexible stops, and one fixed price for the whole journey and any luggage." },
+      { mode: "Private road transfer", note: "No second flight, flexible stops, and one vehicle for the whole journey and your luggage, priced in a quotation you confirm." },
     ],
     checklist: [
       "Flight number and RUH terminal",
       "Exact hotel or address in Jeddah",
-      "Preferred pacing for the nine-hour drive",
+      "Preferred pacing for the long drive",
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How long does the Riyadh Airport to Jeddah drive take?", answer: "Around 9 hours for 950 km, with rest stops planned into the journey." },
+      { question: "How long does the Riyadh Airport to Jeddah drive take?", answer: "The road distance is about 950–990 km. Driving time depends on traffic and the rest stops you agree, and is discussed when you request a quote." },
       { question: "Is this route mostly business travellers?", answer: "It's common among business and diplomatic travellers, but also used by families and tourists who prefer one vehicle over a connecting flight." },
       { question: "Can I request an early-morning or overnight departure?", answer: "Yes, departure timing is agreed with you at booking rather than fixed to one schedule." },
     ],
   },
 
   "riyadh-airport-to-makkah": {
+    overrides: ruhArrivalOverrides("Makkah", "Confirmed in your quotation"),
     intro:
       "For pilgrims who fly into the capital rather than Jeddah — often because of flight availability or an onward business stop in Riyadh — this route covers the long drive west to Makkah, avoiding a domestic flight connection into the Hejaz.",
     arrivalPickup: [
-      "King Khalid International Airport's five terminals are all tracked the same way — your driver waits in the arrivals area matching your specific terminal.",
+      "King Khalid International Airport has several terminals — share your terminal and flight number. Any airport pickup is confirmed case by case in your quotation.",
     ],
     roadJourney: [
-      "At about 880 km and 8.5 hours, this is a substantial cross-country drive. Given the pilgrim context of most bookings, we can coordinate a stop at a designated miqat location along the way for those entering ihram, discussed and confirmed with you at booking rather than assumed automatically.",
+      "At roughly 870–905 km, this is a substantial cross-country drive. Given the pilgrim context of most bookings, we can coordinate a stop at a designated miqat location along the way for those entering ihram, discussed and confirmed with you at booking rather than assumed automatically.",
     ],
     destinationArrival: [
       "Drop-off is arranged at a point near the Haram, in the Clock Tower, Ajyad, or nearby hotel areas, confirmed with you before travel — vehicle access to the mosque plaza itself is restricted for all traffic.",
@@ -715,7 +777,7 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "Family vans are common on this route given the combination of pilgrim luggage and the length of the drive — mention your group size when booking.",
     whoSuits: [
       { title: "Umrah and Hajj pilgrims via Riyadh", description: "A direct alternative for pilgrims whose flights land in the capital rather than Jeddah." },
-      { title: "Families with luggage for an extended stay", description: "One vehicle for the whole 8.5-hour journey." },
+      { title: "Families with luggage for an extended stay", description: "One vehicle for the whole journey." },
     ],
     checklist: [
       "Flight number and RUH terminal",
@@ -724,51 +786,53 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How long does the Riyadh Airport to Makkah transfer take?", answer: "Around 8 hours 30 minutes for roughly 880 km." },
+      { question: "How long does the Riyadh Airport to Makkah transfer take?", answer: "The road distance is roughly 870–905 km. Driving time depends on traffic, rest stops and any miqat stop you request." },
       { question: "Can the driver stop at a miqat for ihram?", answer: "Yes, mention this when booking and we coordinate a stop at the appropriate point along the route." },
       { question: "Why fly into Riyadh instead of Jeddah for Umrah?", answer: "Some pilgrims combine a Riyadh business stop with their pilgrimage, or simply find better flight availability into the capital." },
-      { question: "Is this transfer suitable for a large family group?", answer: "Yes, tell us your numbers and we arrange a van or multiple vehicles as needed." },
+      { question: "Is this transfer suitable for a large family group?", answer: "Tell us your passenger and luggage numbers, and suitable vehicles are offered in your quotation." },
     ],
   },
 
   "riyadh-airport-to-madinah": {
+    overrides: ruhArrivalOverrides("Madinah", "Confirmed in your quotation"),
     intro:
       "This route serves travellers who land in the capital but are heading first to Madinah — sometimes pilgrims combining a business trip with Umrah, sometimes simply a matter of which city had the better flight into the Kingdom.",
     arrivalPickup: [
-      "Your flight into King Khalid International Airport is tracked across all five terminals, and your driver waits once you've cleared customs.",
+      "Share your flight number and terminal at King Khalid International Airport. Any airport pickup and meeting point are confirmed case by case in your quotation.",
     ],
     roadJourney: [
-      "At about 850 km and 8 hours, this is a long cross-country drive northwest from the capital toward Madinah, with rest-stop pacing agreed with you at booking.",
+      "At roughly 850 km, this is a long cross-country drive northwest from the capital toward Madinah, with rest-stop pacing agreed with you at booking.",
     ],
     destinationArrival: [
       "Drop-off is arranged at a hotel near the Prophet's Mosque, in the Central (Markaziyah) area, confirmed with you before travel.",
     ],
     vehicleLuggage:
-      "Given the eight-hour distance, an SUV or van generally makes more sense than a sedan, particularly for families or anyone with pilgrim luggage.",
+      "Given the length of the drive, an SUV or van generally makes more sense than a sedan, particularly for families or anyone with pilgrim luggage.",
     whoSuits: [
       { title: "Pilgrims and business travellers combining trips", description: "A direct route for those whose itinerary links a Riyadh stop with Madinah." },
-      { title: "Families with luggage", description: "One vehicle for the whole eight-hour drive rather than a domestic flight connection." },
+      { title: "Families with luggage", description: "One vehicle for the whole drive rather than a domestic flight connection." },
     ],
     checklist: [
       "Flight number and RUH terminal",
       "Madinah hotel name or area near the Haram",
-      "Preferred pacing for the eight-hour drive",
+      "Preferred pacing for the long drive",
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How long does the Riyadh Airport to Madinah drive take?", answer: "Around 8 hours for roughly 850 km." },
+      { question: "How long does the Riyadh Airport to Madinah drive take?", answer: "The road distance is roughly 850 km. Driving time depends on traffic and the rest stops you agree." },
       { question: "Can this be combined with a later Madinah to Makkah leg?", answer: "Yes, that's a separate route we can arrange alongside this one once your Madinah stay is planned." },
     ],
   },
 
   "dammam-airport-to-riyadh": {
+    overrides: dmmArrivalOverrides("Riyadh", "King Fahd International Airport has a single main passenger terminal. Share your flight number — we track your flight, and your driver meets you at the meeting point confirmed in your booking. Free waiting time is included if your flight lands late."),
     intro:
       "This is one of the more frequently booked long-distance airport routes, linking the Eastern Province's main airport with the capital — used heavily by energy-sector business travellers moving between Dammam's industrial base and Riyadh's corporate headquarters.",
     arrivalPickup: [
-      "King Fahd International Airport is a large, single-terminal facility, so there's no terminal-matching complexity — your flight is tracked and the driver waits in the arrivals hall.",
+      "King Fahd International Airport has a single main passenger terminal. Share your flight number — we track your flight, and your driver meets you at the meeting point confirmed in your booking. Free waiting time is included if your flight lands late.",
     ],
     roadJourney: [
-      "At 420 km and 4 hours, this is a substantial but manageable drive west across the peninsula toward Riyadh, generally comfortable in one stretch for most travellers.",
+      "At about 400 km by road, this is a substantial but manageable drive west across the peninsula toward Riyadh — roughly four hours of driving without stops, before traffic in Riyadh and any rest stops you agree.",
     ],
     destinationArrival: [
       "Riyadh's business districts and hotels are spread across the city — confirm your exact address, whether that's KAFD, Olaya, or elsewhere, so the driver plans directly to it.",
@@ -781,7 +845,7 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
     ],
     comparison: [
       { mode: "Domestic flight", note: "Faster overall, but adds a second airport process straight after arrival — worth it mainly if you're not carrying much luggage and value speed over convenience." },
-      { mode: "Private road transfer", note: "Door-to-door with no second flight, at a fixed price for the four-hour drive." },
+      { mode: "Private road transfer", note: "Door-to-door with no second flight, priced in a quotation you confirm before you travel." },
     ],
     checklist: [
       "Flight number and arrival time at King Fahd Airport",
@@ -789,7 +853,8 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How long does the Dammam Airport to Riyadh drive take?", answer: "Around 4 hours for 420 km." },
+      { question: "How long does the Dammam Airport to Riyadh drive take?", answer: "The road distance is about 400 km, roughly four hours of driving without stops. Traffic in Riyadh, your exact address and any rest stops add to the total." },
+      { question: "My Riyadh flight was moved to Dammam — can you drive me to Riyadh?", answer: "Yes. Share your flight number and your Riyadh address; we track your flight, and the pickup and price are confirmed in your quotation." },
       { question: "Is this route mainly used for business travel?", answer: "It's especially popular with energy-sector business travellers, though it's open to any traveller making this journey." },
       { question: "Can I book this transfer for a same-day return?", answer: "Yes, book the return leg (Riyadh to Dammam Airport) separately for the same or a later day." },
     ],

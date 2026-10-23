@@ -1,4 +1,5 @@
 import type { PointTransferV2Page } from "./types";
+import { DMM_STATUS_NOTICE } from "../airport-status";
 
 /**
  * Dammam V2 point-transfer pages — city/Corniche/business-district transfers,
@@ -348,23 +349,27 @@ export const dammamPointTransfersV2: PointTransferV2Page[] = [
     h1: "King Fahd Airport to Dammam Hotels Transfer",
     metaTitle: "King Fahd Airport to Dammam Hotels | Private Taxi",
     metaDescription:
-      "Book a fixed-price transfer from King Fahd Airport (DMM) to any Dammam hotel — meet and greet, flight tracking, and door-to-door service. Available 24/7.",
-    distance: "18-24 km",
-    duration: "20-27 min",
+      "Private transfer from King Fahd Airport (DMM) to any Dammam hotel, with flight tracking and free waiting time. Your confirmed quotation sets the price. 24/7.",
+    distance: "35-45 km",
     content: {
       category: "hotel",
       eyebrow: "One transfer, every hotel in the city",
-      dek: "Whether a Corniche-facing five-star or a value-focused city-centre property, the same fixed-price meet-and-greet service applies.",
+      dek: "Whether a Corniche-facing five-star or a value-focused city-centre property, the same private airport pickup applies — with flight tracking and a price set in your confirmed quotation.",
       stats: [
-        { label: "Distance", value: "18-24 km" },
-        { label: "Drive time", value: "20-27 min", emphasis: true },
+        { label: "Distance", value: "35-45 km" },
+        { label: "Flight tracking", value: "Included", emphasis: true },
       ],
       blocks: [
         {
+          type: "timingPanel",
+          heading: DMM_STATUS_NOTICE.heading,
+          paragraphs: DMM_STATUS_NOTICE.paragraphs,
+        },
+        {
           type: "pickupPlanning",
-          heading: "Meet and greet, wherever you're staying",
+          heading: "Airport pickup, wherever you're staying",
           paragraphs: [
-            "Your driver tracks your flight and waits inside arrivals with a printed name board, so the moment you clear the terminal you're heading straight for your hotel. Reasonable waiting time is included for delayed landings and slow immigration queues.",
+            "We track your flight, and your driver meets you at the meeting point confirmed in your booking, so once you clear the terminal you're heading straight for your hotel. Free waiting time is included for delayed landings and slow immigration queues.",
           ],
         },
         {
@@ -388,14 +393,15 @@ export const dammamPointTransfersV2: PointTransferV2Page[] = [
           heading: "Related transfers",
           links: [
             { label: "Dammam Hotels to King Fahd Airport", href: "/dammam/hotels-to-dammam-airport" },
+            { label: "Dammam Airport transfers", href: "/airport-transfer/dammam-airport" },
           ],
         },
       ],
       faqs: [
-        { question: "Do you cover every hotel in Dammam?", answer: "Yes — fixed-price transfers to every major hotel, from five-star Corniche properties to business and budget hotels in the centre." },
-        { question: "How long is the drive to my hotel?", answer: "Most hotels are 18-24 km from the airport, about 20-27 minutes, depending on the district." },
-        { question: "Where will my driver meet me?", answer: "Inside the arrivals hall with a printed name board." },
-        { question: "Is the price fixed no matter which hotel?", answer: "Yes, fixed once you share your hotel, since different hotels sit at different distances." },
+        { question: "Do you cover every hotel in Dammam?", answer: "Yes — private transfers to every major hotel, from five-star Corniche properties to business and budget hotels in the centre, priced in your quotation." },
+        { question: "How far is my hotel from the airport?", answer: "Hotels in central Dammam and on the Corniche are roughly 35-45 km from the airport by road; drive time depends on your district and traffic." },
+        { question: "Where will my driver meet me?", answer: "At the meeting point confirmed in your booking. We track your flight, and free waiting time is included." },
+        { question: "How is the price set?", answer: "Share your hotel and flight details and we reply with a quotation; the confirmed quotation sets the price, since different hotels sit at different distances." },
       ],
     },
   },
@@ -407,18 +413,21 @@ export const dammamPointTransfersV2: PointTransferV2Page[] = [
     h1: "Dammam Hotels to King Fahd Airport Transfer",
     metaTitle: "Dammam Hotels to King Fahd Airport | Private Taxi",
     metaDescription:
-      "Book a fixed-price transfer from any Dammam hotel to King Fahd Airport (DMM) — punctual pickup, luggage help, and a fare agreed in advance. 24/7 service.",
-    distance: "18-24 km",
-    duration: "20-27 min",
+      "Private transfer from any Dammam hotel to King Fahd Airport (DMM), with lobby pickup and luggage help. Your confirmed quotation sets the price. 24/7.",
+    distance: "35-45 km",
     content: {
       category: "hotel",
       eyebrow: "From any hotel, to your flight",
       dek: "Because King Fahd Airport is unusually large by land area, we plan a comfortable buffer beyond the drive itself.",
       stats: [
-        { label: "Distance", value: "18-24 km" },
-        { label: "Drive time", value: "20-27 min", emphasis: true },
+        { label: "Distance", value: "35-45 km", emphasis: true },
       ],
       blocks: [
+        {
+          type: "timingPanel",
+          heading: DMM_STATUS_NOTICE.heading,
+          paragraphs: [DMM_STATUS_NOTICE.paragraphs[0]],
+        },
         {
           type: "timingPanel",
           heading: "Timing your pickup",
@@ -438,6 +447,7 @@ export const dammamPointTransfersV2: PointTransferV2Page[] = [
           heading: "Related transfers",
           links: [
             { label: "King Fahd Airport to Dammam Hotels", href: "/dammam/dammam-airport-to-hotels" },
+            { label: "Dammam Airport transfers", href: "/airport-transfer/dammam-airport" },
           ],
         },
       ],
@@ -445,7 +455,7 @@ export const dammamPointTransfersV2: PointTransferV2Page[] = [
         { question: "Do you collect from every hotel?", answer: "Yes — every major hotel in the city, from Corniche five-star to city-centre budget options." },
         { question: "How early should I leave?", answer: "About three hours before international departures, two for domestic, plus the drive time." },
         { question: "Will the driver collect me from the lobby?", answer: "Yes, door-to-door from your hotel entrance." },
-        { question: "Is the fare fixed no matter which hotel?", answer: "Yes, fixed once you share your hotel, reflecting your specific starting point." },
+        { question: "How is the fare set?", answer: "Share your hotel and flight time and we reply with a quotation; the confirmed quotation sets the price for your specific starting point." },
       ],
     },
   },

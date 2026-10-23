@@ -25,6 +25,9 @@ export interface AirportTransferHubContent {
   heroImage: string;
   heroAlt: string;
   facts: { label: string; value: string }[];
+  /** Optional dated status notice shown directly under the hero (e.g. airport
+   * disruption). Rendered only when supplied, so airports without one are unchanged. */
+  notice?: { heading: string; paragraphs: string[]; links?: { label: string; href: string }[] };
   primaryCtaLabel: string;
   primaryCtaHref: string;
   secondaryCtaLabel?: string;
@@ -86,6 +89,7 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
     heroImage,
     heroAlt,
     facts,
+    notice,
     primaryCtaLabel,
     primaryCtaHref,
     secondaryCtaLabel,
@@ -161,6 +165,34 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
           </div>
         )}
       </section>
+
+      {notice && (
+        <section className="border-b border-brass/30 bg-brass/10 py-8 sm:py-10" aria-labelledby="airport-status-notice">
+          <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 id="airport-status-notice" className="text-lg font-bold tracking-tight text-ink sm:text-xl">
+                {notice.heading}
+              </h2>
+              {notice.paragraphs.map((p, i) => (
+                <p key={i} className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+                  {p}
+                </p>
+              ))}
+              {notice.links && notice.links.length > 0 && (
+                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+                  {notice.links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="text-ink underline decoration-brass underline-offset-4 hover:text-brass">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* H2 #1 — Private Transfers from [Airport] (no H3s) */}
       <section className="bg-white py-14 sm:py-20">

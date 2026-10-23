@@ -1,0 +1,116 @@
+diff --git a/blogs.content (current) b/blogs.content (proposed)
+index 5f05183..d0f59ac 100644
+--- a/blogs.content (current)
++++ b/blogs.content (proposed)
+@@ -1,8 +1,8 @@
+ <p>
+-<strong>Last updated: 14 October 2026.</strong> This is a developing situation. Check your airline and the official sources listed below before you travel.</p>
++<strong>Last updated: 22 October 2026.</strong> This is a developing situation. Check your airline and the official sources listed below before you travel.</p>
+ 
+ <p>
+-<strong>Short answer:</strong> King Khalid International Airport (RUH) in Riyadh has been closed since an attack on the afternoon of Saturday 10 October 2026, and the airport was struck again on Sunday 11 October. On 12 October, GACA announced that the suspension had been extended to complete checks on the safety and operational readiness of the airport's facilities, without giving an end date. A new aviation notice (NOTAM), reported by Reuters on 12 October, keeps the airport closed until 21:00 UTC — midnight Riyadh time — on Saturday 17 October. That is the notice period, not a confirmed reopening: NOTAMs can be extended, and as of this update <strong>no reopening time for passenger flights has been announced by GACA or the other sources we consulted</strong>. Do not go to the airport unless your airline has confirmed your flight is operating.</p>
++<strong>Short answer:</strong> Saudi Arabia's General Authority of Civil Aviation (GACA) suspended operations at King Khalid International Airport (RUH) in Riyadh after an attack on the afternoon of Saturday 10 October 2026; the airport was struck again on Sunday 11 October. On 12 October, GACA extended the suspension to complete checks on the safety and operational readiness of the airport's facilities, without giving an end date. A NOTAM reported by Reuters on 12 October set a closure period ending at 21:00 UTC on Saturday 17 October. Since then, reports have differed: aviation press reported a new notice from 17 October requiring prior GACA permission for all flights, while other outlets reported that the airport remained closed. As of 22 October 2026, <strong>we have not found an official GACA announcement that scheduled passenger flights have resumed</strong>. Do not go to the airport unless your airline has confirmed your flight is operating.</p>
+ 
+-<p>For the separate incident at Dammam's King Fahd International Airport on 11 October, see our <a href="/blog/dammam-airport-attack-october-2026">Dammam airport advisory</a>.</p>
++<p>For the separate incidents at Dammam's King Fahd International Airport on 11 and 21 October, see our <a href="/blog/dammam-airport-attack-october-2026">Dammam airport advisory</a>.</p>
+ 
+@@ -18,3 +18,3 @@
+ <th>Item</th>
+-<th>Status as of 14 October 2026</th>
++<th>Status as of 22 October 2026</th>
+ </tr>
+@@ -28,3 +28,3 @@
+ <td>Operations</td>
+-<td>Suspended since the afternoon of 10 October 2026; the airport was struck again on 11 October, and GACA extended the suspension on 12 October for safety and operational-readiness checks</td>
++<td>Suspended by GACA on the afternoon of 10 October 2026; the airport was struck again on 11 October, and GACA extended the suspension on 12 October for safety and operational-readiness checks. We have not found a later official GACA statement on operations</td>
+ </tr>
+@@ -35,4 +35,4 @@
+     <tr>
+-<td>Reported closure period</td>
+-<td>Until 21:00 UTC (midnight Riyadh time) on Saturday 17 October, per a new NOTAM reported by Reuters on 12 October. Earlier notices cited by media had set midnight on 11 October and then midnight on 13 October</td>
++<td>Aviation notices (as reported)</td>
++<td>A NOTAM reported by Reuters on 12 October set a closure period ending 21:00 UTC (midnight Riyadh time) on 17 October. Aviation press reported that a new NOTAM, A3650/26, effective from 18:45 UTC on 17 October, requires prior GACA permission for all departing and arriving traffic (Inside Aviation, 18 October)</td>
+ </tr>
+@@ -41,3 +41,3 @@
+ <td>
+-<strong>Not confirmed.</strong> GACA has not announced a reopening time, and the NOTAM end time is not a confirmed reopening date</td>
++<strong>Not officially confirmed.</strong> Reports since 17 October differ — some describe a limited reopening under prior permission, others continued closure. Check your flight with your airline</td>
+ </tr>
+@@ -49,3 +49,3 @@
+ <td>Diversions</td>
+-<td>On 10 October, inbound flights diverted mainly to Jeddah, according to Flightradar24 data reported by Gulf News</td>
++<td>On 10 October, inbound flights diverted mainly to Jeddah, according to Flightradar24 data reported by Gulf News. Time Out Riyadh reported on 21 October that flights were being diverted to Madinah and Qassim</td>
+ </tr>
+@@ -55,3 +55,3 @@
+ <h2 id="flights">What This Means for Flights</h2>
+-<p>Airlines have cancelled Riyadh flights while the airport is closed. According to The National, Etihad has cancelled flights on Monday 12 and Tuesday 13 October; Emirates cancelled all six Dubai–Riyadh services on Monday and four on Tuesday; flydubai has cancelled Riyadh flights up to and including 14 October; and Air Arabia has cancelled its Sharjah–Riyadh flights on Monday and Tuesday. Other carriers, including EgyptAir, have suspended Riyadh flights until operations resume. Air Data News reported on 12 October that the Lufthansa Group had suspended Riyadh flights through 16 October and Air France-KLM through the end of October — so even after the airport reopens, your airline may not restart its Riyadh service straight away.</p>
++<p>Airlines decide individually when to cancel or restart Riyadh services. In the days after 10 October, several carriers — including Etihad, Emirates, flydubai, Air Arabia and EgyptAir — cancelled or suspended Riyadh flights, according to The National, and Air Data News reported on 12 October that the Lufthansa Group and Air France-KLM had suspended Riyadh flights for longer periods. Later reports said some airlines had pushed their return into November or 2027. Airline plans change frequently, so check your own airline rather than relying on these reports.</p>
+ <p>Even after an official reopening, schedules may take time to recover. After the 9 October reopening, hundreds of flights remained delayed or cancelled, and individual airlines decide when to restart their own Riyadh services.</p>
+@@ -75,29 +75,22 @@
+ <h2 id="alternatives">If Your Airline Reroutes You Through Another Airport</h2>
+-<p>If your airline rebooks you through another Saudi airport, you may need ground transport to or from Riyadh. Only make road plans once your new flight is confirmed, and follow official guidance on travel at the time. Air Data News reported on 12 October that there is no general Saudi government programme transferring passengers from Riyadh to alternative airports, so any rerouting is arranged by your airline. Note that flights at Dammam's King Fahd International Airport have also been disrupted since an attack there on 11 October — see our <a href="/blog/dammam-airport-attack-october-2026">Dammam airport advisory</a> before relying on it. These are the distances on our published routes:</p>
+-<table>
+-  <thead>
+-<tr>
+-<th>Airport</th>
+-<th>Distance to Riyadh by road</th>
+-<th>Typical driving time</th>
+-</tr>
+-</thead>
+-  <tbody>
+-    <tr>
+-<td>King Fahd International Airport, Dammam (DMM)</td>
+-<td>About 420 km</td>
+-<td>Around 4 hours</td>
+-</tr>
+-    <tr>
+-<td>King Abdulaziz International Airport, Jeddah (JED)</td>
+-<td>About 950 km</td>
+-<td>Around 9 hours</td>
+-</tr>
+-  </tbody>
+-</table>
+-<p>Between Dammam and Riyadh there is also a SAR passenger rail service — check SAR directly for current schedules and availability. For the road options, see our <a href="/routes/dammam-airport-to-riyadh">Dammam Airport to Riyadh</a> and <a href="/routes/jeddah-airport-to-riyadh">Jeddah Airport to Riyadh</a> transfer pages.</p>
++<p>If your airline rebooks you through another Saudi airport, you may need ground transport to or from Riyadh. Only make road plans once your new flight is confirmed, and follow official guidance on travel at the time. Air Data News reported on 12 October that there is no general Saudi government programme transferring passengers from Riyadh to alternative airports, so any rerouting is arranged by your airline. Note that Dammam's King Fahd International Airport was attacked on 11 October and again on the evening of 21 October; on 22 October GACA said operations there had resumed and air traffic had returned to normal (as reported by Arab News). See our <a href="/blog/dammam-airport-attack-october-2026">Dammam airport advisory</a> and check your flight before relying on it.</p>
++<p>We can quote road transfers to or from Riyadh for these airports — each journey is confirmed in a quotation before you travel:</p>
++<ul>
++  <li>
++<a href="/routes/qassim-to-riyadh">Qassim (including Prince Naif bin Abdulaziz International Airport) to Riyadh</a>
++</li>
++  <li>
++<a href="/routes/dammam-airport-to-riyadh">Dammam Airport to Riyadh</a>
++</li>
++  <li>
++<a href="/routes/madinah-airport-to-riyadh">Madinah Airport to Riyadh</a>
++</li>
++  <li>
++<a href="/routes/jeddah-airport-to-riyadh">Jeddah Airport to Riyadh</a>
++</li>
++</ul>
++<p>Between Dammam and Riyadh there is also a SAR passenger rail service — check SAR directly for current schedules and availability. For planning help, see our guide to <a href="/blog/saudi-arabia-intercity-transfers-flight-disruptions">arranging an intercity transfer during flight disruptions</a>.</p>
+ 
+ <h2 id="transfers">Airport Transfers to and from Riyadh Airport</h2>
+-<p>While the airport is closed, we cannot run pickups or drop-offs at RUH. If you've booked a Riyadh airport transfer with us, message us with your airline's latest update. We'll move the pickup to your new flight time, or quote the new journey if your airline has rebooked you through a different airport. No payment is needed to receive a quote.</p>
+-<p>Once the airport reopens, our guides to <a href="/blog/riyadh-airport-driver-meeting-point">meeting your driver at Riyadh Airport</a> and <a href="/blog/what-happens-if-flight-to-saudi-arabia-delayed">what to do if your flight to Saudi Arabia is delayed</a> explain how pickups adjust to changed flight times.</p>
++<p>We are not confirming pickups or drop-offs at King Khalid International Airport in advance while its operations are disrupted; any airport pickup or drop-off is confirmed case by case in your quotation. If you've booked a Riyadh airport transfer with us, message us with your airline's latest update and we'll review the booking with you, or quote the new journey if your airline has rebooked you through a different airport. No payment is needed to receive a quote.</p>
+ 
+@@ -120,2 +113,8 @@
+ <a href="https://www.airdatanews.com/riyadh-airport-to-remain-closed-until-october-17-as-airlines-cancel-hundreds-of-flights/" rel="noopener noreferrer" target="_blank">Air Data News</a> — airline suspensions and Cirium data, 12 October 2026</li>
++  <li>
++<a href="https://insideaviation.news/saudi-arabia-riyadh-airport-reopens-but-not-to-scheduled-traffic/" rel="noopener">Inside Aviation</a> — NOTAM A3650/26 (prior GACA permission for all traffic from 17 October), 18 October 2026</li>
++  <li>
++<a href="https://www.timeoutriyadh.com/news/riyadh-airport-latest-update" rel="noopener">Time Out Riyadh</a> — airport status and diversions, updated 21 October 2026</li>
++  <li>
++<a href="https://www.arabnews.com/saudi-arabia/dammams-king-fahd-airport-resumes-normal-operations-3007672" rel="noopener">Arab News</a> — GACA statement on Dammam airport operations, 22 October 2026</li>
+   <li>Your airline's official website or app — the authoritative source for your own flight</li>
+@@ -123,3 +122,3 @@
+ <p>
+-<em>This article summarises official statements and reliable reporting available on 14 October 2026. It is not official guidance. We will update it when a significant official announcement changes the situation.</em>
++<em>This article summarises official statements and reliable reporting available on 22 October 2026. It is not official guidance. We will update it when a significant official announcement changes the situation.</em>
+ </p>
+@@ -127,2 +126,2 @@
+ <h2 id="next-steps">Need to Change a Transfer?</h2>
+-<p>If your travel plans around Riyadh have changed, <a href="/get-quote">send us your new flight details</a> and we'll reply with a fixed price for the journey you now need, or adjust an existing booking. See our <a href="/airport-transfer/riyadh-airport">Riyadh Airport transfer service</a> for how pickups work once flights resume.</p>
+\ No newline at end of file
++<p>If your travel plans around Riyadh have changed, <a href="/get-quote">send us your new flight details</a> and we'll reply with a quotation for the journey you now need — the confirmed quotation sets the price — or review an existing booking with you. See our <a href="/airport-transfer/riyadh-airport">Riyadh Airport page</a> for current guidance.</p>
+\ No newline at end of file

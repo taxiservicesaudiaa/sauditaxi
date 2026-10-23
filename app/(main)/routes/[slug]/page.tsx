@@ -243,7 +243,8 @@ export default async function RoutePage({
       ...(destinationCity ? [{ label: `${destinationCity.name} taxi service`, href: `/taxi-service/${destinationCity.slug}` }] : []),
     ];
 
-    const arrivalSteps = [
+    const o = content.overrides;
+    const arrivalSteps = o?.arrivalSteps ?? [
       {
         label: "Flight tracking begins",
         detail: "We track your flight from the moment you book, so the pickup time adjusts automatically to your actual landing time.",
@@ -256,7 +257,7 @@ export default async function RoutePage({
       },
     ];
 
-    const bookingSteps = [
+    const bookingSteps = o?.bookingSteps ?? [
       { label: "Share your journey details", detail: `Flight number, arrival date and time, and your destination in ${route.to}.` },
       { label: "Receive a fixed price", detail: "Confirmed before you travel — no meter, no surge pricing." },
       { label: "Meet your driver on arrival", detail: "Your driver waits in the arrivals area, tracking your flight for any delay." },
@@ -294,7 +295,7 @@ export default async function RoutePage({
           ]}
           journeyTimeHeading="Journey Time"
           pureDrivingLabel="Pure driving time"
-          pureDrivingValue={route.duration}
+          pureDrivingValue={o?.pureDrivingValue ?? route.duration}
           totalJourneyNote="This is driving time under normal conditions. Your total journey — including clearing customs, collecting luggage, and traffic — can run longer, so it's a baseline for the drive itself, not a door-to-door guarantee."
           arrivalHeading={`Arrival & Pickup at ${route.from}`}
           arrivalSteps={arrivalSteps}
@@ -328,11 +329,12 @@ export default async function RoutePage({
           faqsHeading="Frequently Asked Questions"
           faqs={faqs}
           ctaHeading={`Ready to Book Your ${route.from} to ${route.to} Transfer?`}
-          ctaText="Share your flight number and destination — we reply with a fixed price before you travel."
+          ctaText={o?.ctaText ?? "Share your flight number and destination — we reply with a fixed price before you travel."}
           ctaLabel="Get a Quote"
-          ctaHref={`/get-quote?pickup=${encodeURIComponent(route.from)}&dropoff=${encodeURIComponent(route.to)}`}
+          ctaHref={o?.ctaHref ?? `/get-quote?pickup=${encodeURIComponent(route.from)}&dropoff=${encodeURIComponent(route.to)}`}
           formHeading={`${route.from} → ${route.to} Quote`}
-          formSubheading="Fixed price for your airport transfer."
+          formSubheading={o?.formSubheading ?? "Fixed price for your airport transfer."}
+          notice={o?.notice}
           formSlot={
             <QuoteForm
               serviceType={`${route.from} to ${route.to} transfer`}
@@ -376,7 +378,8 @@ export default async function RoutePage({
       ...(airport ? [{ label: `${airport.name} (${airport.code}) hub`, href: `/airport-transfer/${airport.slug}` }] : []),
     ];
 
-    const bookingSteps = [
+    const co = content.overrides;
+    const bookingSteps = co?.bookingSteps ?? [
       { label: "Select this route and share your flight details", detail: `Flight number, departure date and time, and your pickup address in ${route.from}.` },
       { label: "Receive a fixed price", detail: "Confirmed before you travel — no meter, no surge pricing." },
       { label: "Confirm your pickup", detail: "We agree the pickup time with you, factoring in your flight and typical traffic." },
@@ -414,7 +417,7 @@ export default async function RoutePage({
           departurePoints={content.departurePoints}
           journeyTimeHeading="Total journey time"
           pureDrivingLabel="Pure driving time"
-          pureDrivingValue={route.duration}
+          pureDrivingValue={co?.pureDrivingValue ?? route.duration}
           totalJourneyNote="can run longer once you add traffic, pickup timing, and time inside the terminal — treat the driving time as a baseline for the road itself, not a guaranteed door-to-check-in time."
           pickupHeading="Pickup Planning"
           pickupParagraphs={content.pickupPlanning}
@@ -451,11 +454,12 @@ export default async function RoutePage({
           faqsHeading="Frequently Asked Questions"
           faqs={faqs}
           ctaHeading={`Ready to Book Your ${route.from} to ${route.to} Transfer?`}
-          ctaText="Share your flight number and pickup address — we reply with a fixed price before you travel."
+          ctaText={co?.ctaText ?? "Share your flight number and pickup address — we reply with a fixed price before you travel."}
           ctaLabel="Get a Quote"
-          ctaHref={`/get-quote?pickup=${encodeURIComponent(route.from)}&dropoff=${encodeURIComponent(route.to)}`}
+          ctaHref={co?.ctaHref ?? `/get-quote?pickup=${encodeURIComponent(route.from)}&dropoff=${encodeURIComponent(route.to)}`}
           formHeading={`${route.from} → ${route.to} Quote`}
-          formSubheading="Fixed price for your airport departure."
+          formSubheading={co?.formSubheading ?? "Fixed price for your airport departure."}
+          notice={co?.notice}
           formSlot={
             <QuoteForm
               serviceType={`${route.from} to ${route.to} transfer`}

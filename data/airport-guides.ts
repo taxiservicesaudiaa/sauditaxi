@@ -46,80 +46,80 @@ export interface AirportGuide {
 export const airportGuides: Record<string, AirportGuide> = {
   // ── RIYADH · RUH ──────────────────────────────────────────────────────────
   "riyadh-airport": {
-    lastUpdated: "2026-09-17",
+    lastUpdated: "2026-10-22",
     keywords: ["riyadh airport taxi", "king khalid airport transfer", "RUH airport pickup", "riyadh airport to hotel", "private transfer from riyadh airport"],
     coreServiceParagraph:
-      "We provide private, pre-booked transportation from King Khalid International Airport to any hotel, office, or address in Riyadh, and onward to other Saudi cities. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination at a fixed price agreed before you travel — with room for luggage and, on request, a larger vehicle for families or groups. There's no meter running and no negotiating a fare on arrival; the price you're quoted is the price you pay, whether traffic on Airport Road is light or heavy that day.",
+      "We provide private, pre-booked road transfers to and from Riyadh — hotels, offices and homes in the city, and onward journeys to other Saudi cities and neighbouring countries. Tell us your pickup point, destination, travel date, passengers and luggage, and we reply with a quotation; the confirmed quotation sets the price and shows what it covers. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport itself is confirmed case by case in your quotation.",
     arrivingParagraphs: [
-      "King Khalid International Airport is organised across five terminals, so share your airline and flight number when you book — it's the fastest way for your driver to be waiting at the right arrivals hall rather than another terminal, especially on a late-night landing when walking between terminals with luggage is inconvenient.",
-      "After passport control and baggage claim, head into the arrivals hall with your bags. Your driver waits there with a name board and helps carry your luggage to the vehicle, so there's no taxi rank to find and no queue to join after a long flight.",
+      "Before arranging anything, confirm with your airline that your flight is operating and which airport and terminal it now uses. King Khalid International Airport is organised across several terminals, so share your airline and flight number when you request a quote.",
+      "If your flight now uses a different airport, tell us which one — we can quote a road transfer between that airport and your address in Riyadh. Whether a pickup or drop-off at King Khalid International Airport can be arranged, and where you would meet your driver, is confirmed in your quotation.",
     ],
     destinationClusters: [
       {
         title: "Riyadh Business and Corporate Transfers",
-        body: "Direct, on-time transfers to Olaya, King Abdullah Financial District, and the diplomatic quarter for executives and visiting teams, with a driver who knows the fastest route at any hour.",
+        body: "Private transfers to Olaya, King Abdullah Financial District and the Diplomatic Quarter for business travellers and visiting teams, priced in a quotation you confirm before you travel.",
         href: "/taxi-service/riyadh",
         linkLabel: "Riyadh taxi service",
       },
       {
         title: "Riyadh Hotel Transfers",
-        body: "Fixed-price pickup and drop-off at hotels across the capital, arranged before you land so there's nothing to book or negotiate on arrival.",
+        body: "Pickup and drop-off at hotels across the capital, arranged and priced in a quotation before you travel.",
         href: "/cities/riyadh",
         linkLabel: "Riyadh hotel coverage",
       },
       {
         title: "Eastern Province and Qassim Intercity",
-        body: "Private long-distance transfers from RUH toward Dammam, Khobar, Qassim, and Hail for travellers continuing overland rather than by a connecting flight.",
+        body: "Private long-distance transfers from Riyadh toward Dammam, Khobar, Qassim and Hail, including Qassim airport on the Qassim–Riyadh route.",
         href: "/intercity-transfers",
         linkLabel: "Intercity transfer service",
       },
       {
         title: "Jeddah, Makkah, and Madinah Connections",
-        body: "Direct overland transfers from Riyadh Airport toward the western region, including Umrah journeys to Makkah and Madinah for pilgrims continuing their trip by road.",
+        body: "Overland transfers from Riyadh toward the western region, including Umrah journeys to Makkah and Madinah for pilgrims travelling by road.",
         href: "/umrah-taxi-service",
         linkLabel: "Umrah transfer service",
       },
     ],
     faqs: [
       {
-        question: "Which terminal will my driver meet me at RUH?",
+        question: "Is King Khalid International Airport operating?",
         answer:
-          "Your driver waits at the terminal matching your flight — RUH is organised across five terminals. Share your airline and flight number when booking so we position the driver at the correct arrivals hall.",
+          "GACA announced a temporary suspension of operations at King Khalid International Airport on 10 October 2026 and extended it on 12 October for safety checks. We have not found an official announcement that scheduled flights have resumed (last checked 22 October 2026). Confirm your flight's status directly with your airline.",
       },
       {
-        question: "Where will I meet my driver at Riyadh Airport?",
+        question: "Can you pick me up or drop me off at Riyadh airport?",
         answer:
-          "In the arrivals hall, holding a name board. Your driver assists with luggage and walks you to the vehicle in the car park — there's no taxi rank or shared shuttle to find.",
+          "We are not confirming airport pickups or drop-offs in advance while operations are disrupted. Send us your flight details; whether an airport pickup or drop-off can be arranged, and where you would meet your driver, is confirmed in your quotation.",
       },
       {
-        question: "Can I book a transfer to another Saudi city from RUH?",
+        question: "My flight was moved to another airport. Can you drive me to Riyadh?",
         answer:
-          "Yes. Besides Riyadh hotels, we run private intercity transfers from King Khalid Airport toward Dammam, Qassim, Hail, and the western region, including Jeddah, Makkah, and Madinah.",
+          "Yes. We can quote road transfers to Riyadh from Qassim (including Prince Naif bin Abdulaziz International Airport), Dammam Airport, Madinah Airport and Jeddah Airport. Share the airport, your flight number and your Riyadh address.",
       },
       {
-        question: "What happens if my flight to Riyadh is delayed?",
+        question: "Can I travel by road from Riyadh to another Saudi city or a neighbouring country?",
         answer:
-          "We track your flight number in real time and adjust the pickup time automatically, with free wait time included, so a delay never costs you the ride or changes your price.",
+          "Yes. We arrange private transfers from Riyadh to other Saudi cities, and on our listed routes to Bahrain, Qatar, Kuwait and the UAE. For cross-border journeys we coordinate the transport; passengers and drivers must confirm the applicable travel documents, entry requirements, insurance, permits, border-crossing requirements and fees.",
       },
       {
-        question: "Can families or groups book private transfers from RUH?",
+        question: "How is the price for a Riyadh transfer set?",
         answer:
-          "Yes. Tell us your passenger and luggage count when you book and we'll recommend an SUV, van, or minibus sized for your group, plus child seats on request.",
+          "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check that it includes anything you need, such as extra stops or waiting time.",
       },
       {
-        question: "Can I book a Riyadh Airport to hotel transfer?",
+        question: "Can families or groups book a private transfer?",
         answer:
-          "Yes. Share your hotel name and address, flight details, and pickup time — we'll confirm a fixed price and a driver assigned to your specific flight.",
+          "Yes. Tell us your passenger and luggage numbers when you request a quote and a suitable vehicle is offered in your quotation. If you need child seats, ask before you confirm.",
       },
       {
-        question: "How far in advance should I book a Riyadh airport transfer?",
+        question: "What information do you need for a quote?",
         answer:
-          "A day or two ahead is comfortable for most travellers, though same-day requests are usually possible. During major events or conferences, book earlier to guarantee your preferred vehicle class.",
+          "Your pickup point and destination, travel date and preferred time, number of passengers and pieces of luggage, and your airline and flight number if your journey connects to a flight.",
       },
       {
-        question: "How much luggage can I bring in a private transfer from RUH?",
+        question: "How far in advance should I request a transfer?",
         answer:
-          "A standard sedan comfortably fits two to three bags. For more luggage, sports equipment, or a larger group, choose an SUV or van when you book.",
+          "Send your request as soon as your plans are confirmed. Availability for your date and time is confirmed in your quotation.",
       },
     ],
   },
@@ -287,13 +287,13 @@ export const airportGuides: Record<string, AirportGuide> = {
 
   // ── DAMMAM · DMM ──────────────────────────────────────────────────────────
   "dammam-airport": {
-    lastUpdated: "2026-09-17",
+    lastUpdated: "2026-10-22",
     keywords: ["dammam airport taxi", "king fahd airport transfer", "DMM to khobar taxi", "dammam airport to bahrain", "private transfer from dammam airport"],
     coreServiceParagraph:
-      "King Fahd International Airport serves the whole Eastern Province metro of Dammam, Khobar, and Dhahran, and we provide private transfers from arrivals directly to your hotel, office, or onward across the King Fahd Causeway to Bahrain. Your driver tracks your flight, meets you in the arrivals hall, and drives you to your destination at a fixed price agreed before you travel — the same reliable process whether you're arriving for business or leisure. Luggage assistance is included, and larger vehicles are available for groups or corporate teams travelling together.",
+      "King Fahd International Airport serves the whole Eastern Province metro of Dammam, Khobar, and Dhahran, and we provide private transfers from the airport directly to your hotel, office, or onward across the King Fahd Causeway to Bahrain. We track your flight, your driver meets you at the confirmed meeting point, and the confirmed quotation sets the price before you travel — the same process whether you're arriving for business or leisure. Luggage assistance is included, and larger vehicles are available for groups or corporate teams travelling together.",
     arrivingParagraphs: [
       "International and domestic flights share a single main terminal at DMM, with a clear arrivals flow. Share your airline and flight number when booking so your driver is ready and positioned correctly when you land.",
-      "After immigration and baggage claim, your driver waits in the arrivals hall with a name board and helps carry your luggage to the vehicle — useful for business travellers moving quickly to a meeting across the Eastern Province.",
+      "After immigration and baggage claim, head to the meeting point confirmed in your booking. Your driver helps carry your luggage to the vehicle, and free waiting time is included if your flight lands late — useful for business travellers moving quickly to a meeting across the Eastern Province.",
     ],
     destinationClusters: [
       {
@@ -304,9 +304,9 @@ export const airportGuides: Record<string, AirportGuide> = {
       },
       {
         title: "Dammam Hotel and Business Transfers",
-        body: "Fixed-price pickup to hotels and corporate destinations across the Eastern Province, priced before you travel with a driver who knows the area.",
-        href: "/cities/dammam",
-        linkLabel: "Dammam hotel coverage",
+        body: "Pickup to hotels and corporate destinations across the Eastern Province, priced in a quotation you confirm before you travel, with a driver who knows the area.",
+        href: "/dammam/dammam-airport-to-hotels",
+        linkLabel: "Dammam Airport to hotels",
       },
       {
         title: "Bahrain Causeway Crossing",
@@ -325,7 +325,7 @@ export const airportGuides: Record<string, AirportGuide> = {
       {
         question: "How far is King Fahd Airport from Khobar and Dammam?",
         answer:
-          "The airport is about 40 km from central Dammam and a similar distance to Khobar, typically a 30–45 minute drive depending on traffic and time of day.",
+          "By road, the airport is roughly 35–45 km from central Dammam and the Corniche, and about 55–60 km from central Al Khobar, depending on your district. Drive time depends on traffic and the time of day; share your address when you request a quote.",
       },
       {
         question: "Can you take me from Dammam Airport to Bahrain?",
@@ -335,22 +335,22 @@ export const airportGuides: Record<string, AirportGuide> = {
       {
         question: "Where will I meet my driver at Dammam Airport?",
         answer:
-          "In the arrivals hall, holding a name board. Your driver helps with luggage and walks you to the vehicle in the car park, ready to go.",
+          "At the meeting point confirmed in your booking. Your driver helps with luggage and walks you to the vehicle in the car park, ready to go.",
       },
       {
         question: "Do you serve Jubail and Dhahran from DMM?",
         answer:
-          "Yes. We run fixed-price transfers from the airport to Jubail, Dhahran, Aramco areas, and Khobar's corniche hotels, with meet & greet on arrival.",
+          "Yes. We run private transfers from the airport to Jubail, Dhahran, Aramco areas, and Khobar's corniche hotels, priced in your quotation.",
       },
       {
         question: "What happens if my flight to Dammam is delayed?",
         answer:
-          "We track your flight in real time and adjust the pickup automatically, with free wait time, so a delay never costs you the ride or your fixed price.",
+          "We track your flight and plan the pickup around your actual landing time. Free waiting time is included.",
       },
       {
         question: "Can I book a Dammam Airport to hotel transfer?",
         answer:
-          "Yes. Share your hotel name, flight details, and pickup time — we'll confirm a fixed price and a driver assigned to your specific flight.",
+          "Yes. Share your hotel name, flight details, and arrival time — we reply with a quotation, and the confirmed quotation sets the price.",
       },
       {
         question: "Are vehicles suitable for business and corporate travel from DMM?",
