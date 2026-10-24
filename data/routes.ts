@@ -606,7 +606,7 @@ const baseRoutes: Route[] = [
   },
   {
     slug: "dammam-to-riyadh",
-    metaTitle: "Dammam to Riyadh Private Transfer – Fixed-Price Taxi",
+    metaTitle: "Dammam to Riyadh Private Transfer & Taxi",
     metaDescription: "Reserve a private car from Dammam to Riyadh (400 km, about 3 hours 45 min). Comfortable vehicles for solo travellers, families and small groups.",
     from: "Dammam",
     to: "Riyadh",
@@ -614,61 +614,61 @@ const baseRoutes: Route[] = [
     distance: "400 km",
     duration: "3 hours 45 min",
     intro:
-      "Most travellers on this leg are arriving, not departing — off a flight into King Fahd International Airport, across the border from Bahrain via the Causeway, or wrapping up business in Khobar or Dhahran before heading to the capital. That changes what matters most: a driver waiting at the right terminal or crossing point, not a fixed departure time from a hotel.",
+      "Most travellers on this leg are arriving, not departing — off a flight into King Fahd International Airport, across the border from Bahrain via the Causeway, or wrapping up business in Khobar or Dhahran before heading to the capital. That changes what matters most: a pickup planned around your arrival at an agreed meeting point, not a fixed departure time from a hotel.",
     about:
-      "Our private Dammam to Riyadh transfer is built for arrivals: travellers connecting from the Bahrain Causeway or King Fahd International Airport straight on to the capital, often continuing to a hotel, a business meeting, or an onward flight from Riyadh the same day. Comfortable vehicles, fixed quotes, and door-to-door pickup make the 400 km highway journey easy regardless of where in the Eastern Province you're starting from.",
+      "Our private Dammam to Riyadh transfer is built for arrivals: travellers connecting from the Bahrain Causeway or King Fahd International Airport straight on to the capital, often continuing to a hotel, a business meeting, or an onward flight from Riyadh the same day. Comfortable vehicles, a quotation you confirm before you travel, and door-to-door pickup make the 400 km highway journey easy regardless of where in the Eastern Province you're starting from.",
     notes: [
-      "Meet-and-greet pickup at King Fahd International Airport or the Bahrain Causeway crossing",
+      "Pickup at King Fahd International Airport (with flight tracking) or on the Saudi side of the King Fahd Causeway",
       "Also available from Dammam or Khobar hotels and offices",
-      "Direct drop-off anywhere in Riyadh, including a same-day onward flight",
-      "Fixed quote agreed before you travel, whatever time you arrive",
+      "Direct drop-off at your address in Riyadh; any drop-off at King Khalid International Airport is confirmed case by case in your quotation",
+      "Price set in a quotation you confirm before you travel",
     ],
     whoSuits: [
       { title: "Arrivals at King Fahd International Airport", description: "Straight from DMM arrivals to Riyadh, without first heading into Dammam or arranging a second car." },
       { title: "Travellers crossing from Bahrain", description: "Collected on the Saudi side once you've cleared the King Fahd Causeway, then on to the capital in the same vehicle." },
-      { title: "Eastern Province residents with a Riyadh flight", description: "A drop-off at King Khalid Airport timed to your departure, as an alternative to a connecting domestic flight." },
+      { title: "Eastern Province residents with a Riyadh flight", description: "A road alternative to a connecting domestic flight; any drop-off at King Khalid International Airport is confirmed case by case in your quotation." },
     ],
     richLayout: {
       journeyFlow: [
         { label: "Pickup in the Eastern Province", detail: "DMM airport arrivals, the Causeway's Saudi side, or a Dammam, Khobar or Dhahran address." },
         { label: "West on Highway 40", detail: "The Riyadh–Dammam expressway across the Ad-Dahna sands." },
         { label: "Rest stop if wanted", detail: "Agreed with you — or straight through for a flight or meeting." },
-        { label: "Riyadh drop-off", detail: "Hotel, office, home or King Khalid Airport (RUH)." },
+        { label: "Riyadh drop-off", detail: "Hotel, office or home in Riyadh; any King Khalid Airport (RUH) drop-off is confirmed case by case." },
       ],
       journeyFacts: [
         { label: "Main road", value: "Riyadh–Dammam expressway (Highway 40)", emphasis: true },
         { label: "Common starting points", value: "DMM airport, King Fahd Causeway, Khobar and Dhahran" },
-        { label: "Tolls", value: "None" },
+        { label: "Price", value: "Set in your confirmed quotation" },
         { label: "Rail alternative", value: "SAR passenger train, Dammam to Riyadh via Hofuf" },
       ],
       mapOrigin: "Dammam, Saudi Arabia",
       mapDestination: "Riyadh, Saudi Arabia",
       mapNote: "City centre to city centre. Starting from King Fahd International Airport or the Causeway changes the first part of the route, not the main highway.",
       pickupPoints: [
-        "King Fahd International Airport (DMM) arrivals",
+        "King Fahd International Airport (DMM), at the meeting point confirmed in your booking",
         "Saudi side of the King Fahd Causeway, after the border",
         "Dammam, Khobar and Dhahran hotels, offices and homes",
       ],
       dropoffPoints: [
         "Riyadh hotels and offices — Olaya, King Fahd Road, KAFD and the Diplomatic Quarter",
-        "King Khalid International Airport (RUH), timed to your flight",
+        "King Khalid International Airport (RUH), confirmed case by case in your quotation",
         "Residential addresses anywhere in Riyadh",
       ],
     },
     relatedCitySlugs: ["dammam", "riyadh"],
-    lastUpdated: "2026-08-05",
+    lastUpdated: "2026-10-24",
     sections: [
       {
         heading: "Dammam to Riyadh: route overview and distance",
         paragraphs: [
           "The drive from Dammam to Riyadh covers about 400 kilometres, running west along the Riyadh–Dammam expressway (Highway 40) across the Ad-Dahna desert corridor into the capital. The journey takes roughly three hours forty-five minutes in free-flowing traffic, and is popular with travellers connecting from the Bahrain Causeway or King Fahd International Airport onward to Riyadh the same day.",
-          "There are no tolls on this route, so your fixed price covers the complete journey. Because this leg often follows an international flight or a border crossing, we plan around your actual arrival time rather than a scheduled pickup — your driver tracks flight status if you're arriving by air.",
+          "You receive a quotation before you travel; the confirmed quotation sets the price and shows what it covers. Because this leg often follows an international flight or a border crossing, we plan around your actual arrival time rather than a scheduled pickup — if you're arriving at King Fahd International Airport, we track your flight.",
         ],
       },
       {
         heading: "Connecting into Riyadh: airport, Causeway, and onward travel",
         paragraphs: [
-          "If you're arriving at King Fahd International Airport, your driver waits in the arrivals hall with a name board; if you're crossing from Bahrain via the <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway</a>, pickup is arranged on the Saudi side once you clear the crossing. Either way, the destination is the same fixed-price run into the capital, whether that's a hotel, an office, or straight through to Riyadh's King Khalid International Airport for a same-day onward flight.",
+          "If you're arriving at King Fahd International Airport, your driver meets you at the meeting point confirmed in your booking; if you're crossing from Bahrain via the <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway</a>, pickup is arranged on the Saudi side once you clear the crossing. Either way, you're driven straight on to your hotel, office or home in the capital. If you have an onward flight from Riyadh, any drop-off at King Khalid International Airport is confirmed case by case in your quotation.",
           "Business travellers with back-to-back commitments across both cities should also look at our <a href='/routes/riyadh-to-dammam'>Riyadh to Dammam route</a> for the outbound leg — booking both directions together locks in the return pickup so you're not arranging it again after a full day of meetings.",
         ],
       },
@@ -681,13 +681,13 @@ const baseRoutes: Route[] = [
       },
     ],
     faqs: [
-      { question: "Do you offer pickup directly from King Fahd International Airport?", answer: "Yes, your driver waits in the arrivals hall with a name board and tracks your flight, so timing adjusts automatically if you land late." },
+      { question: "Do you offer pickup directly from King Fahd International Airport?", answer: "Yes. We track your flight, your driver meets you at the meeting point confirmed in your booking, and free waiting time is included if your flight lands late." },
       { question: "Can I book this transfer from the Bahrain Causeway directly?", answer: "Yes, we can collect you on the Saudi side of the Causeway once you clear the crossing and drive directly on to Riyadh in the same booking." },
       { question: "How long does the Dammam to Riyadh taxi take?", answer: "The drive covers about 400 kilometres via the Riyadh–Dammam expressway (Highway 40) and takes roughly three hours forty-five minutes under normal traffic conditions." },
-      { question: "Can you time the drop-off for a same-day Riyadh flight connection?", answer: "Yes, tell us your onward flight details and we'll plan the timing to get you to King Khalid International Airport comfortably ahead of departure." },
+      { question: "Can you time the drop-off for a same-day Riyadh flight connection?", answer: "Share your onward flight details when you request a quote. A drop-off at King Khalid International Airport depends on the airport's current operations and is confirmed case by case in your quotation, so check your flight status with your airline before you travel." },
       { question: "What vehicle suits a family connecting from the Causeway?", answer: "An SUV or van is generally the better choice for families with extra luggage from a Causeway crossing — mention your group size when requesting a quote." },
-      { question: "Are there tolls on the Dammam to Riyadh route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
-      { question: "Is the price fixed for the whole journey to Riyadh?", answer: "Yes, the fare is agreed before you travel and doesn't change with traffic, weather, or a delayed flight on the day." },
+      { question: "Are road tolls or other charges included?", answer: "Any charges depend on your route and are reflected in your quotation. The confirmed quotation sets the price and shows what it covers." },
+      { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers; if your plans change — for example an extra stop or a different pickup address — tell us so the quotation can be updated." },
       { question: "I'm arriving from Bahrain or abroad — do I need riyals for the fare?", answer: "No payment is needed to get a quote, and the payment method — cash, card or another option — plus any deposit is confirmed when you book. That way you know before you travel whether you need Saudi riyals on arrival." },
       { question: "Can I book a return Riyadh to Dammam transfer for the same trip?", answer: "Yes, see our Riyadh to Dammam route page for the outbound leg, or ask us to arrange both directions in one booking." },
     ],
@@ -6056,31 +6056,41 @@ const baseRoutes: Route[] = [
     distance: "~345 km",
     duration: "About 3 hours 30 min",
     intro:
-      "The Qassim to Riyadh taxi is a private highway transfer from Buraidah and the Qassim region south to the capital, popular with residents, farm and market visitors heading home, and business travellers connecting to Riyadh's airport.",
+      "The Qassim to Riyadh taxi is a private highway transfer from Buraidah and the Qassim region south to the capital, popular with residents, farm and market visitors heading home, and business travellers heading to Riyadh.",
     about:
-      "Our private Qassim to Riyadh transfer collects you from your home, hotel, or farm anywhere in Buraidah, Unaizah, or the wider region and drives you south on Highway 65 to your exact destination in Riyadh — one vehicle, one fixed price.",
+      "Our private Qassim to Riyadh transfer collects you from your home, hotel, or farm anywhere in Buraidah, Unaizah, or the wider region and drives you south to your exact destination in Riyadh — one vehicle for your whole group, priced in a quotation you confirm before you travel.",
     notes: [
-      "Door-to-door pickup anywhere in Qassim, including Buraidah and Unaizah",
-      "Direct drop-off anywhere in Riyadh, including the airport",
-      "Comfortable vehicles for the roughly three-and-a-half-hour drive",
-      "Timed pickups available for onward Riyadh flight connections",
+      "Door-to-door pickup anywhere in Qassim, including Buraidah, Unaizah and Qassim's Prince Naif bin Abdulaziz International Airport",
+      "Direct drop-off at your address in Riyadh",
+      "Vehicle matched to your passenger and luggage count",
+      "Pickup time planned around your flight if you share its details",
     ],
     relatedCitySlugs: ["buraidah", "riyadh"],
+    richLayout: {
+      journeyFlow: [],
+      journeyFacts: [],
+      mapOrigin: "",
+      mapDestination: "",
+      mapNote: "",
+      pickupPoints: ["Home address", "Hotel", "Farm or other address", "Business location", "Qassim airport (Prince Naif bin Abdulaziz International)"],
+      dropoffPoints: ["Home address", "Hotel", "Business location"],
+    },
+    lastUpdated: "2026-10-18",
     metaTitle: "Qassim to Riyadh Taxi – Private Transfer & Chauffeur",
     metaDescription:
-      "Get a private Qassim to Riyadh transfer (~345 km, about 3 hours 30 min) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+      "Private transfer from Buraidah, Unaizah or anywhere in Qassim to Riyadh. Send pickup, passengers and luggage — your confirmed quotation sets the price.",
     sections: [
       {
         heading: "Qassim to Riyadh: route overview and distance",
         paragraphs: [
-          "The drive from Qassim to Riyadh covers approximately 345 kilometres heading south on Highway 65, taking about three and a half hours in free-flowing traffic. Many travellers making this leg are heading home after a market or farm visit, or connecting onward from Riyadh by air.",
-          "A private transfer collects you from your exact address in Qassim and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport.",
+          "The drive from Qassim to Riyadh heads south on the main Riyadh–Qassim highway. Your door-to-door time depends on your exact pickup and drop-off addresses, traffic on the day and any stops you ask for. Many travellers making this leg are heading home after a market or farm visit, or connecting onward from Riyadh by air.",
+          "A private transfer collects you from your exact address in Qassim and delivers you to your address in Riyadh.",
         ],
       },
       {
-        heading: "The fastest route: Highway 65 south",
+        heading: "The main route south",
         paragraphs: [
-          "This route runs the same Highway 65 corridor as the outbound leg, in reverse — a direct, well-maintained multi-lane highway used daily by both agricultural trade traffic and private transfers.",
+          "The usual road route is the main Riyadh–Qassim highway — the same corridor as the Riyadh to Qassim journey, in reverse.",
         ],
       },
       {
@@ -6090,21 +6100,21 @@ const baseRoutes: Route[] = [
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Rest stops and comfort",
         paragraphs: [
-          "Highway 65 is well-maintained throughout, with clear markings and regular rest facilities. The roughly three-and-a-half-hour duration is comfortable in a single stretch for most travellers.",
+          "If you would like a rest stop on the way, or you are travelling with young children or older relatives, mention it when you request your quote so it can be agreed in advance.",
         ],
       },
       {
-        heading: "Tolls and highway fees",
+        heading: "Price and what your quotation covers",
         paragraphs: [
-          "No toll roads apply on this route or anywhere in Saudi Arabia. Your fixed price is fully inclusive.",
+          "You receive a quotation for your specific journey before you travel. The confirmed quotation sets the price and shows what it covers — if your plans include extra stops, waiting time or a change of address, mention it when you request the quote so it can be reflected in the quotation.",
         ],
       },
       {
         heading: "Best time to travel this route",
         paragraphs: [
-          "If your trip connects to a Riyadh flight, we build in a sensible buffer for the drive plus airport processing, and track your booking so pickup adjusts if your schedule shifts. Otherwise, timing is flexible given the manageable distance.",
+          "If your trip connects to a flight from Riyadh, share the flight number and departure time when you request your quote. Whether a drop-off at King Khalid International Airport can be arranged depends on the airport's current operations and is confirmed in your quotation. Check your flight status with your airline before you set off. Otherwise, choose the departure time that suits you.",
         ],
       },
       {
@@ -6116,41 +6126,37 @@ const baseRoutes: Route[] = [
       {
         heading: "A note for business and airport-connection travel",
         paragraphs: [
-          "Business travellers connected to Qassim's agricultural and livestock trade sector making the trip to Riyadh, along with those connecting onward by air, benefit from the same fixed-price, tracked service standard across our intercity routes.",
+          "Business travellers connected to Qassim's agricultural and livestock trade sector making the trip to Riyadh, along with those connecting onward by air, book the same way: share your pickup point, timing and any flight details, and the price is set in a quotation you confirm before you travel.",
         ],
       },
       {
         heading: "Popular stops and onward connections",
         paragraphs: [
-          "Most transfers from Qassim begin in Buraidah or Unaizah and end at a Riyadh airport terminal or city address. Travellers whose journey started further north in Hail can extend the same trip — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route.",
-        ],
-      },
-      {
-        heading: "Safety on the drive",
-        paragraphs: [
-          "At three and a half hours, this is a manageable single-stretch drive, and our drivers pace it comfortably, with a rest stop available on request.",
+          "Most transfers from Qassim begin in Buraidah or Unaizah and end at a home, hotel or business address in Riyadh. Travellers whose journey started further north in Hail can extend the same trip — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route.",
         ],
       },
       {
         heading: "Booking your Qassim to Riyadh transfer",
         paragraphs: [
-          "Share your pickup point in Buraidah, Unaizah, or elsewhere in Qassim, your Riyadh destination or flight details, preferred time, and group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Share your pickup point in Buraidah, Unaizah, or elsewhere in Qassim, your Riyadh destination or flight details, preferred time, and group size and luggage. We reply with a quotation for a suitable vehicle, and the confirmed quotation sets the price. Support is available 24/7 and no payment is needed to receive a quote. If you also need the return journey, add its date in the message field. Request your quote on WhatsApp or through our <a href='/get-quote?pickup=Qassim&dropoff=Riyadh'>Qassim to Riyadh quote form</a>.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Riyadh from Qassim, and how long does the drive take?", answer: "The distance is approximately 345 kilometres, and the drive takes about three and a half hours via Highway 65 south." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
-      { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel and covers the complete journey with no meter, no surge, and no toll charges." },
+      { question: "How long does the Qassim to Riyadh journey take?", answer: "It depends on your exact addresses in Qassim and Riyadh, traffic on the day and any rest stops you ask for. If you need to reach Riyadh by a set time — for example, for a flight — share that time when you request a quote so the pickup can be planned around it." },
+      { question: "Can you drop me directly at Riyadh airport?", answer: "Drop-offs at King Khalid International Airport depend on the airport's current operations, so they are confirmed case by case. Share your flight number and departure time when you request a quote, and your quotation will confirm whether an airport drop-off can be arranged." },
+      { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check it includes anything you need, such as extra stops or waiting time." },
       { question: "Where can I be picked up in Qassim?", answer: "Anywhere — a home, hotel, farm, or a location in Buraidah or Unaizah. Just share your exact pickup point when booking." },
-      { question: "Can I bring farm produce or dates purchased in Qassim?", answer: "Yes, our vehicles have ample luggage space for purchases from the region — let us know if you have an unusually large amount when booking." },
-      { question: "Are rest stops available?", answer: "Yes, on request, though most travellers complete the roughly three-and-a-half-hour drive comfortably in one stretch." },
-      { question: "Is there a return Riyadh to Qassim transfer?", answer: "Yes, see our <a href='/routes/riyadh-to-qassim'>Riyadh to Qassim</a> page to book that direction." },
+      { question: "Can I bring farm produce or dates purchased in Qassim?", answer: "Yes. Enter your luggage in the quote form and mention any large items or produce in the message, so a vehicle with enough space can be offered in your quotation." },
+      { question: "Can we stop for a break on the way?", answer: "Ask for a rest stop when you request your quote, so it can be agreed in advance." },
+      { question: "Is there a return Riyadh to Qassim transfer?", answer: "Yes. The Riyadh to Qassim transfer covers that direction — you can add your return date in the message field when you request a quote." },
       { question: "What information do you need when booking?", answer: "Your pickup point in Qassim, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage amount." },
-      { question: "Do you serve business travel connected to agriculture and livestock trade?", answer: "Yes, we provide the same fixed-price, tracked service for business travellers in Qassim's agricultural sector as for leisure visitors." },
-      { question: "Is this route suitable for elderly travellers?", answer: "Yes, at three and a half hours it's a manageable drive for most travellers, and we're happy to include a rest stop if helpful." },
-      { question: "Can I connect this trip from Hail?", answer: "Yes, travellers coming from further north can extend the same journey — see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh transfer</a> for that longer route." },
-      { question: "Is night travel on this route routine?", answer: "Yes, our drivers cover this route at all hours as a matter of routine." },
+      { question: "Do you serve business travel connected to agriculture and livestock trade?", answer: "Yes. Business trips are booked the same way as any other transfer — share your pickup point, destination and timing, and the price is set in the quotation you confirm." },
+      { question: "Is this transfer suitable for older travellers and children?", answer: "Tell us about any needs when you request your quote — for example, a rest stop on the way. If you are travelling with young children, ask about child seats before you confirm." },
+      { question: "Can I connect this trip from Hail?", answer: "Yes. Travellers starting further north can use the Hail to Riyadh transfer, which covers that longer journey through Qassim." },
+      { question: "Can I travel at night?", answer: "Yes, you can request a night-time departure — share your preferred pickup time when you request a quote. Support is available 24/7." },
+      { question: "Which vehicle types can I request?", answer: "The quote form lets you choose Economy, Comfort, Business, SUV, Van or Minibus. The vehicle offered for your journey is confirmed in your quotation." },
+      { question: "Can you pick me up at Qassim airport?", answer: "Yes. Pickup at Prince Naif bin Abdulaziz International Airport (Qassim) is available. Share your flight number and expected arrival time when you request a quote; the pickup time and meeting arrangements are confirmed in your quotation." },
     ],
     keywords: ["qassim to riyadh taxi", "buraidah to riyadh taxi", "qassim to riyadh transfer", "buraidah riyadh private car", "qassim to riyadh airport taxi"],
   },
