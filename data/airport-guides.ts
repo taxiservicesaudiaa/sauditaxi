@@ -46,10 +46,10 @@ export interface AirportGuide {
 export const airportGuides: Record<string, AirportGuide> = {
   // ── RIYADH · RUH ──────────────────────────────────────────────────────────
   "riyadh-airport": {
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-11-02",
     keywords: ["riyadh airport taxi", "king khalid airport transfer", "RUH airport pickup", "riyadh airport to hotel", "private transfer from riyadh airport"],
     coreServiceParagraph:
-      "We provide private, pre-booked road transfers to and from Riyadh — hotels, offices and homes in the city, and onward journeys to other Saudi cities and neighbouring countries. Tell us your pickup point, destination, travel date, passengers and luggage, and we reply with a quotation; the confirmed quotation sets the price and shows what it covers. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport itself is confirmed case by case in your quotation.",
+      "We provide private, pre-booked road transfers to and from Riyadh — hotels, offices and homes in the city, and onward journeys to other Saudi cities and neighbouring countries. Tell us your pickup point, destination, travel date, passengers and luggage, and we reply with a quotation; the confirmed quotation sets the price and shows what it covers. Pickups and drop-offs at King Khalid International Airport can be requested; each is subject to availability and confirmed individually in your quotation.",
     arrivingParagraphs: [
       "Before arranging anything, confirm with your airline that your flight is operating and which airport and terminal it now uses. King Khalid International Airport is organised across several terminals, so share your airline and flight number when you request a quote.",
       "If your flight now uses a different airport, tell us which one — we can quote a road transfer between that airport and your address in Riyadh. Whether a pickup or drop-off at King Khalid International Airport can be arranged, and where you would meet your driver, is confirmed in your quotation.",
@@ -84,12 +84,12 @@ export const airportGuides: Record<string, AirportGuide> = {
       {
         question: "Is King Khalid International Airport operating?",
         answer:
-          "GACA announced a temporary suspension of operations at King Khalid International Airport on 10 October 2026 and extended it on 12 October for safety checks. We have not found an official announcement that scheduled flights have resumed (last checked 22 October 2026). Confirm your flight's status directly with your airline.",
+          "King Khalid International Airport announced that Terminal 1 (domestic flights) and Terminal 2 (international flights operated by Saudi national carriers) resumed operations on 25 October 2026, after a suspension that began on 10 October. It has not announced when its other terminals will reopen, and airline schedules may still be affected (last checked 2 November 2026). Confirm your flight's status and terminal directly with your airline.",
       },
       {
         question: "Can you pick me up or drop me off at Riyadh airport?",
         answer:
-          "We are not confirming airport pickups or drop-offs in advance while operations are disrupted. Send us your flight details; whether an airport pickup or drop-off can be arranged, and where you would meet your driver, is confirmed in your quotation.",
+          "Yes, you can request a pickup or drop-off at King Khalid International Airport. Each transfer is subject to availability and confirmed individually: send your flight number, terminal, pickup requirements and destination, and the meeting point and price are confirmed in your quotation.",
       },
       {
         question: "My flight was moved to another airport. Can you drive me to Riyadh?",

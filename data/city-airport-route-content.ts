@@ -38,7 +38,7 @@ const ruhDepartureOverrides: AirportRouteOverrides = {
   bookingSteps: [
     { label: "Share your flight details", detail: "Flight number, departure date and time, and your pickup address in Riyadh." },
     { label: "Receive your quotation", detail: "The confirmed quotation sets the price and shows what it covers." },
-    { label: "Confirm the drop-off", detail: "Whether a drop-off at King Khalid International Airport can be arranged is confirmed in your quotation while its operations are disrupted." },
+    { label: "Confirm the drop-off", detail: "Each drop-off at King Khalid International Airport is subject to availability and confirmed individually in your quotation." },
     { label: "Travel", detail: "Your driver collects you at the time confirmed in your quotation." },
   ],
   ctaText: "Share your flight details and pickup address — we reply with a quotation, and the confirmed quotation sets the price.",
@@ -92,7 +92,7 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
       { question: "How early should I leave for my flight from Riyadh?", answer: "It depends on your flight time and traffic — tell us your flight details when booking and we'll help plan a sensible pickup time, with extra buffer for evening rush hour." },
       { question: "Can I be picked up from my hotel or office?", answer: "Yes, we collect from any hotel, home, or office address in Riyadh." },
       { question: "What if traffic causes delays on the way?", answer: "We build a reasonable buffer into the pickup time based on your flight, but traffic is genuinely unpredictable — the earlier you can leave, the more margin you have." },
-      { question: "Can I book an early-morning airport transfer?", answer: "Early departures can be requested; any drop-off at King Khalid International Airport is confirmed case by case in your quotation while its operations are disrupted." },
+      { question: "Can I book an early-morning airport transfer?", answer: "Early departures can be requested; each drop-off at King Khalid International Airport is subject to availability and confirmed in your quotation." },
       { question: "How much luggage can the vehicle take?", answer: "A sedan handles standard luggage for 1-2 travellers; for more bags or a family, mention it when booking and we'll arrange an SUV." },
       { question: "Is this a private or shared transfer?", answer: "Fully private for your booking, with no other passengers." },
     ],

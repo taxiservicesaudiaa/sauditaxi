@@ -1,7 +1,7 @@
 import type { Faq } from "@/data/faqs";
 import type { GalleryImage } from "@/components/sections/ImageGallery";
 import { airportGuides } from "@/data/airport-guides";
-import { DMM_STATUS_NOTICE } from "@/data/airport-status";
+import { DMM_STATUS_NOTICE, RUH_STATUS_NOTICE } from "@/data/airport-status";
 
 export interface Airport {
   slug: string;
@@ -95,11 +95,11 @@ const baseAirports: Airport[] = [
     intro:
       "King Khalid International Airport (RUH) is the main airport serving the Saudi capital. Check your flight with your airline, then tell us your journey — we confirm what can be arranged in a quotation.",
     about:
-      "We arrange private, pre-booked road transfers to and from Riyadh. While operations at King Khalid International Airport are disrupted, any pickup or drop-off at the airport is confirmed case by case in the customer's quotation.",
+      "We arrange private, pre-booked road transfers to and from Riyadh. Pickups and drop-offs at King Khalid International Airport can be requested; each one is subject to availability and confirmed individually in the customer's quotation.",
     terminals: ["Terminal 1 & 2 (international)", "Terminal 3 & 4 (domestic)", "Terminal 5 (low-cost)"],
     popularDestinations: ["Riyadh city", "Diriyah", "Dammam", "Qassim", "AlUla"],
-    // City-origin routes while RUH operations are disrupted (the riyadh-airport-to-* routes
-    // advertise airport pickups that are not currently confirmed). Restore when RUH service is confirmed.
+    // City-origin routes while RUH pickups/drop-offs are confirmed case by case (owner policy, Nov 2026).
+    // Revisit the riyadh-airport-to-* routes here if RUH service becomes routinely available.
     popularRoutes: [
       "riyadh-to-qassim",
       "riyadh-to-dammam",
@@ -111,21 +111,7 @@ const baseAirports: Airport[] = [
     metaDescription:
       "Riyadh airport (RUH) transfers and onward road travel. Check your flight with your airline, then request a quote — your confirmed quotation sets the price.",
     hubOverrides: {
-      notice: {
-        heading: "Riyadh airport status — last checked 22 October 2026",
-        paragraphs: [
-          "Saudi Arabia's General Authority of Civil Aviation (GACA) announced on 10 October 2026 that operations at King Khalid International Airport were temporarily suspended, and on 12 October that the suspension had been extended for safety checks. We have not found an official GACA announcement that scheduled flights have resumed, and reports since then have differed. Confirm your flight's status directly with your airline before you travel.",
-          "Airport operations and our road transfers are separate matters. We are not confirming pickups or drop-offs at King Khalid International Airport in advance; if your journey involves the airport, send us your flight details and any airport pickup or drop-off is confirmed case by case in your quotation.",
-          "If your airline has moved your flight to another airport, we can quote a road transfer to or from Riyadh:",
-        ],
-        links: [
-          { label: "Qassim (incl. Qassim airport) to Riyadh", href: "/routes/qassim-to-riyadh" },
-          { label: "Dammam Airport to Riyadh", href: "/routes/dammam-airport-to-riyadh" },
-          { label: "Madinah Airport to Riyadh", href: "/routes/madinah-airport-to-riyadh" },
-          { label: "Jeddah Airport to Riyadh", href: "/routes/jeddah-airport-to-riyadh" },
-          { label: "Intercity transfers during flight disruptions", href: "/blog/saudi-arabia-intercity-transfers-flight-disruptions" },
-        ],
-      },
+      notice: RUH_STATUS_NOTICE,
       primaryCtaLabel: "Request a Riyadh Transfer Quote",
       primaryCtaHref: "/get-quote?dropoff=Riyadh",
       popularHeading: "Popular Transfers from Riyadh",
@@ -133,12 +119,12 @@ const baseAirports: Airport[] = [
       popularTitlePrefix: "Riyadh to",
       popularCardBody: "A private, direct transfer for your group. Your confirmed quotation sets the price and shows what it covers.",
       arrivingHeading: "If Your Journey Involves King Khalid International Airport",
-      meetGreetHeading: "Airport Pickups While RUH Operations Are Disrupted",
+      meetGreetHeading: "Riyadh Airport Pickups and Drop-offs",
       meetGreetIntro: "What to check before you request a transfer that involves King Khalid International Airport.",
       meetGreetSteps: [
         {
           title: "Check Your Flight",
-          detail: "Confirm with your airline that your flight is operating, which airport it now uses, and its arrival or departure time.",
+          detail: "Confirm with your airline that your flight is operating, which terminal it uses, and its arrival or departure time.",
         },
         {
           title: "Share Your Details",
@@ -146,7 +132,7 @@ const baseAirports: Airport[] = [
         },
         {
           title: "Confirm the Meeting Point",
-          detail: "If an airport pickup or drop-off can be arranged, the meeting point and time are confirmed in your quotation before you travel.",
+          detail: "Each airport pickup or drop-off is subject to availability. If it can be arranged, the meeting point and time are confirmed in your quotation before you travel.",
         },
       ],
       familyParagraph:

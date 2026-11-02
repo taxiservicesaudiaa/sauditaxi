@@ -4,11 +4,11 @@
  * and update the "last checked" date whenever the status is re-verified.
  */
 export const RUH_STATUS_NOTICE = {
-  heading: "Riyadh airport status — last checked 22 October 2026",
+  heading: "Riyadh airport status — last checked 2 November 2026",
   paragraphs: [
-    "Saudi Arabia's General Authority of Civil Aviation (GACA) announced on 10 October 2026 that operations at King Khalid International Airport were temporarily suspended, and on 12 October that the suspension had been extended for safety checks. We have not found an official GACA announcement that scheduled flights have resumed, and reports since then have differed. Confirm your flight's status directly with your airline before you travel.",
-    "Airport operations and our road transfers are separate matters. We are not confirming pickups or drop-offs at King Khalid International Airport in advance; if your journey involves the airport, send us your flight details and any airport pickup or drop-off is confirmed case by case in your quotation.",
-    "If your airline has moved your flight to another airport, we can quote a road transfer to or from Riyadh:",
+    "King Khalid International Airport announced that Terminal 1 (domestic flights) and Terminal 2 (international flights operated by Saudi national carriers) resumed operations on 25 October 2026, after operations were suspended on 10 October. It has not announced when its other terminals will reopen, and some airlines have not yet restarted Riyadh flights. Airport operations are separate from airline schedules — confirm your flight's status and terminal with your airline before you travel.",
+    "Private pickups and drop-offs at King Khalid International Airport can be requested. Each transfer is subject to availability and is confirmed individually: send your flight number, terminal, pickup requirements and destination when you request a quotation.",
+    "If your airline has moved your flight to another airport, we can also quote a road transfer to or from Riyadh:",
   ],
   links: [
     { label: "Qassim (incl. Qassim airport) to Riyadh", href: "/routes/qassim-to-riyadh" },

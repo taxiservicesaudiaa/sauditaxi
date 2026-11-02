@@ -46,13 +46,13 @@ export interface AirportRouteOverrides {
   pureDrivingValue?: string;
 }
 
-/** RUH arrivals while airport operations are disrupted: no tracking or name-board promises; pickups confirmed case by case. */
+/** RUH arrivals: no tracking or name-board promises; each pickup is subject to availability and confirmed case by case (owner policy). */
 function ruhArrivalOverrides(city: string, pureDrivingValue?: string): AirportRouteOverrides {
   return {
     notice: RUH_STATUS_NOTICE,
     pureDrivingValue,
     arrivalSteps: [
-      { label: "Check your flight", detail: "Confirm with your airline that your flight is operating and which airport it now uses." },
+      { label: "Check your flight", detail: "Confirm with your airline that your flight is operating and which terminal it uses." },
       { label: "Share your details", detail: `Send your airline, flight number, the airport, your destination in ${city}, and your passenger and luggage numbers.` },
       { label: "Receive your quotation", detail: "Whether a pickup at King Khalid International Airport can be arranged, the meeting point and the price are confirmed in your quotation." },
       { label: "Travel", detail: `Your driver meets you at the point and time confirmed in your quotation and drives you directly to ${city}.` },
@@ -60,7 +60,7 @@ function ruhArrivalOverrides(city: string, pureDrivingValue?: string): AirportRo
     bookingSteps: [
       { label: "Share your journey details", detail: `Flight number, arrival date and time, and your destination in ${city}.` },
       { label: "Receive your quotation", detail: "The confirmed quotation sets the price and shows what it covers." },
-      { label: "Confirm the meeting point", detail: "Any pickup at King Khalid International Airport is confirmed case by case while its operations are disrupted." },
+      { label: "Confirm the meeting point", detail: "Each pickup at King Khalid International Airport is subject to availability and confirmed individually in your quotation." },
       { label: "Travel directly to your destination", detail: "Door-to-door, with luggage assistance along the way." },
     ],
     ctaText: "Share your flight details and destination — we reply with a quotation, and the confirmed quotation sets the price.",
@@ -120,7 +120,7 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
     ],
     faqs: [
       { question: "How far is King Khalid International Airport from central Riyadh?", answer: "Around 35 km. Driving time depends on traffic and your exact destination in the city." },
-      { question: "Will someone be waiting for me after I land?", answer: "Airport pickups are confirmed case by case while operations at King Khalid International Airport are disrupted. Send your flight details and the meeting point is confirmed in your quotation." },
+      { question: "Will someone be waiting for me after I land?", answer: "You can request an airport pickup. Each pickup is subject to availability and confirmed individually — send your flight number, terminal and destination, and the meeting point is confirmed in your quotation." },
       { question: "Can the driver take me straight to KAFD or the Diplomatic Quarter?", answer: "Yes — tell us the exact address when you book and the driver plans directly to it." },
       { question: "What if my flight is delayed?", answer: "Tell us as soon as your airline confirms a new time, and we'll review the pickup with you." },
       { question: "How is the price set?", answer: "You receive a quotation before you travel. The confirmed quotation sets the price and shows what it covers." },

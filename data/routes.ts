@@ -684,7 +684,7 @@ const baseRoutes: Route[] = [
       { question: "Do you offer pickup directly from King Fahd International Airport?", answer: "Yes. We track your flight, your driver meets you at the meeting point confirmed in your booking, and free waiting time is included if your flight lands late." },
       { question: "Can I book this transfer from the Bahrain Causeway directly?", answer: "Yes, we can collect you on the Saudi side of the Causeway once you clear the crossing and drive directly on to Riyadh in the same booking." },
       { question: "How long does the Dammam to Riyadh taxi take?", answer: "The drive covers about 400 kilometres via the Riyadh–Dammam expressway (Highway 40) and takes roughly three hours forty-five minutes under normal traffic conditions." },
-      { question: "Can you time the drop-off for a same-day Riyadh flight connection?", answer: "Share your onward flight details when you request a quote. A drop-off at King Khalid International Airport depends on the airport's current operations and is confirmed case by case in your quotation, so check your flight status with your airline before you travel." },
+      { question: "Can you time the drop-off for a same-day Riyadh flight connection?", answer: "Yes, you can request it — share your onward flight number, terminal and departure time when you request a quote. Each drop-off at King Khalid International Airport is subject to availability and confirmed in your quotation; check your flight status with your airline before you travel." },
       { question: "What vehicle suits a family connecting from the Causeway?", answer: "An SUV or van is generally the better choice for families with extra luggage from a Causeway crossing — mention your group size when requesting a quote." },
       { question: "Are road tolls or other charges included?", answer: "Any charges depend on your route and are reflected in your quotation. The confirmed quotation sets the price and shows what it covers." },
       { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers; if your plans change — for example an extra stop or a different pickup address — tell us so the quotation can be updated." },
@@ -6114,7 +6114,7 @@ const baseRoutes: Route[] = [
       {
         heading: "Best time to travel this route",
         paragraphs: [
-          "If your trip connects to a flight from Riyadh, share the flight number and departure time when you request your quote. Whether a drop-off at King Khalid International Airport can be arranged depends on the airport's current operations and is confirmed in your quotation. Check your flight status with your airline before you set off. Otherwise, choose the departure time that suits you.",
+          "If your trip connects to a flight from Riyadh, share the flight number and departure time when you request your quote. Drop-offs at King Khalid International Airport can be requested; each is subject to availability and confirmed in your quotation. Check your flight's status and terminal with your airline before you set off. Otherwise, choose the departure time that suits you.",
         ],
       },
       {
@@ -6144,7 +6144,7 @@ const baseRoutes: Route[] = [
     ],
     faqs: [
       { question: "How long does the Qassim to Riyadh journey take?", answer: "It depends on your exact addresses in Qassim and Riyadh, traffic on the day and any rest stops you ask for. If you need to reach Riyadh by a set time — for example, for a flight — share that time when you request a quote so the pickup can be planned around it." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Drop-offs at King Khalid International Airport depend on the airport's current operations, so they are confirmed case by case. Share your flight number and departure time when you request a quote, and your quotation will confirm whether an airport drop-off can be arranged." },
+      { question: "Can you drop me directly at Riyadh airport?", answer: "You can request a drop-off at King Khalid International Airport. Each drop-off is subject to availability and confirmed individually — share your flight number, terminal and departure time when you request a quote." },
       { question: "How is the price for this transfer set?", answer: "You receive a quotation for your journey before you travel. The confirmed quotation sets the price and shows what it covers, so check it includes anything you need, such as extra stops or waiting time." },
       { question: "Where can I be picked up in Qassim?", answer: "Anywhere — a home, hotel, farm, or a location in Buraidah or Unaizah. Just share your exact pickup point when booking." },
       { question: "Can I bring farm produce or dates purchased in Qassim?", answer: "Yes. Enter your luggage in the quote form and mention any large items or produce in the message, so a vehicle with enough space can be offered in your quotation." },
@@ -7729,14 +7729,14 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-airport-to-jeddah",
     metaTitle: "Riyadh Airport to Jeddah Private Transfer",
-    metaDescription: "Riyadh Airport (RUH) to Jeddah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
+    metaDescription: "Private transfer from Riyadh Airport (RUH) to Jeddah. Airport pickups can be requested; each is subject to availability and confirmed in your quotation.",
     from: "Riyadh Airport",
     to: "Jeddah",
     category: "airport",
     distance: "950 km",
     duration: "9 hours",
     intro:
-      "Private transfer from King Khalid International Airport (RUH) to Jeddah, confirmed case by case in your quotation while airport operations are disrupted.",
+      "Private transfer from King Khalid International Airport (RUH) to Jeddah; each airport pickup is subject to availability and confirmed in your quotation.",
     about:
       "Arriving at King Khalid International Airport (RUH) and heading to Jeddah? Our dedicated long-distance transfer service meets you directly at Terminal 1, 2, 3, 4, or 5 and transports you straight to Jeddah in a private, late-model vehicle. Ideal for travellers with heavy luggage, families, or those seeking an overland journey without flight transfers.",
     notes: [
@@ -7940,7 +7940,7 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-airport-to-makkah",
     metaTitle: "Private Taxi: Riyadh Airport to Makkah",
-    metaDescription: "Riyadh Airport (RUH) to Makkah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
+    metaDescription: "Private transfer from Riyadh Airport (RUH) to Makkah. Airport pickups can be requested; each is subject to availability and confirmed in your quotation.",
     from: "Riyadh Airport",
     to: "Makkah",
     category: "airport",
@@ -8080,7 +8080,7 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-airport-to-madinah",
     metaTitle: "Private Taxi: Riyadh Airport to Madinah",
-    metaDescription: "Riyadh Airport (RUH) to Madinah transfers are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
+    metaDescription: "Private transfer from Riyadh Airport (RUH) to Madinah. Airport pickups can be requested; each is subject to availability and confirmed in your quotation.",
     from: "Riyadh Airport",
     to: "Madinah",
     category: "airport",
@@ -9009,7 +9009,7 @@ const baseRoutes: Route[] = [
     ],
     relatedCitySlugs: ["riyadh"],
     metaTitle: "Private Taxi: Riyadh Airport to Riyadh",
-    metaDescription: "Transfers from Riyadh Airport (RUH) into the city are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
+    metaDescription: "Private transfer from Riyadh Airport (RUH) into Riyadh. Airport pickups can be requested; each is subject to availability and confirmed in your quotation.",
     faqs: [
       {
             "question": "Where will my driver meet me at King Khalid International Airport?",
@@ -9038,7 +9038,7 @@ const baseRoutes: Route[] = [
     distance: "35 km",
     duration: "30-45 min",
     lastUpdated: "2026-08-19",
-    intro: "Private transfer from Riyadh hotels and offices to King Khalid International Airport (RUH), confirmed case by case in your quotation while airport operations are disrupted.",
+    intro: "Private transfer from Riyadh hotels and offices to King Khalid International Airport (RUH); each airport drop-off is subject to availability and confirmed in your quotation.",
     about: "Our private Riyadh to RUH Airport transfer collects you from your hotel, home, or office across Riyadh, handles your luggage, and drives you directly to Terminals 1, 2, 3, 4, or 5 at a fixed price agreed before you travel.",
     notes: [
       "Punctual pickup from all Riyadh hotels, compounds, and business towers",
@@ -9048,7 +9048,7 @@ const baseRoutes: Route[] = [
     ],
     relatedCitySlugs: ["riyadh"],
     metaTitle: "Private Taxi: Riyadh to Riyadh Airport (RUH)",
-    metaDescription: "Transfers from Riyadh to King Khalid International Airport (RUH) are confirmed case by case while airport operations are disrupted. Your confirmed quotation sets the price.",
+    metaDescription: "Private transfer from Riyadh to King Khalid Airport (RUH). Drop-offs can be requested; each is subject to availability and confirmed in your quotation.",
     faqs: [
       {
             "question": "How far in advance should I arrange pickup before my flight?",
