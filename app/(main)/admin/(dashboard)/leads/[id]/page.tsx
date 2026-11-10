@@ -10,6 +10,7 @@ import { WhatsAppLeadButtons } from "@/components/admin/WhatsAppLeadButtons";
 import { AdminNotice } from "@/components/admin/AdminNotice";
 import { Panel } from "@/components/admin/Panel";
 import { Field } from "@/components/admin/Field";
+import { sourceSiteLabel } from "@/lib/lead-sources";
 import { isSupabaseConfigured } from "@/lib/supabase";
 import { getLead, type Lead } from "@/lib/leads";
 
@@ -97,6 +98,7 @@ export default async function LeadDetailPage({
 
         <Panel title="Source & message">
           <dl className="space-y-4">
+            <Field label="Website" value={sourceSiteLabel(lead.sourceSite)} />
             <Field label="Source page" value={lead.sourcePage} />
             <Field label="Message" value={lead.message} />
           </dl>

@@ -39,6 +39,13 @@ export interface Lead {
   utmCampaign?: string | null;
   gclid?: string | null;
   searchSource?: string | null;
+  /**
+   * Which website sent the lead (`public.leads.source_site`). NULL — every
+   * lead from the original site, including all legacy rows — means Saudi
+   * Private Transfers. Set only by the authenticated `/api/leads/intake`
+   * endpoint; see `lib/lead-sources.ts`.
+   */
+  sourceSite?: string | null;
   status: LeadStatus;
   createdAt: string;
   updatedAt: string;
@@ -46,7 +53,7 @@ export interface Lead {
 
 /** Fields accepted when creating a lead (camelCase, from the public forms). */
 export type NewLeadInput = Partial<
-  Omit<Lead, "id" | "status" | "createdAt" | "updatedAt">
+  Omit<Lead, "id" | "status" | "createdAt" | "updatedAt" | "sourceSite">
 >;
 
 type LeadRow = {
@@ -77,6 +84,7 @@ type LeadRow = {
   utm_campaign?: string | null;
   gclid?: string | null;
   search_source?: string | null;
+  source_site?: string | null;
   status: string;
   created_at: string;
   updated_at: string;
@@ -113,6 +121,7 @@ function rowToLead(row: LeadRow): Lead {
     utmCampaign: row.utm_campaign ?? null,
     gclid: row.gclid ?? null,
     searchSource: row.search_source ?? null,
+    sourceSite: row.source_site ?? null,
     status: (LEAD_STATUSES as readonly string[]).includes(row.status)
       ? (row.status as LeadStatus)
       : "New",
@@ -152,11 +161,20 @@ function inputToRow(input: NewLeadInput): Partial<LeadRow> {
   };
 }
 
-export async function createLead(input: NewLeadInput): Promise<Lead> {
+export async function createLead(
+  input: NewLeadInput,
+  options: { sourceSite?: string } = {}
+): Promise<Lead> {
   const supabase = getSupabaseAdmin();
+  // `source_site` is only sent when a trusted caller supplies it, so the
+  // original site's insert is byte-for-byte what it was before the column
+  // existed (and keeps working even if the migration has not run yet).
+  const row = options.sourceSite
+    ? { ...inputToRow(input), source_site: options.sourceSite }
+    : inputToRow(input);
   const { data, error } = await supabase
     .from(TABLE)
-    .insert(inputToRow(input))
+    .insert(row)
     .select("*")
     .single();
   if (error) throw new Error(error.message);

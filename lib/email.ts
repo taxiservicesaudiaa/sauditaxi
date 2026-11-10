@@ -13,13 +13,18 @@ interface SendArgs {
   subject: string;
   html: string;
   replyTo?: string;
+  /**
+   * Sender override for another website's emails (e.g. PTAS_FROM_EMAIL).
+   * Omitted by every existing caller, which keeps sending from FROM_EMAIL.
+   */
+  from?: string;
 }
 
 /**
  * Send an email via Resend. Returns { skipped: true } when Resend isn't
  * configured so the rest of the flow (saving the lead) still succeeds in dev.
  */
-export async function sendEmail({ to, subject, html, replyTo }: SendArgs) {
+export async function sendEmail({ to, subject, html, replyTo, from }: SendArgs) {
   if (!isEmailConfigured()) {
     console.warn("[email] Resend not configured — skipping send to", to);
     return { skipped: true as const };
@@ -37,7 +42,7 @@ export async function sendEmail({ to, subject, html, replyTo }: SendArgs) {
   // Resend's SDK does NOT throw on API errors — it returns { data, error }.
   // We must inspect `error` explicitly, otherwise failures pass silently.
   const { data, error } = await resend.emails.send({
-    from: process.env.FROM_EMAIL!,
+    from: from ?? process.env.FROM_EMAIL!,
     to,
     subject,
     html,
@@ -60,11 +65,11 @@ const ESC: Record<string, string> = {
   '"': "&quot;",
   "'": "&#39;",
 };
-function esc(value: unknown): string {
+export function esc(value: unknown): string {
   return String(value ?? "").replace(/[&<>"']/g, (c) => ESC[c]);
 }
 
-function detailRows(lead: Lead, { includeSource = true }: { includeSource?: boolean } = {}): string {
+export function detailRows(lead: Lead, { includeSource = true }: { includeSource?: boolean } = {}): string {
   const rows: [string, string | null][] = [
     ["Name", lead.fullName],
     ["Phone / WhatsApp", lead.phone],

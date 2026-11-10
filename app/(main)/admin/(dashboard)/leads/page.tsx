@@ -4,6 +4,7 @@ import { StatusBadge } from "@/components/admin/StatusBadge";
 import { LeadStatusSelect } from "@/components/admin/LeadStatusSelect";
 import { DeleteLeadButton } from "@/components/admin/DeleteLeadButton";
 import { AdminNotice } from "@/components/admin/AdminNotice";
+import { WebsiteBadge } from "@/components/admin/WebsiteBadge";
 import { isSupabaseConfigured } from "@/lib/supabase";
 import { LEAD_STATUSES, listLeads, type Lead, type LeadStatus } from "@/lib/leads";
 
@@ -83,6 +84,7 @@ export default async function AdminLeadsPage({
               <th className="px-4 py-3 font-medium">Time</th>
               <th className="px-4 py-3 font-medium">Vehicle</th>
               <th className="px-4 py-3 font-medium">Status</th>
+              <th className="px-4 py-3 font-medium">Website</th>
               <th className="px-4 py-3 font-medium">Source</th>
               <th className="px-4 py-3 font-medium">Created</th>
               <th className="px-4 py-3 font-medium">Actions</th>
@@ -91,7 +93,7 @@ export default async function AdminLeadsPage({
           <tbody>
             {leads.length === 0 ? (
               <tr>
-                <td colSpan={11} className="px-4 py-10 text-center text-ink-muted">
+                <td colSpan={12} className="px-4 py-10 text-center text-ink-muted">
                   No leads found.
                 </td>
               </tr>
@@ -110,6 +112,7 @@ export default async function AdminLeadsPage({
                   <td className="px-4 py-3 text-ink-soft">{lead.time || "—"}</td>
                   <td className="px-4 py-3 text-ink-soft">{lead.vehicleType || "—"}</td>
                   <td className="px-4 py-3"><StatusBadge status={lead.status} /></td>
+                  <td className="px-4 py-3"><WebsiteBadge sourceSite={lead.sourceSite} /></td>
                   <td className="px-4 py-3 max-w-[160px] truncate text-ink-muted" title={lead.sourcePage ?? ""}>
                     {lead.sourcePage || "—"}
                   </td>
