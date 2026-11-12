@@ -24,6 +24,14 @@ const INK = "#16241f";
 const SAND = "#f4f1ea";
 const BRASS = "#b8913f";
 
+/**
+ * The white logo for the green header, hosted on the brand's own domain
+ * (public/email/ in the KSA Rehla Transfers site). PNG, not SVG: Gmail and
+ * Outlook do not render SVG. Rendered at 3x for sharp display on phones; shown
+ * at 199 x 65. The alt text keeps the brand visible when images are blocked.
+ */
+const LOGO_URL = "https://ksarehlatransfers.com/email/ksa-rehla-logo-white.png";
+
 function ptasShell(title: string, bodyHtml: string, siteUrl: string | null): string {
   const site = siteUrl
     ? `<a href="${esc(siteUrl)}" style="color:${BRASS};text-decoration:none">${esc(
@@ -52,7 +60,7 @@ function ptasShell(title: string, bodyHtml: string, siteUrl: string | null): str
         <table role="presentation" class="email-container" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e4e0d6">
           <tr>
             <td style="background:${PALM};padding:20px 24px" align="center">
-              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#ffffff">${esc(PTAS_BRAND)}</p>
+              <img src="${LOGO_URL}" width="199" height="65" alt="${esc(PTAS_BRAND)}" style="display:block;margin:0 auto;border:0;outline:none;text-decoration:none;height:auto;max-width:199px;font-family:Georgia,'Times New Roman',serif;font-size:22px;color:#ffffff" />
             </td>
           </tr>
           <tr>
