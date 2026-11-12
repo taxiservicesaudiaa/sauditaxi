@@ -2,7 +2,7 @@ import type { Lead } from "@/lib/leads";
 import { detailRows, esc } from "@/lib/email";
 
 /**
- * Lead emails for leads that arrive from the Private Transfers Across Saudi
+ * Lead emails for leads that arrive from the KSA Rehla Transfers
  * website through `/api/leads/intake`.
  *
  * Kept in a separate file on purpose: the original site's templates in
@@ -15,9 +15,9 @@ import { detailRows, esc } from "@/lib/email";
  * this brand yet).
  */
 
-export const PTAS_BRAND = "Private Transfers Across Saudi";
+export const PTAS_BRAND = "KSA Rehla Transfers";
 
-// Private Transfers Across Saudi palette (palm, ink, sand, brass) as hex for
+// KSA Rehla Transfers palette (palm, ink, sand, brass) as hex for
 // email clients, which do not support oklch.
 const PALM = "#1f5a45";
 const INK = "#16241f";

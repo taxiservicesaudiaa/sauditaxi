@@ -8,7 +8,7 @@
  * browser — decides which website a lead came from.
  *
  * The two brand names are deliberately spelled out in full wherever an admin
- * sees them: "Saudi Private Transfers" and "Private Transfers Across Saudi"
+ * sees them: "Saudi Private Transfers" and "KSA Rehla Transfers"
  * are easy to confuse.
  */
 
@@ -30,7 +30,7 @@ export interface IntakeSite {
 export const INTAKE_SITES: readonly IntakeSite[] = [
   {
     id: PTAS_SOURCE_SITE,
-    label: "Private Transfers Across Saudi",
+    label: "KSA Rehla Transfers",
     tokenEnv: "PTAS_INTAKE_TOKEN",
     fromEnv: "PTAS_FROM_EMAIL",
     siteUrlEnv: "PTAS_SITE_URL",

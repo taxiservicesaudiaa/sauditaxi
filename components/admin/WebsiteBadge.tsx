@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /**
  * Which website a lead came from. Legacy and original-site leads have no
  * `sourceSite` and show "Saudi Private Transfers"; leads from the
- * Private Transfers Across Saudi website get a distinct blue badge so the
+ * KSA Rehla Transfers website get a distinct blue badge so the
  * two similar brand names cannot be confused at a glance.
  */
 export function WebsiteBadge({ sourceSite, className }: { sourceSite?: string | null; className?: string }) {
