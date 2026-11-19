@@ -94,9 +94,10 @@ export async function POST(request: Request) {
 
   // 2) Notify admin + client (non-fatal — never block a saved lead on email).
   try {
-    // Owner notifications go to the booking@ mailbox (owner, Nov 2026). ADMIN_EMAIL is
-    // left untouched: it is still the admin-login fallback and the other site's recipient.
-    const adminTo = siteConfig.bookingEmail;
+    // Owner notifications go straight to the owner's inbox (ADMIN_EMAIL), sent from
+    // booking@/info@. Routing them to booking@ made them pass through ImprovMX back to
+    // the same Gmail, which Gmail treats as a forwarding loop and drops or spam-folds.
+    const adminTo = process.env.ADMIN_EMAIL || siteConfig.bookingEmail;
     // info@ for Contact-page enquiries, booking@ for quote requests.
     const sender = senderFor(lead.serviceType);
     console.log("[leads] preparing to send emails", { adminEmailPresent: Boolean(adminTo), clientEmailPresent: Boolean(lead.email) });

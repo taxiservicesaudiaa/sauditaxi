@@ -42,8 +42,8 @@ export async function POST(
   const newStatus = action === "accept" ? "Accepted" : "Declined";
   const updatedQuotation = await updateQuotationStatusByToken(token, newStatus);
 
-  // Owner notifications go to the booking@ mailbox (owner, Nov 2026).
-  const adminEmail = siteConfig.bookingEmail;
+  // Owner notifications go straight to the owner's inbox (see app/api/leads/route.ts).
+  const adminEmail = process.env.ADMIN_EMAIL || siteConfig.bookingEmail;
   // Booking emails go out from booking@, and customer replies come back to it.
   const bookingSender = senderFor();
 
