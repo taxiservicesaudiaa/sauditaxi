@@ -143,7 +143,33 @@ export function Header() {
           : "bg-gradient-to-b from-midnight/70 via-midnight/30 to-transparent"
       )}
     >
-      {/* Top bar: logo + language + quote + (mobile) menu toggle */}
+      {/* Contact strip (md+): emails left, language switcher right. SiteShell's
+          <main> carries a matching md:pt-9 so page content starts below it. */}
+      <div
+        className={cn(
+          "hidden overflow-hidden border-b border-white/10 bg-midnight transition-[max-height,opacity] duration-300 md:block",
+          scrolled ? "max-h-0 border-transparent opacity-0" : "max-h-9 opacity-100"
+        )}
+      >
+        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-4 px-4 text-xs sm:px-6 lg:px-8">
+          <div className="flex min-w-0 items-center gap-5 lg:gap-7">
+            {contactEmails.map((c) => (
+              <a
+                key={c.email}
+                href={`mailto:${c.email}`}
+                className="inline-flex items-center gap-1.5 whitespace-nowrap font-medium text-white/85 transition-colors hover:text-brass"
+              >
+                <Mail className="size-3.5 shrink-0 text-brass" aria-hidden="true" />
+                {locale === "en" && <span className="text-white/55">{c.label}:</span>}
+                <span dir="ltr">{c.email}</span>
+              </a>
+            ))}
+          </div>
+          <LanguageSwitcher />
+        </div>
+      </div>
+
+      {/* Top bar: logo + language (phones) + quote + (mobile) menu toggle */}
       <div className={cn(solid ? "border-b border-white/10" : "border-b border-transparent")}>
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
@@ -161,23 +187,8 @@ export function Header() {
             />
           </Link>
 
-          {/* Contact emails (desktop) — inside the top bar so the fixed header's height is unchanged */}
-          <div className="hidden min-w-0 flex-1 items-center justify-center gap-5 px-4 text-xs lg:flex xl:gap-8 xl:text-sm">
-            {contactEmails.map((c) => (
-              <a
-                key={c.email}
-                href={`mailto:${c.email}`}
-                className="inline-flex items-center gap-1.5 whitespace-nowrap text-white/80 transition-colors hover:text-brass"
-              >
-                <Mail className="size-3.5 shrink-0 text-brass" aria-hidden="true" />
-                {locale === "en" && <span className="hidden text-white/55 xl:inline">{c.label}:</span>}
-                <span dir="ltr">{c.email}</span>
-              </a>
-            ))}
-          </div>
-
           <div className="flex items-center gap-2 sm:gap-4">
-            <LanguageSwitcher />
+            <LanguageSwitcher className="md:hidden" />
             <Button
               asChild
               variant="gold"

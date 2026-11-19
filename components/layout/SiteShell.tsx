@@ -35,7 +35,8 @@ export function SiteShell({
     <>
       {schema}
       {header}
-      <main className="flex-1">{children}</main>
+      {/* md:pt-9 = height of the header's contact strip (components/layout/Header.tsx). */}
+      <main className="flex-1 md:pt-9">{children}</main>
       {footer}
       {whatsapp}
     </>
