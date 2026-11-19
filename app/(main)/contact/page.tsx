@@ -56,7 +56,7 @@ export default function ContactPage() {
           },
         ]}
         methodsHeading="Contact Methods"
-        methodsIntro="Both channels reach the same team — choose whichever is easier for you."
+        methodsIntro="All channels reach the same team — choose whichever is easier for you."
         methods={[
           {
             key: "whatsapp",
@@ -68,10 +68,17 @@ export default function ContactPage() {
           },
           {
             key: "email",
-            title: "Email",
-            value: siteConfig.email,
-            href: `mailto:${siteConfig.email}`,
-            bestFor: "Best for detailed questions or documentation",
+            title: "Bookings",
+            value: siteConfig.bookingEmail,
+            href: `mailto:${siteConfig.bookingEmail}`,
+            bestFor: "Best for quotes, new bookings and changes to an existing booking",
+          },
+          {
+            key: "email",
+            title: "General information",
+            value: siteConfig.infoEmail,
+            href: `mailto:${siteConfig.infoEmail}`,
+            bestFor: "Best for general questions and documentation",
           },
         ]}
         formHeading="Send Us a Message"

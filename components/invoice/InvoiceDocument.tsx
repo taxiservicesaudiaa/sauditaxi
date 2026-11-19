@@ -59,7 +59,7 @@ export const InvoiceDocument = forwardRef<HTMLDivElement, { invoice: Invoice }>(
           />
           <div>
             <p className="text-sm text-white/70 print:text-xs">Private Taxi &amp; Transfer Services</p>
-            <p className="text-sm text-white/70 print:text-xs">{siteConfig.email}</p>
+            <p className="text-sm text-white/70 print:text-xs">{siteConfig.bookingEmail}</p>
           </div>
         </div>
         <div className="text-right">
@@ -148,7 +148,7 @@ export const InvoiceDocument = forwardRef<HTMLDivElement, { invoice: Invoice }>(
       {/* Footer */}
       <div className="border-t-2 border-brass px-6 py-5 text-center text-xs text-ink-muted sm:px-8 print:px-6 print:py-3">
         <p>Thank you for choosing {siteConfig.name}</p>
-        <p>{siteConfig.email}</p>
+        <p>{siteConfig.bookingEmail}</p>
       </div>
     </div>
   );

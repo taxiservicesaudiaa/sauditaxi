@@ -49,12 +49,15 @@ export function Footer() {
             </Link>
             <p className="mt-4 text-sm leading-relaxed">{dict.footer.description}</p>
             <div className="mt-5 space-y-2 text-sm">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="flex items-center gap-2 hover:text-brass"
-              >
-                <Mail className="size-4 text-brass" /> {siteConfig.email}
-              </a>
+              {[siteConfig.bookingEmail, siteConfig.infoEmail].map((address) => (
+                <a
+                  key={address}
+                  href={`mailto:${address}`}
+                  className="flex items-center gap-2 hover:text-brass"
+                >
+                  <Mail className="size-4 text-brass" /> <span dir="ltr">{address}</span>
+                </a>
+              ))}
               <p className="flex items-center gap-2">
                 <MapPin className="size-4 text-brass" /> {dict.footer.servingAllOfSaudi}
               </p>

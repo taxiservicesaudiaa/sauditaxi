@@ -8,6 +8,23 @@ export function isEmailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY && process.env.FROM_EMAIL);
 }
 
+/** Contact-page form submissions (EN + AR) are answered from info@; everything else is a booking. */
+const CONTACT_SERVICE_TYPES = new Set(["Contact page enquiry", "صفحة اتصل بنا"]);
+
+export function isContactEnquiry(serviceType?: string | null): boolean {
+  return CONTACT_SERVICE_TYPES.has((serviceType ?? "").trim());
+}
+
+/**
+ * Sender and reply-to for customer-facing email: info@ for Contact-page
+ * enquiries, booking@ for quote requests, bookings, quotations and invoices.
+ * Both addresses are on the domain already verified in Resend (FROM_EMAIL's).
+ */
+export function senderFor(serviceType?: string | null): { from: string; replyTo: string } {
+  const address = isContactEnquiry(serviceType) ? siteConfig.infoEmail : siteConfig.bookingEmail;
+  return { from: `${siteConfig.name} <${address}>`, replyTo: address };
+}
+
 interface SendArgs {
   to: string;
   subject: string;
@@ -168,25 +185,32 @@ function shell(title: string, bodyHtml: string): string {
 
 export function adminLeadEmail(lead: Lead): { subject: string; html: string } {
   const submitted = new Date(lead.createdAt).toLocaleString("en-GB");
+  const contact = isContactEnquiry(lead.serviceType);
+  const title = contact ? "New Contact Enquiry Received" : "New Taxi Lead Received";
   const html = shell(
-    "New Taxi Lead Received",
-    `<p style="color:#444;margin:0 0 16px">A new quote request was submitted on ${esc(
+    title,
+    `<p style="color:#444;margin:0 0 16px">A new ${contact ? "contact enquiry" : "quote request"} was submitted on ${esc(
       submitted
     )}.</p>
      <table class="detail-table" style="width:100%;border-collapse:collapse;font-size:14px">${detailRows(lead)}</table>`
   );
-  return { subject: "New Taxi Lead Received", html };
+  return { subject: title, html };
 }
 
 export function clientLeadEmail(lead: Lead): { subject: string; html: string } {
+  const contact = isContactEnquiry(lead.serviceType);
+  const title = contact ? "We Received Your Message" : "We Received Your Taxi Quote Request";
+  const intro = contact
+    ? "Thank you for contacting us. We have received your message and will reply shortly."
+    : "Thank you for contacting us. We have received your taxi/transfer request. Our team will review your trip details and contact you shortly with availability and pricing.";
   const html = shell(
-    "We Received Your Taxi Quote Request",
-    `<p style="color:#444;margin:0 0 16px">Thank you for contacting us. We have received your taxi/transfer request. Our team will review your trip details and contact you shortly with availability and pricing.</p>
-     <p style="color:#444;margin:0 0 8px;font-weight:600">Your trip details:</p>
+    title,
+    `<p style="color:#444;margin:0 0 16px">${intro}</p>
+     <p style="color:#444;margin:0 0 8px;font-weight:600">${contact ? "Your message details:" : "Your trip details:"}</p>
      <table class="detail-table" style="width:100%;border-collapse:collapse;font-size:14px">${detailRows(lead, { includeSource: false })}</table>
-     <p style="color:#444;margin:16px 0 0">For the fastest response you can also message us on WhatsApp.</p>`
+     <p style="color:#444;margin:16px 0 0">You can reply to this email or write to ${esc(senderFor(lead.serviceType).replyTo)}. For the fastest response you can also message us on WhatsApp.</p>`
   );
-  return { subject: "We Received Your Taxi Quote Request", html };
+  return { subject: title, html };
 }
 
 /** Custom email composed by an admin from the CRM. */
@@ -557,7 +581,7 @@ export function bookingConfirmationEmail(
               <div style="background:#f3ede3;border-radius:12px;padding:18px 20px">
                 <p style="margin:0 0 10px;font-size:14px;font-weight:700;color:#17202b">Need Help?</p>
                 <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#8a929c">Email</p>
-                <p style="margin:2px 0 12px;font-size:14px;font-weight:700;color:#17202b">${esc(siteConfig.email)}</p>
+                <p style="margin:2px 0 12px;font-size:14px;font-weight:700;color:#17202b">${esc(siteConfig.bookingEmail)}</p>
                 <a href="${esc(whatsappUrl)}"
                    style="display:inline-block;background:#25d366;color:#ffffff;font-weight:700;font-size:13px;
                           padding:10px 22px;border-radius:9999px;text-decoration:none">

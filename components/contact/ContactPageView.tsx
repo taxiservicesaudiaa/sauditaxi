@@ -153,7 +153,7 @@ export function ContactPageView({
               const Icon = methodIcon[m.key];
               return (
                 <a
-                  key={m.key}
+                  key={`${m.key}-${m.value}`}
                   href={m.href}
                   target={m.external ? "_blank" : undefined}
                   rel={m.external ? "noopener noreferrer" : undefined}

@@ -361,8 +361,8 @@ function buildArPages(): ArPage[] {
         {
           key: "email",
           title: "البريد الإلكتروني",
-          value: "taxiservicesaudiaa@gmail.com",
-          href: "mailto:taxiservicesaudiaa@gmail.com",
+          value: "info@saudiprivatetransfers.com",
+          href: "mailto:info@saudiprivatetransfers.com",
           bestFor: "الأنسب للأسئلة التفصيلية أو المستندات",
         },
       ],
@@ -5686,7 +5686,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>الرياض إلى العلا التزام حقيقي بـ1000 كيلومتر، والنصيحة الصادقة هي: طِر إن كانت العلا وجهتك الوحيدة والوقت محدود، لكن قُد السيارة إن أردت تجربة الرحلة البرية نفسها، أو تخطط للتوقف في الطريق، أو تسافر ضمن مجموعة. أيًا كان اختيارك، تقسيم القيادة على يومين مريحين مع مبيت في القصيم أو حائل أو المدينة المنورة أفضل بكثير من قطعها دفعة واحدة مرهقة لمعظم المسافرين.</p>
-<p>جاهز لتخطيط رحلتك؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل خاص من الرياض إلى العلا، مع إمكانية تقسيم القيادة على يومين، أو تواصل معنا مباشرة عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>جاهز لتخطيط رحلتك؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل خاص من الرياض إلى العلا، مع إمكانية تقسيم القيادة على يومين، أو تواصل معنا مباشرة عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Madinah to Yanbu Transfer ──────────────────────────────────
@@ -5828,7 +5828,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>رحلة المدينة المنورة إلى ينبع قصيرة وجميلة، وطريقة سهلة لإضافة تجربة مختلفة تمامًا — شواطئ البحر الأحمر وإيقاع ساحلي هادئ — إلى رحلة تتمحور حول المدينة المنورة. مع سعر ثابت ومركبة مريحة لرحلة تستغرق ساعتين ونصف إلى 3 ساعات وخدمة من الباب إلى الباب، الانتقال من المسجد النبوي إلى الساحل سهل بقدر اختلاف الوجهتين نفسيهما.</p>
-<p>جاهز لتخطيط رحلتك؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل المدينة المنورة إلى ينبع، أو تواصل معنا عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>جاهز لتخطيط رحلتك؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل المدينة المنورة إلى ينبع، أو تواصل معنا عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Dammam to Bahrain Travel Guide ─────────────────────────────
@@ -5975,7 +5975,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>لا توجد طريقة "صحيحة" واحدة للسفر من الدمام إلى البحرين — الأمر يعتمد على مجموعتك وميزانيتك ومدى تفضيلك للمرونة على التوقع. لمعظم العابرين لأول مرة ومن يسافر مع العائلة أو للعمل، يزيل النقل الخاص أكبر مصدر توتر: التنقل بنفسك عبر حدود غير مألوفة.</p>
-<p><strong>تخطط لرحلة من الدمام إلى البحرين؟</strong> احجز نقلًا خاصًا بسعر ثابت عبر جسر الملك فهد، من الباب إلى الباب من أي مكان بالدمام، مع سائق ذي خبرة بالعبور. <a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p><strong>تخطط لرحلة من الدمام إلى البحرين؟</strong> احجز نقلًا خاصًا بسعر ثابت عبر جسر الملك فهد، من الباب إلى الباب من أي مكان بالدمام، مع سائق ذي خبرة بالعبور. <a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: King Fahd Causeway Guide ───────────────────────────────────
@@ -6102,7 +6102,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>جسر الملك فهد من أكثر المعابر الحدودية إثارة فعليًا في المنطقة، تحديدًا بفضل نظام جزيرة الجوازات المشترك غير المعتاد. افهم الرسوم وأنماط الحركة — والأهم — قاعدة الكحول، ويصبح العبور نفسه جزءًا سلسًا بل ممتعًا من الرحلة بدلًا من مصدر توتر لغير المستعدين.</p>
-<p><strong>تعبر الجسر قريبًا؟</strong> احجز نقلًا خاصًا يتولى العبور نيابة عنك، من الباب إلى الباب من الدمام أو الخبر، مع سائق ذي خبرة بالإجراءات. <a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p><strong>تعبر الجسر قريبًا؟</strong> احجز نقلًا خاصًا يتولى العبور نيابة عنك، من الباب إلى الباب من الدمام أو الخبر، مع سائق ذي خبرة بالإجراءات. <a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Makkah to Madinah Private Taxi Guide ───────────────────────
@@ -6192,7 +6192,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p><strong>تاكسي مكة إلى المدينة</strong> رحلة طويلة لكنها مجزية، والنقل الخاص المناسب يجعلها مريحة فعليًا. بسعر ثابت ومركبة تناسب حجم مجموعتك واستراحات مرنة وخدمة من الباب إلى الباب، يمكنك الاسترخاء أو التأمل على الطريق بينما يتولى سائق محترف الرحلة. احجز مسبقًا وشارك تفاصيل فندقيك وصِل إلى مدينة النبي مرتاحًا وجاهزًا لزيارتك.</p>
-<p><a href="/get-quote">اطلب عرض سعر ثابت</a> لرحلتك من مكة إلى المدينة، أو تواصل معنا عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p><a href="/get-quote">اطلب عرض سعر ثابت</a> لرحلتك من مكة إلى المدينة، أو تواصل معنا عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Riyadh to Dammam Taxi Guide ────────────────────────────────
@@ -6271,7 +6271,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p><strong>تاكسي الرياض إلى الدمام</strong> هو الطريقة الأكثر مرونة وراحة للعبور إلى المنطقة الشرقية. بأسعار ثابتة ومركبة تناسب مجموعتك وخدمة من الباب إلى الباب حسب جدولك، تصبح الرحلة الطويلة استرخاءً حقيقيًا. احجز مسبقًا وشارك تفاصيلك ودع محترفًا يتولى الطريق السريع بينما تسافر براحة.</p>
-<p><a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p><a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Jeddah to Taif Taxi Guide ──────────────────────────────────
@@ -6346,7 +6346,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p><strong>تاكسي جدة إلى الطائف</strong> يحوّل رحلة جبلية جميلة إلى تجربة مريحة واسترخائية. بأجرة ثابتة ومركبة تناسب حجم مجموعتك وحرية التوقف في الطريق، يمكنك الاستمتاع بالصعود إلى المرتفعات الباردة دون قلق. احجز مسبقًا وشارك تفاصيلك ودع سائقًا محترفًا يتولى الطريق بينما تستمتع بالمناظر.</p>
-<p><a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p><a href="/get-quote">اطلب عرض سعرك</a> أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Business Travel Bahrain-Dammam ─────────────────────────────
@@ -6413,7 +6413,7 @@ function buildArPages(): ArPage[] {
 <li><strong>معايير مركبات مفضّلة</strong> مطبّقة باستمرار عبر كل حجوزات الشركة</li>
 <li><strong>نقطة اتصال واحدة</strong> لتغييرات الجدولة، بدلاً من إدارة كل مسافر لحجزه بنفسه</li>
 </ul>
-<p>يستحق ترتيب ذلك مباشرة مع فريقنا إن كانت شركتك ترسل موظفين عبر هذا الطريق بانتظام — تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a> لمناقشة ترتيب مؤسسي.</p>
+<p>يستحق ترتيب ذلك مباشرة مع فريقنا إن كانت شركتك ترسل موظفين عبر هذا الطريق بانتظام — تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a> لمناقشة ترتيب مؤسسي.</p>
 
 <h2 id="vehicles-for-business">اختيار المركبة لسفر الأعمال</h2>
 <div style="overflow-x:auto;">
@@ -6453,7 +6453,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>سفر الأعمال بين البحرين والدمام ينجح أفضل عند التعامل معه كروتين قابل للتخطيط لا رحلة دولية لمرة واحدة — وهو بالضبط ما هو عليه لكثير من المهنيين العابرين بانتظام. وقّت عبورك حول حركة أيام الأسبوع، رتّب حسابًا مؤسسيًا إن كانت شركتك تعبر بانتظام، واختر مركبة تناسب السياق المهني لرحلتك.</p>
-<p>تخطط لعبور عمل أو ترتيب حساب مؤسسي؟ <a href="/get-quote">اطلب عرض سعر</a> أو تواصل مباشرة عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>تخطط لعبور عمل أو ترتيب حساب مؤسسي؟ <a href="/get-quote">اطلب عرض سعر</a> أو تواصل مباشرة عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Family Travel Bahrain to Saudi Arabia ──────────────────────
@@ -6573,7 +6573,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>العبور من البحرين إلى السعودية مع الأطفال أسهل بكثير مما توحي به عبارة "عبور حدود دولية" — رحلة قصيرة ومنظمة جيدًا، تضيف مع المركبة والتوقيت المناسبين وقليل من التخطيط المسبق حول مقاعد الأطفال والمستندات، ضغطًا محدودًا جدًا على رحلة عائلية. النقل الخاص يزيل معظم الاحتكاك المتبقي، فيترك للوالدين التركيز على الأطفال لا اللوجستيات.</p>
-<p>تخطط لعبور عائلي؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> مع ذكر عمر طفلك لمقعد الأمان والمركبة المناسبين، أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>تخطط لعبور عائلي؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> مع ذكر عمر طفلك لمقعد الأمان والمركبة المناسبين، أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: GCC Residents Road Travel to Saudi Arabia ──────────────────
@@ -6675,7 +6675,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>الجنسية الخليجية تبسّط فعليًا جانب الدخول الشخصي لعبور بري إلى السعودية، لكنها لا تزيل كل اعتبار عملي — تأمين المركبة، والمعبر المحدد المناسب لمسارك، والقواعد الفعلية لمقيمي الخليج من غير المواطنين، كلها لا تزال مهمة. اعرف الفئة التي تنتمي إليها، وأكّد مستنداتك وتغطية مركبتك قبل السفر، ويصبح العبور نفسه سهلاً فعليًا.</p>
-<p>تخطط لرحلة برية إلى السعودية من دولة خليجية؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل خاص، أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>تخطط لرحلة برية إلى السعودية من دولة خليجية؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لنقل خاص، أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Blog: Best Vehicle for Cross-Border Travel ───────────────────────
@@ -6763,7 +6763,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>اختيار المركبة لرحلة عبر الحدود ليس مجرد تفضيل راحة — يؤثر على سعة الأمتعة وسهولة الفحص الجمركي والرسوم التي تدفعها ومدى ملاءمة الرحلة لغرضها، سواء كانت عطلة عائلية أو مقابلة عمل. طابق المركبة مع حجم مجموعتك وأمتعتك الفعليين بدلاً من الاكتفاء بأصغر أو أرخص خيار، ويصبح العبور نفسه أكثر سلاسة بوضوح.</p>
-<p>غير متأكد أي مركبة تناسب رحلتك؟ <a href="/get-quote">اطلب عرض سعر</a> مع تفاصيل حجم مجموعتك وأمتعتك، أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a> للحصول على توصية.</p>`,
+<p>غير متأكد أي مركبة تناسب رحلتك؟ <a href="/get-quote">اطلب عرض سعر</a> مع تفاصيل حجم مجموعتك وأمتعتك، أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a> للحصول على توصية.</p>`,
   },
 
   // ── Blog: Bahrain to Saudi Arabia by Road ────────────────────────────
@@ -6855,7 +6855,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>يفتح جسر الملك فهد الباب أمام المنطقة الشرقية، ومن هناك تمتد رحلة برية عملية فعليًا لتشمل الدمام والخبر والظهران — وكامتداد ليوم أطول أو رحلة مبيت، الرياض. بعد ذلك، الوصول إلى غرب السعودية أفضل جوًا من الدمام لا بمواصلة القيادة. اعرف المنطقة التي تقع فيها رحلتك فعليًا، وخطط وفقًا لذلك بدلاً من التقليل من حجم المملكة الحقيقي.</p>
-<p>تخطط لمسارك من البحرين إلى السعودية؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لعبورك، أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a> لتخطيط رحلة متعددة المدن.</p>`,
+<p>تخطط لمسارك من البحرين إلى السعودية؟ <a href="/get-quote">اطلب عرض سعر ثابت</a> لعبورك، أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a> لتخطيط رحلة متعددة المدن.</p>`,
   },
 
   // ── Blog: Travel Documents Bahrain to Saudi Arabia ───────────────────
@@ -6956,7 +6956,7 @@ function buildArPages(): ArPage[] {
 
 <h2 id="conclusion">الخلاصة</h2>
 <p>متطلبات المستندات لعبور البحرين إلى السعودية ليست معقدة بمجرد معرفة الفئة التي تنتمي إليها — لكنها تتفرع فعليًا حسب الجنسية، وهل تقود بنفسك، وهل يسافر معك أطفال. أكّد متطلباتك المحددة قبل رحلتك بوقت كافٍ بدلاً من افتراض أن قاعدة عامة تغطي وضعك، ويصبح العبور نفسه إجراءً روتينيًا لا مصدر توتر في اللحظة الأخيرة.</p>
-<p>تخطط لعبورك وتريد مساعدة للتأكد مما تحتاجه؟ <a href="/get-quote">اطلب عرض سعر</a> أو تواصل عبر <a href="mailto:taxiservicesaudiaa@gmail.com">taxiservicesaudiaa@gmail.com</a>.</p>`,
+<p>تخطط لعبورك وتريد مساعدة للتأكد مما تحتاجه؟ <a href="/get-quote">اطلب عرض سعر</a> أو تواصل عبر <a href="mailto:info@saudiprivatetransfers.com">info@saudiprivatetransfers.com</a>.</p>`,
   },
 
   // ── Route: Riyadh to Khobar ──────────────────────────────────────────
@@ -18635,7 +18635,7 @@ function buildArPages(): ArPage[] {
         },
       ],
       contactHeading: "تواصل معنا بشأن بياناتك",
-      contactText: "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه أو بياناتك، تواصل معنا عبر البريد الإلكتروني taxiservicesaudiaa@gmail.com أو من خلال نموذج الحجز لدينا.",
+      contactText: "إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه أو بياناتك، تواصل معنا عبر البريد الإلكتروني info@saudiprivatetransfers.com أو من خلال نموذج الحجز لدينا.",
       quoteLinkLabel: "اطلب عرض سعر",
       quoteLinkHref: "/get-quote",
     },
@@ -18776,7 +18776,7 @@ function buildArPages(): ArPage[] {
         },
       ],
       contactHeading: "أسئلة حول هذه الشروط",
-      contactText: "لأي أسئلة حول هذه الشروط، تواصل معنا عبر البريد الإلكتروني taxiservicesaudiaa@gmail.com أو من خلال نموذج الحجز لدينا.",
+      contactText: "لأي أسئلة حول هذه الشروط، تواصل معنا عبر البريد الإلكتروني info@saudiprivatetransfers.com أو من خلال نموذج الحجز لدينا.",
       quoteLinkLabel: "اطلب عرض سعر",
       quoteLinkHref: "/get-quote",
     },

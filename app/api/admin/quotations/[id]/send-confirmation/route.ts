@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { getQuotation } from "@/lib/quotations";
 import { logEmail } from "@/lib/leads";
-import { bookingConfirmationEmail, isEmailConfigured, sendEmail } from "@/lib/email";
+import { bookingConfirmationEmail, isEmailConfigured, sendEmail, senderFor } from "@/lib/email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -36,7 +36,7 @@ export async function POST(
   const { subject, html } = bookingConfirmationEmail(quotation);
 
   try {
-    await sendEmail({ to: quotation.clientEmail, subject, html });
+    await sendEmail({ to: quotation.clientEmail, subject, html, ...senderFor() });
     try {
       await logEmail({
         leadId: quotation.leadId ?? undefined,

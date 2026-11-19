@@ -19,7 +19,12 @@ export const siteConfig = {
   // (not rendered visibly anywhere on the site).
   phoneDisplay: "+92 314 8932631",
   phoneHref: "+923148932631",
-  email: "taxiservicesaudiaa@gmail.com",
+  // Public email addresses (owner, Nov 2026). booking@ handles quote requests,
+  // bookings, quotations and invoices; info@ handles Contact-page enquiries and
+  // general questions. `email` is the general address used in schema and legal text.
+  bookingEmail: "booking@saudiprivatetransfers.com",
+  infoEmail: "info@saudiprivatetransfers.com",
+  email: "info@saudiprivatetransfers.com",
   locale: "en_US",
   // Raster (PNG) OG image — Facebook, LinkedIn, WhatsApp, and X do not render
   // SVG social previews, so the share image must be a PNG/JPG.

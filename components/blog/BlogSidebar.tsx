@@ -390,10 +390,10 @@ export async function BlogSidebar({ currentSlug }: { currentSlug: string }) {
           Our team replies quickly with a fixed quote for your journey.
         </p>
         <a
-          href={`mailto:${siteConfig.email}`}
+          href={`mailto:${siteConfig.bookingEmail}`}
           className="mt-3 flex items-center gap-2 text-sm font-medium text-ink hover:text-brass"
         >
-          <Mail className="size-4 text-brass" /> {siteConfig.email}
+          <Mail className="size-4 text-brass" /> {siteConfig.bookingEmail}
         </a>
         <Link
           href="/contact"

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { getQuotation, updateQuotationStatus } from "@/lib/quotations";
 import { logEmail } from "@/lib/leads";
-import { quotationReadyEmail, isEmailConfigured, sendEmail } from "@/lib/email";
+import { quotationReadyEmail, isEmailConfigured, sendEmail, senderFor } from "@/lib/email";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -38,7 +38,7 @@ export async function POST(
   const { subject, html } = quotationReadyEmail(quotation, viewUrl);
 
   try {
-    await sendEmail({ to: quotation.clientEmail, subject, html });
+    await sendEmail({ to: quotation.clientEmail, subject, html, ...senderFor() });
 
     if (quotation.status === "Draft") {
       await updateQuotationStatus(id, "Sent").catch((e) =>

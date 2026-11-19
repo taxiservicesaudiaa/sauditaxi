@@ -45,7 +45,7 @@ export const QuotationDocument = forwardRef<HTMLDivElement, { quotation: Quotati
           />
           <div>
             <p className="text-sm text-white/70 print:text-xs">Private Taxi &amp; Transfer Services</p>
-            <p className="text-sm text-white/70 print:text-xs">{siteConfig.email}</p>
+            <p className="text-sm text-white/70 print:text-xs">{siteConfig.bookingEmail}</p>
           </div>
         </div>
         <div className="text-right">
@@ -193,7 +193,7 @@ export const QuotationDocument = forwardRef<HTMLDivElement, { quotation: Quotati
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 print:text-[10px]">
           <span>{siteConfig.url.replace(/^https?:\/\//, "")}</span>
           <span aria-hidden="true">·</span>
-          <span>{siteConfig.email}</span>
+          <span>{siteConfig.bookingEmail}</span>
         </div>
         <div className="flex items-center gap-3 text-ink-muted print:gap-2">
           <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-brass">

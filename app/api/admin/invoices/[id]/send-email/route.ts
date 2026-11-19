@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { getInvoice } from "@/lib/invoices";
 import { logEmail } from "@/lib/leads";
-import { invoiceReadyEmail, isEmailConfigured, sendEmail } from "@/lib/email";
+import { invoiceReadyEmail, isEmailConfigured, sendEmail, senderFor } from "@/lib/email";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -38,7 +38,7 @@ export async function POST(
   const { subject, html } = invoiceReadyEmail(invoice, viewUrl);
 
   try {
-    await sendEmail({ to: invoice.clientEmail, subject, html });
+    await sendEmail({ to: invoice.clientEmail, subject, html, ...senderFor() });
     try {
       await logEmail({
         leadId: invoice.leadId ?? undefined,

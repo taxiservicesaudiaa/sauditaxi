@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/session";
 import { getLead, logEmail } from "@/lib/leads";
-import { customClientEmail, isEmailConfigured, sendEmail } from "@/lib/email";
+import { customClientEmail, isEmailConfigured, sendEmail, senderFor } from "@/lib/email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -50,7 +50,8 @@ export async function POST(
   }
 
   try {
-    await sendEmail({ to: lead.email, subject, html: customClientEmail(subject, message) });
+    const sender = senderFor(lead.serviceType);
+    await sendEmail({ to: lead.email, subject, html: customClientEmail(subject, message), from: sender.from, replyTo: sender.replyTo });
     // Best-effort email log; don't fail the request if logging fails.
     try {
       await logEmail({ leadId: lead.id, subject, message, sentTo: lead.email });

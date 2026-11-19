@@ -5,6 +5,7 @@ import {
   quotationAcceptedClientEmail,
   quotationAcceptedAdminEmail,
   quotationDeclinedAdminEmail,
+  senderFor,
 } from "@/lib/email";
 import { siteConfig } from "@/lib/site";
 import { logEmail } from "@/lib/leads";
@@ -41,7 +42,10 @@ export async function POST(
   const newStatus = action === "accept" ? "Accepted" : "Declined";
   const updatedQuotation = await updateQuotationStatusByToken(token, newStatus);
 
-  const adminEmail = process.env.ADMIN_EMAIL || siteConfig.email;
+  // Owner notifications go to the booking@ mailbox (owner, Nov 2026).
+  const adminEmail = siteConfig.bookingEmail;
+  // Booking emails go out from booking@, and customer replies come back to it.
+  const bookingSender = senderFor();
 
   if (action === "accept") {
     // 1. Send confirmation email to Customer
@@ -52,7 +56,8 @@ export async function POST(
           to: updatedQuotation.clientEmail,
           subject,
           html,
-          replyTo: adminEmail,
+          from: bookingSender.from,
+          replyTo: bookingSender.replyTo,
         });
 
         if (updatedQuotation.leadId) {
@@ -76,6 +81,7 @@ export async function POST(
           to: adminEmail,
           subject,
           html,
+          from: bookingSender.from,
           replyTo: updatedQuotation.clientEmail ?? undefined,
         });
       } catch (err) {
@@ -91,6 +97,7 @@ export async function POST(
           to: adminEmail,
           subject,
           html,
+          from: bookingSender.from,
           replyTo: updatedQuotation.clientEmail ?? undefined,
         });
       } catch (err) {

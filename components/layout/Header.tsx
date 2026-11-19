@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { siteConfig } from "@/lib/site";
@@ -116,6 +116,13 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Bookings vs general information. Labels are English-only; the Arabic header
+  // shows the addresses alone (no new Arabic copy without native review).
+  const contactEmails = [
+    { label: "Bookings", email: siteConfig.bookingEmail },
+    { label: "Information", email: siteConfig.infoEmail },
+  ];
+
   // Solid bar once scrolled, or while the mobile menu is open.
   const solid = scrolled || open;
 
@@ -153,6 +160,21 @@ export function Header() {
               className="h-14 w-auto sm:h-16"
             />
           </Link>
+
+          {/* Contact emails (desktop) — inside the top bar so the fixed header's height is unchanged */}
+          <div className="hidden min-w-0 flex-1 items-center justify-center gap-5 px-4 text-xs lg:flex xl:gap-8 xl:text-sm">
+            {contactEmails.map((c) => (
+              <a
+                key={c.email}
+                href={`mailto:${c.email}`}
+                className="inline-flex items-center gap-1.5 whitespace-nowrap text-white/80 transition-colors hover:text-brass"
+              >
+                <Mail className="size-3.5 shrink-0 text-brass" aria-hidden="true" />
+                {locale === "en" && <span className="hidden text-white/55 xl:inline">{c.label}:</span>}
+                <span dir="ltr">{c.email}</span>
+              </a>
+            ))}
+          </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
             <LanguageSwitcher />
@@ -314,6 +336,20 @@ export function Header() {
                 {dict.nav.getQuote}
               </Link>
             </Button>
+          </div>
+          <div className="mt-3 space-y-2 border-t border-white/10 px-3 pt-3 text-sm">
+            {contactEmails.map((c) => (
+              <a
+                key={c.email}
+                href={`mailto:${c.email}`}
+                onClick={closeAll}
+                className="flex items-center gap-2 text-white/80 hover:text-brass"
+              >
+                <Mail className="size-4 shrink-0 text-brass" aria-hidden="true" />
+                {locale === "en" && <span className="text-white/55">{c.label}:</span>}
+                <span dir="ltr">{c.email}</span>
+              </a>
+            ))}
           </div>
         </nav>
       </div>

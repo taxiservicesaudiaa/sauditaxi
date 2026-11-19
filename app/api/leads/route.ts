@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { leadSchema } from "@/lib/leadSchema";
 import { createLead, type Lead } from "@/lib/leads";
 import { isSupabaseConfigured } from "@/lib/supabase";
-import { adminLeadEmail, clientLeadEmail, sendEmail } from "@/lib/email";
+import { siteConfig } from "@/lib/site";
+import { adminLeadEmail, clientLeadEmail, sendEmail, senderFor } from "@/lib/email";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -93,18 +94,22 @@ export async function POST(request: Request) {
 
   // 2) Notify admin + client (non-fatal — never block a saved lead on email).
   try {
-    const adminTo = process.env.ADMIN_EMAIL;
+    // Owner notifications go to the booking@ mailbox (owner, Nov 2026). ADMIN_EMAIL is
+    // left untouched: it is still the admin-login fallback and the other site's recipient.
+    const adminTo = siteConfig.bookingEmail;
+    // info@ for Contact-page enquiries, booking@ for quote requests.
+    const sender = senderFor(lead.serviceType);
     console.log("[leads] preparing to send emails", { adminEmailPresent: Boolean(adminTo), clientEmailPresent: Boolean(lead.email) });
     if (adminTo) {
       const { subject, html } = adminLeadEmail(lead);
       console.log("[leads] sending admin email to", adminTo);
-      await sendEmail({ to: adminTo, subject, html, replyTo: lead.email ?? undefined });
+      await sendEmail({ to: adminTo, subject, html, replyTo: lead.email ?? undefined, from: sender.from });
     }
     if (lead.email) {
       const { subject, html } = clientLeadEmail(lead);
       console.log("[leads] sending client email to", lead.email);
-      // Reply-to the admin inbox so client replies reach the team directly.
-      await sendEmail({ to: lead.email, subject, html, replyTo: adminTo ?? undefined });
+      // Sent from, and replied to, booking@ or info@ so the conversation stays in that mailbox.
+      await sendEmail({ to: lead.email, subject, html, from: sender.from, replyTo: sender.replyTo });
     }
   } catch (err) {
     console.error("[leads] email send failed:", err instanceof Error ? err.stack : err);
