@@ -24,6 +24,9 @@ import {
 } from "@/lib/schema";
 import { citiesWithHotels, airportTransferName } from "@/lib/hotel-transfers";
 import { cityAirportFacts } from "@/lib/city-hub-facts";
+import { MadinahAirportHubView, type MadinahHubGuide } from "@/components/city-hub/MadinahAirportHubView";
+import { MADINAH_HUB, MADINAH_HUB_FAQS } from "@/data/madinah-airport-hub";
+import { listPublishedBlogs } from "@/lib/blogs";
 
 type Params = { city: string };
 
@@ -90,6 +93,14 @@ export async function generateMetadata({
   const aName = airport ? airportTransferName(airport) : `${city.name} Airport`;
   const path = `/cities/${city.slug}`;
   const arPath = getArPathForEnPathLight(path);
+  if (city.slug === "madinah") {
+    return buildMetadata({
+      title: MADINAH_HUB.meta.title,
+      description: MADINAH_HUB.meta.description,
+      path,
+      ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
+    });
+  }
   const hub = HUB_META[city.slug];
   return buildMetadata({
     title: hub?.title ?? `${city.name} Airport Transfers | Hotel Taxi from ${aName}`,
@@ -140,6 +151,53 @@ export default async function CityHubPage({
 
   const aName = airportTransferName(airport);
   const hotels = hotelsForCity(city.slug);
+
+  // Madinah has its own airport-transfer layout (data/madinah-airport-hub.ts);
+  // the other /cities hubs render through HotelTransferHubView below.
+  if (city.slug === "madinah") {
+    const madinahCrumbs = [
+      { name: "Home", path: "/" },
+      { name: "Airport Transfers", path: "/airport-transfers" },
+      { name: MADINAH_HUB.breadcrumbName, path: MADINAH_HUB.path },
+    ];
+    const published = await listPublishedBlogs();
+    const guides: MadinahHubGuide[] = MADINAH_HUB.guides.slugs
+      .map((s) => published.find((b) => b.slug === s))
+      .filter((b): b is NonNullable<typeof b> => Boolean(b))
+      .map((b) => ({ slug: b.slug, title: b.title, excerpt: b.excerpt }));
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(madinahCrumbs),
+            serviceSchema({
+              name: "Madinah Airport Transfers",
+              description: `Private transfers between ${airport.name} (${airport.code}) and hotels and addresses in Madinah.`,
+              path: MADINAH_HUB.path,
+              serviceType: "Airport Transfer",
+              areaServed: "Madinah, Saudi Arabia",
+              dateModified: MADINAH_HUB.lastUpdated,
+            }),
+            faqSchema(MADINAH_HUB_FAQS),
+          ]}
+        />
+        <MadinahAirportHubView
+          crumbs={madinahCrumbs}
+          airportName={airport.name}
+          guides={guides}
+          hotels={hotels.map((h) => ({
+            slug: h.slug,
+            name: h.name,
+            area: h.area,
+            stars: h.stars,
+            distanceKm: h.distanceKm,
+            durationMin: h.durationMin,
+            quoteHref: `/get-quote?pickup=${encodeURIComponent(airport.name)}&dropoff=${encodeURIComponent(h.name)}`,
+          }))}
+        />
+      </>
+    );
+  }
   const facts = cityAirportFacts[city.slug];
 
   // Real distance/duration range, computed from data/hotels.ts (never invented).

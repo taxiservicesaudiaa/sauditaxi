@@ -18,7 +18,18 @@ const fieldClass =
  * completes the booking) — entirely new presentation only. HeroQuickForm
  * itself is untouched (still used by the Arabic homepage, app/ar/page.tsx).
  */
-export function HomeBookingPanel() {
+export function HomeBookingPanel({
+  defaultPickup = "",
+  eyebrow = "Plan your journey",
+  title = "Request a private transfer",
+  dropoffPlaceholder = "City, hotel, or address",
+}: {
+  /** Prefill the pickup field (e.g. the airport on /cities/madinah). */
+  defaultPickup?: string;
+  eyebrow?: string;
+  title?: string;
+  dropoffPlaceholder?: string;
+} = {}) {
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -34,17 +45,17 @@ export function HomeBookingPanel() {
 
   return (
     <div className="rounded-2xl border border-hairline bg-offwhite/95 p-6 shadow-[0_24px_60px_-24px_rgba(11,23,38,0.35)] backdrop-blur-sm sm:p-7">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brass">Plan your journey</p>
-      <p className="mt-1.5 text-xl font-bold text-ink">Request a private transfer</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brass">{eyebrow}</p>
+      <p className="mt-1.5 text-xl font-bold text-ink">{title}</p>
 
       <form onSubmit={handleSubmit} className="mt-5 space-y-4" aria-label="Quick quote form">
         <div>
           <Label htmlFor="hb-pickup" className="text-ink-soft">Pickup location</Label>
-          <Input id="hb-pickup" name="pickup" placeholder="Airport, hotel, or address" required className={`mt-1.5 ${fieldClass}`} />
+          <Input id="hb-pickup" name="pickup" placeholder="Airport, hotel, or address" required defaultValue={defaultPickup || undefined} className={`mt-1.5 ${fieldClass}`} />
         </div>
         <div>
           <Label htmlFor="hb-dropoff" className="text-ink-soft">Destination</Label>
-          <Input id="hb-dropoff" name="dropoff" placeholder="City, hotel, or address" required className={`mt-1.5 ${fieldClass}`} />
+          <Input id="hb-dropoff" name="dropoff" placeholder={dropoffPlaceholder} required className={`mt-1.5 ${fieldClass}`} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
