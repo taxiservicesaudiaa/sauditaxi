@@ -48,6 +48,10 @@ import { pointTransfersV2, getPointTransferV2 } from "@/lib/point-transfers-v2";
 import { getCity } from "@/data/cities";
 import { PointTransferView } from "@/components/templates/PointTransferView";
 import { PointTransferV2View } from "@/components/point-transfer-v2/PointTransferV2View";
+import { airportOps } from "@/lib/airport-ops";
+import { MakkahZiyaratTourView } from "@/components/makkah/MakkahZiyaratTourView";
+import { ZIYARAT, ZIYARAT_FAQS, ZIYARAT_PATH, ZIYARAT_REVIEWED } from "@/data/makkah-ziyarat-tour";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 import type { Hotel } from "@/data/hotels";
 
 type Params = { city: string; route: string };
@@ -119,13 +123,15 @@ export async function generateMetadata({
   const arPath = getArPathForEnPathLight(t.path);
   return buildMetadata({
     title: `${t.from} to ${t.to} Taxi | Private Transfer`,
-    description: `Book a private ${t.from} to ${t.to} taxi (${t.distance}, approx. ${t.duration}). Fixed price, meet & greet, flight tracking, and 24/7 booking.`,
+    description: `Book a private ${t.from} to ${t.to} taxi${t.distance && t.duration ? ` (${t.distance}, approx. ${t.duration})` : ""}. ${
+      airportOps(t.airport.code).meeting === "confirmed-per-booking" ? "Flight tracking and a meeting point confirmed when you book" : "Meet & greet and flight tracking"
+    }, with a quotation you confirm before you travel.`,
     path: t.path,
     ...(arPath ? { alternateLanguages: { en: t.path, ar: arPath } } : {}),
   });
 }
 
-const features = [
+const legacyFeatures = [
   {
     icon: UserCheck,
     title: "Meet & Greet",
@@ -146,12 +152,30 @@ const features = [
     title: "Professional Chauffeur",
     text: "Licensed, English-speaking drivers who know the city and every hotel entrance.",
   },
-  {
-    icon: Headphones,
-    title: "24/7 Service",
-    text: "Book any time of day or night — we operate around the clock, all year.",
-  },
 ];
+
+/** Feature tiles: legacy wording unless the airport has owner-confirmed rules (lib/airport-ops.ts). */
+function featuresFor(code: string) {
+  const ops = airportOps(code);
+  if (ops.meeting !== "confirmed-per-booking") return legacyFeatures;
+  return [
+    {
+      icon: UserCheck,
+      title: "Confirmed Meeting Point",
+      text: "Your meeting point at the airport is confirmed individually when you book.",
+    },
+    {
+      icon: RadioTower,
+      title: "Flight Tracking",
+      text: "Share your flight number and we track your flight, reconfirming your pickup if it changes.",
+    },
+    {
+      icon: Headphones,
+      title: "Quotation First",
+      text: "You receive a quotation for your transfer and confirm it before you travel.",
+    },
+  ];
+}
 
 // Hand-written per-hotel fields (see data/hotels.ts). Once 4 or more of these
 // are populated for a hotel, the templated hotelVariation() angle paragraph
@@ -192,6 +216,56 @@ export default async function HotelTransferPage({
       { name: `${cityName} Taxi Service`, path: cityPath },
       { name: label, path: v2Path },
     ];
+    // /makkah/makkah-ziyarat-tour has its own layout and schema
+    // (data/makkah-ziyarat-tour.ts); other V2 pages keep PointTransferV2View.
+    if (v2Path === ZIYARAT_PATH) {
+      const pageUrl = absoluteUrl(ZIYARAT_PATH);
+      return (
+        <>
+          <SchemaScript
+            schema={[
+              breadcrumbSchema(crumbs),
+              {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "@id": `${pageUrl}#webpage`,
+                url: pageUrl,
+                name: v2.metaTitle,
+                description: v2.metaDescription,
+                inLanguage: "en",
+                isPartOf: { "@id": `${siteConfig.url}/#website` },
+                about: { "@id": `${pageUrl}#service` },
+                dateModified: ZIYARAT_REVIEWED,
+              },
+              {
+                ...serviceSchema({
+                  name: "Makkah Ziyarat Tour by Private Car",
+                  description: ZIYARAT.hero.intro,
+                  path: ZIYARAT_PATH,
+                  serviceType: "Private Ziyarat tour transport",
+                  areaServed: "Makkah, Saudi Arabia",
+                  dateModified: ZIYARAT_REVIEWED,
+                }),
+                "@id": `${pageUrl}#service`,
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                name: "Individual Ziyarat site pages",
+                itemListElement: ZIYARAT.sitePages.links.map((l, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  name: l.label,
+                  url: absoluteUrl(l.href),
+                })),
+              },
+              faqSchema(ZIYARAT_FAQS),
+            ]}
+          />
+          <MakkahZiyaratTourView faqs={ZIYARAT_FAQS} crumbs={crumbs} />
+        </>
+      );
+    }
     const serviceTypeLabel =
       v2.content.category === "port"
         ? "Port Transfer"
@@ -221,7 +295,7 @@ export default async function HotelTransferPage({
         labels={{
           faqHeading: "Frequently Asked Questions",
           quoteHeading: `${label} Quote`,
-          quoteSubheading: "Fixed price for your private transfer on WhatsApp.",
+          quoteSubheading: "Request a quotation for your private transfer, here or on WhatsApp.",
         }}
       />
     );
@@ -252,7 +326,10 @@ export default async function HotelTransferPage({
     t.fromType === "airport"
       ? {
           label: `${t.airport.name} (${t.airport.code})`,
-          detail: "Arrivals hall — meet & greet with a name board",
+          detail:
+            airportOps(t.airport.code).meeting === "confirmed-per-booking"
+              ? "Meeting point confirmed when you book"
+              : "Arrivals hall — meet & greet with a name board",
         }
       : {
           label: t.hotel.name,
@@ -279,8 +356,8 @@ export default async function HotelTransferPage({
       const bSame = b.hotel.area === t.hotel.area ? 0 : 1;
       if (aSame !== bSame) return aSame - bSame;
       return (
-        Math.abs(a.hotel.distanceKm - t.hotel.distanceKm) -
-        Math.abs(b.hotel.distanceKm - t.hotel.distanceKm)
+        Math.abs((a.hotel.distanceKm ?? Infinity) - (t.hotel.distanceKm ?? 0)) -
+        Math.abs((b.hotel.distanceKm ?? Infinity) - (t.hotel.distanceKm ?? 0))
       );
     })
     .slice(0, 6);
@@ -326,11 +403,19 @@ export default async function HotelTransferPage({
                 Key takeaways
               </h2>
               <ul className="mt-3 space-y-1.5 text-sm text-navy">
-                <li>
-                  • {t.from} to {t.to}: {t.distance}, approximately {t.duration} by private transfer.
-                </li>
-                <li>• Fixed price agreed before you travel — no prepayment required, pay the driver on the day.</li>
-                <li>• Meet & greet pickup with real-time flight tracking and free waiting time included.</li>
+                {t.distance && t.duration ? (
+                  <li>
+                    • {t.from} to {t.to}: {t.distance}, approximately {t.duration} by private transfer.
+                  </li>
+                ) : (
+                  <li>• {t.from} to {t.to}: distance and driving time confirmed in your quotation.</li>
+                )}
+                <li>• A quotation you review and confirm before you travel.</li>
+                {airportOps(t.airport.code).meeting === "confirmed-per-booking" ? (
+                  <li>• Flight tracking, with the meeting point confirmed when you book.</li>
+                ) : (
+                  <li>• Meet & greet pickup with real-time flight tracking and free waiting time included.</li>
+                )}
                 <li>• Page reviewed {hotelTransfersLastUpdated}.</li>
               </ul>
             </div>
@@ -477,7 +562,7 @@ export default async function HotelTransferPage({
               What&apos;s included
             </h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {features.map((f) => {
+              {featuresFor(t.airport.code).map((f) => {
                 const Icon = f.icon;
                 return (
                   <div
@@ -547,7 +632,7 @@ export default async function HotelTransferPage({
                 {t.from} → {t.to} Quote
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Fixed price for your private transfer on WhatsApp.
+                Request a quotation for your private transfer, here or on WhatsApp.
               </p>
               <div className="mt-4">
                 <QuoteForm

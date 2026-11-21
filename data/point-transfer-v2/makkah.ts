@@ -15,11 +15,14 @@ export const makkahPointTransfersV2: PointTransferV2Page[] = [
     from: "Makkah",
     to: "Ziyarat Tour",
     isPointToPoint: false,
-    h1: "Makkah Ziyarat Tour: Full-Circuit Private Taxi Tour",
-    metaTitle: "Makkah Ziyarat Tour | Full-Circuit Private Taxi",
+    // Rendered by components/makkah/MakkahZiyaratTourView.tsx (copy and FAQs
+    // in data/makkah-ziyarat-tour.ts). This entry still supplies the metadata,
+    // static params and sitemap entry; its content blocks are not rendered.
+    h1: "Makkah Ziyarat Tour: Private Car and Custom Itinerary",
+    metaTitle: "Makkah Ziyarat Tour by Private Car | Full-Day & Half-Day",
     metaDescription:
-      "Private Makkah Ziyarat tour covering Jabal al-Noor, Jabal Thawr, Mina, Muzdalifah and Arafat in one booking — route, timings, itineraries, fixed pricing.",
-    duration: "Half day (4-5 hrs) or full day (7-8 hrs)",
+      "Explore Makkah's historic Ziyarat sites by private car. Request a half-day or full-day itinerary covering Jabal al-Noor, Jabal Thawr and the Hajj sites.",
+    duration: "Half-day or full-day, depending on your stops",
     heroAlt: "Historic Islamic Ziyarat sites around Makkah",
     content: {
       category: "attraction",
