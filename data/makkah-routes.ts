@@ -1,4 +1,5 @@
 import type { Route } from "./routes";
+import { MAKKAH_DAMMAM_FAQS } from "./makkah-to-dammam-route";
 
 /**
  * Makkah intercity + departure routes, merged into the main routes array in
@@ -417,85 +418,39 @@ export const makkahRoutes: Route[] = [
     ],
   },
   {
+    // Rendered by its own layout (components/routes/MakkahDammamRouteView.tsx);
+    // page copy lives in data/makkah-to-dammam-route.ts. Distance/duration
+    // below also feed route cards elsewhere on the site.
     slug: "makkah-to-dammam",
     from: "Makkah",
     to: "Dammam",
     category: "intercity",
-    distance: "1,250 km",
-    duration: "approx. 12 hours",
-    lastUpdated: "2026-08-05",
+    distance: "1,250–1,300 km",
+    duration: "approx. 12–13 hours",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Makkah to Dammam",
     intro:
-      "The Makkah to Dammam taxi is a coast-to-coast private transfer across the Kingdom to the Eastern Province, for travellers who prefer the road over flying.",
+      "A long-distance private transfer from Makkah to Dammam, Khobar or Dhahran, about 1,250–1,300 km through Riyadh, for families, groups and travellers with heavy luggage who prefer the road to flying.",
     about:
-      "Our private Makkah to Dammam transfer spans roughly 1,250 km from the Red Sea to the Arabian Gulf, typically via Riyadh. It is a full-day drive of around twelve hours, chosen by families and groups who want door-to-door travel with luggage rather than airport connections.",
+      "Makkah to Dammam is about 1,250–1,300 km by road, normally through Riyadh, with roughly 12–13 hours of driving before stops. Flying from Jeddah is much faster; the private car suits families, groups and heavy luggage.",
     notes: [
-      "Very long ~1,250 km / 12 hour coast-to-coast drive",
-      "Flying is far faster — the car suits door-to-door and heavy luggage",
-      "Comfortable vehicles with planned rest, fuel, and prayer stops",
-      "Often routed via Riyadh; overnight travel available",
+      "About 1,250–1,300 km, roughly 12–13 hours of driving before stops",
+      "Flying from Jeddah is much faster; the car suits families, groups and luggage",
+      "Stops for prayer, meals and fuel agreed with you; overnight in Riyadh on request",
+      "Drop-off in Dammam, Khobar or Dhahran",
     ],
     relatedCitySlugs: ["makkah", "dammam", "riyadh"],
-    metaTitle: "Makkah to Dammam Taxi Service – Reliable Private Transfer",
+    metaTitle: "Makkah to Dammam Private Transfer | Long-Distance Taxi",
     metaDescription:
-      "Reserve a private car from Makkah to Dammam (1,250 km, about approx. 12 hours). Comfortable vehicles for solo travellers, families and small groups.",
+      "Need a private transfer from Makkah to Dammam? Request a quote for a long-distance journey with vehicle options for your passengers and luggage.",
     keywords: [
+      "makkah to dammam private transfer",
       "makkah to dammam taxi",
-      "makkah to dammam transfer",
+      "makkah to dammam by road",
       "makkah to dammam private car",
       "makkah to eastern province taxi",
     ],
-    sections: [
-      {
-        heading: "A coast-to-coast journey",
-        paragraphs: [
-          "Makkah to Dammam is one of the longest transfers in the Kingdom, roughly 1,250 km from the Red Sea across the central desert to the Gulf, usually routed through Riyadh. By private car it is around a twelve-hour drive, best treated as a full-day or overnight journey.",
-          "We are upfront that a domestic flight covers this distance in about two hours, so most travellers fly. A private car makes sense for families with a lot of luggage, groups who want to travel together, or anyone who simply prefers the road. To fly instead, our <a href='/airport-transfer/jeddah-airport'>Jeddah airport transfer</a> connects you to departures.",
-        ],
-      },
-      {
-        heading: "Who books this route",
-        paragraphs: [
-          "It appeals to large families and groups relocating or visiting relatives in the Eastern Province after Umrah, where the combined cost of one vehicle can compare well with several airfares plus luggage. It also suits travellers carrying goods that are awkward to fly with.",
-          "Because it often passes through the capital, some travellers split the trip with an overnight stop, and we can arrange the drive in stages. See our <a href='/routes/makkah-to-riyadh'>Makkah to Riyadh transfer</a> if you want to break the journey there.",
-        ],
-      },
-      {
-        heading: "Vehicles for a full-day drive",
-        paragraphs: [
-          "Comfort is essential on a twelve-hour route. Families usually choose a spacious SUV, while larger groups take a van or minibus so everyone travels together with room to rest. Every vehicle is air-conditioned and maintained for long-haul travel.",
-          "There is generous space for the luggage that makes driving worthwhile on this route, including the extra bags pilgrims often carry home.",
-        ],
-      },
-      {
-        heading: "Rest, fuel, and prayer stops",
-        paragraphs: [
-          "A journey this long needs proper breaks. Your driver plans regular stops for fuel, meals, and prayers at reliable service areas, and many travellers prefer to set off in the evening to cover the desert stretch overnight in cooler conditions.",
-          "Because the car is private, the rhythm of the day is yours. Elderly travellers and children can rest as needed without holding up a shared coach.",
-        ],
-      },
-      {
-        heading: "Fixed pricing for a long haul",
-        paragraphs: [
-          "The fare for this long route is fixed before travel and covers the vehicle, driver, and fuel across the full distance, with no meter and no surge. On a twelve-hour drive, that predictability is especially reassuring.",
-          "Send your details through our <a href='/get-quote'>get a quote</a> page for a fixed all-in price, and let us know if you would like the journey split with an overnight stop.",
-        ],
-      },
-      {
-        heading: "Arriving in the Eastern Province",
-        paragraphs: [
-          "We drive door-to-door to your address in Dammam, Khobar, or Dhahran. Once you arrive, our <a href='/taxi-service/dammam'>Dammam taxi service</a> covers local rides and the popular crossing to Bahrain.",
-          "For most travellers we will honestly recommend flying this route, but when the road is the right choice, we make the long journey as comfortable and reliable as possible.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How long is the Makkah to Dammam drive?", answer: "It is about 1,250 km and takes roughly twelve hours by private car, usually via Riyadh. It is best treated as a full-day or overnight journey with regular stops." },
-      { question: "Should I fly or drive to Dammam?", answer: "Flying is far faster at around two hours and is what most travellers choose. Driving suits large families, groups, or those with heavy luggage who prefer door-to-door travel." },
-      { question: "Can the journey be split with an overnight stop?", answer: "Yes. Because the route often passes through Riyadh, we can break the drive with an overnight stop there and continue the next day. Just ask when booking." },
-      { question: "What vehicle is best for such a long drive?", answer: "A spacious SUV for families or a van or minibus for groups, so everyone travels together comfortably with room for luggage. All vehicles are air-conditioned and maintained for long-haul travel." },
-      { question: "Is the price fixed?", answer: "Yes. The all-in fare is agreed before travel and covers the vehicle, driver, and fuel for the full distance, with no meter and no surge pricing." },
-      { question: "Is overnight travel possible?", answer: "Yes. Many travellers prefer to set off in the evening to cross the desert overnight in cooler conditions. We operate 24/7 and can plan the timing with you." },
-    ],
+    faqs: MAKKAH_DAMMAM_FAQS,
   },
   {
     slug: "makkah-to-abha",

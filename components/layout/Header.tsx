@@ -169,6 +169,31 @@ export function Header() {
         </div>
       </div>
 
+      {/* Contact strip (phones / small tablets): both emails, no language
+          switcher (that lives in the top bar below md). Two aligned lines on
+          phones, one centred line from sm. Collapses on scroll like the desktop
+          strip; SiteShell's <main> carries the matching pt-12 sm:pt-9. */}
+      <div
+        className={cn(
+          "overflow-hidden border-b border-white/10 bg-midnight transition-[max-height,opacity] duration-300 md:hidden",
+          scrolled ? "max-h-0 border-transparent opacity-0" : "max-h-12 opacity-100 sm:max-h-9"
+        )}
+      >
+        <div className="mx-auto flex h-12 w-fit max-w-full flex-col items-start justify-center gap-1.5 px-4 text-[11px] leading-none sm:h-9 sm:flex-row sm:items-center sm:gap-6 sm:text-xs">
+          {contactEmails.map((c) => (
+            <a
+              key={c.email}
+              href={`mailto:${c.email}`}
+              className="inline-flex min-w-0 items-center gap-1.5 whitespace-nowrap font-medium text-white/90 transition-colors hover:text-brass"
+            >
+              <Mail className="size-3.5 shrink-0 text-brass" aria-hidden="true" />
+              {locale === "en" && <span className="text-white/55">{c.label}:</span>}
+              <span dir="ltr" className="truncate">{c.email}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Top bar: logo + language (phones) + quote + (mobile) menu toggle */}
       <div className={cn(solid ? "border-b border-white/10" : "border-b border-transparent")}>
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">

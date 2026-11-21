@@ -1,4 +1,5 @@
 import { makkahRoutes } from "./makkah-routes";
+import { RIYADH_HAIL_FAQS } from "./riyadh-to-hail-route";
 import { dammamRoutes } from "./dammam-routes";
 
 export type RouteCategory = "religious" | "intercity" | "border" | "airport";
@@ -6161,111 +6162,33 @@ const baseRoutes: Route[] = [
     keywords: ["qassim to riyadh taxi", "buraidah to riyadh taxi", "qassim to riyadh transfer", "buraidah riyadh private car", "qassim to riyadh airport taxi"],
   },
   {
+    // Rendered by components/routes/LongDistanceRouteView.tsx; page copy lives
+    // in data/riyadh-to-hail-route.ts. Distance/duration below also feed
+    // route cards elsewhere on the site.
     slug: "riyadh-to-hail",
     from: "Riyadh",
     to: "Hail",
     category: "intercity",
-    distance: "~640 km",
-    duration: "About 6 hours 30 min",
+    distance: "600–640 km",
+    duration: "approx. 6–6.5 hours",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Riyadh to Hail",
     intro:
-      "The Riyadh to Hail taxi is a private long-distance transfer north to the mountain-flanked city of Hail, popular with families visiting relatives, heritage travellers, and those continuing on toward the north-west.",
+      "A long-distance private transfer from Riyadh to Hail, about 600–640 km north-west on Highway 65 through Qassim, for families, groups, business travellers and visitors exploring Hail.",
     about:
-      "Our private Riyadh to Hail transfer runs Highway 65 the full distance north past Qassim, delivering you door to door to your destination in Hail — one vehicle, a fixed price, and rest-stop flexibility for the longer drive.",
+      "Hail is about 600–640 km from Riyadh by road, almost all of it on Highway 65 through Qassim, with roughly 6 to 6½ hours of driving before stops.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off anywhere in Hail",
-      "Comfortable vehicles with rest-stop flexibility for the six-and-a-half-hour drive",
-      "Onward connections toward the north-west available",
+      "About 600–640 km, roughly 6–6½ hours of driving before stops",
+      "Highway 65 through Qassim for almost the whole way",
+      "Breaks and departure time agreed with you",
+      "Drop-off at homes, hotels and businesses in Hail",
     ],
     relatedCitySlugs: ["riyadh", "hail"],
-    metaTitle: "Book a Riyadh to Hail Transfer – Private Car Service",
+    metaTitle: "Riyadh to Hail Private Transfer | Long-Distance Taxi",
     metaDescription:
-      "Book a private taxi from Riyadh to Hail (~640 km, about 6 hours 30 min). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
-    sections: [
-      {
-        heading: "Riyadh to Hail: route overview and distance",
-        paragraphs: [
-          "The drive from Riyadh to Hail covers approximately 640 kilometres, continuing north on Highway 65 well beyond Qassim into the northern region flanked by the twin mountains of Jabal Aja and Jabal Salma. In free-flowing traffic, the journey takes around six and a half hours, making it a genuinely long single transfer best suited to a private vehicle with proper rest-stop planning rather than a rushed drive.",
-          "A private transfer covers the entire distance door to door, delivering you to a home, hotel, or specific destination in Hail without the need to break the journey into separate legs.",
-        ],
-      },
-      {
-        heading: "The fastest route: Highway 65 all the way",
-        paragraphs: [
-          "Highway 65 is the single continuous route for this journey, running north through Qassim before continuing to Hail. It remains a well-maintained, multi-lane divided highway for the vast majority of its length, and drivers who make this longer run regularly plan the trip around sensible rest points rather than treating it as one continuous drive.",
-        ],
-      },
-      {
-        heading: "Scenic highlights along the way",
-        paragraphs: [
-          "The journey passes through Qassim's characteristic farmland before the landscape shifts again heading further north into more rugged, mountainous terrain as Hail approaches. Hail itself sits between Jabal Aja and Jabal Salma, twin mountains woven into Arabic poetry and Bedouin heritage for centuries, giving the city a genuinely distinctive backdrop compared with most Saudi cities.",
-          "The wider Hail region is also known for its rock art sites, among the richest in the Arabian Peninsula, and for its historical role as a caravan and trading hub connecting central Arabia to the north-west.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "The highway is well-maintained throughout, though the sheer length of this drive makes fatigue management genuinely important — this is one of the longer domestic routes we cover from Riyadh, and a professional driver taking a measured pace with planned rest stops makes a meaningful difference to how the journey feels compared with a single rushed push.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere in Saudi Arabia. Your fixed price covers the complete journey.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "Given the length of this drive, an early-morning departure is generally the most comfortable option, arriving with daylight to spare rather than finishing the journey after dark. Winter offers the most pleasant conditions for the mountainous approach into Hail specifically, while summer travel benefits from the same early-departure logic as any long desert crossing.",
-        ],
-      },
-      {
-        heading: "Vehicle options for a long-distance journey",
-        paragraphs: [
-          "Given the drive's length, a comfort SUV is generally the preferred choice, offering more space to shift position over six-plus hours than a standard sedan. Families visiting relatives or touring the region's heritage sites together often choose a minivan for the extra room, particularly if the visit includes exploring rock art sites or the surrounding mountains.",
-        ],
-      },
-      {
-        heading: "A note for heritage and business travellers",
-        paragraphs: [
-          "Hail's growing profile as a heritage destination, alongside its historical trading significance, brings a mix of leisure and business travellers on this route. Both benefit from the same fixed-price, driver-tracked service, with heritage travellers in particular appreciating a driver familiar with the region's key sites.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Within Hail, the twin mountains, the region's rock art sites, and the historic old town are the main draws. Travellers continuing onward toward AlUla or the wider north-west can extend their journey — mention your full itinerary when booking so we can plan the most sensible route.",
-        ],
-      },
-      {
-        heading: "Safety on a long-distance transfer",
-        paragraphs: [
-          "At six and a half hours, this is genuinely one of the longer routes we cover from Riyadh, and driver fatigue management is a real priority — our drivers plan proper rest stops rather than pushing straight through, and every trip is tracked so any delay is communicated rather than left to guesswork.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to Hail transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your destination in Hail, your preferred departure time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How far is Hail from Riyadh, and how long does the drive take?", answer: "The distance is approximately 640 kilometres, and the drive takes about six and a half hours via Highway 65 north — one of the longer routes we cover from Riyadh." },
-      { question: "Is the price fixed for such a long journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, including rest stops, with no meter, no surge, and no toll charges." },
-      { question: "Do you build in rest stops given the length of this drive?", answer: "Yes, given the roughly six-and-a-half-hour distance, we plan proper rest stops as a standard part of the journey, at no extra cost since the fare is fixed." },
-      { question: "What's Hail known for?", answer: "Hail sits between the twin mountains of Jabal Aja and Jabal Salma, woven into Arabic poetry and Bedouin heritage, and the wider region is known for some of the richest rock art sites in the Arabian Peninsula." },
-      { question: "What's the best time of day to start this drive?", answer: "An early-morning departure is generally most comfortable, arriving with daylight to spare rather than finishing after dark." },
-      { question: "Which vehicle suits this longer journey best?", answer: "A comfort SUV is generally preferred over a standard sedan for a drive of this length, offering more room to shift position; families often choose a minivan for extra space." },
-      { question: "Can I continue from Hail toward AlUla or the north-west?", answer: "Yes, mention your full itinerary when booking and we can plan the most sensible onward route." },
-      { question: "Is there a return Hail to Riyadh transfer?", answer: "Yes, see our <a href='/routes/hail-to-riyadh'>Hail to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your destination in Hail, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is this drive suitable for elderly travellers given its length?", answer: "It's a longer drive, so we recommend building in the standard rest stops and, where possible, an early start — with those in place, it's manageable for most elderly travellers, though very frail travellers may prefer to break the journey with an overnight stop in Qassim." },
-      { question: "Do you serve heritage travellers visiting Hail's rock art sites?", answer: "Yes, our drivers are familiar with the region's key heritage sites and can help plan a sensible day once you arrive." },
-      { question: "Is night driving on this route routine?", answer: "Yes, though given the drive's length we generally recommend a daytime departure for the most comfortable experience; night travel is handled routinely when needed." },
-    ],
-    keywords: ["riyadh to hail taxi", "riyadh to hail transfer", "riyadh hail private car", "riyadh to hail distance", "riyadh hail long distance taxi"],
+      "Travel from Riyadh to Hail in a private vehicle. Request a transfer quote with vehicle options for your passengers, luggage and journey requirements.",
+    faqs: RIYADH_HAIL_FAQS,
+    keywords: ["riyadh to hail private transfer", "riyadh to hail taxi", "riyadh to hail car service", "riyadh to hail distance", "riyadh to hail travel time"],
   },
   {
     slug: "hail-to-riyadh",

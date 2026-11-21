@@ -58,6 +58,11 @@ import { buildMetadata } from "@/lib/seo";
 // Lightweight path-only lookup, not the full ~26,700-line content dataset
 import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, faqSchema } from "@/lib/schema";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+import { listPublishedBlogs } from "@/lib/blogs";
+import { LongDistanceRouteView, type PlanningGuide } from "@/components/routes/LongDistanceRouteView";
+import { RiyadhHailRouteView } from "@/components/routes/RiyadhHailRouteView";
+import { longRoutePages } from "@/data/long-route-pages";
 
 const gccCountryDisplayName: Record<string, string> = {
   bahrain: "Bahrain",
@@ -1748,6 +1753,63 @@ export default async function RoutePage({
         </>
       );
     }
+  }
+
+  // Hand-written long-distance pages (data/long-route-pages.ts) have their
+  // own layout; every other domestic route still uses the journey-type shell.
+  const longPage = longRoutePages[route.slug];
+  if (longPage) {
+    const lc = longPage.content;
+    const published = await listPublishedBlogs();
+    const guides: PlanningGuide[] = lc.guides.slugs
+      .map((s) => published.find((b) => b.slug === s))
+      .filter((b): b is NonNullable<typeof b> => Boolean(b))
+      .map((b) => ({ slug: b.slug, title: b.title, excerpt: b.excerpt }));
+    const related = lc.related.routes
+      .map((x) => {
+        const r = getRoute(x.slug);
+        return r ? { href: `/routes/${r.slug}`, label: `${r.from} to ${r.to}`, meta: `${r.distance} · ${r.duration}`, text: x.text } : null;
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
+    const pageUrl = absoluteUrl(lc.path);
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: route.metaTitle ?? lc.hero.h1,
+              description: route.metaDescription ?? lc.quickAnswer,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: lc.reviewed,
+            },
+            {
+              ...serviceSchema({
+                name: longPage.serviceName,
+                description: lc.quickAnswer,
+                path,
+                serviceType: "Intercity Transfer",
+                dateModified: lc.reviewed,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: longPage.areaServed.map((name) => ({ "@type": "City", name })),
+            },
+            faqSchema(longPage.faqs),
+          ]}
+        />
+        {longPage.view === "riyadh-hail" ? (
+          <RiyadhHailRouteView faqs={longPage.faqs} crumbs={crumbs} relatedRoutes={related} guides={guides} />
+        ) : (
+          <LongDistanceRouteView content={lc} faqs={longPage.faqs} crumbs={crumbs} relatedRoutes={related} guides={guides} />
+        )}
+      </>
+    );
   }
 
   // Phase 3: Saudi domestic city-to-city routes get the new journey-type

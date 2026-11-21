@@ -20,12 +20,15 @@ const fieldClass =
  */
 export function HomeBookingPanel({
   defaultPickup = "",
+  defaultDropoff = "",
   eyebrow = "Plan your journey",
   title = "Request a private transfer",
   dropoffPlaceholder = "City, hotel, or address",
 }: {
   /** Prefill the pickup field (e.g. the airport on /cities/madinah). */
   defaultPickup?: string;
+  /** Prefill the destination field (e.g. "Dammam" on /routes/makkah-to-dammam). */
+  defaultDropoff?: string;
   eyebrow?: string;
   title?: string;
   dropoffPlaceholder?: string;
@@ -55,7 +58,7 @@ export function HomeBookingPanel({
         </div>
         <div>
           <Label htmlFor="hb-dropoff" className="text-ink-soft">Destination</Label>
-          <Input id="hb-dropoff" name="dropoff" placeholder={dropoffPlaceholder} required className={`mt-1.5 ${fieldClass}`} />
+          <Input id="hb-dropoff" name="dropoff" placeholder={dropoffPlaceholder} required defaultValue={defaultDropoff || undefined} className={`mt-1.5 ${fieldClass}`} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
