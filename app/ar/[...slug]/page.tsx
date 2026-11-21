@@ -658,8 +658,11 @@ export default async function ArabicPage({
     if (hubCity && hubAirport) {
       const hubHotels = hotelsForCity(hubCity.slug);
       const hubFacts = cityAirportFactsAr[hubCity.slug];
-      const distances = hubHotels.map((h) => h.distanceKm);
-      const durations = hubHotels.map((h) => h.durationMin);
+      // Ranges only when every hotel has a verified figure (the Arabic sentence
+      // describes all hotels; no new Arabic wording without native review).
+      const allVerified = hubHotels.every((h) => h.distanceKm != null && h.durationMin != null);
+      const distances = allVerified ? hubHotels.map((h) => h.distanceKm as number) : [];
+      const durations = allVerified ? hubHotels.map((h) => h.durationMin as number) : [];
       const hubDistanceRange = distances.length > 0 ? { min: Math.min(...distances), max: Math.max(...distances) } : null;
       const hubDurationRange = durations.length > 0 ? { min: Math.min(...durations), max: Math.max(...durations) } : null;
       const hotelCount = hubHotels.length;

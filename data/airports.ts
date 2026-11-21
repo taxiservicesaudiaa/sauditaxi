@@ -221,8 +221,9 @@ const baseAirports: Airport[] = [
     metaTitle: "Private Dammam Airport Transfer (DMM) | Saudi Private Transfers",
     metaDescription:
       "Private transfers from King Fahd Airport (DMM) to Khobar, Jubail, Dhahran, Riyadh and Bahrain, with flight tracking. Your confirmed quotation sets the price.",
-    // DMM service rules (owner, Oct 2026): flight tracking and free waiting are offered (no stated
-    // duration); name-board meet-and-greet is not. Card figures removed until each is verified.
+    // DMM service rules (owner, 21 Nov 2026 — supersedes Oct 2026): flight tracking yes; meeting
+    // point confirmed individually (no arrivals-hall/name-board promise); no free-waiting allowance
+    // advertised; no luggage-assistance promise; quotation-based pricing. See lib/airport-ops.ts.
     hubOverrides: {
       notice: DMM_STATUS_NOTICE,
       popularIntro:
@@ -243,7 +244,7 @@ const baseAirports: Airport[] = [
         {
           title: "Meeting Your Driver",
           detail:
-            "Your driver meets you at the confirmed meeting point and helps carry your luggage to the vehicle. Free waiting time is included if your flight lands late.",
+            "Your driver meets you at the meeting point confirmed individually with your booking. Because we track your flight, your pickup is reconfirmed if your landing time changes.",
         },
       ],
       familyParagraph:
@@ -252,7 +253,7 @@ const baseAirports: Airport[] = [
         { title: "1. Send Your Journey Details", detail: "Your flight number, arrival date, and destination — hotel, city, or onward route — sent by WhatsApp or our quote form." },
         { title: "2. Receive Your Quotation", detail: "A price and a vehicle recommendation. The confirmed quotation sets the price and shows what it covers." },
         { title: "3. Confirm Your Transfer", detail: "Approve your quotation and a driver is scheduled for your flight; the quotation sets out its payment and cancellation terms." },
-        { title: "4. Meet Your Driver", detail: "We track your flight, and your driver meets you at the confirmed meeting point at King Fahd International Airport, ready to help with luggage." },
+        { title: "4. Meet Your Driver", detail: "We track your flight, and your driver meets you at the meeting point confirmed with your booking at King Fahd International Airport." },
       ],
       finalCtaText:
         "Add your flight number and destination — we track your flight and reply with a quotation; the confirmed quotation sets the price.",

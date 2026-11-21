@@ -1,4 +1,6 @@
 import type { Route } from "./routes";
+import { DAMMAM_KHAFJI_FAQS } from "./dammam-to-al-khafji-route";
+import { DMM_ABQAIQ_FAQS } from "./dammam-airport-to-abqaiq-route";
 
 /**
  * Dammam ↔ nearby-city and King Fahd Airport ↔ nearby-city route pages.
@@ -382,7 +384,7 @@ export const dammamRoutes: Route[] = [
     duration: "25 min",
     lastUpdated: "2026-08-05",
     intro:
-      "Saihat sits on the Gulf coast in Qatif Governorate, right on Dammam's northern side, so most trips into Dammam are short everyday ones — to work, a hospital or government appointment, the train station, or a family visit — where a fixed-price car you've booked ahead beats waiting for a ride at the kerb.",
+      "Saihat sits on the Gulf coast in Qatif Governorate, right on Dammam's northern side, so most trips into Dammam are short everyday ones — to work, a hospital or government appointment, the train station, or a family visit — where a private car you've booked ahead, at a quoted price, beats waiting for a ride at the kerb.",
     about:
       "Our private Saihat to Dammam transfer collects you from your home or business in Saihat and drives you directly to your Dammam address — the city centre, the Corniche, an office, or the railway station for an onward train to Riyadh — with a fixed price agreed before you travel. If you're actually heading for King Fahd International Airport, that's a longer drive to the north-west and has its own transfer.",
     notes: [
@@ -456,37 +458,33 @@ export const dammamRoutes: Route[] = [
     ],
   },
   {
+    // Rendered by components/routes/DammamKhafjiRouteView.tsx; page copy lives
+    // in data/dammam-to-al-khafji-route.ts. Distance/duration below also feed
+    // route cards elsewhere (OSRM: ~298 km, ~3.3 h city centre to city centre).
     slug: "dammam-to-al-khafji",
     from: "Dammam",
     to: "Al Khafji",
     category: "intercity",
-    distance: "180 km",
-    duration: "2 hours",
-    lastUpdated: "2026-08-05",
+    distance: "290–310 km",
+    duration: "approx. 3–3.5 hours",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Dammam to Al Khafji",
     intro:
-      "The Dammam to Al Khafji taxi is a comfortable long-distance private transfer to the northern Gulf border town, popular with oil-sector workers and travellers heading toward Kuwait.",
+      "A private transfer from Dammam to Al Khafji, about 300 km north on Highway 95 within Saudi Arabia's Eastern Province, for families, business travellers and oil-sector staff.",
     about:
-      "Al Khafji sits on the northern Gulf coast about 180 kilometres from Dammam, close to the Saudi-Kuwait border. Our private transfer takes around two hours along the coastal highway, with rest-stop flexibility and a fixed price agreed before you travel, popular with oil-industry staff and travellers making onward connections toward Kuwait.",
+      "Al Khafji is about 290–310 km north of Dammam by road, mostly on Highway 95, with roughly 3 to 3½ hours of driving. It is a Saudi town near the Kuwaiti border; this transfer does not cross the border.",
     notes: [
-      "Long highway drive with rest-stop flexibility",
-      "Popular with oil-sector staff and northbound travellers",
-      "Comfortable vehicles for the two-hour journey",
-      "Reverse Al Khafji to Dammam transfers available",
+      "About 290–310 km, roughly 3–3½ hours of driving",
+      "Highway 95 north for most of the way",
+      "Domestic transfer within Saudi Arabia, no border crossing",
+      "Return Al Khafji to Dammam transfers available",
     ],
     relatedCitySlugs: ["dammam", "jubail"],
-    metaTitle: "Dammam to Al Khafji Private Transfer – Fixed-Price Taxi",
+    metaTitle: "Dammam to Al Khafji Private Transfer | Taxi Service",
     metaDescription:
-      "Private transfer from Dammam to Al Khafji (180 km, about 2 hours) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
-    faqs: [
-      { question: "How long is the Dammam to Al Khafji drive?", answer: "It is around 180 kilometres, typically about two hours along the coastal highway, with rest stops available on request." },
-      { question: "Is this the same as crossing into Kuwait?", answer: "No, this transfer takes you to Al Khafji town itself. If you need to cross the border, see our dedicated Kuwait border transfer service." },
-      { question: "Do you serve oil-sector workers travelling to Al Khafji?", answer: "Yes, this is a regular route for staff working in the Khafji Joint Operations area and other northern Gulf oil facilities." },
-      { question: "Is the price fixed for the full journey?", answer: "Yes, the fare is agreed before you travel with no meter, regardless of highway traffic or rest stops." },
-      { question: "What vehicle should I choose for Dammam to Al Khafji?", answer: "A standard sedan suits most solo and business travellers on this short hop; for families or groups with extra luggage, a larger SUV or van is available — mention your group size when requesting a quote." },
-      { question: "Is the 2 hours journey time from Dammam to Al Khafji accurate at busy times?", answer: "2 hours reflects normal traffic conditions; peak commuting hours can add a few minutes, though your fixed price agreed before travel never changes." },
-      { question: "Can I book the Dammam to Al Khafji transfer for early morning or late night?", answer: "Yes, this route is available 24/7 with the same fixed-price, door-to-door standard at any hour." },
-      { question: "Is this a shared ride or a private taxi from Dammam to Al Khafji?", answer: "It's a fully private transfer for your booking only — no shared rides and no stops for other passengers." },
-    ],
+      "Need a private transfer from Dammam to Al Khafji? Request a quote with vehicle options for your passengers, luggage and travel arrangements.",
+    keywords: ["dammam to al khafji private transfer", "dammam to al khafji taxi", "dammam to al khafji distance", "dammam to al khafji travel time", "al khafji private taxi"],
+    faqs: DAMMAM_KHAFJI_FAQS,
   },
   {
     slug: "al-khafji-to-dammam",
@@ -588,71 +586,74 @@ export const dammamRoutes: Route[] = [
     ],
   },
   {
+    // Corrected 2026-11-21 (report 47): OSRM Dammam centre → Abqaiq ≈82 km /
+    // ≈61 min (west Dammam ≈75 km); unverified 24/7, fixed-price and
+    // facility-familiarity claims removed.
     slug: "dammam-to-abqaiq",
     from: "Dammam",
     to: "Abqaiq",
     category: "intercity",
-    distance: "65 km",
-    duration: "45 min",
-    lastUpdated: "2026-08-05",
+    distance: "75–85 km",
+    duration: "approx. 1 hour",
+    lastUpdated: "2026-11-21",
     intro:
-      "The Dammam to Abqaiq taxi is a private transfer to the Aramco processing town southwest of Dammam, used by contractors, staff, and business visitors.",
+      "The Dammam to Abqaiq taxi is a private transfer to the town south-west of Dammam that grew up around a major Saudi Aramco oil-processing centre, used by contractors, staff and business visitors.",
     about:
-      "Abqaiq is home to one of the world's largest crude oil processing facilities and sits about 65 kilometres from Dammam. Our private transfer takes around 45 minutes, with drivers experienced in the routes to the Aramco facility gates and the surrounding residential area, at a fixed price agreed before you travel.",
+      "Abqaiq is about 75–85 km from Dammam by road, depending on where in the city you start, with roughly an hour of driving. Drop-offs are in Abqaiq town or at a confirmed meeting point; access to restricted sites needs prior permission and is never guaranteed. You receive a quotation to confirm before you travel.",
     notes: [
-      "Familiar with the route to the Aramco processing facility",
-      "Popular with contractors and industrial-sector staff",
-      "Comfortable vehicles for the highway drive",
+      "About 75–85 km, roughly an hour of driving",
+      "Drop-off in town or at a confirmed gate or meeting point",
+      "Restricted-site access needs your own permission",
       "Reverse Abqaiq to Dammam transfers available",
     ],
     relatedCitySlugs: ["dammam", "hofuf"],
-    metaTitle: "Dammam to Abqaiq Private Transfer – Fixed-Price Taxi",
+    metaTitle: "Dammam to Abqaiq Private Transfer | Taxi Service",
     metaDescription:
-      "Reserve a private car from Dammam to Abqaiq (65 km, about 45 min). Comfortable vehicles for solo travellers, families and small groups.",
+      "Private car from Dammam to Abqaiq (about 75–85 km, roughly an hour). Request a quotation for your group, luggage and exact Abqaiq destination.",
     faqs: [
-      { question: "How long does the drive from Dammam to Abqaiq take?", answer: "It is about 65 kilometres, typically a 45-minute drive." },
-      { question: "Do you serve contractors visiting the Aramco facility?", answer: "Yes, this is a regular route for contractors and staff, though access inside the restricted facility itself requires your own pass or sponsor clearance." },
-      { question: "Can I book an early or late transfer for shift work?", answer: "Yes, we operate 24/7 and accommodate shift-schedule pickups." },
-      { question: "Is the price fixed for this trip?", answer: "Yes, the fare is agreed before you travel with no meter or surge pricing." },
-      { question: "What vehicle should I choose for Dammam to Abqaiq?", answer: "A standard sedan suits most solo and business travellers on this short hop; for families or groups with extra luggage, a larger SUV or van is available — mention your group size when requesting a quote." },
-      { question: "Is the 45 min journey time from Dammam to Abqaiq accurate at busy times?", answer: "45 min reflects normal traffic conditions; peak commuting hours can add a few minutes, though your fixed price agreed before travel never changes." },
-      { question: "Can I book the Dammam to Abqaiq transfer for early morning or late night?", answer: "Yes, this route is available 24/7 with the same fixed-price, door-to-door standard at any hour." },
+      { question: "How long does the drive from Dammam to Abqaiq take?", answer: "Roughly an hour for about 75–85 km, depending on where in Dammam you start and where in Abqaiq you are going. Traffic can add time." },
+      { question: "Can you take contractors to a facility near Abqaiq?", answer: "You can request a drop-off at a facility's gate or approved meeting point. Access to restricted sites needs prior permission arranged by your employer or sponsor, and access is never guaranteed." },
+      { question: "Can I book an early or late transfer for shift work?", answer: "You can request any pickup time, and it is confirmed in your quotation." },
+      { question: "How is the price worked out?", answer: "You receive a quotation based on your pickup, destination, date, passengers and luggage, and you confirm it before you travel." },
+      { question: "What vehicle should I choose for Dammam to Abqaiq?", answer: "A sedan suits most solo and business travellers; families or groups with extra luggage or equipment usually need an SUV or van. Mention your group size and any equipment when requesting a quote." },
       { question: "Is this a shared ride or a private taxi from Dammam to Abqaiq?", answer: "It's a fully private transfer for your booking only — no shared rides and no stops for other passengers." },
     ],
   },
+
   {
+    // Corrected 2026-11-21 (report 47): OSRM Abqaiq → Dammam centre ≈80 km /
+    // ≈58 min; unverified 24/7 and fixed-price claims removed.
     slug: "abqaiq-to-dammam",
     from: "Abqaiq",
     to: "Dammam",
     category: "intercity",
-    distance: "65 km",
-    duration: "45 min",
-    lastUpdated: "2026-08-05",
+    distance: "75–85 km",
+    duration: "approx. 1 hour",
+    lastUpdated: "2026-11-21",
     intro:
-      "The Abqaiq to Dammam taxi is a reliable private transfer from the Aramco processing town into the Eastern Province capital.",
+      "The Abqaiq to Dammam taxi is a private transfer from Abqaiq into the Eastern Province capital.",
     about:
-      "Our private Abqaiq to Dammam transfer covers the roughly 65-kilometre route in about 45 minutes, taking you from the town or the processing facility area directly into Dammam, with a fixed price agreed in advance.",
+      "Our private Abqaiq to Dammam transfer covers about 75–85 km, roughly an hour of driving, from Abqaiq town or a confirmed pickup point into Dammam. Pickups at restricted sites depend on permission and access. You receive a quotation to confirm before you travel.",
     notes: [
-      "Pickup from Abqaiq town or the facility gate area",
-      "Comfortable vehicles for the highway drive",
-      "Onward connections to Dammam Airport and Khobar",
+      "Pickup from Abqaiq town or a confirmed gate or meeting point",
+      "About 75–85 km, roughly an hour of driving",
+      "Onward connections to Dammam Airport and Khobar on request",
       "Reverse Dammam to Abqaiq transfers available",
     ],
     relatedCitySlugs: ["dammam", "hofuf"],
     metaTitle: "Abqaiq to Dammam Transfer – Private Chauffeur Service",
     metaDescription:
-      "Get a private Abqaiq to Dammam transfer (65 km, about 45 min) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+      "Private Abqaiq to Dammam transfer (about 75–85 km, roughly an hour). Request a quotation for your pickup point, passengers and luggage.",
     faqs: [
-      { question: "How far is Abqaiq from Dammam?", answer: "It is around 65 kilometres, about a 45-minute drive." },
-      { question: "Can you take me to Dammam Airport from Abqaiq?", answer: "Yes, we can route your Abqaiq to Dammam transfer directly to King Fahd International Airport if needed." },
-      { question: "Is this transfer suitable for shift workers?", answer: "Yes, it is a regular industrial-sector route, and we accommodate early and late shift-change timings." },
-      { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel with no meter or surge pricing." },
-      { question: "Do you offer this transfer for business travel between Abqaiq and Dammam?", answer: "Yes, this short hop is popular with business travellers moving between offices or meetings — we can also set up a regular booking arrangement for frequent trips." },
-      { question: "How far in advance should I book the Abqaiq to Dammam taxi?", answer: "Same-day booking is usually available for this short route, though booking a little ahead gives more vehicle choice at busy times." },
-      { question: "What vehicle should I choose for Abqaiq to Dammam?", answer: "A standard sedan suits most solo and business travellers on this short hop; for families or groups with extra luggage, a larger SUV or van is available — mention your group size when requesting a quote." },
-      { question: "Is the 45 min journey time from Abqaiq to Dammam accurate at busy times?", answer: "45 min reflects normal traffic conditions; peak commuting hours can add a few minutes, though your fixed price agreed before travel never changes." },
+      { question: "How far is Abqaiq from Dammam?", answer: "About 75–85 km by road, roughly an hour of driving, depending on your exact pickup and drop-off." },
+      { question: "Can you take me to Dammam Airport from Abqaiq?", answer: "Yes. King Fahd International Airport is further, about 95–105 km from Abqaiq — see our Abqaiq to Dammam Airport transfer." },
+      { question: "Is this transfer suitable for shift workers?", answer: "You can request early or late pickups; the time is confirmed in your quotation." },
+      { question: "How is the price worked out?", answer: "You receive a quotation based on your pickup, destination, date, passengers and luggage, and you confirm it before you travel." },
+      { question: "Can I be collected from a facility gate?", answer: "You can request a gate or approved meeting point. Pickups at restricted sites depend on permission and access, which we cannot guarantee." },
+      { question: "What vehicle should I choose for Abqaiq to Dammam?", answer: "A sedan suits most solo and business travellers; families or groups with extra luggage or equipment usually need an SUV or van. Mention your group size when requesting a quote." },
     ],
   },
+
   {
     slug: "dammam-to-khafji-border",
     from: "Dammam",
@@ -1085,71 +1086,68 @@ export const dammamRoutes: Route[] = [
     ],
   },
   {
+    // Rendered by components/routes/DmmAbqaiqRouteView.tsx; page copy lives in
+    // data/dammam-airport-to-abqaiq-route.ts. Distance/duration below also feed
+    // route cards elsewhere (OSRM DMM → Abqaiq town ≈100 km, ≈72 min).
     slug: "dammam-airport-to-abqaiq",
     from: "Dammam Airport",
     to: "Abqaiq",
     category: "airport",
-    distance: "80 km",
-    duration: "55 min",
-    lastUpdated: "2026-08-05",
+    distance: "95–105 km",
+    duration: "approx. 1 hr–1 hr 15 min",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Dammam Airport to Abqaiq",
     intro:
-      "The King Fahd Airport to Abqaiq taxi is a private transfer from arrivals to the Aramco processing town, used by contractors and business visitors.",
+      "A private transfer from King Fahd International Airport (DMM) to Abqaiq town, accommodation or a confirmed facility meeting point, about 100 km, for contractors, engineers and business travellers.",
     about:
-      "From King Fahd International Airport to Abqaiq is about 80 kilometres, and our private transfer takes roughly 55 minutes, with meet and greet, flight tracking, and a fixed price agreed before you travel.",
+      "Abqaiq is about 95–105 km from King Fahd International Airport by road, roughly an hour to an hour and a quarter of driving. Pickup arrangements are confirmed before travel; restricted-site access needs prior permission.",
     notes: [
-      "Meet-and-greet pickup at King Fahd Airport (DMM)",
-      "Direct drop-off at Abqaiq town or the facility gate area",
-      "Flight-tracked pickup with free wait time",
-      "Reverse Abqaiq to King Fahd Airport transfers available",
+      "About 95–105 km, roughly 1 hr–1 hr 15 min of driving",
+      "Pickup arrangements confirmed before you travel",
+      "Drop-off in Abqaiq town or at a confirmed gate or meeting point",
+      "Return Abqaiq to Dammam Airport transfers available",
     ],
     relatedCitySlugs: ["dammam", "hofuf"],
-    metaTitle: "Dammam Airport Taxi to Abqaiq – Fixed-Price Transfer",
+    metaTitle: "Dammam Airport to Abqaiq Transfer | Private Taxi",
     metaDescription:
-      "Private car from Dammam Airport to Abqaiq (80 km, about 55 min) with meet-and-greet pickup and a fixed fare agreed before you travel. Book online.",
-    faqs: [
-      { question: "How long does the transfer from the airport to Abqaiq take?", answer: "It is about 80 kilometres, typically a 55-minute drive." },
-      { question: "Do you serve contractors flying in for Aramco work?", answer: "Yes, this is a regular route for contractors and staff, though access inside the restricted facility requires your own pass or sponsor clearance." },
-      { question: "Do you track my flight for this transfer?", answer: "Yes, every airport pickup includes flight tracking so a delayed arrival never leaves you stranded." },
-      { question: "Is the price fixed for this journey?", answer: "Yes, the fare is agreed before you travel with no meter or surge pricing." },
-      { question: "What vehicle should I choose for Dammam Airport to Abqaiq?", answer: "A standard sedan suits most solo and business travellers on this short hop; for families or groups with extra luggage, a larger SUV or van is available — mention your group size when requesting a quote." },
-      { question: "Is the 55 min journey time from Dammam Airport to Abqaiq accurate at busy times?", answer: "55 min reflects normal traffic conditions; peak commuting hours can add a few minutes, though your fixed price agreed before travel never changes." },
-      { question: "Can I book the Dammam Airport to Abqaiq transfer for early morning or late night?", answer: "Yes, this route is available 24/7 with the same fixed-price, door-to-door standard at any hour." },
-      { question: "Is this a shared ride or a private taxi from Dammam Airport to Abqaiq?", answer: "It's a fully private transfer for your booking only — no shared rides and no stops for other passengers." },
-    ],
+      "Arriving at King Fahd International Airport? Request a private transfer to Abqaiq. Share your flight, destination, passenger and luggage details for a quotation.",
+    keywords: ["dammam airport to abqaiq transfer", "dammam airport to abqaiq taxi", "king fahd international airport to abqaiq", "dmm to abqaiq", "abqaiq airport transfer"],
+    faqs: DMM_ABQAIQ_FAQS,
   },
   {
+    // Corrected 2026-11-21 (report 47): OSRM Abqaiq → King Fahd International
+    // Airport ≈98 km / ≈69 min; fixed-price and 24/7 claims removed.
     slug: "abqaiq-to-dammam-airport",
     from: "Abqaiq",
     to: "Dammam Airport",
     category: "airport",
-    distance: "80 km",
-    duration: "55 min",
-    lastUpdated: "2026-08-05",
+    distance: "95–105 km",
+    duration: "approx. 1 hr–1 hr 15 min",
+    lastUpdated: "2026-11-21",
     intro:
-      "The Abqaiq to King Fahd Airport taxi is a reliable private transfer from the Aramco processing town to Dammam's airport, timed to your flight.",
+      "The Abqaiq to King Fahd Airport taxi is a private transfer from Abqaiq to Dammam's King Fahd International Airport (DMM), timed around your flight.",
     about:
-      "Our private Abqaiq to King Fahd International Airport transfer covers the roughly 80-kilometre route in about 55 minutes, with pickup from the town or the facility gate area and a fixed price agreed before you travel.",
+      "Our private Abqaiq to King Fahd International Airport transfer covers about 95–105 km, roughly an hour to an hour and a quarter of driving, with pickup from Abqaiq town or a confirmed meeting point. You receive a quotation to confirm before you travel.",
     notes: [
-      "Pickup from Abqaiq town or the facility gate area",
-      "Pickup timed to your flight departure",
-      "Fixed fare with no surge pricing",
+      "Pickup from Abqaiq town or a confirmed gate or meeting point",
+      "Pickup time planned around your flight departure",
+      "Quotation confirmed before you travel",
       "Reverse King Fahd Airport to Abqaiq transfers available",
     ],
     relatedCitySlugs: ["dammam", "hofuf"],
-    metaTitle: "Abqaiq to Dammam Airport Taxi – Fixed-Price Transfer",
+    metaTitle: "Abqaiq to Dammam Airport Transfer | Private Taxi",
     metaDescription:
-      "Get a fixed-price private transfer from Abqaiq to Dammam Airport (80 km, about 55 min). Comfortable vehicles, English-speaking drivers, easy booking.",
+      "Private transfer from Abqaiq to King Fahd International Airport (about 95–105 km). Share your flight and pickup point to request a quotation.",
     faqs: [
-      { question: "How long is the drive from Abqaiq to King Fahd Airport?", answer: "It is about 80 kilometres, typically a 55-minute drive." },
-      { question: "How early should I leave Abqaiq for my flight?", answer: "Allow about three hours before an international flight and two before a domestic one, plus the drive time and a buffer for the terminal." },
-      { question: "Can you collect me from the facility gate area?", answer: "Yes, share your exact pickup point when you book, and we will meet you at the agreed location." },
-      { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel with no meter or surge pricing." },
-      { question: "Can I book the Abqaiq to Dammam Airport transfer for early morning or late night?", answer: "Yes, this route is available 24/7 with the same fixed-price, door-to-door standard at any hour." },
+      { question: "How long is the drive from Abqaiq to King Fahd Airport?", answer: "About 95–105 km, roughly an hour to an hour and a quarter of driving, before any traffic delays." },
+      { question: "How early should I leave Abqaiq for my flight?", answer: "Work back from your airline's recommended check-in time, then add the drive and a margin for traffic. We plan the pickup time around your flight in your quotation." },
+      { question: "Can you collect me from a facility gate?", answer: "You can request a gate or approved meeting point. Share the exact location when you book; pickups at restricted sites depend on permission and access." },
+      { question: "How is the price worked out?", answer: "You receive a quotation based on your pickup point, flight time, passengers and luggage, and you confirm it before you travel." },
       { question: "Is this a shared ride or a private taxi from Abqaiq to Dammam Airport?", answer: "It's a fully private transfer for your booking only — no shared rides and no stops for other passengers." },
-      { question: "Do you offer this transfer for business travel between Abqaiq and Dammam Airport?", answer: "Yes, this short hop is popular with business travellers moving between offices or meetings — we can also set up a regular booking arrangement for frequent trips." },
-      { question: "How far in advance should I book the Abqaiq to Dammam Airport taxi?", answer: "Same-day booking is usually available for this short route, though booking a little ahead gives more vehicle choice at busy times." },
+      { question: "Can a team leaving on different flights be coordinated?", answer: "You can request it. Send each traveller's flight details, and the arrangements are confirmed in your quotation." },
     ],
   },
+
   {
     slug: "dammam-airport-to-hofuf",
     from: "Dammam Airport",

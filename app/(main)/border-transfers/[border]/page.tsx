@@ -64,7 +64,7 @@ function borderFaqs(b: { country: string; crossing: string }): Faq[] {
     },
     {
       question: `Is the transfer to the ${b.country} border private?`,
-      answer: `Yes, the transfer is fully private for your booking, with a fixed price agreed before you travel.`,
+      answer: `Yes, the transfer is fully private for your booking, with a quotation you confirm before you travel.`,
     },
   ];
 }
@@ -159,7 +159,7 @@ export default async function BorderPage({
         pickupCitiesHeading="Pickup Cities for This Border"
         pickupCities={pickupCities}
         routesHeading={routes.length > 0 ? `Private Transfers to ${border.country}` : undefined}
-        routesIntro={routes.length > 0 ? `Fixed-price cross-border transfers via ${border.crossing}.` : undefined}
+        routesIntro={routes.length > 0 ? `Private cross-border transfers via ${border.crossing}, quoted before you travel.` : undefined}
         routes={routes}
         guideSections={border.sections}
         otherBordersHeading="Other Border Crossings"
@@ -167,7 +167,7 @@ export default async function BorderPage({
         faqsHeading={`Frequently Asked Questions About the ${border.country} Border Transfer`}
         faqs={faqs}
         ctaHeading={`Ready to Book Your ${border.country} Border Transfer?`}
-        ctaText="Share your pickup city and travel date — we reply with a fixed price for the Saudi-side journey."
+        ctaText="Share your pickup city and travel date — we reply with a quotation for the Saudi-side journey."
         ctaLabel={`Get a ${border.country} Border Quote`}
         ctaHref={`/get-quote?dropoff=${encodeURIComponent(`${border.country} (${border.crossing})`)}`}
         crumbs={crumbs}

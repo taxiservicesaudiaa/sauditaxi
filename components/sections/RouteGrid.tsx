@@ -14,7 +14,7 @@ interface RouteGridProps {
 
 export function RouteGrid({
   heading = "Popular Intercity & Transfer Routes",
-  subheading = "Fixed-price private transfers on the Kingdom's most-requested routes.",
+  subheading = "Private transfers on the Kingdom's most-requested routes, quoted before you travel.",
   only,
   exclude,
   limit,

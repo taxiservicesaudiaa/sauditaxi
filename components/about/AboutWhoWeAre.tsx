@@ -23,7 +23,7 @@ export function AboutWhoWeAre() {
                 needs coordinating with a flight, a hotel or city pickup, a long drive
                 between Saudi cities, or a cross-border trip into the GCC. There is no app
                 to install and no account to create — trip details are shared through
-                WhatsApp or the quote form, and confirmed with a fixed price before travel.
+                WhatsApp or the quote form, and confirmed with a quotation before travel.
               </p>
               <p>
                 Vehicles are matched to the trip rather than offered as a single default —

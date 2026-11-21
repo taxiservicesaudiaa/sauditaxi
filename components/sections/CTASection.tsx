@@ -12,7 +12,7 @@ interface CTASectionProps {
 
 export function CTASection({
   title = "Ready to Book Your Saudi Arabia Taxi?",
-  subtitle = "Send your pickup and drop-off details now and get a fast, fixed quote on WhatsApp.",
+  subtitle = "Send your pickup and drop-off details now and get a fast quotation on WhatsApp.",
   whatsappMessage,
   whatsappLabel,
   contactLabel,

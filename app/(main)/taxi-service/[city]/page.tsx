@@ -78,7 +78,7 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
     faqs,
 
     finalCtaHeading: `Book Your Private ${city.name} Transfer`,
-    finalCtaText: "Share your pickup, destination, date, and passenger details — we reply with a fixed price before you travel.",
+    finalCtaText: "Share your pickup, destination, date, and passenger details — we reply with a quotation for you to confirm before you travel.",
   };
 
   return (

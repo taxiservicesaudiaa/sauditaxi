@@ -1,6 +1,6 @@
 const steps = [
   { n: "01", title: "Request Your Transfer", detail: "Share your pickup, destination, date, and passenger count on WhatsApp or through our quote form — no account needed." },
-  { n: "02", title: "Receive Your Quote", detail: "We reply with a clear, all-in fixed price and a vehicle recommendation — no meter, no surge pricing." },
+  { n: "02", title: "Receive Your Quote", detail: "We reply with a clear quotation and a vehicle recommendation, which you confirm before you travel." },
   { n: "03", title: "Confirm Your Booking", detail: "Approve the quote and your driver is scheduled for the agreed pickup time and location, with no prepayment required." },
   { n: "04", title: "Meet Your Driver", detail: "Your driver waits at the agreed pickup point and takes you directly to your destination." },
 ];

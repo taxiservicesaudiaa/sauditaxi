@@ -352,7 +352,7 @@ export default async function SitemapPage() {
           <Section
             id="routes"
             title="Transfer Routes"
-            subtitle="Fixed-price private transfers between specific cities, airports and borders — our most requested pages."
+            subtitle="Private transfers between specific cities, airports and borders — our most requested pages."
           >
             {(["religious", "intercity", "airport", "border"] as RouteCategory[]).map((cat) => {
               const items = routesByCategory.get(cat);

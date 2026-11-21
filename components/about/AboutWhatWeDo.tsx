@@ -16,7 +16,7 @@ const services = [
   {
     title: "City-to-City Transfers",
     description:
-      "Direct, private journeys between Saudi cities — no shared vehicle, no fixed timetable, and a fixed price agreed before you travel.",
+      "Direct, private journeys between Saudi cities — no shared vehicle, no fixed timetable, and a quotation you confirm before you travel.",
     href: "/intercity-transfers",
     linkLabel: "City-to-city transfers",
     image: "/images/heroes/city.webp",

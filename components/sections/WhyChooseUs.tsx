@@ -11,7 +11,7 @@ const reasons = [
   {
     icon: CreditCard,
     title: "Fixed, transparent quotes",
-    text: "Agree your price before you travel. No meters, no surge pricing, no surprises.",
+    text: "Review and confirm your quotation before you travel, so there are no surprises.",
   },
   {
     icon: Headset,

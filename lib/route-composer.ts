@@ -174,7 +174,7 @@ function typeAwareFaqs(route: Route, type: JourneyType): Faq[] {
     base.push(
       {
         question: "What happens if traffic affects the journey?",
-        answer: `The ${route.duration} estimate is pure driving time in free-flowing traffic. If traffic or road conditions add time on the day, the fixed price you agreed at booking doesn't change.`,
+        answer: `The ${route.duration} estimate is pure driving time in free-flowing traffic. If traffic or road conditions add time on the day, your confirmed quotation sets out what is covered.`,
       },
       {
         question: "What vehicle should I choose for a long-distance journey like this?",
@@ -185,7 +185,7 @@ function typeAwareFaqs(route: Route, type: JourneyType): Faq[] {
 
   base.push({
     question: `How do I book a private transfer from ${route.from} to ${route.to}?`,
-    answer: "Share your pickup point, date, time, and passenger count through WhatsApp or our quote form, and we reply with a fixed price before you travel.",
+    answer: "Share your pickup point, date, time, and passenger count through WhatsApp or our quote form, and we reply with a quotation for you to confirm before you travel.",
   });
 
   return base;

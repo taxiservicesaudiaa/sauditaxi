@@ -8,7 +8,7 @@ const featured = [
   { slug: "jeddah-to-madinah", context: "A long-distance transfer connecting Jeddah directly to Madinah." },
   { slug: "makkah-to-madinah", context: "A comfortable drive along the Hijra highway between the holy cities." },
   { slug: "riyadh-to-jeddah", context: "Coast to capital, door to door — no connecting flight required." },
-  { slug: "riyadh-to-dammam", context: "Business travel across the peninsula, on a single fixed fare." },
+  { slug: "riyadh-to-dammam", context: "Business travel across the peninsula, with one quotation for the whole journey." },
 ];
 
 /** H2 #4 — City-to-City Transfers. Real domestic route pages only (data/routes.ts). */

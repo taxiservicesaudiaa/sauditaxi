@@ -1,5 +1,7 @@
 import { makkahRoutes } from "./makkah-routes";
 import { RIYADH_HAIL_FAQS } from "./riyadh-to-hail-route";
+import { RIYADH_QASSIM_FAQS } from "./riyadh-to-qassim-route";
+import { JUBAIL_RIYADH_FAQS } from "./jubail-to-riyadh-route";
 import { dammamRoutes } from "./dammam-routes";
 
 export type RouteCategory = "religious" | "intercity" | "border" | "airport";
@@ -2280,7 +2282,7 @@ const baseRoutes: Route[] = [
     distance: "~180 km",
     duration: "2 hours",
     intro:
-      "A private transfer from Dammam Airport to the Khafji border for onward travel into Kuwait. Meet and greet at arrivals, then a direct drive north to the crossing.",
+      "A private transfer from Dammam Airport to the Khafji border for onward travel into Kuwait. Meet your driver at the meeting point confirmed with your booking, then drive north to the crossing.",
     about:
       "For travellers connecting into Kuwait, our Dammam Airport to Khafji border transfer meets you at King Fahd International Airport and drives you north to the Khafji crossing. We handle the Saudi-side leg at a fixed price; onward Kuwait transport is arranged separately at the border.",
     notes: [
@@ -2527,7 +2529,7 @@ const baseRoutes: Route[] = [
     duration: "~4.5-5 hours driving + border",
     lastUpdated: "2026-08-28",
     intro:
-      "Land at King Fahd International Airport and continue straight to Doha by private car — no connecting flight, no shared transport, just a driver waiting at arrivals and a fixed price for the whole cross-border journey.",
+      "Land at King Fahd International Airport and continue straight to Doha by private car — no connecting flight, no shared transport, just your driver at the meeting point confirmed with your booking, and a quotation for the whole cross-border journey.",
     about:
       "This transfer is built around the airport arrival itself: we track your inbound flight, meet you inside King Fahd International Airport with a name board, help with luggage, and then drive the full distance to Doha across the Salwa border — a single continuous journey rather than a flight-plus-taxi combination.",
     notes: [
@@ -5490,12 +5492,13 @@ const baseRoutes: Route[] = [
     from: "Riyadh",
     to: "Jubail",
     category: "intercity",
-    distance: "~480 km",
-    duration: "About 4 hours 45 min",
+    // Card fields corrected 2026-11-21 (report 48): OSRM ≈457 km / ≈4.6 h.
+    distance: "450–470 km",
+    duration: "approx. 4.5 hours",
     intro:
-      "The Riyadh to Jubail taxi is a private highway transfer connecting the capital with one of the world's largest industrial cities, popular with engineers, contractors, and families based in the Eastern Province's northern industrial belt.",
+      "The Riyadh to Jubail taxi is a private highway transfer from the capital to Jubail and Jubail Industrial City, one of the Kingdom's main industrial centres, used by engineers, contractors and families.",
     about:
-      "Our private Riyadh to Jubail transfer runs east on the Riyadh–Dammam expressway (Highway 40) towards the Eastern Province before turning north up the Gulf coast to Jubail, delivering you door to door to a compound, office, or hotel — one vehicle, one fixed price, no changes along the way.",
+      "Our private Riyadh to Jubail transfer runs east on the Riyadh–Dammam expressway (Highway 40) towards the Eastern Province before turning north up the Gulf coast to Jubail, delivering you door to door to a compound gate, office or hotel — one vehicle and a quotation you confirm before you travel.",
     notes: [
       "Door-to-door pickup anywhere in Riyadh",
       "Direct drop-off in Jubail, including the industrial city and residential compounds",
@@ -5625,110 +5628,33 @@ const baseRoutes: Route[] = [
     keywords: ["riyadh to jubail taxi", "riyadh to jubail transfer", "riyadh jubail private car", "riyadh to jubail industrial city taxi", "riyadh eastern province jubail transfer"],
   },
   {
+    // Rendered by components/routes/JubailRiyadhRouteView.tsx; page copy lives
+    // in data/jubail-to-riyadh-route.ts. Distance/duration below also feed
+    // route cards elsewhere (OSRM ≈458 km, ≈4.6 h, mostly Highway 40).
     slug: "jubail-to-riyadh",
     from: "Jubail",
     to: "Riyadh",
     category: "intercity",
-    distance: "~480 km",
-    duration: "About 4 hours 45 min",
+    distance: "450–470 km",
+    duration: "approx. 4.5 hours",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Jubail to Riyadh",
     intro:
-      "The Jubail to Riyadh taxi is a private highway transfer from one of the world's largest industrial cities to the capital, popular with engineers, contractors, and families connecting to Riyadh's airport or business districts.",
+      "A private transfer from Jubail, including compounds and confirmed Jubail Industrial City meeting points, to Riyadh or King Khalid International Airport, about 450–470 km mostly on Highway 40.",
     about:
-      "Our private Jubail to Riyadh transfer collects you from your compound, office, or hotel anywhere in Jubail and drives you south along the coastal route and then the length of Highway 95 to your exact destination in Riyadh — one vehicle, one fixed price, door to door.",
+      "Riyadh is about 450–470 km from Jubail by road, mostly on Highway 40, with around 4½ hours of driving. Pickups are from confirmed Jubail locations; airport drop-offs at King Khalid International Airport are confirmed individually.",
     notes: [
-      "Door-to-door pickup anywhere in Jubail, including industrial-city gates and compounds",
-      "Direct drop-off anywhere in Riyadh, including the airport",
-      "Comfortable vehicles for the roughly five-hour drive",
-      "Timed pickups available for onward Riyadh flight connections",
+      "About 450–470 km, around 4½ hours of driving",
+      "Mostly on Highway 40, the Dammam–Riyadh expressway",
+      "Pickup at confirmed compound gates, hotels, offices and meeting points",
+      "Return Riyadh to Jubail transfers available",
     ],
     relatedCitySlugs: ["jubail", "riyadh", "dammam"],
-    metaTitle: "Jubail to Riyadh Private Transfer – Fixed-Price Taxi",
+    metaTitle: "Jubail to Riyadh Private Transfer | Taxi Service",
     metaDescription:
-      "Book a private taxi from Jubail to Riyadh (~480 km, about 4 hours 45 min). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
-    sections: [
-      {
-        heading: "Jubail to Riyadh: route overview and distance",
-        paragraphs: [
-          "The drive from Jubail to Riyadh covers approximately 480 kilometres, heading south along the coastal Route 5 corridor before joining Highway 95 for the long desert crossing into the capital. In free-flowing traffic the journey takes about four hours forty-five minutes, and a large share of travellers making this leg are workforce rotations or business trips timed around a flight out of Riyadh.",
-          "A private transfer collects you from your exact address in Jubail — a residential compound, an office, or a specific industrial-city gate — and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport for onward connections.",
-        ],
-      },
-      {
-        heading: "The fastest route: coastal Route 5 then Highway 95",
-        paragraphs: [
-          "Leaving Jubail, the route first runs the coastal corridor south past Dammam before joining Highway 95 for the long desert stretch to Riyadh — the same combination as the outbound leg, reversed. Drivers familiar with Jubail's internal gate and compound layout make the collection itself considerably smoother than it would be for someone unfamiliar with the site.",
-        ],
-      },
-      {
-        heading: "Scenic highlights along the way",
-        paragraphs: [
-          "The early stretch retains a coastal character past the Jubail Corniche and Fanateer Beach before the road turns inland near Dammam, crossing the Ad-Dahna desert corridor roughly midway to Riyadh. The transition from Jubail's industrial-coastal landscape to the open Najd desert, and finally the approach into Riyadh itself, gives the return leg a genuinely varied character across its near-five-hour length.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "The coastal leg out of Jubail carries heavier freight traffic than the open desert stretch that follows, given the concentration of petrochemical facilities in the area, so timing the departure outside major shift-change windows tends to make the first hour of the journey noticeably smoother. Once on Highway 95 proper, conditions match the standard long, well-maintained desert highway crossing common to every Eastern Province to Riyadh route.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "No toll roads apply anywhere on this route. Your fixed transfer price is fully inclusive.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "If your trip is timed around a flight from Riyadh, we build in a generous buffer against the near-five-hour drive plus airport processing time, and track your booking so the pickup adjusts if your flight schedule shifts before you even leave Jubail. For non-flight travel, departing outside the industrial shift-change windows makes the initial leg out of Jubail easier.",
-        ],
-      },
-      {
-        heading: "Vehicle options and workforce group travel",
-        paragraphs: [
-          "The same vehicle range applies as the outbound direction — comfort sedans and SUVs for individuals, minivans for small teams travelling together, and coordinated multi-vehicle departures for larger crew rotations. Families relocating from a Jubail compound with significant luggage are well suited to a full-size SUV or minivan.",
-        ],
-      },
-      {
-        heading: "A note for business and airport-connection travel",
-        paragraphs: [
-          "Given how many Jubail to Riyadh transfers connect to an onward flight, flight tracking and a generous scheduling buffer are standard for this route specifically, so a shift-change delay leaving Jubail or a longer-than-usual desert crossing never turns into a missed connection.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Most transfers from Jubail begin at a residential compound, an industrial-city gate, or the Corniche area, and end at a Riyadh airport terminal or business-district address. Travellers whose actual base is Dammam or Khobar should check our <a href='/routes/dammam-to-riyadh'>Dammam to Riyadh</a> or <a href='/routes/khobar-to-riyadh'>Khobar to Riyadh</a> transfers instead, since Jubail sits noticeably further up the coast from both.",
-        ],
-      },
-      {
-        heading: "Safety on a long highway transfer",
-        paragraphs: [
-          "As with the outbound direction, driver familiarity with both the busier coastal-industrial leg and the long desert crossing that follows is what makes this specific route comfortable rather than simply long. Rest stops are built in as needed, and every trip is tracked so any delay is visible rather than left to guesswork.",
-        ],
-      },
-      {
-        heading: "Booking your Jubail to Riyadh transfer",
-        paragraphs: [
-          "Share your exact Jubail pickup point (including compound or gate name), your Riyadh destination or flight details, preferred time, and group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How far is Riyadh from Jubail, and how long does the drive take?", answer: "The distance is approximately 480 kilometres, and the drive takes about four hours forty-five minutes in free-flowing traffic. We add extra buffer if the trip is timed around a Riyadh flight." },
-      { question: "Can you collect me from a specific gate inside Jubail Industrial City?", answer: "Yes, our drivers are familiar with the industrial city's gate and zone layout — just specify your exact pickup point, including any gate or facility name, when booking." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
-      { question: "Is the fare fixed regardless of industrial traffic leaving Jubail?", answer: "Yes, the price is agreed before you travel and covers the whole journey, including any delay from freight traffic on the initial coastal leg." },
-      { question: "Can a work crew travel together?", answer: "Yes, a minivan suits a small team, and for larger crew rotations we coordinate multiple vehicles departing on the same schedule." },
-      { question: "Are rest stops included?", answer: "Yes, we build in a rest stop for a journey of this length at no extra cost, since the fare is fixed." },
-      { question: "What's the best time to leave Jubail to avoid industrial traffic?", answer: "Departing outside the major shift-change windows, typically early morning and late afternoon, tends to make the initial coastal leg smoother." },
-      { question: "How does this differ from booking from Dammam or Khobar?", answer: "Jubail sits roughly an hour further north along the coast, making this a genuinely longer drive with its own initial-leg considerations. Book based on your actual starting point." },
-      { question: "What information do you need when booking?", answer: "Your exact Jubail pickup point, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is a return Riyadh to Jubail transfer available?", answer: "Yes — see our <a href='/routes/riyadh-to-jubail'>Riyadh to Jubail</a> page to book that direction." },
-      { question: "Can vehicles accommodate work equipment or tools?", answer: "Yes, our SUVs and minivans have ample space for equipment alongside personal luggage — mention anything unusually bulky when booking." },
-      { question: "Is night travel on this route routine?", answer: "Yes, our drivers regularly cover this route at all hours, and it's treated no differently from a daytime transfer." },
-    ],
-    keywords: ["jubail to riyadh taxi", "jubail to riyadh transfer", "jubail riyadh private car", "jubail to riyadh airport taxi", "jubail industrial city to riyadh transfer"],
+      "Need a private transfer from Jubail to Riyadh? Request a quote for your pickup, destination, passengers and luggage, including airport connections.",
+    faqs: JUBAIL_RIYADH_FAQS,
+    keywords: ["jubail to riyadh private transfer", "jubail to riyadh taxi", "jubail industrial city to riyadh transfer", "jubail to riyadh airport transfer", "jubail to riyadh distance"],
   },
   {
     slug: "riyadh-to-hofuf",
@@ -5943,111 +5869,33 @@ const baseRoutes: Route[] = [
     keywords: ["hofuf to riyadh taxi", "al-ahsa to riyadh taxi", "hofuf to riyadh transfer", "al-ahsa riyadh private car", "hofuf to riyadh airport taxi"],
   },
   {
+    // Rendered by components/routes/RiyadhQassimRouteView.tsx; page copy lives
+    // in data/riyadh-to-qassim-route.ts. Distance/duration below refer to
+    // Buraidah and also feed route cards elsewhere (OSRM ≈346 km, ≈3.3 h).
     slug: "riyadh-to-qassim",
     from: "Riyadh",
     to: "Qassim",
     category: "intercity",
-    distance: "~345 km",
-    duration: "About 3 hours 30 min",
+    distance: "~345 km to Buraidah",
+    duration: "approx. 3¼–3½ hours",
+    lastUpdated: "2026-11-21",
+    h1: "Private Transfer from Riyadh to Qassim",
     intro:
-      "The Riyadh to Qassim taxi is a private highway transfer north to Buraidah and the Qassim region, the Kingdom's agricultural heartland, popular with families, business travellers, and visitors to the region's famous camel markets.",
+      "A private transfer from Riyadh to the Qassim region: Buraidah, Unaizah, farms, hotels and other confirmed addresses, about 345 km north-west on Highway 65.",
     about:
-      "Our private Riyadh to Qassim transfer takes Highway 65 north to Buraidah and the wider Qassim region, delivering you door to door to a home, hotel, or farm — one vehicle, fixed price, and no changes along the way.",
+      "Buraidah, the main city of the Qassim region, is about 345 km from central Riyadh by road, with roughly 3¼ to 3½ hours of driving on Highway 65. Unaizah is about 30 km from Buraidah; farms and other addresses are quoted individually.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off in Buraidah, Unaizah, or elsewhere in Qassim",
-      "Comfortable vehicles for the roughly three-and-a-half-hour drive",
-      "Familiar with the region's camel market and farm-visit schedules",
+      "About 345 km to Buraidah, roughly 3¼–3½ hours of driving",
+      "Highway 65 for most of the way",
+      "Buraidah, Unaizah, farms and other confirmed addresses",
+      "Return Qassim to Riyadh transfers available",
     ],
     relatedCitySlugs: ["riyadh", "buraidah"],
-    metaTitle: "Book a Riyadh to Qassim Transfer – Private Car Service",
+    metaTitle: "Riyadh to Qassim Private Transfer | Buraidah Taxi",
     metaDescription:
-      "Travel from Riyadh to Qassim (~345 km, about 3 hours 30 min) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
-    sections: [
-      {
-        heading: "Riyadh to Qassim: route overview and distance",
-        paragraphs: [
-          "The drive from Riyadh to Qassim, centred on the city of Buraidah, covers approximately 345 kilometres heading north on Highway 65. In free-flowing traffic the journey takes about three and a half hours, making it one of the more manageable long-distance routes from the capital.",
-          "A private transfer takes you door to door, whether your destination is a home or hotel in Buraidah, the historic town of Unaizah nearby, or a farm elsewhere in the region — no need to arrange separate local transport once you arrive.",
-        ],
-      },
-      {
-        heading: "The fastest route: Highway 65 north",
-        paragraphs: [
-          "Highway 65 is the direct, well-maintained route north from Riyadh through the Qassim region, and it's the same road that continues further north toward Hail. It's a multi-lane divided highway for the vast majority of its length, clearly signed, and used daily by both commercial traffic serving the region's agricultural trade and private transfers.",
-        ],
-      },
-      {
-        heading: "Scenic highlights along the way",
-        paragraphs: [
-          "The landscape shifts noticeably as you head north — from Riyadh's surrounding desert to the greener, more cultivated farmland that gives Qassim its reputation as the Kingdom's agricultural heartland. Extensive centre-pivot irrigation fields become visible well before reaching Buraidah itself, a genuinely different sight from the desert corridors of the Eastern Province routes.",
-          "Qassim is famous nationally for its camel markets — Buraidah's is among the largest livestock markets in the world — and for date and wheat production. Unaizah, a short distance from Buraidah, offers a well-preserved historic old town worth a visit for travellers with time to spare.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "Highway 65 is in good condition throughout, with clear markings and regular rest facilities. As with any long highway drive, speed cameras are present and enforced, and the roughly three-and-a-half-hour duration is comfortable in a single stretch for most travellers, with a rest stop available if preferred.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere on Saudi Arabia's highway network. Your fixed transfer price is fully inclusive.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "If your visit is timed around Buraidah's camel market, note that trading activity is typically most active in the early morning, so an early departure from Riyadh or an overnight stay the night before makes the most of the visit. Otherwise, general summer and winter timing advice applies as on any Saudi highway route — early or evening departures avoid peak summer heat during any rest stop.",
-        ],
-      },
-      {
-        heading: "Vehicle options for families and farm visits",
-        paragraphs: [
-          "A comfort sedan or SUV suits most travellers, while families visiting relatives on a farm, or groups touring the camel market and historic sites together, often prefer an SUV or minivan for the extra space and flexibility once in the region.",
-        ],
-      },
-      {
-        heading: "A note for business travel",
-        paragraphs: [
-          "Qassim's economy is built substantially around agriculture and livestock trade, and business travellers working with the region's farms, markets, or food-processing sector find the same fixed-price, reliable service valuable as on any other intercity route.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Buraidah's camel market, Unaizah's historic old town, and the region's extensive farmland are the main draws for visitors. Travellers continuing further north toward Hail can do so as an extension of the same trip — see our <a href='/routes/riyadh-to-hail'>Riyadh to Hail transfer</a> for that longer journey.",
-        ],
-      },
-      {
-        heading: "Safety on the drive",
-        paragraphs: [
-          "At three and a half hours, this is a manageable single-stretch drive, and our drivers pace it comfortably with a rest stop available on request, applying the same fatigue-awareness standard as any of our longer intercity routes.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to Qassim transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your destination in Buraidah, Unaizah, or elsewhere in Qassim, your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How far is Qassim from Riyadh, and how long does the drive take?", answer: "The distance is approximately 345 kilometres, and the drive takes about three and a half hours via Highway 65 north." },
-      { question: "Is the price fixed for the whole journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, with no meter, no surge, and no toll charges." },
-      { question: "Can you drop me at the Buraidah camel market specifically?", answer: "Yes, we drop off anywhere in Buraidah, including the camel market area — just share the exact destination when booking." },
-      { question: "What's the best time to visit the camel market?", answer: "Trading activity is typically most active in the early morning, so an early departure from Riyadh or an overnight stay makes the most of a market visit." },
-      { question: "Can you also take me to Unaizah?", answer: "Yes, Unaizah's historic old town is a short distance from Buraidah and we cover drop-offs anywhere in the wider Qassim region." },
-      { question: "Is this route suitable for a farm visit?", answer: "Yes, we regularly serve farm visits across the Qassim region — an SUV or minivan generally suits this kind of trip well given the extra space." },
-      { question: "Are rest stops available on this drive?", answer: "Yes, on request, though most travellers find the three-and-a-half-hour drive comfortable in a single stretch." },
-      { question: "Can I continue from Qassim to Hail?", answer: "Yes, this is a common extension — see our <a href='/routes/riyadh-to-hail'>Riyadh to Hail transfer</a> for that longer onward journey." },
-      { question: "Is there a return Qassim to Riyadh transfer?", answer: "Yes, see our <a href='/routes/qassim-to-riyadh'>Qassim to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your destination in Qassim, preferred date and time, passenger count, and luggage amount." },
-      { question: "Do you serve business travellers connected to the agriculture sector?", answer: "Yes, Qassim's economy is built substantially around agriculture and livestock trade, and we provide the same reliable, fixed-price service for business trips as for leisure visits." },
-      { question: "Is the drive comfortable for children and elderly travellers?", answer: "Yes, at three and a half hours it's a manageable single stretch for most travellers, and we're happy to include a rest stop if helpful." },
-    ],
-    keywords: ["riyadh to qassim taxi", "riyadh to buraidah taxi", "riyadh to qassim transfer", "riyadh buraidah private car", "riyadh qassim camel market taxi"],
+      "Travel from Riyadh to Qassim by private transfer. Request a quote for Buraidah, Unaizah and other destinations, with vehicle options for your group and luggage.",
+    faqs: RIYADH_QASSIM_FAQS,
+    keywords: ["riyadh to qassim private transfer", "riyadh to qassim taxi", "riyadh to buraidah private transfer", "riyadh to unaizah taxi", "riyadh to qassim distance"],
   },
   {
     slug: "qassim-to-riyadh",

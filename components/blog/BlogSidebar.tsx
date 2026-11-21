@@ -305,7 +305,7 @@ export async function BlogSidebar({ currentSlug }: { currentSlug: string }) {
       <div className="rounded-2xl bg-midnight p-6 text-white">
         <h3 className="text-lg font-bold">Book Your Transfer</h3>
         <p className="mt-1 text-sm text-white/75">
-          Fixed prices, professional drivers, fast reply.
+          Clear quotations, professional drivers, fast reply.
         </p>
         <a
           href={whatsappLink(waMessage)}
@@ -387,7 +387,7 @@ export async function BlogSidebar({ currentSlug }: { currentSlug: string }) {
       <div className="rounded-2xl border border-hairline bg-sand/30 p-5">
         <h3 className="text-sm font-bold uppercase tracking-wide text-ink">Need Help?</h3>
         <p className="mt-2 text-sm text-ink-soft">
-          Our team replies quickly with a fixed quote for your journey.
+          Our team replies quickly with a quotation for your journey.
         </p>
         <a
           href={`mailto:${siteConfig.bookingEmail}`}

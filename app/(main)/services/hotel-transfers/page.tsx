@@ -18,7 +18,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Private Hotel Transfers Saudi Arabia | Airport, City & Makkah",
   description:
-    "Private hotel transfers in Saudi Arabia — airport to hotel, hotel to hotel, or hotel to Makkah and Madinah, with pickup from the lobby and a fixed price.",
+    "Private hotel transfers in Saudi Arabia — airport to hotel, hotel to hotel, or hotel to Makkah and Madinah, with pickup from the lobby, quoted before you travel.",
   path,
   ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
 });

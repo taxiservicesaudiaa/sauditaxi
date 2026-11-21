@@ -132,7 +132,7 @@ export function PointTransferView({ transfer: t }: { transfer: PointTransfer }) 
                 {label} Quote
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Fixed price for your private transfer on WhatsApp.
+                Request a quotation for your private transfer, here or on WhatsApp.
               </p>
               <div className="mt-4">
                 <QuoteForm

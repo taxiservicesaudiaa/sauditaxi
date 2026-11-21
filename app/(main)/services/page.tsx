@@ -21,7 +21,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Private Transfer Services in Saudi Arabia | Saudi Private Transfers",
   description:
-    "Find the right private transfer service for your journey in Saudi Arabia — airport, city, intercity, border, and pilgrim transport, all with a fixed price.",
+    "Find the right private transfer service for your journey in Saudi Arabia — airport, city, intercity, border, and pilgrim transport, each quoted before you travel.",
   path: "/services",
   alternateLanguages: { en: "/services", ar: "/ar/خدماتنا" },
 });
@@ -120,7 +120,7 @@ export default function ServicesPage() {
           { scenario: "Moving between a hotel and the airport", serviceLabel: "Hotel Transfers", serviceHref: "/services/hotel-transfers" },
         ]}
         closingHeading="Not Sure Which Service Fits Your Journey?"
-        closingText="Share your journey details and we'll match you with the right service and a fixed price before you travel."
+        closingText="Share your journey details and we'll match you with the right service and a quotation before you travel."
         primaryCtaLabel="Get a Quote"
         secondaryCtaLabel="Contact Us"
         secondaryCtaHref="/contact"

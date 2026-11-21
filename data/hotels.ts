@@ -24,10 +24,10 @@ export interface Hotel {
   stars: 3 | 4 | 5;
   /** District / area, used in content and as a filter facet. */
   area: string;
-  /** Approximate driving distance from the serving airport, in km. */
-  distanceKm: number;
-  /** Approximate driving time from the serving airport, in minutes. */
-  durationMin: number;
+  /** Approximate driving distance from the serving airport, in km. null = not yet verified (not shown). */
+  distanceKm: number | null;
+  /** Approximate driving time from the serving airport, in minutes. null = not yet verified (not shown). */
+  durationMin: number | null;
   /** Unique one-line description of the hotel for card + intro content. */
   blurb: string;
   /** Landmarks / attractions near the hotel, for unique on-page content. */
@@ -952,8 +952,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 5,
     area: "Dammam Corniche / Al Shati",
-    distanceKm: 22,
-    durationMin: 25,
+    distanceKm: 44, // OSRM from DMM terminal, 2026-11-21
+    durationMin: 33,
     blurb:
       "A landmark waterfront hotel on the Corniche with extensive convention facilities, popular with business travellers and conference guests.",
     nearby: ["Dammam Corniche", "King Fahd Park", "Half Moon Bay"],
@@ -964,8 +964,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Prince Mohammed bin Fahd Road",
-    distanceKm: 20,
-    durationMin: 22,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "An all-suite hotel on Prince Mohammed bin Fahd Road, favoured by families and longer-staying business guests for its spacious rooms.",
     nearby: ["Prince Mohammed Bin Fahd Stadium", "Marina Mall", "Dammam Corniche"],
@@ -976,8 +976,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "City Centre / King Saud Street",
-    distanceKm: 23,
-    durationMin: 26,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A dependable mid-scale business hotel in the city centre, close to King Saud Street's offices and shopping.",
     nearby: ["King Saud Street", "Dammam Regional Museum", "Dammam Corniche"],
@@ -988,8 +988,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Prince Mohammed bin Fahd Road",
-    distanceKm: 21,
-    durationMin: 24,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A modern business hotel on Prince Mohammed bin Fahd Road with easy access to the stadium district and the Corniche.",
     nearby: ["Prince Mohammed Bin Fahd Stadium", "Dammam Corniche", "Rashid Mall"],
@@ -1000,8 +1000,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Dammam Business Park",
-    distanceKm: 19,
-    durationMin: 22,
+    distanceKm: 45, // OSRM from DMM terminal, 2026-11-21
+    durationMin: 34,
     blurb:
       "A purpose-built business hotel inside Dammam's commercial park, one of the closest full-service options to the airport.",
     nearby: ["Dammam Business Park", "King Fahd Road", "Dhahran"],
@@ -1012,8 +1012,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Dammam Corniche",
-    distanceKm: 23,
-    durationMin: 26,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A comfortable waterfront hotel directly on the Corniche, popular with families for its sea-facing rooms and promenade access.",
     nearby: ["Dammam Corniche", "Al Shatea Park", "King Fahd Park"],
@@ -1024,8 +1024,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 3,
     area: "Al Shatea / Corniche",
-    distanceKm: 24,
-    durationMin: 27,
+    distanceKm: 45, // OSRM from DMM terminal, 2026-11-21
+    durationMin: 34,
     blurb:
       "A value-focused apart-hotel steps from the Al Shatea waterfront, well suited to families wanting extra space.",
     nearby: ["Al Shatea Park", "Dammam Corniche", "Half Moon Bay"],
@@ -1036,8 +1036,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 5,
     area: "Dammam Corniche",
-    distanceKm: 22,
-    durationMin: 25,
+    distanceKm: 44, // OSRM from DMM terminal, 2026-11-21
+    durationMin: 34,
     blurb:
       "An iconic curved tower on the Dammam Corniche, one of the city's best-known five-star addresses with sweeping Gulf views.",
     nearby: ["Dammam Corniche", "King Fahd Park", "Marina Mall"],
@@ -1048,8 +1048,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "City Centre",
-    distanceKm: 21,
-    durationMin: 24,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A polished city-centre hotel offering both rooms and suites, a practical base for business trips and short family stays.",
     nearby: ["King Saud Street", "Dammam Regional Museum", "Rashid Mall"],
@@ -1060,8 +1060,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 3,
     area: "City Centre / Al Amir Mohammed Street",
-    distanceKm: 21,
-    durationMin: 23,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A straightforward, good-value hotel in the city centre, convenient for offices along Al Amir Mohammed Street.",
     nearby: ["King Saud Street", "Dammam Corniche", "Rashid Mall"],
@@ -1072,8 +1072,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Khaleej Road",
-    distanceKm: 18,
-    durationMin: 20,
+    distanceKm: 45, // OSRM from DMM terminal, 2026-11-21
+    durationMin: 34,
     blurb:
       "A well-placed business hotel on Khaleej Road, one of the quickest airport runs in the city thanks to its northern location.",
     nearby: ["Khaleej Road", "Dammam Business Park", "Dhahran"],
@@ -1084,8 +1084,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "Business District / King Fahd Road",
-    distanceKm: 20,
-    durationMin: 23,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "An extended-stay Marriott property with kitchen-equipped suites, popular with energy-sector business travellers on longer assignments.",
     nearby: ["King Fahd Road", "Dammam Business Park", "Prince Mohammed Bin Fahd Stadium"],
@@ -1096,8 +1096,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 4,
     area: "City Centre / King Saud Street",
-    distanceKm: 22,
-    durationMin: 25,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A long-established city-centre hotel near King Saud Street, known among regular visitors for its central, walkable location.",
     nearby: ["King Saud Street", "Dammam Corniche", "Dammam Regional Museum"],
@@ -1108,8 +1108,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 3,
     area: "City Centre",
-    distanceKm: 21,
-    durationMin: 24,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "A simple, comfortable city-centre hotel offering good value for solo travellers and short business visits.",
     nearby: ["King Saud Street", "Rashid Mall", "Dammam Corniche"],
@@ -1120,8 +1120,8 @@ export const hotels: Hotel[] = [
     citySlug: "dammam",
     stars: 3,
     area: "Al Danah / City Centre",
-    distanceKm: 22,
-    durationMin: 25,
+    distanceKm: null, // unverified: removed 2026-11-21 (was a ~20 km estimate; DMM is ~40 km from central Dammam)
+    durationMin: null,
     blurb:
       "Self-catering hotel apartments in the Al Danah district, a practical choice for families and longer stays close to the centre.",
     nearby: ["Al Danah district", "King Saud Street", "Dammam Corniche"],

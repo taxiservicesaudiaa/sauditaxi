@@ -57,27 +57,27 @@ const HUB_META: Record<string, { title: string; description: string }> = {
   jeddah: {
     title: "Jeddah Hotel Transfers – Private Airport Pickup (JED)",
     description:
-      "Book a private transfer between Jeddah's King Abdulaziz Airport and your hotel. Fixed price, meet-and-greet, and flight tracking for every stay.",
+      "Book a private transfer between Jeddah's King Abdulaziz Airport and your hotel. Quotation before you travel, meet-and-greet, and flight tracking.",
   },
   riyadh: {
     title: "Riyadh Hotel Transfers – Private Airport Pickup (RUH)",
     description:
-      "Book a private transfer between King Khalid International Airport and your Riyadh hotel. Fixed price, meet-and-greet, flight tracking included.",
+      "Book a private transfer between King Khalid International Airport and your Riyadh hotel. Request a quotation for your arrival or departure.",
   },
   makkah: {
     title: "Makkah Hotel Transfers – Private Pickup from Jeddah Airport",
     description:
-      "Book a private transfer from Jeddah Airport to your Makkah hotel near the Haram. Fixed price, meet-and-greet, and pilgrim-friendly vehicles.",
+      "Book a private transfer from Jeddah Airport to your Makkah hotel near the Haram. Quotation before you travel, meet-and-greet, pilgrim-friendly vehicles.",
   },
   madinah: {
     title: "Madinah Hotel Transfers – Private Airport Pickup (MED)",
     description:
-      "Book a private transfer between Prince Mohammad bin Abdulaziz Airport and your Madinah hotel near the Prophet's Mosque. Fixed price, 24/7.",
+      "Book a private transfer between Prince Mohammad bin Abdulaziz Airport and your Madinah hotel near the Prophet's Mosque. Quotation before you travel.",
   },
   dammam: {
     title: "Dammam Hotel Transfers – Private Airport Pickup (DMM)",
     description:
-      "Book a private transfer between King Fahd International Airport and your Dammam hotel. Fixed price, meet-and-greet, flight tracking included.",
+      "Book a private transfer between King Fahd International Airport and your Dammam hotel, with flight tracking and a quotation you confirm before you travel.",
   },
 };
 
@@ -106,7 +106,7 @@ export async function generateMetadata({
     title: hub?.title ?? `${city.name} Airport Transfers | Hotel Taxi from ${aName}`,
     description:
       hub?.description ??
-      `Private ${city.name} airport transfers between ${aName} and every major 3, 4 & 5-star hotel. Fixed prices, meet & greet, flight tracking, and 24/7 booking.`,
+      `Private ${city.name} airport transfers between ${aName} and every major 3, 4 & 5-star hotel. Request a quotation, with flight tracking on arrival transfers.`,
     path,
     ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
   });
@@ -116,7 +116,7 @@ function fallbackHubFaqs(cityName: string, aName: string): Faq[] {
   return [
     {
       question: `How do I book an airport transfer in ${cityName}?`,
-      answer: `Choose your hotel route below, or send your flight number, arrival date, and hotel on WhatsApp or the quote form. We reply with a fixed price for your private ${aName} transfer.`,
+      answer: `Choose your hotel route below, or send your flight number, arrival date, and hotel on WhatsApp or the quote form. We reply with a quotation for your private ${aName} transfer, which you confirm before you travel.`,
     },
     {
       question: `Do you cover every hotel in ${cityName}?`,
@@ -201,8 +201,10 @@ export default async function CityHubPage({
   const facts = cityAirportFacts[city.slug];
 
   // Real distance/duration range, computed from data/hotels.ts (never invented).
-  const distances = hotels.map((h) => h.distanceKm);
-  const durations = hotels.map((h) => h.durationMin);
+  // Only verified figures (null = not yet verified, not shown).
+  const distances = hotels.map((h) => h.distanceKm).filter((v): v is number => v != null);
+  const durations = hotels.map((h) => h.durationMin).filter((v): v is number => v != null);
+  const unverifiedCount = hotels.filter((h) => h.distanceKm == null || h.durationMin == null).length;
   const distanceRange =
     distances.length > 0 ? { min: Math.min(...distances), max: Math.max(...distances) } : null;
   const durationRange =
@@ -230,11 +232,11 @@ export default async function CityHubPage({
           {
             heading: `Distance from ${airport.name}`,
             icon: "distance" as const,
-            text: `Our ${hotelCount} ${city.name} hotels sit between ${distanceRange.min}${
+            text: `${unverifiedCount > 0 ? `The ${hotelCount - unverifiedCount} hotels we have measured sit` : `Our ${hotelCount} ${city.name} hotels sit`} between ${distanceRange.min}${
               distanceRange.min === distanceRange.max ? "" : `–${distanceRange.max}`
             } km from ${airport.name} (${airport.code}) — roughly ${durationRange.min}${
               durationRange.min === durationRange.max ? "" : `–${durationRange.max}`
-            } minutes by car, depending on traffic.`,
+            } minutes by car, depending on traffic.${unverifiedCount > 0 ? ` For the other ${unverifiedCount}, the distance is confirmed in your quotation.` : ""}`,
           },
         ]
       : []),
@@ -269,15 +271,15 @@ export default async function CityHubPage({
       <HotelTransferHubView
         eyebrow="Airport ⇄ Hotel Directory"
         h1={`${city.name} Airport Transfers`}
-        dek={`Private transfers between ${airport.name} (${airport.code}) and ${hotelCount} of the most-requested hotels in ${city.name}, in both directions. Every ride is private and door-to-door, with a professional chauffeur, a fixed price agreed before you travel, and meet-and-greet pickup for arrivals.`}
+        dek={`Private transfers between ${airport.name} (${airport.code}) and ${hotelCount} of the most-requested hotels in ${city.name}, in both directions. Every ride is private and door-to-door, with a professional driver and a quotation you confirm before you travel.`}
         crumbs={crumbs}
         stats={[
           { label: "Hotels covered", value: `${hotelCount}`, emphasis: true },
           ...(distanceRange
-            ? [{ label: "Distance", value: `${distanceRange.min}${distanceRange.min === distanceRange.max ? "" : `–${distanceRange.max}`} km` }]
+            ? [{ label: unverifiedCount > 0 ? "Distance (measured)" : "Distance", value: `${distanceRange.min}${distanceRange.min === distanceRange.max ? "" : `–${distanceRange.max}`} km` }]
             : []),
           ...(durationRange
-            ? [{ label: "Drive time", value: `${durationRange.min}${durationRange.min === durationRange.max ? "" : `–${durationRange.max}`} min` }]
+            ? [{ label: unverifiedCount > 0 ? "Drive time (measured)" : "Drive time", value: `${durationRange.min}${durationRange.min === durationRange.max ? "" : `–${durationRange.max}`} min` }]
             : []),
         ]}
         linkCards={[
@@ -287,7 +289,7 @@ export default async function CityHubPage({
         factsHeading={`${city.name} airport transfer essentials`}
         factCards={factCards}
         hotelsHeading={`Every ${city.name} hotel we transfer to`}
-        hotelsIntro={`${hotelCount} hotels, both directions, fixed price agreed before you travel.`}
+        hotelsIntro={`${hotelCount} hotels, both directions, each quoted before you travel.`}
         hotels={hotels.map((h) => ({
           slug: h.slug,
           name: h.name,

@@ -497,40 +497,52 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
   },
 
   "abqaiq-to-dammam-airport": {
+    // Corrected 2026-11-21 (report 47): OSRM ≈98 km / ≈69 min; quotation-based
+    // booking steps; no guaranteed facility access or team coordination.
     departureIntro:
-      "Almost every departure on this route is a contractor, engineer, or business traveller heading out after work in Abqaiq — a direct, work-oriented transfer to the airport.",
+      "Most departures on this route are contractors, engineers and business travellers heading to King Fahd International Airport after work in Abqaiq.",
     departurePoints: [
-      "This is a genuine regional drive, so allow a reasonable buffer beyond the pure driving time",
-      "Confirm whether pickup is in Abqaiq town or the facility gate area",
+      "This is a regional drive of about 95–105 km, so allow a margin beyond the driving time",
+      "Tell us whether pickup is in Abqaiq town or at a gate or meeting point",
     ],
     pickupPlanning: [
-      "We collect from Abqaiq town or the facility gate area — confirm which when booking.",
+      "We collect from Abqaiq town or a confirmed gate or meeting point. Pickups at restricted sites depend on permission and access.",
     ],
     roadJourney: [
-      "At about 80 km, the drive to the airport takes roughly 55 minutes along open highway.",
+      "At about 95–105 km, the drive to the airport takes roughly an hour to an hour and a quarter, depending on traffic and your pickup point.",
     ],
     airportDropoff: [
-      "Drop-off is at the terminal, with extra time built in for the airport's large size.",
+      "Drop-off is at the terminal. Leave extra time for check-in at a large airport.",
     ],
     vehicleLuggage:
-      "A sedan covers most individual business travel; teams travelling together with equipment should mention their numbers.",
+      "A sedan covers most individual business travel. Teams with equipment should give the number of people, bags and items with rough dimensions, so suitability can be confirmed in the quotation.",
     whoSuits: [
-      { title: "Contractors and project staff", description: "A direct, work-oriented transfer timed to flight schedules." },
+      { title: "Contractors and project staff", description: "A direct, work-oriented transfer planned around flight schedules." },
     ],
-    delayIntro: "A genuine regional drive — highway traffic is the main variable.",
+    delayIntro: "A regional drive — highway traffic is the main variable.",
     delayFactors: [
       "Highway traffic between Abqaiq and the airport",
-      "Time to reach your pickup point from the facility gate area",
+      "Time to reach your pickup point if it is a gate or meeting point",
     ],
     checklist: [
       "Flight number and departure date",
-      "Abqaiq town or facility gate — specify which",
-      "Passenger and luggage/equipment count",
+      "Abqaiq town, or the exact gate or meeting point",
+      "Passenger, luggage and equipment count",
     ],
     faqs: [
-      { question: "How long does the drive from Abqaiq to the airport take?", answer: "About 55 minutes for roughly 80 km." },
-      { question: "Can this be arranged for a team leaving on different flights?", answer: "Yes, book each traveller separately and we coordinate pickups." },
+      { question: "How long does the drive from Abqaiq to the airport take?", answer: "Roughly an hour to an hour and a quarter for about 95–105 km." },
+      { question: "Can this be arranged for a team leaving on different flights?", answer: "You can request coordination for each traveller's flight; the arrangements are confirmed in your quotation." },
     ],
+    overrides: {
+      bookingSteps: [
+        { label: "Share your flight and pickup details", detail: "Flight number, departure date and time, and your pickup point in Abqaiq." },
+        { label: "Receive your quotation", detail: "Based on your pickup point, flight time, passengers and luggage." },
+        { label: "Confirm your pickup", detail: "We agree the pickup time with you around your flight and typical traffic." },
+        { label: "Travel to the airport", detail: "Direct from your confirmed pickup point to the terminal." },
+      ],
+      ctaText: "Share your flight number and pickup point — we reply with a quotation for you to confirm before you travel.",
+      formSubheading: "Request a quotation for your airport departure.",
+    },
   },
 
   "hofuf-to-dammam-airport": {

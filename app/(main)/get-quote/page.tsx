@@ -20,7 +20,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Request a Private Transfer Quote | Saudi Private Transfers",
   description:
-    "Share your journey details and request a fixed-price private transfer quote in Saudi Arabia — airport, city, intercity, border, and pilgrim transport.",
+    "Share your journey details and request a private transfer quotation in Saudi Arabia — airport, city, intercity, border, and pilgrim transport.",
   path: "/get-quote",
   alternateLanguages: { en: "/get-quote", ar: "/ar/اطلب-عرض-سعر" },
 });
@@ -32,7 +32,7 @@ export default function GetQuotePage() {
       <QuotePageView
         eyebrow="Get a Quote"
         h1="Request a Private Transfer Quote"
-        dek="Tell us your journey details below and we'll review your requirements and reply with a fixed price before you travel."
+        dek="Tell us your journey details below and we'll review your requirements and reply with a quotation for you to confirm before you travel."
         heroImage={pageHeroes.intercity}
         heroAlt="Planning a private transfer journey in Saudi Arabia"
         formSlot={
@@ -52,7 +52,7 @@ export default function GetQuotePage() {
         processSteps={[
           { label: "Share your transfer details", text: "Complete the form with your journey information." },
           { label: "Your request is reviewed", text: "We check the route, timing, and vehicle your trip needs." },
-          { label: "You receive a quote", text: "We reply with a fixed price and the vehicle assigned to your journey." },
+          { label: "You receive a quote", text: "We reply with a quotation and the vehicle recommended for your journey." },
         ]}
         journeyHeading="Types of Journeys You Can Request"
         journeyTypes={services.map((s) => ({ label: s.name, href: s.href }))}

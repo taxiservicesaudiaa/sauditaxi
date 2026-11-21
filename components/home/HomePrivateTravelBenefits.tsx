@@ -16,7 +16,7 @@ export function HomePrivateTravelBenefits() {
         },
         {
           title: "Pre-Booked Private Service",
-          body: "The vehicle is yours for the whole trip — no route detours to drop other passengers first — with one fixed price agreed before you travel.",
+          body: "The vehicle is yours for the whole trip — no route detours to drop other passengers first — with one quotation you confirm before you travel.",
         },
         {
           title: "Flexible Pickup and Drop-Off",

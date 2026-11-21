@@ -12,6 +12,7 @@ import { hotels, hotelsForCity, type Hotel } from "@/data/hotels";
 import { cities, getCity, type City } from "@/data/cities";
 import { getAirport, type Airport } from "@/data/airports";
 import type { Faq } from "@/data/faqs";
+import { airportOps } from "@/lib/airport-ops";
 
 /** Date this generation template's content (angles, FAQs) was last substantively reviewed. */
 export const hotelTransfersLastUpdated = "2026-08-05";
@@ -34,8 +35,9 @@ export interface HotelTransfer {
   to: string;
   fromType: "airport" | "hotel";
   toType: "airport" | "hotel";
-  distance: string;
-  duration: string;
+  /** null when the hotel's airport distance is not yet verified. */
+  distance: string | null;
+  duration: string | null;
   /** Slug of the paired (reverse-direction) transfer. */
   reverseSlug: string;
 }
@@ -90,8 +92,8 @@ function buildTransfersForHotel(hotel: Hotel): HotelTransfer[] {
 
   const aSlug = airportTransferSlug(airport);
   const aName = airportTransferName(airport);
-  const distance = formatDistance(hotel.distanceKm);
-  const duration = formatDuration(hotel.durationMin);
+  const distance = hotel.distanceKm == null ? null : formatDistance(hotel.distanceKm);
+  const duration = hotel.durationMin == null ? null : formatDuration(hotel.durationMin);
 
   const fromAirportSlug = `${aSlug}-to-${hotel.slug}`;
   const toAirportSlug = `${hotel.slug}-to-${aSlug}`;
@@ -199,7 +201,7 @@ function stableHash(input: string): number {
 
 export function hotelVariation(hotel: Hotel): TransferVariation {
   if (hotel.citySlug === "makkah" || hotel.citySlug === "madinah") return "pilgrim";
-  if (hotel.distanceKm <= 12) return "airport";
+  if (hotel.distanceKm != null && hotel.distanceKm <= 12) return "airport";
   if (hotel.stars === 5) {
     return stableHash(hotel.slug) % 2 === 0 ? "luxury" : "location";
   }
@@ -242,13 +244,20 @@ export function transferIntro(t: HotelTransfer): string {
 export function transferAbout(t: HotelTransfer): string {
   const variation = hotelVariation(t.hotel);
   const toAirport = t.direction === "hotel-to-airport";
-  const dist = `The drive covers about ${t.distance} and takes approximately ${t.duration}, depending on traffic.`;
+  const ops = airportOps(t.airport.code);
+  const dist =
+    t.distance && t.duration
+      ? `The drive covers about ${t.distance} and takes approximately ${t.duration}, depending on traffic.`
+      : `Driving time depends on traffic; the distance for this hotel is confirmed in your quotation.`;
+  const strict = ops.meeting === "confirmed-per-booking";
 
   switch (variation) {
     case "luxury":
       return toAirport
         ? `We collect you from the lobby of ${t.hotel.name} at the time you choose and drive you directly to ${t.airport.name}, with enough buffer for check-in and lounge access. ${dist} ${t.hotel.blurb}`
-        : `Your chauffeur meets you at ${t.airport.name} arrivals with a name board, handles your luggage, and drives you directly to ${t.hotel.name} in a premium vehicle — no queues, no shared rides, no surge pricing. ${dist} ${t.hotel.blurb}`;
+        : strict
+          ? `Your driver meets you at the meeting point confirmed with your booking at ${t.airport.name} and drives you directly to ${t.hotel.name} in a premium vehicle — no queues and no shared rides. ${dist} ${t.hotel.blurb}`
+          : `Your chauffeur meets you at ${t.airport.name} arrivals with a name board, handles your luggage, and drives you directly to ${t.hotel.name} in a premium vehicle — no queues and no shared rides. ${dist} ${t.hotel.blurb}`;
     case "airport":
       return toAirport
         ? `With ${t.hotel.name} just ${t.duration} from the terminal, you can leave later and still arrive relaxed. Your chauffeur collects you from the lobby and drives straight to departures at ${t.airport.name}. ${t.hotel.blurb}`
@@ -256,7 +265,9 @@ export function transferAbout(t: HotelTransfer): string {
     case "family":
       return toAirport
         ? `We pick up your whole party from ${t.hotel.name} in ${t.hotel.area}, fit every suitcase and stroller in, and drive directly to ${t.airport.name} with time to spare for check-in. ${dist} ${t.hotel.blurb}`
-        : `Your chauffeur meets your whole party in the arrivals hall at ${t.airport.name}, loads every bag, and drives everyone directly to ${t.hotel.name} in ${t.hotel.area} in one private vehicle — with family-sized SUVs and vans available on request. ${dist} ${t.hotel.blurb}`;
+        : strict
+          ? `Your driver meets your whole party at the meeting point confirmed with your booking at ${t.airport.name} and drives everyone directly to ${t.hotel.name} in ${t.hotel.area} in one private vehicle — SUVs and vans can be requested for larger families. ${dist} ${t.hotel.blurb}`
+          : `Your chauffeur meets your whole party in the arrivals hall at ${t.airport.name}, loads every bag, and drives everyone directly to ${t.hotel.name} in ${t.hotel.area} in one private vehicle — with family-sized SUVs and vans available on request. ${dist} ${t.hotel.blurb}`;
     case "pilgrim":
       return toAirport
         ? `We collect you and your group from ${t.hotel.name}, allow time for a final visit to the Haram if needed, and drive directly to ${t.airport.name} for your departure. ${dist} ${t.hotel.blurb}`
@@ -265,7 +276,7 @@ export function transferAbout(t: HotelTransfer): string {
     default:
       return toAirport
         ? `Leaving ${t.hotel.name} in ${t.hotel.area} — close to ${nearbyList(t.hotel)} — your chauffeur drives you directly to ${t.airport.name} for departure. ${dist} ${t.hotel.blurb}`
-        : `${t.hotel.name} sits in ${t.hotel.area}, within easy reach of ${nearbyList(t.hotel)}. Your chauffeur meets you at ${t.airport.name} and drives directly there. ${dist} ${t.hotel.blurb}`;
+        : `${t.hotel.name} sits in ${t.hotel.area}, within easy reach of ${nearbyList(t.hotel)}. Your ${strict ? "driver meets you at the meeting point confirmed with your booking at" : "chauffeur meets you at"} ${t.airport.name} and drives directly there. ${dist} ${t.hotel.blurb}`;
   }
 }
 
@@ -279,7 +290,7 @@ function variationFaq(t: HotelTransfer): Faq {
       };
     case "airport":
       return {
-        question: `Is ${t.hotel.name} really only ${t.duration} from the airport?`,
+        question: `Is ${t.hotel.name} really only ${t.duration ?? "a short drive"} from the airport?`,
         answer: `Yes — at around ${t.distance}, ${t.hotel.name} is one of the closest hotels to ${t.airport.name} in ${t.cityName}, so this transfer is one of our shortest and most predictable runs.`,
       };
     case "family":
@@ -302,16 +313,21 @@ function variationFaq(t: HotelTransfer): Faq {
 }
 
 export function routeFaqs(t: HotelTransfer): Faq[] {
+  const ops = airportOps(t.airport.code);
+  const strict = ops.meeting === "confirmed-per-booking";
   const common: Faq[] = [
     {
       question: `How do I book the ${t.from} to ${t.to} taxi?`,
       answer: `Send your date, time${
         t.direction === "airport-to-hotel" ? ", and flight number" : ""
-      } through WhatsApp or the quote form. We reply with a fixed price for the private ${t.from} to ${t.to} transfer.`,
+      } through WhatsApp or the quote form. We reply with a quotation for the private ${t.from} to ${t.to} transfer, which you confirm before you travel.`,
     },
     {
       question: `How long is the transfer and how far is it?`,
-      answer: `The ${t.from} to ${t.to} transfer is about ${t.distance} and takes approximately ${t.duration}, depending on traffic and time of day.`,
+      answer:
+        t.distance && t.duration
+          ? `The ${t.from} to ${t.to} transfer is about ${t.distance} and takes approximately ${t.duration}, depending on traffic and time of day.`
+          : `The distance and driving time for the ${t.from} to ${t.to} transfer depend on traffic and are confirmed in your quotation.`,
     },
   ];
 
@@ -319,7 +335,9 @@ export function routeFaqs(t: HotelTransfer): Faq[] {
     t.direction === "airport-to-hotel"
       ? {
           question: `Where will the driver meet me at ${t.airport.name}?`,
-          answer: `Your driver waits in the arrivals hall at ${t.airport.name} (${t.airport.code}) holding a name board, then helps with your luggage to the vehicle.`,
+          answer: strict
+            ? `The meeting point at ${t.airport.name} (${t.airport.code}) is confirmed individually when you book, and you receive the pickup instructions before you travel.`
+            : `Your driver waits in the arrivals hall at ${t.airport.name} (${t.airport.code}) holding a name board, then helps with your luggage to the vehicle.`,
         }
       : {
           question: `When should I be ready for pickup from ${t.hotel.name}?`,
@@ -338,7 +356,9 @@ export function routeFaqs(t: HotelTransfer): Faq[] {
     variationFaq(t),
     {
       question: `What if my flight is delayed?`,
-      answer: `We monitor your flight and adjust the schedule automatically, with free waiting time included, so a change in your arrival never costs you the transfer.`,
+      answer: strict
+        ? `We track your flight, so a delay or schedule change is picked up and your pickup is reconfirmed with you. Waiting arrangements are set out in your quotation.`
+        : `We monitor your flight and adjust the schedule automatically, with free waiting time included, so a change in your arrival never costs you the transfer.`,
     },
     {
       question: `Is the ${t.from} to ${t.to} transfer private, or shared with other passengers?`,
@@ -346,11 +366,15 @@ export function routeFaqs(t: HotelTransfer): Faq[] {
     },
     {
       question: `Do I need to pay in advance for this transfer?`,
-      answer: `No prepayment is required. The price is agreed when you book, and you pay the driver directly — in cash (SAR) or by card — on the day.`,
+      answer: strict
+        ? `Payment terms are set out in your quotation, which you confirm before you travel.`
+        : `No prepayment is required. The price is agreed when you book, and you pay the driver directly — in cash (SAR) or by card — on the day.`,
     },
     {
       question: `Can I cancel or change this booking?`,
-      answer: `Yes. Since there's no prepayment, you can cancel or change your ${t.from} to ${t.to} booking free of charge with reasonable notice — just message us on WhatsApp.`,
+      answer: strict
+        ? `Message us on WhatsApp as early as you can. Change and cancellation terms are set out in your quotation.`
+        : `Yes. Since there's no prepayment, you can cancel or change your ${t.from} to ${t.to} booking free of charge with reasonable notice — just message us on WhatsApp.`,
     },
   ];
 }

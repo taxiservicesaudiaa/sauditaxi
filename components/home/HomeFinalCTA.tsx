@@ -15,7 +15,7 @@ export function HomeFinalCTA() {
       <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
         <p className="text-3xl font-bold tracking-tight sm:text-4xl">Book a Private Transfer in Saudi Arabia</p>
         <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/70">
-          Tell us your pickup, destination, and travel date, and we&apos;ll confirm a fixed price and a
+          Tell us your pickup, destination, and travel date, and we&apos;ll send a quotation and a
           driver before you travel — whether it&apos;s an airport transfer, a city-to-city journey, an
           Umrah or Hajj transfer, a day trip, or a cross-border trip into the GCC.
         </p>

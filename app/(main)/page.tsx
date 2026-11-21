@@ -38,7 +38,7 @@ import { homeFaqs } from "@/data/faqs";
 export const metadata: Metadata = buildMetadata({
   title: "Private Transfers in Saudi Arabia | Airport, City & Border Taxi",
   description:
-    "Book private transfers across Saudi Arabia — airport pickups, city rides, intercity routes, and border crossings. Fixed prices, professional drivers, 24/7.",
+    "Book private transfers across Saudi Arabia — airport pickups, city rides, intercity routes, and border crossings. Professional drivers and a quotation before you travel.",
   path: "/",
   alternateLanguages: { en: "/", ar: "/ar" },
 });

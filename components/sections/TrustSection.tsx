@@ -66,7 +66,7 @@ const pillars = [
   {
     icon: Tag,
     title: "Transparent pricing",
-    text: "Your price is agreed before you travel — no meters, no surge, no surprises.",
+    text: "You review and confirm your quotation before you travel, so there are no surprises.",
   },
   {
     icon: Lock,
@@ -92,8 +92,8 @@ const pillars = [
 
 const reassurances = [
   "Free flight monitoring",
-  "Fixed prices",
-  "No hidden fees",
+  "Clear quotations",
+  "Confirmed before you travel",
   "24/7 customer support",
 ];
 
@@ -111,7 +111,7 @@ export function TrustSection({
           </h2>
           <p className="mt-3 text-muted-foreground">
             Thousands of travellers, pilgrims, families, and businesses rely on us for
-            safe, on-time, fixed-price transfers across the Kingdom.
+            safe, on-time private transfers across the Kingdom, quoted before you travel.
           </p>
         </div>
 

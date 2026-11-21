@@ -18,6 +18,10 @@ export interface QuoteFormProps {
   defaultPickup?: string;
   /** Prefill the drop-off field. */
   defaultDropoff?: string;
+  /** Overrides the drop-off placeholder (e.g. a region page asking for an exact address). */
+  dropoffPlaceholder?: string;
+  /** Overrides the message placeholder (e.g. asking for compound/gate details). */
+  messagePlaceholder?: string;
   /** Prefill date (YYYY-MM-DD), time (HH:MM), and passenger count. */
   defaultDate?: string;
   defaultTime?: string;
@@ -37,7 +41,15 @@ export interface QuoteFormProps {
    * server render per visit exceeds the CPU limit (error 1102).
    */
   prefillFromQuery?: boolean;
+  /**
+   * "always" (default) shows the optional flight-number field. "airport" shows
+   * it only once the pickup or drop-off mentions an airport — for city-to-city
+   * routes where a flight number is usually irrelevant.
+   */
+  flightField?: "always" | "airport";
 }
+
+const AIRPORT_PATTERN = /airport|terminal|مطار|\b(DMM|RUH|JED|MED|KFIA|KKIA|KAIA)\b/i;
 
 const QUERY_PREFILL_FIELDS = ["pickup", "dropoff", "date", "time", "passengers"] as const;
 
@@ -49,6 +61,8 @@ type Status = "idle" | "submitting" | "success" | "error";
 export function QuoteForm({
   defaultPickup = "",
   defaultDropoff = "",
+  dropoffPlaceholder,
+  messagePlaceholder,
   defaultDate = "",
   defaultTime = "",
   defaultPassengers = "2",
@@ -58,7 +72,20 @@ export function QuoteForm({
   className,
   twoColumn = true,
   prefillFromQuery = false,
+  flightField = "always",
 }: QuoteFormProps) {
+  const [airportTrip, setAirportTrip] = useState(
+    () => AIRPORT_PATTERN.test(defaultPickup) || AIRPORT_PATTERN.test(defaultDropoff)
+  );
+  const showFlight = flightField === "always" || airportTrip;
+  function handleRouteInput(e: React.FormEvent<HTMLFormElement>) {
+    const target = e.target as HTMLInputElement;
+    if (target.name !== "pickup" && target.name !== "dropoff") return;
+    const form = e.currentTarget;
+    const pickup = (form.elements.namedItem("pickup") as HTMLInputElement | null)?.value ?? "";
+    const dropoff = (form.elements.namedItem("dropoff") as HTMLInputElement | null)?.value ?? "";
+    setAirportTrip(AIRPORT_PATTERN.test(pickup) || AIRPORT_PATTERN.test(dropoff));
+  }
   const pathname = usePathname();
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -209,6 +236,7 @@ export function QuoteForm({
     <form
       ref={formRef}
       onSubmit={handleSubmit}
+      onInput={flightField === "airport" ? handleRouteInput : undefined}
       className={cn("space-y-4", className)}
       aria-label={t.ariaLabel}
     >
@@ -252,7 +280,7 @@ export function QuoteForm({
         </div>
         <div>
           <Label htmlFor="qf-dropoff">{t.dropoff}</Label>
-          <Input id="qf-dropoff" name="dropoff" defaultValue={defaultDropoff} placeholder={t.dropoffPlaceholder} required />
+          <Input id="qf-dropoff" name="dropoff" defaultValue={defaultDropoff} placeholder={dropoffPlaceholder ?? t.dropoffPlaceholder} required />
         </div>
       </div>
 
@@ -294,14 +322,16 @@ export function QuoteForm({
         </div>
       </div>
 
-      <div>
-        <Label htmlFor="qf-flight">{t.flightNumber} <span className="font-normal text-muted-foreground">{t.optional}</span></Label>
-        <Input id="qf-flight" name="flight" placeholder={t.flightNumberPlaceholder} />
-      </div>
+      {showFlight && (
+        <div>
+          <Label htmlFor="qf-flight">{t.flightNumber} <span className="font-normal text-muted-foreground">{t.optional}</span></Label>
+          <Input id="qf-flight" name="flight" placeholder={t.flightNumberPlaceholder} />
+        </div>
+      )}
 
       <div>
         <Label htmlFor="qf-message">{t.message} <span className="font-normal text-muted-foreground">{t.optional}</span></Label>
-        <Textarea id="qf-message" name="message" placeholder={t.messagePlaceholder} />
+        <Textarea id="qf-message" name="message" placeholder={messagePlaceholder ?? t.messagePlaceholder} />
       </div>
 
       <Button type="submit" variant="gold" size="lg" className="w-full" disabled={submitting}>

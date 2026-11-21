@@ -33,8 +33,9 @@ export interface HotelTransferHubRow {
   name: string;
   area: string;
   stars: number;
-  distanceKm: number;
-  durationMin: number;
+  /** null = not yet verified; shown as a dash. */
+  distanceKm: number | null;
+  durationMin: number | null;
   quoteHref: string;
 }
 
@@ -208,8 +209,8 @@ export function HotelTransferHubView({
                     <td className="px-4 py-3 font-medium text-ink">{h.name}</td>
                     <td className="px-4 py-3 text-ink-soft">{h.area}</td>
                     <td className="px-4 py-3 text-ink-soft">{h.stars}★</td>
-                    <td className="px-4 py-3 text-ink-soft">{h.distanceKm} km</td>
-                    <td className="px-4 py-3 text-ink-soft">{h.durationMin} min</td>
+                    <td className="px-4 py-3 text-ink-soft">{h.distanceKm == null ? "—" : `${h.distanceKm} km`}</td>
+                    <td className="px-4 py-3 text-ink-soft">{h.durationMin == null ? "—" : `${h.durationMin} min`}</td>
                     <td className="px-4 py-3">
                       <Link
                         href={h.quoteHref}

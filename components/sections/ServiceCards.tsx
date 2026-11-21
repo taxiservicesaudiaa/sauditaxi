@@ -5,7 +5,7 @@ import { featuredServices, services } from "@/data/services";
 
 export function ServiceCards({
   heading = "Our Saudi Arabia Transfer Services",
-  subheading = "Private, fixed-price transfers for every kind of journey across the Kingdom.",
+  subheading = "Private transfers for every kind of journey across the Kingdom, quoted before you travel.",
   only,
 }: {
   heading?: string;

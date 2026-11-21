@@ -274,7 +274,7 @@ export function BlogInlineCta({ slug = "" }: BlogInlineCtaProps) {
   return (
     <div className="my-8 rounded-2xl border border-hairline bg-midnight p-5 text-white lg:hidden">
       <p className="font-bold">Need a private transfer in Saudi Arabia?</p>
-      <p className="mt-1 text-sm text-white/75">Fixed prices, professional drivers, fast reply.</p>
+      <p className="mt-1 text-sm text-white/75">Clear quotations, professional drivers, fast reply.</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <a
           href={wa}

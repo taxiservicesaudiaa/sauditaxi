@@ -19,10 +19,13 @@ export const RUH_STATUS_NOTICE = {
   ],
 };
 
+// Rewritten 2026-11-21 (report 48): the dated 22 October incident status was no
+// longer current and has not been re-verified, so the notice is now undated and
+// limited to owner-confirmed facts (flight tracking: yes).
 export const DMM_STATUS_NOTICE = {
-  heading: "Dammam airport status — last checked 22 October 2026",
+  heading: "Flying into King Fahd International Airport (DMM)",
   paragraphs: [
-    "On 22 October 2026, Saudi Arabia's General Authority of Civil Aviation (GACA) said operations at King Fahd International Airport had resumed and air traffic had returned to normal after a security incident at the airport the previous evening. Some airlines have changed their Dammam schedules, so confirm your flight with your airline before you travel.",
-    "Our King Fahd International Airport transfers are operating. Share your flight number when you request a quote — we track your flight and confirm the pickup with your booking.",
+    "Airline schedules can change, so confirm your flight with your airline before you travel.",
+    "Share your flight number when you request a quote — we track your flight and confirm the pickup with your booking.",
   ],
 };

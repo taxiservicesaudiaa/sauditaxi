@@ -1,6 +1,6 @@
 const steps = [
   { n: "01", title: "Plan", detail: "Share your pickup, destination, date, time and passenger details with us." },
-  { n: "02", title: "Arrange", detail: "We review the journey and come back with the right vehicle and a fixed price." },
+  { n: "02", title: "Arrange", detail: "We review the journey and come back with the right vehicle and a quotation." },
   { n: "03", title: "Confirm", detail: "You confirm the details, and your transfer is scheduled for the agreed time." },
   { n: "04", title: "Travel", detail: "Your driver meets you at the agreed point and takes you directly to your destination." },
 ];

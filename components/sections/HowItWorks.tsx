@@ -8,8 +8,8 @@ const defaultSteps = [
     text: "Share pickup, drop-off, date, time, and passengers via WhatsApp or the quote form.",
   },
   {
-    title: "Get a fixed quote",
-    text: "We reply quickly with a clear, all-in price and the right vehicle for your group.",
+    title: "Get a quotation",
+    text: "We reply quickly with a clear quotation and the right vehicle for your group.",
   },
   {
     title: "Travel with a driver",

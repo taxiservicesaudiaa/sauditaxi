@@ -38,8 +38,8 @@ export interface MadinahHubHotel {
   name: string;
   area: string;
   stars: number;
-  distanceKm: number;
-  durationMin: number;
+  distanceKm: number | null;
+  durationMin: number | null;
   quoteHref: string;
 }
 
@@ -248,7 +248,11 @@ export function MadinahAirportHubView({
                   {h.area}
                 </p>
                 <p className="mt-3 text-sm text-ink-soft">
-                  <span className="font-semibold text-ink">{h.distanceKm} km</span> from MED · about {h.durationMin} min*
+                  {h.distanceKm != null && h.durationMin != null && (
+                    <>
+                      <span className="font-semibold text-ink">{h.distanceKm} km</span> from MED · about {h.durationMin} min*
+                    </>
+                  )}
                 </p>
                 <Link
                   href={h.quoteHref}

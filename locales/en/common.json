@@ -14,7 +14,7 @@
     "toggleSubmenu": "Toggle {label} submenu"
   },
   "footer": {
-    "description": "Private taxi and transfer service across Saudi Arabia — airports, cities, intercity routes, borders, Umrah, and Hajj. Fast WhatsApp quotes, fixed prices, professional drivers.",
+    "description": "Private taxi and transfer service across Saudi Arabia — airports, cities, intercity routes, borders, Umrah, and Hajj. Fast WhatsApp quotes and professional drivers.",
     "servingAllOfSaudi": "Serving all of Saudi Arabia",
     "services": "Services",
     "intercityTransfers": "Intercity Transfers",
@@ -44,7 +44,7 @@
     "step": "Step {n}",
     "steps": [
       { "title": "Send your trip details", "text": "Share pickup, drop-off, date, time, and passengers via WhatsApp or the quote form." },
-      { "title": "Get a fixed quote", "text": "We reply quickly with a clear, all-in price and the right vehicle for your group." },
+      { "title": "Get a quotation", "text": "We reply quickly with a clear quotation and the right vehicle for your group." },
       { "title": "Travel with a driver", "text": "Your professional driver arrives on time and takes you door-to-door, stress-free." }
     ]
   },
@@ -56,7 +56,7 @@
   },
   "ctaSection": {
     "title": "Ready to Book Your Saudi Arabia Taxi?",
-    "subtitle": "Send your pickup and drop-off details now and get a fast, fixed quote on WhatsApp."
+    "subtitle": "Send your pickup and drop-off details now and get a fast quotation on WhatsApp."
   },
   "stickyQuote": {
     "label": "Get a Quote"
@@ -101,9 +101,9 @@
     "messagePlaceholder": "Any special requirements (child seat, extra stops, group size)…",
     "sendRequest": "Send Request",
     "sending": "Sending…",
-    "disclaimer": "We'll reply with a fixed price for your journey — no payment needed to get a quote.",
+    "disclaimer": "We'll reply with a quotation for your journey — no payment needed to get a quote.",
     "successTitle": "Request received",
-    "successBody": "Thank you — we've received your trip details. Our team will review your journey and get back to you shortly with availability and a fixed price.",
+    "successBody": "Thank you — we've received your trip details. Our team will review your journey and get back to you shortly with availability and a quotation.",
     "sendAnother": "Send another request",
     "genericError": "Something went wrong. Please try again in a moment.",
     "networkError": "We couldn't send your request. Please check your connection and try again."

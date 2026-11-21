@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HomeBookingPanel } from "@/components/home/HomeBookingPanel";
 
-const trustPoints = ["Private vehicle, every trip", "Fixed price, agreed upfront", "24/7 availability"];
+const trustPoints = ["Private vehicle, every trip", "Quotation before you confirm", "24/7 availability"];
 
 /**
  * The new homepage hero — 2026 visual reset. Real photography (Riyadh
@@ -49,7 +49,7 @@ export function HomeHero() {
               Book a private, pre-arranged vehicle for airport pickups, city-to-city journeys,
               Umrah and Hajj transfers, day trips, and chauffeur-driven travel across Saudi
               Arabia, plus selected transfers into the GCC. Every trip is door-to-door, in
-              your own vehicle, with a fixed price agreed before you travel. Request a quote
+              your own vehicle, with a quotation you confirm before you travel. Request a quote
               and we&apos;ll confirm your driver in advance.
             </p>
 

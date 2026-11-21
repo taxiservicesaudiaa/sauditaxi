@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: airport.metaTitle ?? `Private ${airport.city} Airport Transfer (${airport.code}) | Saudi Private Transfers`,
     description:
       airport.metaDescription ??
-      `Private ${airport.city} airport transfer from ${airport.name} (${airport.code}). Meet-and-greet pickup with fixed quotes.`,
+      `Private ${airport.city} airport transfer from ${airport.name} (${airport.code}). Meet-and-greet pickup, quoted before you travel.`,
     path,
     ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
   });
@@ -69,7 +69,7 @@ function buildPopularCards(airport: Airport): HomeSectionCard[] {
       title: `${o?.popularTitlePrefix ?? `${airport.city} Airport to`} ${destination}`,
       body:
         o?.popularCardBody ??
-        `${r.distance} · about ${r.duration}. A private, direct transfer with a fixed price agreed before you travel — no meter, no surge pricing.`,
+        `${r.distance} · about ${r.duration}. A private, direct transfer, quoted before you travel.`,
       href: `/routes/${slug}`,
       linkLabel: `${destination} transfer details`,
     });
@@ -127,7 +127,7 @@ function vehicleCards(): HomeSectionCard[] {
 function bookingSteps(airport: Airport): AirportTransferStep[] {
   return [
     { title: "1. Send Your Journey Details", detail: "Your flight number, arrival date, and destination — hotel, city, or onward route — sent by WhatsApp or our quote form." },
-    { title: "2. Receive Your Quote", detail: "A fixed, all-in price and a vehicle recommendation, agreed before you travel with no hidden charges added later." },
+    { title: "2. Receive Your Quote", detail: "A quotation and a vehicle recommendation, which you review and confirm before you travel." },
     { title: "3. Confirm Your Transfer", detail: "Approve the quote and a driver is scheduled for your flight, no prepayment required to hold the booking." },
     { title: "4. Meet Your Driver", detail: `Your driver waits in the arrivals hall at ${airport.name} with a name board when you land, ready to help with luggage.` },
   ];
@@ -176,13 +176,13 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
     coreServiceHeading: `Private Transfers from ${airport.city} Airport`,
     coreServiceParagraph:
       airport.coreServiceParagraph ??
-      `We provide private, pre-booked transportation from ${airport.name} to your hotel or destination. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination at a fixed price agreed before you travel.`,
+      `We provide private, pre-booked transportation from ${airport.name} to your hotel or destination. Your driver tracks your flight, meets you in arrivals, and drives you directly to your destination, as set out in the quotation you confirm before you travel.`,
 
     popularHeading: o?.popularHeading ?? `Popular Transfers from ${airport.city} Airport`,
     popularIntro:
       o?.popularIntro ??
       (popularCards.length > 0
-        ? `Fixed-price private transfers directly from ${airport.name} to these destinations, booked before you land and ready the moment you arrive.`
+        ? `Private transfers directly from ${airport.name} to these destinations, quoted and booked before you land.`
         : `Explore ${airport.city}'s local taxi service for transportation around the city and to nearby destinations, booked before you land.`),
     popularCards,
 
@@ -219,7 +219,7 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
 
     finalCtaHeading: o?.finalCtaHeading ?? `Book Your Private ${airport.city} Airport Transfer`,
     finalCtaText:
-      o?.finalCtaText ?? `Add your flight number and destination — we reply with a fixed price and meet you in arrivals at ${airport.code}.`,
+      o?.finalCtaText ?? `Add your flight number and destination — we reply with a quotation and meet you in arrivals at ${airport.code}.`,
   };
 
   return (

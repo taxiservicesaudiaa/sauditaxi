@@ -9,7 +9,7 @@ export function AboutFinalCTA() {
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ready to plan your journey?</h2>
         <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/70">
           Share your pickup, destination and travel date, and we&apos;ll arrange the right
-          private transfer — a fixed price, confirmed before you travel.
+          private transfer — a quotation you confirm before you travel.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link

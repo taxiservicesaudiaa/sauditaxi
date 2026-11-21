@@ -329,7 +329,7 @@ export default async function DistancePage({
               <Link href={page.routePath} className="font-semibold text-navy underline underline-offset-2 hover:text-gold">
                 {page.from} to {page.to} transfer service
               </Link>{" "}
-              for fixed-price private transfers, vehicle options, and booking.
+              for private transfer quotations, vehicle options, and booking.
             </p>
           </div>
         </div>

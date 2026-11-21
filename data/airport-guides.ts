@@ -287,13 +287,13 @@ export const airportGuides: Record<string, AirportGuide> = {
 
   // ── DAMMAM · DMM ──────────────────────────────────────────────────────────
   "dammam-airport": {
-    lastUpdated: "2026-10-22",
+    lastUpdated: "2026-11-21",
     keywords: ["dammam airport taxi", "king fahd airport transfer", "DMM to khobar taxi", "dammam airport to bahrain", "private transfer from dammam airport"],
     coreServiceParagraph:
-      "King Fahd International Airport serves the whole Eastern Province metro of Dammam, Khobar, and Dhahran, and we provide private transfers from the airport directly to your hotel, office, or onward across the King Fahd Causeway to Bahrain. We track your flight, your driver meets you at the confirmed meeting point, and the confirmed quotation sets the price before you travel — the same process whether you're arriving for business or leisure. Luggage assistance is included, and larger vehicles are available for groups or corporate teams travelling together.",
+      "King Fahd International Airport serves the whole Eastern Province metro of Dammam, Khobar, and Dhahran, and we provide private transfers from the airport directly to your hotel, office, or onward across the King Fahd Causeway to Bahrain. We track your flight, your driver meets you at the confirmed meeting point, and the confirmed quotation sets the price before you travel — the same process whether you're arriving for business or leisure. Larger vehicles can be requested for groups or corporate teams travelling together.",
     arrivingParagraphs: [
       "International and domestic flights share a single main terminal at DMM, with a clear arrivals flow. Share your airline and flight number when booking so your driver is ready and positioned correctly when you land.",
-      "After immigration and baggage claim, head to the meeting point confirmed in your booking. Your driver helps carry your luggage to the vehicle, and free waiting time is included if your flight lands late — useful for business travellers moving quickly to a meeting across the Eastern Province.",
+      "After immigration and baggage claim, head to the meeting point confirmed in your booking. Because we track your flight, your pickup is reconfirmed if your landing time changes — useful for business travellers moving quickly to a meeting across the Eastern Province.",
     ],
     destinationClusters: [
       {
@@ -307,6 +307,12 @@ export const airportGuides: Record<string, AirportGuide> = {
         body: "Pickup to hotels and corporate destinations across the Eastern Province, priced in a quotation you confirm before you travel, with a driver who knows the area.",
         href: "/dammam/dammam-airport-to-hotels",
         linkLabel: "Dammam Airport to hotels",
+      },
+      {
+        title: "Abqaiq and Project Sites",
+        body: "Direct transfers from DMM to Abqaiq town, accommodation and confirmed project-site meeting points about 100 km away. Restricted sites need your own access permission.",
+        href: "/routes/dammam-airport-to-abqaiq",
+        linkLabel: "Dammam Airport to Abqaiq transfer",
       },
       {
         title: "Bahrain Causeway Crossing",
@@ -335,17 +341,17 @@ export const airportGuides: Record<string, AirportGuide> = {
       {
         question: "Where will I meet my driver at Dammam Airport?",
         answer:
-          "At the meeting point confirmed in your booking. Your driver helps with luggage and walks you to the vehicle in the car park, ready to go.",
+          "At the meeting point confirmed individually when you book. You receive the pickup instructions before you travel.",
       },
       {
         question: "Do you serve Jubail and Dhahran from DMM?",
         answer:
-          "Yes. We run private transfers from the airport to Jubail, Dhahran, Aramco areas, and Khobar's corniche hotels, priced in your quotation.",
+          "Yes. We run private transfers from the airport to Jubail, Dhahran, Abqaiq and Khobar's corniche hotels, priced in your quotation. Drop-offs at industrial or restricted sites are made at a gate or approved meeting point, and site access needs your own permission.",
       },
       {
         question: "What happens if my flight to Dammam is delayed?",
         answer:
-          "We track your flight and plan the pickup around your actual landing time. Free waiting time is included.",
+          "We track your flight and plan the pickup around your actual landing time. Waiting arrangements are set out in your quotation.",
       },
       {
         question: "Can I book a Dammam Airport to hotel transfer?",

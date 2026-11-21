@@ -118,7 +118,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -199,7 +199,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "King Abdulaziz International Airport (JED) is the Kingdom's busiest pilgrim gateway, with a dedicated Hajj Terminal used during peak Hajj and Umrah seasons alongside the main terminal. Your driver tracks your flight and meets you in the arrivals hall with a name board, then drives directly to your hotel or onward to Makkah or Madinah.",
+            "King Abdulaziz International Airport (JED) is the Kingdom's busiest pilgrim gateway, with a dedicated Hajj Terminal used during peak Hajj and Umrah seasons alongside the main terminal. We track your flight, the meeting point is confirmed individually when you book, and your driver takes you directly to your hotel or onward to Makkah or Madinah.",
             "Because so many arrivals continue straight to the holy cities, we position drivers to move quickly from the terminal to the highway. See our <a href='/airport-transfer/jeddah-airport'>Jeddah Airport transfer page</a> for the full arrival process and vehicle options.",
           ],
         },
@@ -417,7 +417,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, arrival date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, arrival date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -574,7 +574,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, arrival date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, arrival date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -655,7 +655,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "King Fahd International Airport (DMM) serves the whole Dammam-Khobar-Dhahran metro area through a single main terminal. Your driver tracks your flight and meets you in the arrivals hall with a name board, then drives directly to your hotel or office. See our <a href='/airport-transfer/dammam-airport'>Dammam Airport transfer page</a> for the full arrival process and vehicle options.",
+            "King Fahd International Airport (DMM) serves the whole Dammam-Khobar-Dhahran metro area through a single main terminal. We track your flight, the meeting point is confirmed individually when you book, and your driver takes you directly to your hotel or office. See our <a href='/airport-transfer/dammam-airport'>Dammam Airport transfer page</a> for the full arrival process and vehicle options.",
           ],
         },
       },
@@ -682,7 +682,7 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Private Transfers from Dammam to Other Cities",
         block: {
           kind: "cards",
-          intro: "Fixed-price long-distance transfers from Dammam.",
+          intro: "Private long-distance transfers from Dammam, quoted before you travel.",
           columns: 3,
           cards: [
             { title: "Dammam to Riyadh", body: "A private intercity transfer to the capital.", href: "/routes/dammam-to-riyadh", linkLabel: "Dammam to Riyadh route" },
@@ -696,7 +696,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Fixed-price private transfers are available between King Fahd International Airport and hotels across Dammam, Khobar, and Dhahran. Browse our <a href='/cities/dammam'>Dammam hotel transfer directory</a> for a specific hotel, or send us the address directly.",
+            "Private transfers are available between King Fahd International Airport and hotels across Dammam, Khobar, and Dhahran. Browse our <a href='/cities/dammam'>Dammam hotel transfer directory</a> for a specific hotel, or send us the address directly.",
           ],
         },
       },
@@ -713,7 +713,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, pickup and destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, pickup and destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -741,7 +741,7 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Do you offer intercity transfers from Dammam to Riyadh?",
-        answer: "Yes, private intercity transfers from Dammam to Riyadh are available with a fixed price agreed before you travel.",
+        answer: "Yes, private intercity transfers from Dammam to Riyadh are available, with a quotation you confirm before you travel.",
       },
       {
         question: "Is weekend traffic heavier toward the Bahrain Causeway?",
@@ -775,7 +775,7 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Is airport pickup available for early or late flights into Dammam?",
-        answer: "Yes, pickups run 24/7 at King Fahd International Airport regardless of arrival time.",
+        answer: "You can request a pickup for any arrival time at King Fahd International Airport; the pickup time is confirmed in your quotation.",
       },
       {
         question: "Do you provide larger vehicles for business groups arriving in Dammam?",
@@ -855,7 +855,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your pickup location, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your pickup location, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -955,7 +955,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your pickup location or site entrance, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your pickup location or site entrance, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1058,7 +1058,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1169,7 +1169,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1281,7 +1281,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1384,7 +1384,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or resort details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or resort details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1486,7 +1486,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1588,7 +1588,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1687,7 +1687,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your connecting flight or arrival details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your connecting flight or arrival details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1786,7 +1786,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or hotel details, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1889,7 +1889,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -1990,7 +1990,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -2089,7 +2089,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, preferred stops, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or pickup address, preferred stops, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
@@ -2188,7 +2188,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver, with no prepayment required to hold the booking.",
+            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
           ],
         },
       },
