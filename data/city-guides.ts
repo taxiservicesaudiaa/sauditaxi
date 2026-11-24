@@ -1100,7 +1100,7 @@ export const cityGuides: Record<string, CityGuide> = {
   },
 
   abha: {
-    lastUpdated: "2026-09-17",
+    lastUpdated: "2026-11-24",
     localInsight:
       "Abha's tourism season peaks in summer, when its cooler, misty highland climate draws domestic visitors escaping the heat elsewhere in the Kingdom, and again briefly around any local cultural festivals in the Asir region. The Al Soudah cable car and Green Mountain area see the heaviest sightseeing traffic, and mountain roads can be foggy in the early morning, so allow a little extra travel time during those hours. Abha also functions as a practical base for day trips to Khamis Mushait and further south toward Najran and Jazan.",
     introParagraphs: [
@@ -1113,7 +1113,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Abha International Airport (AHB) has a simple arrivals flow, and your driver waits in the hall with a name board, ready to drive you directly to your hotel or destination. See our <a href='/airport-transfer/abha-airport'>Abha Airport transfer page</a> for the full arrival process.",
+            "For pickups at Abha International Airport (AHB), share your flight details when you request a quotation; the pickup point is confirmed with your booking. See our <a href='/airport-transfer/abha-airport'>Abha Airport transfer page</a> for more.",
           ],
         },
       },
@@ -1131,7 +1131,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Abha to Khamis Mushait is a short, frequently requested transfer given the two cities' close proximity, and private intercity transfers to both Najran and Jazan are available with a fixed price agreed before you travel — useful for a combined southern-Saudi itinerary.",
+            "Abha to Khamis Mushait is a short, frequently requested transfer given the two cities' close proximity, and private intercity transfers to Najran and Jazan can be requested, priced in a quotation you confirm before you travel — useful for a combined southern-Saudi itinerary.",
           ],
         },
       },
@@ -1139,11 +1139,11 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Private Transfers from Abha to Other Cities",
         block: {
           kind: "cards",
-          intro: "Fixed-price long-distance transfers from Abha.",
+          intro: "Private long-distance transfers from Abha, priced in a quotation you confirm.",
           columns: 2,
           cards: [
             { title: "Abha to Jeddah", body: "A scenic long-distance transfer from the Asir highlands down to the Red Sea coast.", href: "/routes/abha-to-jeddah", linkLabel: "Abha to Jeddah route" },
-            { title: "Abha to Riyadh", body: "A private long-distance transfer to the capital.", href: "/routes/abha-to-riyadh", linkLabel: "Abha to Riyadh route" },
+            { title: "Abha to Riyadh", body: "About 950 km to the capital: a full day by road.", href: "/routes/abha-to-riyadh", linkLabel: "Abha to Riyadh route" },
           ],
         },
       },
@@ -1152,7 +1152,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Comfortable family vehicles are available for highland day trips — mention passenger count and any specific stops such as Habala or the cable car when requesting a quote. Weather can change quickly at altitude, so drivers plan routes around fog and busy holiday traffic.",
+            "Family vehicles can be requested for highland day trips — mention passenger count, any child seats needed (number and ages) and stops such as Habala or the cable car when requesting a quote. Weather can change quickly at altitude, so drivers plan routes around fog and busy holiday traffic.",
           ],
         },
       },
@@ -1160,7 +1160,7 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Landmarks and Pickup Points in Abha",
         block: {
           kind: "bullets",
-          intro: "Places our drivers regularly serve:",
+          intro: "Common pickup and drop-off points in and around Abha:",
           items: ["Abha International Airport", "Green Mountain (Jabal Thera)", "Al Soudah", "Habala", "Abha Dam Lake"],
         },
       },
@@ -1197,7 +1197,7 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Can I book an intercity transfer from Abha to Najran or Jazan?",
-        answer: "Yes, private intercity transfers from Abha to both Najran and Jazan are available with a fixed price agreed before you travel.",
+        answer: "Yes, private intercity transfers from Abha to Najran or Jazan can be requested. The confirmed quotation sets the price and explains what it covers.",
       },
       {
         question: "Is Abha Dam Lake accessible by private taxi?",

@@ -985,63 +985,107 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
   },
 
   "abha-airport-to-jeddah": {
+    // AHB rules not owner-confirmed (24 Nov 2026): no tracking, arrivals-hall, name-board,
+    // waiting or luggage-help claims. OSRM AHB → Jeddah 698 km / 8.0 h; Valhalla 705 km / 7.7 h.
     intro:
-      "This route links the cooler southern highlands around Abha with the Red Sea coast — travellers finishing a highland stay and continuing to Jeddah, whether for an onward flight or to extend their trip along the coast.",
+      "This route links the cooler southern highlands around Abha with the Red Sea coast, for travellers landing at Abha International Airport and continuing to Jeddah by road, whether for an onward flight or to extend their trip along the coast.",
     arrivalPickup: [
-      "Your flight into Abha International Airport is tracked, and your driver waits in the arrivals area once you've collected your luggage.",
+      "Share your airline, flight number and arrival time when you request a quotation. Your pickup point at Abha International Airport is confirmed with your booking.",
     ],
     roadJourney: [
-      "At about 620 km and 6.5 hours, the drive descends from the Asir highlands down toward the coastal plain and Jeddah, a genuine change in landscape and climate over the course of the journey.",
+      "From the airport the road descends the escarpment to Ad Darb on the coastal plain, then runs north on Highway 5 past Al Birk, Al Qunfudhah and Al Lith to Jeddah: about 695–705 km, roughly 7.5–8 hours of driving before breaks.",
     ],
     destinationArrival: [
-      "Jeddah's hotel districts, the Corniche, and the airport for onward connections are all valid destinations — confirm your exact address when booking.",
+      "Jeddah's hotel districts, the Corniche and King Abdulaziz International Airport for onward connections are all possible destinations. Confirm your exact address when you request a quote.",
     ],
     vehicleLuggage:
-      "Given the 6.5-hour distance, an SUV or van is generally the more comfortable option, particularly for families.",
+      "The vehicle is matched to your passenger and luggage count in your quotation. Child seats can be provided on request, subject to availability: tell us how many you need and the children's ages.",
     whoSuits: [
-      { title: "Highlands-to-coast itineraries", description: "Suited to travellers combining an Asir highlands stay with a Jeddah leg." },
-      { title: "Onward international travellers", description: "Direct drop-off at Jeddah's airport if continuing to a connecting flight." },
+      { title: "Highlands-to-coast itineraries", description: "Suited to travellers combining an Asir stay with time in Jeddah." },
+      { title: "Onward international travellers", description: "Drop-off at Jeddah's airport for a connecting flight, with timing set out in your quotation." },
     ],
     checklist: [
-      "Flight number and arrival time at Abha International Airport",
-      "Exact address in Jeddah, or airport drop-off",
+      "Airline, flight number and arrival time at Abha International Airport",
+      "Exact address in Jeddah, or airport drop-off and departure time",
       "Passenger and luggage count",
+      "Child seats needed (number and children's ages)",
     ],
     faqs: [
-      { question: "How long does the Abha to Jeddah transfer take?", answer: "Around 6 hours 30 minutes for roughly 620 km." },
-      { question: "Is the road from the highlands down to the coast manageable in one drive?", answer: "Yes, it's a standard highway route; mention if you'd prefer a stop along the way." },
+      { question: "How long does the Abha Airport to Jeddah transfer take?", answer: "Roughly 7.5–8 hours of driving for about 695–705 km, before breaks." },
+      { question: "Can I stop along the way?", answer: "Breaks for rest and prayer are normal on a drive this long; mention any preferences or extra stops when you request a quote." },
+      { question: "Where will I meet my driver at Abha airport?", answer: "At the pickup point confirmed with your booking." },
     ],
+    overrides: {
+      arrivalSteps: [
+        { label: "Share your flight details", detail: "Send your airline, flight number, arrival date and time, and your destination in Jeddah when you request a quotation." },
+        { label: "Receive your quotation", detail: "Your pickup point at Abha International Airport, the vehicle and the price are confirmed in your quotation." },
+        { label: "After landing", detail: "Collect your luggage and go to the pickup point confirmed with your booking." },
+        { label: "Travel to Jeddah", detail: "You're driven directly to your Jeddah destination, as set out in your confirmed quotation." },
+      ],
+      bookingSteps: [
+        { label: "Share your journey details", detail: "Flight details, your destination in Jeddah, passengers, luggage and any child seats." },
+        { label: "Receive your quotation", detail: "The confirmed quotation sets the price and explains what it covers." },
+        { label: "Confirm", detail: "Nothing is booked until you confirm the quotation." },
+        { label: "Travel as confirmed", detail: "Follow the pickup arrangements confirmed with your booking." },
+      ],
+      ctaText: "Share your flight details and Jeddah destination, and we'll reply with a quotation for you to confirm.",
+    },
   },
 
+
+  // AHB rules are not owner-confirmed (24 Nov 2026): no flight tracking,
+  // arrivals-hall, name-board, waiting or luggage-help claims. Overnight stops
+  // not offered; child seats on request. OSRM AHB → central Riyadh 935 km /
+  // 11.4 h; Valhalla 946 km / 12.0 h.
   "abha-airport-to-riyadh": {
     intro:
-      "Travellers on this route are usually finishing a stay in the southern Asir highlands and continuing to the capital — for business, an onward flight, or simply to see more of the Kingdom without backtracking through a domestic connection.",
+      "This transfer suits travellers who land at Abha International Airport and continue to the capital by road, often families or groups who want to travel together, or anyone carrying more luggage than a connecting flight allows.",
     arrivalPickup: [
-      "Your flight into Abha International Airport is tracked, and your driver waits once you've collected your luggage.",
+      "Share your airline, flight number and arrival time when you request a quotation. Your pickup point at Abha International Airport is confirmed with your booking.",
     ],
     roadJourney: [
-      "At about 950 km and 9 hours, this is a substantial cross-country drive north across the southern desert into Riyadh, with rest stops planned into the journey.",
+      "From the airport the road heads north-east past Khamis Mushait and Bisha, then crosses the plateau of the Riyadh Region to the capital: about 935–950 km, or roughly 11–12 hours of driving before breaks.",
+      "Overnight stops aren't offered on this route, so it is planned as a single-day journey with breaks. If your flight lands late in the day, discuss the timing when you request a quote.",
     ],
     destinationArrival: [
-      "Riyadh's districts and business areas are spread across the capital — confirm your exact hotel, office, or address before travel.",
+      "Riyadh's districts and business areas are spread across the capital, so confirm your exact hotel, office or address before travel.",
     ],
     vehicleLuggage:
-      "Given the nine-hour distance, an SUV or van is the recommended choice over a sedan for comfort on this journey.",
+      "The vehicle is matched to your passenger and luggage count in your quotation. Child seats can be provided on request, subject to availability: tell us how many you need and the children's ages when you enquire.",
     whoSuits: [
-      { title: "Highlands-to-capital travellers", description: "A direct route for those combining an Asir highlands stay with business or onward travel from Riyadh." },
-      { title: "Families and groups with luggage", description: "One vehicle for the full nine-hour drive." },
+      { title: "Families and groups", description: "Everyone in one vehicle for the whole journey, on one quotation." },
+      { title: "Travellers with heavy luggage", description: "Space set by the vehicle you're quoted rather than airline allowances." },
     ],
     checklist: [
-      "Flight number and arrival time at Abha International Airport",
+      "Airline, flight number and arrival time at Abha International Airport",
       "Exact destination in Riyadh",
-      "Preferred pacing for the nine-hour drive",
       "Passenger and luggage count",
+      "Child seats needed (number and children's ages)",
     ],
     faqs: [
-      { question: "How long does the Abha to Riyadh drive take?", answer: "Around 9 hours for roughly 950 km." },
-      { question: "Should I consider a domestic flight instead?", answer: "Worth considering if speed matters most — a flight is significantly faster on this route than the nine-hour drive." },
+      { question: "How far is Riyadh from Abha International Airport by road?", answer: "About 935–950 km, roughly 11–12 hours of driving before breaks." },
+      { question: "Where will I meet my driver at Abha airport?", answer: "At the pickup point confirmed with your booking. Share your flight details when you request a quotation." },
+      { question: "Can the journey be split overnight?", answer: "No. Overnight stops aren't offered on this route; it is a single-day journey with breaks." },
+      { question: "Can I request a child seat?", answer: "Yes, on request and subject to availability. Tell us how many seats you need and the children's ages." },
+      { question: "Should I consider a connecting flight instead?", answer: "If speed matters most, a flight is much faster than 11–12 hours by road. The road suits groups, heavy luggage and travelling together in one vehicle." },
     ],
+    overrides: {
+      arrivalSteps: [
+        { label: "Share your flight details", detail: "Send your airline, flight number, arrival date and time, and your destination in Riyadh when you request a quotation." },
+        { label: "Receive your quotation", detail: "Your pickup point at Abha International Airport, the vehicle and the price are confirmed in your quotation." },
+        { label: "After landing", detail: "Collect your luggage and go to the pickup point confirmed with your booking." },
+        { label: "Travel to Riyadh", detail: "You're driven directly to your Riyadh destination, as set out in your confirmed quotation." },
+      ],
+      bookingSteps: [
+        { label: "Share your journey details", detail: "Flight details, your destination in Riyadh, passengers, luggage and any child seats." },
+        { label: "Receive your quotation", detail: "The confirmed quotation sets the price and explains what it covers." },
+        { label: "Confirm", detail: "Nothing is booked until you confirm the quotation." },
+        { label: "Travel as confirmed", detail: "Follow the pickup arrangements confirmed with your booking." },
+      ],
+      ctaText: "Share your flight details and Riyadh destination, and we'll reply with a quotation for you to confirm.",
+    },
   },
+
 
   "jeddah-airport-to-yanbu": {
     intro:

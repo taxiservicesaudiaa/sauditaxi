@@ -6,6 +6,7 @@ import { RIYADH_QASSIM, RIYADH_QASSIM_FAQS, RIYADH_QASSIM_PATH, RIYADH_QASSIM_RE
 import { JUBAIL_RIYADH, JUBAIL_RIYADH_FAQS, JUBAIL_RIYADH_PATH, JUBAIL_RIYADH_REVIEWED } from "@/data/jubail-to-riyadh-route";
 import { DMM_ABQAIQ, DMM_ABQAIQ_FAQS, DMM_ABQAIQ_PATH, DMM_ABQAIQ_REVIEWED } from "@/data/dammam-airport-to-abqaiq-route";
 import { NEOM, NEOM_FAQS, NEOM_PATH, NEOM_REVIEWED } from "@/data/riyadh-to-neom-route";
+import { ABHA, ABHA_FAQS, ABHA_PATH, ABHA_REVIEWED, PHOTOS as ABHA_PHOTOS } from "@/data/riyadh-to-abha-route";
 import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_REVIEWED } from "@/data/dammam-to-al-khafji-route";
 
 /**
@@ -19,6 +20,7 @@ import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_RE
  *   "jubail"      → components/routes/JubailRiyadhRouteView.tsx
  *   "dmm-abqaiq"  → components/routes/DmmAbqaiqRouteView.tsx
  *   "neom"        → components/routes/RiyadhNeomRouteView.tsx
+ *   "abha"        → components/routes/RiyadhAbhaRouteView.tsx
  */
 export interface LongRoutePage {
   path: string;
@@ -29,9 +31,15 @@ export interface LongRoutePage {
   faqs: Faq[];
   serviceName: string;
   areaServed: string[];
-  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom";
+  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom" | "abha";
   /** Primary page image (emitted as WebPage.primaryImageOfPage). */
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; credit?: { author: string; licence: string; licenceUrl?: string; source: string } };
+  /** Places with coordinates: emitted as areaServed City nodes with GeoCoordinates. */
+  places?: { name: string; lat: number; lon: number; region?: string }[];
+  /** Destination geo meta tags (geo.region / geo.placename / geo.position / ICBM). */
+  geo?: { region: string; placename: string; lat: number; lon: number };
+  /** Open Graph image override for this page only. */
+  ogImage?: string;
   /** Related route cards for views without shared-template content. */
   related?: { slug: string; text: string }[];
   /** Shared-template content (needed by "default" and "riyadh-hail"). */
@@ -113,5 +121,22 @@ export const longRoutePages: Record<string, LongRoutePage> = {
     areaServed: ["Riyadh", "Tabuk", "NEOM"],
     view: "neom",
     image: NEOM.hero.image,
+  },
+  "riyadh-to-abha": {
+    path: ABHA_PATH,
+    reviewed: ABHA_REVIEWED,
+    h1: ABHA.hero.h1,
+    summary: ABHA.glance.answer,
+    faqs: ABHA_FAQS,
+    serviceName: "Riyadh to Abha Private Transfer",
+    areaServed: ["Riyadh", "Abha"],
+    view: "abha",
+    image: { src: ABHA_PHOTOS.hero.src, alt: ABHA_PHOTOS.hero.alt, credit: ABHA_PHOTOS.hero.credit },
+    places: [
+      { name: "Riyadh", lat: 24.7136, lon: 46.6753, region: "Riyadh Region" },
+      { name: "Abha", lat: 18.2164, lon: 42.5053, region: "Asir Region" },
+    ],
+    geo: { region: "SA-14", placename: "Abha, Asir Region, Saudi Arabia", lat: 18.2164, lon: 42.5053 },
+    ogImage: ABHA_PHOTOS.hero.src,
   },
 };

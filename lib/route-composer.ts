@@ -123,7 +123,7 @@ export function buildRouteBlocks(route: Route, type: JourneyType, reverseHref?: 
       type: "prose",
       heading: "Planning the Return Journey",
       paragraphs: [
-        `Travelling back the other way? We also provide a private transfer in the opposite direction — see <a href='${reverseHref}'>${route.to} to ${route.from}</a> for fixed pricing and door-to-door pickup on the return leg.`,
+        `Travelling back the other way? We also provide a private transfer in the opposite direction — see <a href='${reverseHref}'>${route.to} to ${route.from}</a> for the return journey.`,
       ],
     });
   }

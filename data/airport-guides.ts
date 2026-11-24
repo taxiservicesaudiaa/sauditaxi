@@ -28,7 +28,14 @@ export interface AirportDestinationCluster {
   linkLabel?: string;
 }
 
+/** Per-airport overrides of base fields in data/airports.ts (guide values are spread over the base record). */
 export interface AirportGuide {
+  metaTitle?: string;
+  metaDescription?: string;
+  about?: string;
+  heroImage?: string;
+  heroAlt?: string;
+  hubOverrides?: import("@/data/airports").AirportHubOverrides;
   /** H2 #1 "Private Transfers from [Airport]" — no H3s. */
   coreServiceParagraph?: string;
   /** H2 #3 "Arriving at [Official Airport Name]" — no H3s. */
@@ -447,75 +454,101 @@ export const airportGuides: Record<string, AirportGuide> = {
 
   // ── ABHA · AHB ────────────────────────────────────────────────────────────
   "abha-airport": {
-    lastUpdated: "2026-09-17",
+    // AHB consistency pass (24 Nov 2026). Abha airport operating arrangements are NOT
+    // owner-confirmed: no name-board / arrivals-hall meet-and-greet, no automatic flight
+    // tracking, no free waiting, no luggage-help or fixed-price claims. Meeting point is
+    // confirmed individually; quotation-based pricing. Child seats on request (owner).
+    // Distances OSRM: airport → central Abha ≈20 km, → central Khamis Mushait ≈20 km.
+    lastUpdated: "2026-11-24",
     keywords: ["abha airport taxi", "abha international airport transfer", "khamis mushait airport pickup", "private transfer from abha airport", "asir highlands transfer"],
+    metaTitle: "Abha Airport Transfers (AHB) | Private Pickup to Abha",
+    metaDescription:
+      "Private transfers from Abha International Airport (AHB) to Abha, Khamis Mushait and the Asir highlands. Share your flight and destination to receive a quotation.",
+    about:
+      "Private transfers from Abha International Airport to hotels and addresses in Abha and Khamis Mushait, mountain destinations such as Al-Soudah, and onward cities, each arranged by quotation.",
+    heroImage: "/images/asir/abha-city-view.webp",
+    heroAlt: "View over Abha's buildings towards mountains under heavy cloud",
     coreServiceParagraph:
-      "Abha International Airport is the gateway to the green Asir highlands, and we provide private transfers from arrivals to hotels in Abha, Khamis Mushait, and the surrounding mountain resorts. Your driver tracks your flight, meets you in the arrivals hall, and drives directly to your destination at a fixed price agreed before you travel, with luggage assistance included.",
+      "Abha International Airport (AHB) lies about 20 km by road east of central Abha, towards Khamis Mushait. We provide private, pre-booked transfers from the airport to hotels, homes and offices in Abha and Khamis Mushait, to highland destinations such as Al-Soudah, and onward to other cities. Share your flight details and exact destination when you request a quotation; the meeting point is confirmed individually with your booking, and the confirmed quotation sets the price and explains what it covers.",
     arrivingParagraphs: [
-      "Abha's single terminal has a simple arrivals flow, and your driver waits in the hall with a name board. Abha and neighbouring Khamis Mushait sit close together, so most transfers are short.",
-      "Abha's altitude of over 2,000 metres keeps it noticeably cooler and often misty compared to the rest of the Kingdom — a useful detail if you're arriving from a much warmer city.",
+      "After landing, complete arrival formalities and collect your luggage as usual, then go to the pickup point confirmed with your booking. Please follow those instructions rather than expecting a particular meeting arrangement in the terminal.",
+      "Abha's altitude of over 2,000 metres keeps it noticeably cooler and often misty compared with much of the Kingdom, which is worth knowing if you're arriving from a warmer city.",
     ],
     destinationClusters: [
       {
-        title: "Abha and Khamis Mushait Hotel Transfers",
-        body: "Direct pickup to hotels in both cities, plus local trips around the Asir highlands, priced and confirmed before you travel.",
+        title: "Abha and Khamis Mushait",
+        body: "Transfers to hotels, homes and offices in both cities, plus local trips around Abha, each priced in a quotation you confirm.",
         href: "/taxi-service/abha",
-        linkLabel: "Abha taxi service",
+        linkLabel: "Private transfers in Abha",
       },
       {
-        title: "Al Soudah and Mountain Resort Transfers",
-        body: "Private transport to the highland resorts around Al Soudah near Jabal Sawda, one of the Kingdom's highest points, with a driver used to the winding roads.",
+        title: "Al-Soudah and the highlands",
+        body: "Transfers towards Al-Soudah, among the highest ground in Saudi Arabia, and other mountain destinations. Mountain fog can affect timing; any stops or waiting are set out in your quotation.",
       },
       {
-        title: "Jazan and Najran Connections",
-        body: "Private intercity transfers linking Abha with the coast at Jazan and inland to Najran for a combined southern-Saudi itinerary.",
+        title: "Jazan and Najran connections",
+        body: "Private intercity transfers linking Abha with the coast at Jazan and inland to Najran can be requested and quoted for a combined southern itinerary.",
         href: "/airport-transfer/jazan-airport",
         linkLabel: "Jazan Airport transfers",
       },
     ],
+    hubOverrides: {
+      popularIntro: "Long-distance road transfers from Abha International Airport, each priced in a quotation you confirm.",
+      popularCardBody: undefined,
+      meetGreetHeading: "Airport pickup at Abha International Airport",
+      meetGreetIntro: "How a pickup at AHB is arranged, from your request to the start of the drive.",
+      meetGreetSteps: [
+        { title: "Before your flight", detail: "Share your airline, flight number, arrival date and time and your destination when you request a quotation." },
+        { title: "Your quotation", detail: "The meeting point is confirmed individually with your booking, together with the vehicle and the price. If your flight changes, message us." },
+        { title: "After landing", detail: "Collect your luggage and go to the pickup point confirmed with your booking for the drive to your destination." },
+      ],
+      familyParagraph:
+        "Travelling with children, older relatives or a larger group? Tell us your passenger and luggage numbers when you enquire so a suitable SUV, van or minibus can be quoted. Child seats can be provided on request, subject to availability: please share the number of seats and the children's ages.",
+      bookingIntro: "Four steps from your first message to a confirmed pickup.",
+      bookingSteps: [
+        { title: "1. Send your journey details", detail: "Your flight details, arrival date and destination (hotel, city or onward route) by WhatsApp or the quote form." },
+        { title: "2. Receive your quotation", detail: "A price and a vehicle recommendation. The confirmed quotation sets the price and explains what it covers." },
+        { title: "3. Confirm", detail: "Nothing is booked until you confirm; the quotation sets out its payment and cancellation terms." },
+        { title: "4. Follow your pickup arrangements", detail: "Go to the meeting point confirmed individually with your booking at Abha International Airport." },
+      ],
+      finalCtaText: "Add your flight details and destination, and we'll reply with a quotation; the meeting point is confirmed with your booking.",
+    },
     faqs: [
       {
-        question: "How far is Abha Airport from Khamis Mushait?",
-        answer:
-          "Khamis Mushait is close to Abha, usually a short 20–30 minute drive from the airport depending on your exact destination and traffic conditions.",
+        question: "How far is Abha Airport from Abha and Khamis Mushait?",
+        answer: "About 20 km by road to central Abha, and about the same to central Khamis Mushait. Your exact address sets the distance.",
       },
       {
-        question: "Can you take me to Al Soudah from Abha Airport?",
-        answer:
-          "Yes. We drive to the Al Soudah highland resorts and viewpoints near Jabal Sawda, with a driver used to the winding mountain roads and changing conditions.",
+        question: "Can I arrange a transfer to Al-Soudah from Abha Airport?",
+        answer: "Yes, it can be requested. Al-Soudah is in the mountains beyond Abha; mention any stops or waiting time so they can be included in your quotation.",
       },
       {
         question: "Where will I meet my driver at Abha Airport?",
-        answer:
-          "In the arrivals hall, holding a name board, ready as soon as you clear immigration and collect your luggage from the belt.",
+        answer: "At the meeting point confirmed individually with your booking. Please follow those instructions rather than expecting a particular spot or sign.",
       },
       {
         question: "What happens if my flight to Abha is delayed?",
-        answer:
-          "We track your flight and your driver waits with free wait time included, so your fixed price is unaffected by any delay.",
+        answer: "Message us with the new arrival time as soon as you know it. Any waiting arrangements are set out in your confirmed quotation.",
       },
       {
         question: "Can families or groups book private transfers from Abha Airport?",
-        answer:
-          "Yes. The cool Asir highlands are a popular family destination. Request child seats and an SUV or van for comfort on the mountain roads.",
+        answer: "Yes. Share your passenger and luggage numbers so a suitable vehicle can be quoted. Child seats can be provided on request, subject to availability; tell us the number of seats and the children's ages.",
       },
       {
         question: "Can I book an Abha Airport to hotel transfer?",
-        answer:
-          "Yes. Share your hotel name, flight details, and pickup time, and we'll confirm a fixed price and a driver for direct pickup to your hotel.",
+        answer: "Yes. Share your hotel name, flight details and arrival time; you receive a quotation, and the confirmed quotation sets the price and explains what it covers.",
       },
       {
-        question: "How far ahead should I book during the Abha summer festival season?",
-        answer:
-          "Book several days ahead during the peak summer festival months, when Asir sees its highest visitor numbers and vehicle demand is at its busiest.",
+        question: "How far ahead should I book in the summer season?",
+        answer: "As early as you can. Summer brings Abha's highest visitor numbers, so an early request gives the best chance of confirming the vehicle you need.",
       },
       {
-        question: "Can you connect Abha Airport with Jazan or Najran on the same trip?",
-        answer:
-          "Yes. We run private intercity transfers linking Abha with both Jazan on the coast and Najran inland, for a combined southern-Saudi itinerary.",
+        question: "Can I travel from Abha Airport to Riyadh or Jeddah by road?",
+        answer: "Yes. Riyadh is about 935–950 km and Jeddah about 695–705 km from the airport by road; both are long single-day journeys quoted individually.",
       },
     ],
   },
+
 
   // ── TABUK · TUU ───────────────────────────────────────────────────────────
   "tabuk-airport": {

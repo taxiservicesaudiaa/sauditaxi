@@ -352,9 +352,9 @@ const baseCities: City[] = [
       "riyadh-to-abha",
     ],
     nearestAirportSlug: "abha-airport",
-    metaTitle: "Abha Taxi Service – Private Asir Highlands Transfers",
+    metaTitle: "Private Transfers in Abha | Airport, City & Asir Trips",
     metaDescription:
-      "Private taxi service in Abha covering airport pickups, cable car and mountain resort transfers, and sightseeing across the Asir highlands.",
+      "Private transfers around Abha and the Asir highlands: airport, hotels, Al-Soudah, Habala and Khamis Mushait. Share your plans to receive a quotation.",
   },
   {
     slug: "tabuk",

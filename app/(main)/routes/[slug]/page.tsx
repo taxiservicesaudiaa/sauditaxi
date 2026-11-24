@@ -67,6 +67,7 @@ import { RiyadhQassimRouteView } from "@/components/routes/RiyadhQassimRouteView
 import { JubailRiyadhRouteView } from "@/components/routes/JubailRiyadhRouteView";
 import { DmmAbqaiqRouteView } from "@/components/routes/DmmAbqaiqRouteView";
 import { RiyadhNeomRouteView } from "@/components/routes/RiyadhNeomRouteView";
+import { RiyadhAbhaRouteView } from "@/components/routes/RiyadhAbhaRouteView";
 import { longRoutePages } from "@/data/long-route-pages";
 
 const gccCountryDisplayName: Record<string, string> = {
@@ -128,7 +129,8 @@ export async function generateMetadata({
   if (!route) return {};
   const path = `/routes/${route.slug}`;
   const arPath = getArPathForEnPathLight(path);
-  return buildMetadata({
+  const lp = longRoutePages[route.slug];
+  const meta = buildMetadata({
     title:
       route.metaTitle ??
       `${route.from} to ${route.to} Taxi | Private Transfer`,
@@ -136,8 +138,20 @@ export async function generateMetadata({
       route.metaDescription ??
       `Book a private ${route.from} to ${route.to} taxi (${route.distance}, approx. ${route.duration}). Private car and driver — request a quotation online or on WhatsApp.`,
     path,
+    ...(lp?.ogImage ? { image: lp.ogImage } : {}),
     ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
   });
+  if (!lp?.geo) return meta;
+  const pos = `${lp.geo.lat};${lp.geo.lon}`;
+  return {
+    ...meta,
+    other: {
+      "geo.region": lp.geo.region,
+      "geo.placename": lp.geo.placename,
+      "geo.position": pos,
+      ICBM: `${lp.geo.lat}, ${lp.geo.lon}`,
+    },
+  };
 }
 
 function routeFaqs(from: string, to: string): Faq[] {
@@ -263,6 +277,14 @@ export default async function RoutePage({
                       "@type": "ImageObject",
                       url: absoluteUrl(longPage.image.src),
                       caption: longPage.image.alt,
+                      ...(longPage.image.credit
+                        ? {
+                            creditText: longPage.image.credit.author,
+                            creator: { "@type": "Person", name: longPage.image.credit.author },
+                            ...(longPage.image.credit.licenceUrl ? { license: longPage.image.credit.licenceUrl } : {}),
+                            acquireLicensePage: longPage.image.credit.source,
+                          }
+                        : {}),
                     },
                   }
                 : {}),
@@ -276,12 +298,21 @@ export default async function RoutePage({
                 dateModified: longPage.reviewed,
               }),
               "@id": `${pageUrl}#service`,
-              areaServed: longPage.areaServed.map((name) => ({ "@type": "City", name })),
+              areaServed: longPage.places
+                ? longPage.places.map((pl) => ({
+                    "@type": "City",
+                    name: pl.name,
+                    ...(pl.region ? { containedInPlace: { "@type": "AdministrativeArea", name: pl.region } } : {}),
+                    geo: { "@type": "GeoCoordinates", latitude: pl.lat, longitude: pl.lon },
+                  }))
+                : longPage.areaServed.map((name) => ({ "@type": "City", name })),
             },
             faqSchema(longPage.faqs),
           ]}
         />
-        {longPage.view === "neom" ? (
+        {longPage.view === "abha" ? (
+          <RiyadhAbhaRouteView faqs={longPage.faqs} crumbs={crumbs} />
+        ) : longPage.view === "neom" ? (
           <RiyadhNeomRouteView faqs={longPage.faqs} crumbs={crumbs} />
         ) : longPage.view === "dmm-abqaiq" ? (
           <DmmAbqaiqRouteView faqs={longPage.faqs} crumbs={crumbs} relatedRoutes={related} />

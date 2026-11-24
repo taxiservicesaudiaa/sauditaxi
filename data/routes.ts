@@ -3,6 +3,7 @@ import { RIYADH_HAIL_FAQS } from "./riyadh-to-hail-route";
 import { RIYADH_QASSIM_FAQS } from "./riyadh-to-qassim-route";
 import { JUBAIL_RIYADH_FAQS } from "./jubail-to-riyadh-route";
 import { NEOM_FAQS } from "./riyadh-to-neom-route";
+import { ABHA_FAQS } from "./riyadh-to-abha-route";
 import { dammamRoutes } from "./dammam-routes";
 
 export type RouteCategory = "religious" | "intercity" | "border" | "airport";
@@ -6570,217 +6571,111 @@ const baseRoutes: Route[] = [
     keywords: ["taif to riyadh taxi", "taif to riyadh transfer", "taif riyadh private car", "taif to riyadh airport taxi", "taif mountain to riyadh taxi"],
   },
   {
+    // Rendered by components/routes/RiyadhAbhaRouteView.tsx; copy and sources in
+    // data/riyadh-to-abha-route.ts. OSRM 946 km / 11.3 h, Valhalla 955 km / 12.2 h.
     slug: "riyadh-to-abha",
     from: "Riyadh",
     to: "Abha",
     category: "intercity",
-    distance: "~830 km",
-    duration: "About 8 hours 45 min",
+    distance: "940–960 km",
+    duration: "approx. 11–12 hours",
+    lastUpdated: "2026-11-24",
+    h1: "Riyadh to Abha Private Transfer: A Journey into the Asir Mountains",
     intro:
-      "The Riyadh to Abha taxi is a private long-distance transfer south to the cool mountain city of the Asir region, popular with families seeking a climate escape and visitors drawn to the region's distinctive culture and scenery.",
+      "A long-distance private transfer south-west from Riyadh to Abha in the Asir mountains, about 940–960 km by road via Bisha and Khamis Mushait.",
     about:
-      "Our private Riyadh to Abha transfer covers the long southern route in comfortable vehicles, climbing into the Asir mountains at journey's end to deliver you door to door to a hotel or address at around 2,200 metres elevation — a fixed price and rest-stop flexibility throughout.",
+      "Riyadh to Abha is about 940–960 km by road, roughly 11–12 hours of driving before breaks, climbing from about 630 m to 2,220 m. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off anywhere in Abha, including mountain-view areas",
-      "Comfortable vehicles for the roughly nine-hour drive",
-      "Familiar with the mountain roads around Al-Soudah and the Asir highlands",
+      "About 940–960 km, roughly 11–12 hours of driving before breaks",
+      "From your Riyadh address to the Abha address you confirm",
+      "A single-day journey with breaks; child seats on request",
+      "Quotation-based pricing, confirmed by you before booking",
     ],
     relatedCitySlugs: ["riyadh", "abha"],
-    metaTitle: "Book a Riyadh to Abha Transfer – Private Car Service",
+    metaTitle: "Riyadh to Abha Private Transfer | Road Trip to Asir",
     metaDescription:
-      "Travel from Riyadh to Abha (~830 km, about 8 hours 45 min) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
-    sections: [
-      {
-        heading: "Riyadh to Abha: route overview and distance",
-        paragraphs: [
-          "The drive from Riyadh to Abha covers approximately 830 kilometres, one of the longer domestic routes we offer, taking around eight hours forty-five minutes in free-flowing traffic. Abha sits at roughly 2,200 metres elevation in the Asir mountains, giving it one of the coolest climates in the Kingdom and a genuinely different character from the desert cities most of the journey passes through.",
-          "A private transfer covers the entire distance door to door, with the final stretch climbing into mountainous terrain quite different from the long flat highway that precedes it.",
-        ],
-      },
-      {
-        heading: "The fastest route and the mountain climb",
-        paragraphs: [
-          "The route runs largely south across open highway before the final approach into the Asir highlands climbs steadily into the mountains. This final section requires a more measured pace than the flat desert stretches earlier in the journey, and drivers experienced with the Asir mountain roads handle it accordingly.",
-        ],
-      },
-      {
-        heading: "Scenic highlights along the way",
-        paragraphs: [
-          "Abha and the wider Asir region are known for genuinely striking mountain scenery — Al-Soudah, near the highest point in Saudi Arabia, offers a cable car and views across layered mountain ridges often shrouded in cloud, a rare sight in the Kingdom. The city itself features distinctive traditional Asiri architecture, with colourful geometric patterns painted on many older buildings, and Abha Lake Park offers a pleasant, cool-weather green space. Rijal Almaa, a well-preserved historic stone-tower village nearby, is a popular heritage day trip.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "The highway portion of the journey is well-maintained and straightforward, while the mountain roads into the Asir highlands are winding and require careful, measured driving — a genuine skill difference from flat highway driving, and one our drivers who cover this route regularly have developed.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere in Saudi Arabia. Your fixed price covers the complete journey.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "Abha's cool mountain climate makes it a popular escape year-round, but particularly appealing in summer when much of the rest of the Kingdom is at its hottest — genuinely one of the best reasons to plan an Abha trip for those months. Spring brings especially pleasant conditions and clearer mountain views before the cloudier monsoon-influenced season later in summer.",
-        ],
-      },
-      {
-        heading: "Vehicle options for a long mountain journey",
-        paragraphs: [
-          "Given the distance and mountain climb, a comfort SUV is generally the preferred choice, and families visiting for the cooler climate or touring the region's heritage villages often choose a minivan for extra room.",
-        ],
-      },
-      {
-        heading: "A note for business and heritage travellers",
-        paragraphs: [
-          "Abha's growing tourism profile brings both leisure travellers and business visitors connected to the region's hospitality sector, and both benefit from the same fixed-price, tracked service standard across our longer intercity routes.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Within Abha, Al-Soudah, Abha Lake Park, the traditional architecture districts, and nearby Rijal Almaa village are the main draws. Travellers whose journey continues elsewhere in the Asir region can mention this when booking so we can plan accordingly.",
-        ],
-      },
-      {
-        heading: "Safety on a long mountain-approach transfer",
-        paragraphs: [
-          "The combination of a long highway stretch and a genuine mountain climb makes driver experience specifically valuable on this route — our drivers pace the highway portion sensibly and take particular care on the winding mountain roads into the Asir highlands.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to Abha transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your Abha destination, your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How far is Abha from Riyadh, and how long does the drive take?", answer: "The distance is approximately 830 kilometres, and the drive takes about eight hours forty-five minutes, including the mountain climb into the Asir highlands." },
-      { question: "Why is Abha so much cooler than the rest of Saudi Arabia?", answer: "Abha sits at roughly 2,200 metres elevation in the Asir mountains, giving it one of the coolest climates in the Kingdom." },
-      { question: "Is the price fixed including the mountain section?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, including the mountain climb, with no meter, no surge, and no toll charges." },
-      { question: "What's the best season to visit Abha?", answer: "Summer is popular for the cool-climate escape, and spring offers especially pleasant conditions and clearer mountain views before the cloudier monsoon-influenced period later in the season." },
-      { question: "Can you take me to Al-Soudah or Rijal Almaa specifically?", answer: "Yes, we drop off at these and other Asir region destinations — just share your exact plans when booking." },
-      { question: "Which vehicle suits this longer journey best?", answer: "A comfort SUV is generally preferred given the distance and mountain climb, and families often choose a minivan for extra room." },
-      { question: "Are rest stops included?", answer: "Yes, given the near-nine-hour distance, we build in rest stops as needed at no extra cost." },
-      { question: "Is there a return Abha to Riyadh transfer?", answer: "Yes, see our <a href='/routes/abha-to-riyadh'>Abha to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your Abha destination, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is the mountain approach into Abha safe?", answer: "Yes, our drivers are experienced with these winding mountain roads and take a measured, careful pace on that section." },
-      { question: "Is this drive suitable for elderly travellers given its length?", answer: "With planned rest stops and a daytime arrival for the mountain section, it's manageable for most elderly travellers, though very frail travellers may prefer to break the journey or consider flying." },
-      { question: "Is night travel on this route routine?", answer: "Given the mountain climb, we generally recommend a daytime arrival into Abha specifically, though the highway portion is handled routinely at any hour." },
-    ],
-    keywords: ["riyadh to abha taxi", "riyadh to abha transfer", "riyadh abha private car", "riyadh to abha distance", "riyadh asir mountains taxi"],
+      "Plan a private road transfer from Riyadh to Abha, about 950 km into the Asir mountains. Share your pickup, Abha destination, date and passengers for a quotation.",
+    keywords: ["riyadh to abha transfer", "riyadh to abha taxi", "riyadh to abha by road", "riyadh to abha distance", "private car riyadh to abha"],
+    faqs: ABHA_FAQS,
   },
+
   {
+    // OSRM 24 Nov 2026, central Abha → central Riyadh: 945 km / 11.5 h;
+    // Valhalla 955 km / 12.2 h. Owner: overnight stops not offered; child
+    // seats on request, subject to availability. Return-journey intent; the
+    // outbound story lives on /routes/riyadh-to-abha.
     slug: "abha-to-riyadh",
     from: "Abha",
     to: "Riyadh",
     category: "intercity",
-    distance: "~830 km",
-    duration: "About 8 hours 45 min",
+    distance: "940–960 km",
+    duration: "approx. 11–12 hours",
+    lastUpdated: "2026-11-24",
+    h1: "Private Transfer from Abha to Riyadh",
     intro:
-      "The Abha to Riyadh taxi is a private long-distance transfer from the cool mountain city of the Asir region back to the capital, popular with residents, mountain-getaway visitors heading home, and business travellers connecting to Riyadh's airport.",
+      "A private long-distance road transfer from Abha in the Asir highlands to Riyadh, about 940–960 km via Khamis Mushait and Bisha, planned as a single-day journey.",
     about:
-      "Our private Abha to Riyadh transfer collects you from a hotel or address anywhere in Abha and drives the long route north, descending from the Asir mountains before joining the open highway to Riyadh — one vehicle, one fixed price.",
+      "The journey north starts at the Abha address you confirm and ends at your home, hotel or office in Riyadh, or at King Khalid International Airport. Expect roughly 11–12 hours of driving before breaks. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup anywhere in Abha and the Asir highlands",
-      "Direct drop-off anywhere in Riyadh, including the airport",
-      "Comfortable vehicles for the roughly nine-hour drive",
-      "Timed pickups available for onward Riyadh flight connections",
+      "About 940–960 km, roughly 11–12 hours of driving before breaks",
+      "Pickup at the Abha or Khamis Mushait address you confirm",
+      "Drop-off at your Riyadh address or King Khalid International Airport",
+      "A single-day journey with breaks; child seats on request",
     ],
     relatedCitySlugs: ["abha", "riyadh"],
-    metaTitle: "Private Car from Abha to Riyadh – Book Your Ride",
+    metaTitle: "Abha to Riyadh Private Transfer | Road Journey North",
     metaDescription:
-      "Private transfer from Abha to Riyadh (~830 km, about 8 hours 45 min) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
+      "Request a private road transfer from Abha to Riyadh, about 950 km. Share your Abha pickup, Riyadh destination or flight time, passengers and luggage for a quotation.",
     sections: [
       {
-        heading: "Abha to Riyadh: route overview and distance",
+        heading: "How far is Riyadh from Abha by road?",
         paragraphs: [
-          "The drive from Abha to Riyadh covers approximately 830 kilometres, taking around eight hours forty-five minutes in free-flowing traffic. The journey begins with a mountain descent from the Asir highlands before joining the long open highway north to the capital.",
-          "A private transfer collects you from your exact address in Abha and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport.",
+          "From central Abha to central Riyadh is about 940–960 km by road, with roughly 11–12 hours of driving before breaks. Two routing engines on OpenStreetMap data give 945 km and 955 km; your exact pickup and drop-off points change the figure, and the quotation is based on them.",
         ],
       },
       {
-        heading: "The fastest route and the mountain descent",
+        heading: "Leaving the highlands",
         paragraphs: [
-          "Leaving Abha, the route descends from the Asir highlands before opening onto the long, straight highway north — the reverse of the outbound climb, with the same need for careful driving on the early winding section.",
+          "Abha sits at about 2,200 m. The road north passes Khamis Mushait and then loses height gradually over several hundred kilometres, past Bisha and across the open plateau of the Riyadh Region, until you reach the capital at around 600 m. It is a long, steady run rather than a winding mountain descent.",
+          "For the full picture of this road, including an elevation profile, see our <a href='/routes/riyadh-to-abha'>Riyadh to Abha journey guide</a>.",
         ],
       },
       {
-        heading: "Scenic highlights along the way",
+        heading: "Planning a single-day journey",
         paragraphs: [
-          "The descent from the Asir mountains offers dramatic views before the landscape opens into flatter desert terrain for the remainder of the drive to Riyadh, a genuinely varied journey across its near-nine-hour length.",
+          "Overnight stops aren't offered on this route, so the transfer is planned as one long day with breaks for rest, prayer and fuel. An early start is the simplest way to reach Riyadh at a reasonable hour; tell us when you'd like to leave and any break preferences when you request a quote. For trips around the city before you set off, see our <a href='/taxi-service/abha'>Abha transfers</a> page.",
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Arriving in Riyadh or catching a flight",
         paragraphs: [
-          "The mountain descent requires careful, measured driving, while the highway portion that follows is well-maintained and straightforward for the remaining distance to Riyadh.",
+          "Drop-off can be your home, hotel or office anywhere in Riyadh, or <a href='/airport-transfer/riyadh-airport'>King Khalid International Airport</a>. If you're flying out, share your departure time when you ask for a quote; the timing, with a sensible margin, is set out in your quotation. Flight changes aren't picked up automatically, so message us if your plans move.",
         ],
       },
       {
-        heading: "Tolls and highway fees",
+        heading: "Families, luggage and child seats",
         paragraphs: [
-          "No toll roads apply on this route or anywhere in Saudi Arabia. Your fixed price is fully inclusive.",
+          "The vehicle is matched to your passenger and luggage count in the quotation, from a sedan for a couple to a van or minibus for a larger family. Child seats can be provided on request, subject to availability: tell us how many you need and the children's ages when you enquire.",
         ],
       },
       {
-        heading: "Best time to travel this route",
+        heading: "Requesting your Abha to Riyadh quotation",
         paragraphs: [
-          "If your trip connects to a Riyadh flight, we build in a generous buffer for the drive plus airport processing. Otherwise, a daytime departure makes the mountain descent from Abha more comfortable.",
-        ],
-      },
-      {
-        heading: "Vehicle options for the return journey",
-        paragraphs: [
-          "A comfort SUV remains generally preferred for this longer journey, and families or groups often choose a minivan for extra room, particularly useful when returning with items purchased in the Asir region.",
-        ],
-      },
-      {
-        heading: "A note for business and heritage travellers",
-        paragraphs: [
-          "Business travellers connected to Abha's growing hospitality sector, along with heritage visitors heading home after touring the region, benefit from the same fixed-price, tracked service standard across our longer intercity routes.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Most transfers from Abha begin at a hotel or mountain-area address, and end at a Riyadh airport terminal or city address. Travellers continuing their journey elsewhere should mention this when booking.",
-        ],
-      },
-      {
-        heading: "Safety on a long mountain-descent transfer",
-        paragraphs: [
-          "The mountain descent from Abha requires the same careful driving as the outbound climb, and our drivers handle this section with appropriate care before the longer, straighter highway stretch that follows.",
-        ],
-      },
-      {
-        heading: "Booking your Abha to Riyadh transfer",
-        paragraphs: [
-          "Share your pickup point in Abha, your Riyadh destination or flight details, preferred time, and group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Send your Abha pickup address, your Riyadh destination or flight time, the date and preferred departure time, passengers, luggage and any child seats. We reply with a quotation; the confirmed quotation sets the price and explains what it covers, and nothing is booked until you confirm. Use the <a href='/get-quote'>quote form</a> or WhatsApp.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Riyadh from Abha, and how long does the drive take?", answer: "The distance is approximately 830 kilometres, and the drive takes about eight hours forty-five minutes, including the mountain descent from Abha." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
-      { question: "Is the fare fixed including the mountain section?", answer: "Yes, the price is agreed before you travel and covers the complete trip, including the mountain descent, with no meter, no surge, and no toll charges." },
-      { question: "Is the mountain descent from Abha safe?", answer: "Yes, our drivers are experienced with these roads and take a measured, careful pace on that section." },
-      { question: "Which vehicle suits this journey best?", answer: "A comfort SUV is generally preferred given the distance, and families or groups often choose a minivan for extra room." },
-      { question: "Are rest stops included?", answer: "Yes, given the distance, we build in rest stops as needed at no extra cost." },
-      { question: "Is there a return Riyadh to Abha transfer?", answer: "Yes, see our <a href='/routes/riyadh-to-abha'>Riyadh to Abha</a> page to book that direction." },
-      { question: "What information do you need when booking?", answer: "Your pickup point in Abha, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage amount." },
-      { question: "Can I bring items purchased in the Asir region?", answer: "Yes, our vehicles have ample luggage space for purchases from the region." },
-      { question: "Is this drive suitable for elderly travellers given its length?", answer: "With a daytime departure for the mountain descent and planned rest stops, it's manageable for most elderly travellers." },
-      { question: "Do you serve business travel connected to Abha's hospitality sector?", answer: "Yes, we provide the same fixed-price, tracked service for business travellers as for leisure visitors." },
-      { question: "Is night travel on this route routine?", answer: "We generally recommend a daytime departure given the mountain descent, though the highway portion is handled routinely at any hour." },
+      { question: "How far is Riyadh from Abha by road?", answer: "About 940–960 km from central Abha to central Riyadh, depending on your exact pickup and drop-off points." },
+      { question: "How long is the drive from Abha to Riyadh?", answer: "Roughly 11–12 hours of driving before breaks. Overnight stops aren't offered, so it is planned as one long day." },
+      { question: "Can the transfer take me to King Khalid International Airport?", answer: "Yes. Share your departure time when you request a quote and the timing is set out in your quotation. Flight changes aren't tracked automatically, so message us if anything changes." },
+      { question: "Can I request a child seat for the journey?", answer: "Yes, on request and subject to availability. Tell us how many seats you need and the children's ages when you enquire." },
+      { question: "How is the price for Abha to Riyadh worked out?", answer: "It is quotation-based. Share your pickup, destination, date, passengers and luggage; the confirmed quotation sets the price and explains what it covers." },
+      { question: "Is there a transfer from Riyadh to Abha?", answer: "Yes. See our <a href='/routes/riyadh-to-abha'>Riyadh to Abha</a> page for the journey south." },
     ],
-    keywords: ["abha to riyadh taxi", "abha to riyadh transfer", "abha riyadh private car", "abha to riyadh airport taxi", "asir mountains to riyadh taxi"],
+    keywords: ["abha to riyadh transfer", "abha to riyadh taxi", "abha to riyadh by road", "abha to riyadh airport", "private car abha to riyadh"],
   },
+
   {
     // OSRM 23 Nov 2026, central Riyadh → central Tabuk: fastest road ≈1,349 km /
     // ≈13.8 h (Highway 65 via Qassim and Hail, Highway 80 west, Route 15);
@@ -7759,40 +7654,46 @@ const baseRoutes: Route[] = [
     keywords: ["riyadh airport to madinah taxi", "ruh to madinah private transfer", "riyadh to madinah airport transfer"],
   },
   {
+    // OSRM 24 Nov 2026 (central Abha 18.2164,42.5053 ↔ central Jeddah 21.4858,39.1925):
+    // 682 km / 7.8 h; Valhalla 683 km / 7.4 h (both directions within 2 km). Route: down
+    // the escarpment to Ad Darb, then north on coastal Highway 5 via Al Birk, Al Qunfudhah
+    // and Al Lith.
     slug: "abha-to-jeddah",
-    metaTitle: "Abha to Jeddah Private Transfer – Fixed-Price Taxi",
-    metaDescription: "Book a private taxi from Abha to Jeddah (620 km, about 6 hours 30 min). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
+    metaTitle: "Abha to Jeddah Private Transfer | Highlands to the Coast",
+    metaDescription: "Request a private road transfer from Abha to Jeddah, about 680–690 km. Share your Abha pickup, Jeddah destination, passengers and luggage for a quotation.",
     from: "Abha",
     to: "Jeddah",
     category: "intercity",
-    distance: "620 km",
-    duration: "6 hours 30 min",
+    distance: "680–690 km",
+    duration: "approx. 7.5–8 hours",
     intro:
-      "Private chauffeur transfer from the mountain city of Abha and Asir province down to Jeddah and the Red Sea coast.",
+      "Private road transfer from Abha and the Asir highlands down to Jeddah and the Red Sea coast, about 680–690 km.",
     about:
-      "Travel from the scenic Asir highlands in Abha down to Jeddah with our private long-distance transfer service. We collect you from your Abha hotel or residence and navigate the coastal Highway 5 route, dropping you off directly at your hotel, resort, or King Abdulaziz Airport in Jeddah.",
+      "The journey starts at your Abha or Khamis Mushait address, descends the escarpment to the coastal plain and runs north along Highway 5 to your hotel, home or King Abdulaziz International Airport in Jeddah. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup across Abha, Khamis Mushait, and Asir resorts",
-      "Drop-off at any Jeddah district, Corniche hotel, or JED airport",
-      "Professional mountain-experienced drivers and modern air-conditioned fleet",
-      "Fixed rates with no roadside surprises or meter surges",
+      "About 680–690 km, roughly 7.5–8 hours of driving before breaks",
+      "Pickup at the Abha or Khamis Mushait address you confirm",
+      "Drop-off at any Jeddah address or King Abdulaziz International Airport",
+      "Quotation-based pricing; child seats on request, subject to availability",
     ],
     relatedCitySlugs: ["abha", "jeddah"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "From the Asir Highlands to the Red Sea Coast",
+        heading: "From the Asir highlands to the Red Sea coast",
         paragraphs: [
-          "The 620 km journey descends from the cool mountain plateau of Abha through Jazan/Al Lith along coastal expressways into Jeddah in approximately 6.5 hours.",
+          "From Abha, at around 2,200 m, the road drops down the escarpment to Ad Darb on the coastal plain, then runs north on Highway 5 past Al Birk, Al Qunfudhah and Al Lith to Jeddah: about 680–690 km, roughly 7.5–8 hours of driving before breaks.",
+          "Tell us your departure time, passengers, luggage and any child seats (number and ages) when you request a quote; the confirmed quotation sets the price and explains what it covers.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a private taxi from Abha to Jeddah take?", answer: "The 620 km transfer takes approximately 6.5 hours under normal highway driving conditions." },
-      { question: "Can you pick up from Khamis Mushait as well as Abha?", answer: "Yes, our drivers collect passengers from Abha, Khamis Mushait, and surrounding Asir region towns." },
+      { question: "How long does a private transfer from Abha to Jeddah take?", answer: "Roughly 7.5–8 hours of driving for about 680–690 km, before breaks." },
+      { question: "Can you pick up from Khamis Mushait as well as Abha?", answer: "Yes, pickups in Khamis Mushait or elsewhere around Abha can be requested; give the exact address so the quotation is accurate." },
     ],
     keywords: ["abha to jeddah taxi", "abha to jeddah private transfer", "asir to jeddah car service", "khamis mushait to jeddah taxi"],
   },
+
   {
     slug: "tabuk-to-madinah",
     metaTitle: "Private Car from Tabuk to Madinah – Book Your Ride",
@@ -8140,39 +8041,45 @@ const baseRoutes: Route[] = [
     keywords: ["madinah to taif taxi", "madinah to taif private transfer", "medina to taif car service"],
   },
   {
+    // OSRM 24 Nov 2026 (central Abha 18.2164,42.5053 ↔ central Jeddah 21.4858,39.1925):
+    // 682 km / 7.8 h; Valhalla 683 km / 7.4 h (both directions within 2 km). Route: down
+    // the escarpment to Ad Darb, then north on coastal Highway 5 via Al Birk, Al Qunfudhah
+    // and Al Lith.
     slug: "jeddah-to-abha",
-    metaTitle: "Jeddah to Abha Transfer – Private Chauffeur Service",
-    metaDescription: "Private transfer from Jeddah to Abha (620 km, about 6 hours 30 min) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
+    metaTitle: "Jeddah to Abha Private Transfer | Coast to the Highlands",
+    metaDescription: "Request a private road transfer from Jeddah to Abha, about 680–690 km into the Asir highlands. Share your pickup, Abha destination and passengers for a quotation.",
     from: "Jeddah",
     to: "Abha",
     category: "intercity",
-    distance: "620 km",
-    duration: "6 hours 30 min",
+    distance: "680–690 km",
+    duration: "approx. 7.5–8 hours",
     intro:
-      "Private scenic chauffeur transfer from Jeddah and Red Sea hotels up to the Asir highlands and mountain resorts of Abha.",
+      "Private road transfer from Jeddah and the Red Sea coast up to Abha and the Asir highlands, about 680–690 km.",
     about:
-      "Travel from the Red Sea coast up to the lush green mountain plateau of Abha with our private transfer service. We collect you directly from your home, hotel, or King Abdulaziz Airport in Jeddah and provide a comfortable 6.5-hour journey along the scenic coastal and mountain highway to Abha.",
+      "We collect you from your home, hotel or King Abdulaziz International Airport in Jeddah for the drive south along the coast and up the escarpment to Abha, roughly 7.5–8 hours of driving before breaks. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup across all Jeddah districts and JED airport",
-      "Direct drop-off at Abha mountain resorts, hotels, and Al Soudah villas",
-      "Late-model air-conditioned vehicles and mountain-experienced chauffeurs",
-      "Fixed upfront pricing with no hidden toll or fuel fees",
+      "About 680–690 km, roughly 7.5–8 hours of driving before breaks",
+      "Pickup across Jeddah, including King Abdulaziz International Airport",
+      "Drop-off at the Abha hotel, home or mountain address you confirm",
+      "Quotation-based pricing; child seats on request, subject to availability",
     ],
     relatedCitySlugs: ["jeddah", "abha"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "From the Red Sea coast to the mist-covered Asir Mountains",
+        heading: "From the Red Sea coast to the Asir mountains",
         paragraphs: [
-          "Covering 620 km south along Highway 5 through Al Lith and the Tihama plains before ascending into Abha, this scenic drive takes approximately 6.5 hours in comfort.",
+          "The road runs south from Jeddah on coastal Highway 5 past Al Lith, Al Qunfudhah and Al Birk, then climbs from Ad Darb up the escarpment to Abha at around 2,200 m: about 680–690 km, roughly 7.5–8 hours of driving before breaks.",
+          "Once you've arrived, our <a href='/taxi-service/abha'>Abha transfers</a> page covers trips around the city and the highlands.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a private transfer from Jeddah to Abha take?", answer: "The 620 km journey takes roughly 6.5 hours including rest breaks." },
+      { question: "How long does a private transfer from Jeddah to Abha take?", answer: "Roughly 7.5–8 hours of driving for about 680–690 km, before breaks." },
     ],
     keywords: ["jeddah to abha taxi", "jeddah to abha private transfer", "jeddah to asir chauffeur"],
   },
+
   {
     slug: "alula-to-yanbu",
     metaTitle: "Private Car from AlUla to Yanbu – Book Your Ride",
@@ -8378,73 +8285,82 @@ const baseRoutes: Route[] = [
     keywords: ["alula airport to jeddah taxi", "ulh to jeddah transfer", "alula to jeddah private airport car"],
   },
   {
+    // OSRM 24 Nov 2026, Abha International Airport (18.2404,42.6566) → central Jeddah:
+    // 698 km / 8.0 h; Valhalla 705 km / 7.7 h. AHB rules not owner-confirmed: no
+    // flight-tracking, arrivals-hall, name-board, waiting or luggage-help claims.
     slug: "abha-airport-to-jeddah",
-    metaTitle: "Abha Airport Taxi to Jeddah – Fixed-Price Transfer",
-    metaDescription: "Book a private transfer from Abha Airport to Jeddah (620 km, about 6 hours 30 min). Professional driver, flight tracking, fixed price, 24/7 availability.",
+    metaTitle: "Abha Airport (AHB) to Jeddah Private Transfer",
+    metaDescription: "Private road transfer from Abha International Airport (AHB) to Jeddah, about 700 km. Share your flight, Jeddah destination, passengers and luggage for a quotation.",
     from: "Abha Airport",
     to: "Jeddah",
     category: "airport",
-    distance: "620 km",
-    duration: "6 hours 30 min",
+    distance: "695–705 km",
+    duration: "7.5–8 hours",
     intro:
-      "Private chauffeur transfer from Abha International Airport (AHB) down to Jeddah hotels, residences, and Corniche resorts.",
+      "Private road transfer from Abha International Airport (AHB) to your hotel, home or office in Jeddah, about 695–705 km.",
     about:
-      "Arriving at Abha International Airport (AHB) with onward travel to the Western Province? Skip flight connections with our private overland transfer. Your driver meets you at AHB arrivals and delivers you directly to your destination in Jeddah in a modern, climate-controlled vehicle.",
+      "Landing at Abha International Airport and continuing to Jeddah by road? Share your flight details when you request a quotation. Your pickup point at the airport is confirmed with your booking, and the drive down to the coast and north to Jeddah is roughly 7.5–8 hours before breaks.",
     notes: [
-      "Meet-and-greet service inside Abha International Airport (AHB) terminal",
-      "Direct coastal expressway route descending from Asir to Jeddah",
-      "Professional mountain-experienced drivers and late-model fleet",
-      "Fixed fares covering all highway travel and fuel expenses",
+      "Pickup point at Abha International Airport confirmed with your booking",
+      "About 695–705 km, roughly 7.5–8 hours of driving before breaks",
+      "Drop-off at the Jeddah address or airport you confirm",
+      "Quotation-based pricing, confirmed by you before booking",
     ],
     relatedCitySlugs: ["abha", "jeddah"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "Direct airport transfer from the Asir highlands to Jeddah",
+        heading: "From Abha International Airport to Jeddah by road",
         paragraphs: [
-          "The 620 km drive takes approximately 6.5 hours, providing a reliable and private road journey between southern airport arrivals and the Red Sea hub.",
+          "From the airport the road passes Abha, descends the escarpment to the coast at Ad Darb and runs north on Highway 5 to Jeddah: about 695–705 km, roughly 7.5–8 hours of driving before breaks.",
         ],
       },
     ],
     faqs: [
-      { question: "Where will my driver meet me at Abha Airport?", answer: "Your chauffeur will wait inside the AHB arrival hall holding a sign with your name." },
+      { question: "Where will my driver meet me at Abha Airport?", answer: "At the pickup point confirmed with your booking. Share your flight details when you request a quotation." },
     ],
     keywords: ["abha airport to jeddah taxi", "ahb to jeddah transfer", "abha airport to jeddah private car"],
   },
+
   {
+    // OSRM 24 Nov 2026, Abha International Airport (AHB) → central Riyadh:
+    // 935 km / 11.4 h; Valhalla 946 km / 12.0 h. AHB operating rules are not
+    // owner-confirmed: no flight-tracking, arrivals-hall, name-board, waiting
+    // or luggage-help claims. Overnight stops not offered; child seats on request.
     slug: "abha-airport-to-riyadh",
-    metaTitle: "Private Taxi: Abha Airport to Riyadh",
-    metaDescription: "Private car from Abha Airport to Riyadh (950 km, about 9 hours) with meet-and-greet pickup and a fixed fare agreed before you travel. Book online.",
+    metaTitle: "Abha Airport (AHB) to Riyadh Private Transfer",
+    metaDescription: "Private road transfer from Abha International Airport (AHB) to Riyadh, about 940 km. Share your flight, Riyadh destination, passengers and luggage for a quotation.",
     from: "Abha Airport",
     to: "Riyadh",
     category: "airport",
-    distance: "950 km",
-    duration: "9 hours",
+    distance: "935–950 km",
+    duration: "11–12 hours",
     intro:
-      "Direct private airport transfer from Abha International Airport (AHB) to any hotel, residence, or office in Riyadh.",
+      "Private road transfer from Abha International Airport (AHB) to your hotel, home or office in Riyadh, about 935–950 km.",
     about:
-      "Landing at Abha International Airport and requiring long-distance private transportation to the capital? Our chauffeur meets you at AHB arrivals, takes care of your luggage, and drives you comfortably across the southern desert into Riyadh with planned comfort stops.",
+      "Landing at Abha International Airport and continuing to Riyadh by road? Share your flight details when you request a quotation. Your pickup point at the airport is confirmed with your booking, and the journey north is roughly 11–12 hours of driving before breaks.",
     notes: [
-      "Meet-and-greet pickup across domestic and international arrivals at AHB",
-      "Direct delivery to any Riyadh district, corporate park, or hotel",
-      "Spacious SUVs and vans with generous baggage space",
-      "Fixed price agreed before departure, with no meter or surge pricing",
+      "Pickup point at Abha International Airport confirmed with your booking",
+      "About 935–950 km, roughly 11–12 hours of driving before breaks",
+      "Drop-off at the Riyadh address you confirm",
+      "Quotation-based pricing, confirmed by you before booking",
     ],
     relatedCitySlugs: ["abha", "riyadh"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "Long-distance overland transfer from AHB to Riyadh",
+        heading: "From Abha International Airport to Riyadh by road",
         paragraphs: [
-          "The 950 km highway route connects the Asir highlands through Wadi Ad-Dawasir directly into Riyadh over roughly 9 hours.",
+          "From the airport the road runs north-east past Khamis Mushait and Bisha, then across the Riyadh Region to the capital: about 935–950 km, roughly 11–12 hours of driving before breaks.",
         ],
       },
     ],
     faqs: [
-      { question: "How long is the transfer from Abha Airport to Riyadh?", answer: "The 950 km journey takes approximately 9 hours with regular highway rest breaks." },
+      { question: "How long is the transfer from Abha Airport to Riyadh?", answer: "Roughly 11–12 hours of driving for about 935–950 km, before breaks." },
     ],
-    keywords: ["abha airport to riyadh taxi", "ahb to riyadh transfer", "abha airport to riyadh chauffeur"],
+    keywords: ["abha airport to riyadh taxi", "ahb to riyadh transfer", "abha airport to riyadh by road"],
   },
+
   {
     slug: "yanbu-to-jeddah-airport",
     metaTitle: "Book Yanbu to Jeddah Airport – Private Transfer",
