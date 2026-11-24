@@ -10,6 +10,9 @@ import { buildMetadata } from "@/lib/seo";
 // Lightweight path-only lookup, not the full ~26,700-line content dataset
 import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, taxiServiceSchema, faqSchema, howToSchema } from "@/lib/schema";
+import { RiyadhAirportView } from "@/components/airport-transfer/RiyadhAirportView";
+import { RUH_PAGE, RUH_PAGE_FAQS, RUH_PAGE_REVIEWED } from "@/data/riyadh-airport-page";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 // 2026 restructuring — new page-specific AirportTransferHub component (see
 // components/airport-transfer/AirportTransferHub.tsx), distinct from the
@@ -149,6 +152,57 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
     { name: "Airport Transfers", path: "/airport-transfers" },
     { name: `${airport.city} Airport`, path },
   ];
+
+  // King Khalid International Airport has its own layout (data/riyadh-airport-page.ts);
+  // the other airports keep the shared AirportTransferHub below.
+  if (airport.slug === "riyadh-airport") {
+    const pageUrl = absoluteUrl(path);
+    const routeLabels = Object.fromEntries(
+      [...RUH_PAGE.routes.cards.map((r) => r.slug), RUH_PAGE.routes.dropoff.slug].map((slug) => [slug, !!getRoute(slug)])
+    );
+    const airportNode = {
+      "@type": "Airport",
+      "@id": `${pageUrl}#airport`,
+      name: airport.name,
+      iataCode: airport.code,
+      address: { "@type": "PostalAddress", addressLocality: "Riyadh", addressCountry: "SA" },
+    };
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: airport.metaTitle,
+              description: airport.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: [{ "@id": `${pageUrl}#service` }, { "@id": `${pageUrl}#airport` }],
+              dateModified: RUH_PAGE_REVIEWED,
+            },
+            {
+              ...serviceSchema({
+                name: "Riyadh Airport Transfers (RUH)",
+                description: RUH_PAGE.hero.intro.join(" "),
+                path,
+                serviceType: "Airport Transfer",
+                areaServed: "Riyadh, Saudi Arabia",
+                dateModified: RUH_PAGE_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              availableAtOrFrom: airportNode,
+            },
+            faqSchema(RUH_PAGE_FAQS),
+          ]}
+        />
+        <RiyadhAirportView faqs={RUH_PAGE_FAQS} crumbs={crumbs} routeLabels={routeLabels} />
+      </>
+    );
+  }
 
   const h1 = `Private ${airport.city} Airport Transfers (${airport.code})`;
   const o = airport.hubOverrides;

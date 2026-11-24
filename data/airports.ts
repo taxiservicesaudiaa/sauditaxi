@@ -107,9 +107,9 @@ const baseAirports: Airport[] = [
       "riyadh-to-bahrain",
       "riyadh-to-doha",
     ],
-    metaTitle: "Private Riyadh Airport Transfer (RUH) | Saudi Private Transfers",
+    metaTitle: "Riyadh Airport Transfers (RUH) | Private Taxi",
     metaDescription:
-      "Riyadh airport (RUH) transfers and onward road travel. Check your flight with your airline, then request a quote — your confirmed quotation sets the price.",
+      "Private transfers to and from King Khalid International Airport (RUH). Share your flight details, destination, passengers and luggage to request a quotation.",
     hubOverrides: {
       notice: RUH_STATUS_NOTICE,
       primaryCtaLabel: "Request a Riyadh Transfer Quote",
