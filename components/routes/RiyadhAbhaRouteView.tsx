@@ -171,8 +171,6 @@ function ElevationProfile() {
 }
 
 export function RiyadhAbhaRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] }) {
-  const allPhotos = Object.values(PHOTOS) as Photo[];
-  const credited = allPhotos.filter((p) => p.credit);
   const photoOf = (key: string): Photo | undefined => (key ? (PHOTOS as Record<string, Photo>)[key] : undefined);
   // Hero silhouette: the whole elevation profile, drawn as a skyline.
   const sil = ELEVATION.map(([k, m]) => `${((k / 939) * 100).toFixed(2)},${(100 - (m / 2400) * 100).toFixed(2)}`).join(" ");
@@ -518,29 +516,6 @@ export function RiyadhAbhaRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
           <p className="mt-10 max-w-4xl text-xs leading-relaxed text-ink-muted">
             {c.method}
           </p>
-          <div className="mt-6 max-w-4xl text-xs text-ink-muted">
-            <h3 className="font-semibold text-ink-soft">Photo credits</h3>
-            <ul className="mt-3 space-y-1.5">
-              {credited.map((p) => (
-                <li key={p.src}>
-                  “{p.credit!.title}” by {p.credit!.author},{" "}
-                  {p.credit!.licenceUrl ? (
-                    <a href={p.credit!.licenceUrl} rel="license noopener" target="_blank" className="underline">
-                      {p.credit!.licence}
-                    </a>
-                  ) : (
-                    p.credit!.licence
-                  )}
-                  , via{" "}
-                  <a href={p.credit!.source} rel="noopener" target="_blank" className="underline">
-                    Wikimedia Commons
-                  </a>
-                  ; resized and converted to WebP. Shown as: {p.caption}.
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2">Riyadh skyline photograph: Saudi Private Transfers.</p>
-          </div>
         </div>
       </section>
 

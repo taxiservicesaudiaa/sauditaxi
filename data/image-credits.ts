@@ -15,6 +15,14 @@ export interface ImageCredit {
 }
 
 export const IMAGE_CREDITS: Record<string, ImageCredit> = {
+  "/images/jazan/jazan-mangroves.webp": {
+    caption: "Mangroves and flamingos on the Jazan coast",
+    title: "Mangrove Trees Enhance Biodiversity on Jazan's Shores (2025)",
+    author: "Saudi Press Agency (SPA)",
+    licence: "CC BY-SA 4.0",
+    licenceUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    source: "https://commons.wikimedia.org/wiki/File:Mangrove_Trees_Enhance_Biodiversity_on_Jazan%27s_Shores_(2025).jpg",
+  },
   "/images/asir/abha-city-view.webp": {
     caption: "Abha, in the Asir highlands",
     title: "Abha 12",

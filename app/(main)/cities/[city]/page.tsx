@@ -57,7 +57,7 @@ const HUB_META: Record<string, { title: string; description: string }> = {
   jeddah: {
     title: "Jeddah Hotel Transfers – Private Airport Pickup (JED)",
     description:
-      "Book a private transfer between Jeddah's King Abdulaziz Airport and your hotel. Quotation before you travel, meet-and-greet, and flight tracking.",
+      "Book a private transfer between Jeddah's King Abdulaziz Airport and your hotel. Share your flight and hotel to receive a quotation before you travel.",
   },
   riyadh: {
     title: "Riyadh Hotel Transfers – Private Airport Pickup (RUH)",

@@ -7,6 +7,7 @@ import { JUBAIL_RIYADH, JUBAIL_RIYADH_FAQS, JUBAIL_RIYADH_PATH, JUBAIL_RIYADH_RE
 import { DMM_ABQAIQ, DMM_ABQAIQ_FAQS, DMM_ABQAIQ_PATH, DMM_ABQAIQ_REVIEWED } from "@/data/dammam-airport-to-abqaiq-route";
 import { NEOM, NEOM_FAQS, NEOM_PATH, NEOM_REVIEWED } from "@/data/riyadh-to-neom-route";
 import { ABHA, ABHA_FAQS, ABHA_PATH, ABHA_REVIEWED, PHOTOS as ABHA_PHOTOS } from "@/data/riyadh-to-abha-route";
+import { TAIF, TAIF_FAQS, TAIF_PATH, TAIF_PHOTOS, TAIF_REVIEWED } from "@/data/jeddah-to-taif-route";
 import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_REVIEWED } from "@/data/dammam-to-al-khafji-route";
 
 /**
@@ -21,6 +22,7 @@ import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_RE
  *   "dmm-abqaiq"  → components/routes/DmmAbqaiqRouteView.tsx
  *   "neom"        → components/routes/RiyadhNeomRouteView.tsx
  *   "abha"        → components/routes/RiyadhAbhaRouteView.tsx
+ *   "taif"        → components/routes/JeddahTaifRouteView.tsx
  */
 export interface LongRoutePage {
   path: string;
@@ -31,7 +33,7 @@ export interface LongRoutePage {
   faqs: Faq[];
   serviceName: string;
   areaServed: string[];
-  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom" | "abha";
+  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom" | "abha" | "taif";
   /** Primary page image (emitted as WebPage.primaryImageOfPage). */
   image?: { src: string; alt: string; credit?: { author: string; licence: string; licenceUrl?: string; source: string } };
   /** Places with coordinates: emitted as areaServed City nodes with GeoCoordinates. */
@@ -138,5 +140,21 @@ export const longRoutePages: Record<string, LongRoutePage> = {
     ],
     geo: { region: "SA-14", placename: "Abha, Asir Region, Saudi Arabia", lat: 18.2164, lon: 42.5053 },
     ogImage: ABHA_PHOTOS.hero.src,
+  },
+  "jeddah-to-taif": {
+    path: TAIF_PATH,
+    reviewed: TAIF_REVIEWED,
+    h1: TAIF.hero.h1,
+    summary: TAIF.glance.answer,
+    faqs: TAIF_FAQS,
+    serviceName: "Jeddah to Taif Private Transfer",
+    areaServed: ["Jeddah", "Taif"],
+    view: "taif",
+    image: { src: TAIF_PHOTOS.hero.src, alt: TAIF_PHOTOS.hero.alt, credit: TAIF_PHOTOS.hero.credit },
+    places: [
+      { name: "Jeddah", lat: 21.4858, lon: 39.1925, region: "Makkah Province" },
+      { name: "Taif", lat: 21.2703, lon: 40.4158, region: "Makkah Province" },
+    ],
+    ogImage: TAIF_PHOTOS.hero.src,
   },
 };

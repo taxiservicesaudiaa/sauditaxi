@@ -55,7 +55,7 @@ export const hajjTransportServiceContent: HajjTransfersHubContent = {
     },
     {
       title: "Jeddah Airport to Madinah",
-      body: "Around 420 km, roughly 4 hours, for travellers whose itinerary begins in Madinah before continuing to Makkah.",
+      body: "Around 420 km, roughly 4.5–5 hours of driving, for travellers whose itinerary begins in Madinah before continuing to Makkah.",
       href: "/routes/jeddah-to-madinah",
       linkLabel: "Jeddah to Madinah route",
     },

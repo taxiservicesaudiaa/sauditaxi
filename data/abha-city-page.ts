@@ -297,6 +297,7 @@ export const ABHA_CITY = {
       { href: "/routes/abha-to-jeddah", label: "Abha to Jeddah", meta: "≈680–690 km · approx. 7.5–8 hours", text: "West to the Red Sea coast." },
       { href: "/routes/jeddah-to-abha", label: "Jeddah to Abha", meta: "≈680–690 km · approx. 7.5–8 hours", text: "Into the highlands from Jeddah." },
       { href: "/routes/makkah-to-abha", label: "Makkah to Abha", meta: "", text: "South from Makkah." },
+      { href: "/taxi-service/jazan", label: "Abha to Jazan", meta: "≈200–215 km · approx. 2.5–3 hours", text: "Down to the Red Sea coast and the Farasan ferry." },
       { href: "/routes/abha-airport-to-jeddah", label: "Abha Airport to Jeddah", meta: "≈695–705 km · approx. 7.5–8 hours", text: "From AHB to Jeddah by road." },
     ],
     note: "Figures are shown only where the route has been re-measured; open each page for its details. Weighing the road against a flight? Read our [Riyadh to Abha guide](/blog/riyadh-to-abha-transfer-guide).",

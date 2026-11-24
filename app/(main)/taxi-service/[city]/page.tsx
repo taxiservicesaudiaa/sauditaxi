@@ -11,6 +11,16 @@ import { breadcrumbSchema, faqSchema, serviceSchema, taxiServiceSchema } from "@
 import { AbhaCityView } from "@/components/city-transfer/AbhaCityView";
 import { ABHA_CITY, ABHA_CITY_FAQS, ABHA_CITY_REVIEWED, CITY_PHOTOS } from "@/data/abha-city-page";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import { JazanCityView } from "@/components/city-transfer/JazanCityView";
+import { JAZAN, JAZAN_FAQS, JAZAN_PHOTOS, JAZAN_REVIEWED } from "@/data/jazan-city-page";
+import { JeddahCityView } from "@/components/city-transfer/JeddahCityView";
+import { JEDDAH, JEDDAH_FAQS, JEDDAH_PHOTOS, JEDDAH_REVIEWED } from "@/data/jeddah-city-page";
+
+/** Destination geo meta for cities with a dedicated, fact-checked layout. */
+const CITY_GEO: Record<string, { region: string; placename: string; lat: number; lon: number; image: string }> = {
+  abha: { region: "SA-14", placename: "Abha, Asir Region, Saudi Arabia", lat: 18.2164, lon: 42.5053, image: CITY_PHOTOS.greenMountain.src },
+  jazan: { region: "SA-09", placename: "Jazan, Jazan Province, Saudi Arabia", lat: 16.8892, lon: 42.5611, image: JAZAN_PHOTOS.sunset.src },
+};
 
 // 2026 deep-content restructuring. Unlike the fixed-architecture hubs built
 // for the service and airport pages, city pages intentionally do NOT share
@@ -38,17 +48,18 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       city.metaDescription ??
       `Private transportation in ${city.name} — airport pickup, hotel transfers, and intercity rides, priced before you travel.`,
     path,
-    ...(city.slug === "abha" ? { image: CITY_PHOTOS.greenMountain.src } : {}),
+    ...(CITY_GEO[city.slug] ? { image: CITY_GEO[city.slug].image } : city.slug === "jeddah" ? { image: JEDDAH_PHOTOS.waterfront.src } : {}),
     ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
   });
-  if (city.slug !== "abha") return meta;
+  const g = CITY_GEO[city.slug];
+  if (!g) return meta;
   return {
     ...meta,
     other: {
-      "geo.region": "SA-14",
-      "geo.placename": "Abha, Asir Region, Saudi Arabia",
-      "geo.position": "18.2164;42.5053",
-      ICBM: "18.2164, 42.5053",
+      "geo.region": g.region,
+      "geo.placename": g.placename,
+      "geo.position": `${g.lat};${g.lon}`,
+      ICBM: `${g.lat}, ${g.lon}`,
     },
   };
 }
@@ -116,6 +127,111 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
           ]}
         />
         <AbhaCityView faqs={ABHA_CITY_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
+  // Jeddah has its own "gateway city" layout (data/jeddah-city-page.ts).
+  if (city.slug === "jeddah") {
+    const pageUrl = absoluteUrl(path);
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: JEDDAH_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(JEDDAH_PHOTOS.waterfront.src),
+                caption: JEDDAH_PHOTOS.waterfront.alt,
+                creditText: JEDDAH_PHOTOS.waterfront.credit.author,
+                license: "https://creativecommons.org/licenses/by-sa/4.0/",
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Jeddah",
+                description: JEDDAH.hero.intro,
+                path,
+                serviceType: "Private Transfer",
+                dateModified: JEDDAH_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Jeddah",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Makkah Province" },
+              },
+            },
+            faqSchema(JEDDAH_FAQS),
+          ]}
+        />
+        <JeddahCityView faqs={JEDDAH_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
+  // Jazan has its own coastal layout (data/jazan-city-page.ts).
+  if (city.slug === "jazan") {
+    const pageUrl = absoluteUrl(path);
+    const hero = JAZAN_PHOTOS.sunset;
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: JAZAN_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(hero.src),
+                caption: hero.alt,
+                creditText: hero.credit.author,
+                creator: { "@type": "Person", name: hero.credit.author },
+                ...(hero.credit.licenceUrl ? { license: hero.credit.licenceUrl } : {}),
+                acquireLicensePage: hero.credit.source,
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Jazan",
+                description: JAZAN.hero.intro.join(" "),
+                path,
+                serviceType: "Private Transfer",
+                dateModified: JAZAN_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Jazan",
+                alternateName: "Jizan",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Jazan Province" },
+                geo: { "@type": "GeoCoordinates", latitude: 16.8892, longitude: 42.5611 },
+              },
+            },
+            faqSchema(JAZAN_FAQS),
+          ]}
+        />
+        <JazanCityView faqs={JAZAN_FAQS} crumbs={crumbs} />
       </>
     );
   }

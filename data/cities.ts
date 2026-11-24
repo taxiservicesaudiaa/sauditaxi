@@ -117,9 +117,9 @@ const baseCities: City[] = [
       "jeddah-to-abha",
     ],
     nearestAirportSlug: "jeddah-airport",
-    metaTitle: "Jeddah Taxi Service – Private Airport & City Transfers",
+    metaTitle: "Private Transfers in Jeddah | Airport, City & Makkah",
     metaDescription:
-      "Reliable private taxi service in Jeddah, from King Abdulaziz Airport pickups to Corniche hotel transfers and onward trips to Makkah. Fixed price, 24/7.",
+      "Private transfers in Jeddah: King Abdulaziz Airport arrivals, hotels, the Corniche, business travel and onward journeys to Makkah and Madinah. Request a quotation.",
   },
   {
     slug: "makkah",
@@ -537,9 +537,9 @@ const baseCities: City[] = [
       "jizan-to-riyadh",
     ],
     nearestAirportSlug: "jazan-airport",
-    metaTitle: "Jazan Taxi Service – Private Airport & Ferry Transfers",
+    metaTitle: "Private Transfers in Jazan | Airport, Farasan Ferry & Fayfa",
     metaDescription:
-      "Private taxi service in Jazan for airport pickups, Farasan Islands ferry-terminal transfers, and sightseeing in the Fifa Mountains.",
+      "Private transfers in Jazan: the airport, hotels, the Farasan Islands ferry terminal, the Fayfa Mountains, Abha and Najran. Share your plans to receive a quotation.",
   },
   {
     slug: "buraidah",

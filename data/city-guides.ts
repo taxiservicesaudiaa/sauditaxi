@@ -186,12 +186,12 @@ export const cityGuides: Record<string, CityGuide> = {
   },
 
   jeddah: {
-    lastUpdated: "2026-09-17",
+    lastUpdated: "2026-11-24",
     localInsight:
-      "Jeddah's business activity concentrates along the Corniche and around the King Abdulaziz International Airport business district, while Al Balad and the Red Sea waterfront draw most leisure and pilgrim sightseeing. Umrah season and Hajj bring the heaviest travel demand, especially around the Hajj Terminal, so early booking matters most during those periods. Outside peak pilgrimage dates, transfers to Makkah and along the Corniche run smoothly with normal lead times. For anyone combining Jeddah with an Umrah trip, it's worth booking the Jeddah-to-Makkah leg and hotel transfer together so both are confirmed before you land.",
+      "Jeddah's business activity concentrates along the Corniche and around the King Abdulaziz International Airport business district, while Al Balad and the Red Sea waterfront draw most leisure and pilgrim sightseeing. Umrah season and Hajj bring the heaviest travel demand, so requesting a quotation early matters most during those periods. If you are combining Jeddah with an Umrah trip, you can include the airport, hotel and Makkah legs in one request.",
     introParagraphs: [
-      "Jeddah is the busiest entry point for Umrah and Hajj pilgrims in the Kingdom, and most private-transfer demand here follows that pattern: an arrival at King Abdulaziz International Airport followed by a direct drive to Makkah, a Corniche hotel, or onward to Madinah. Because Jeddah sits closer to Makkah than any other major airport gateway, it's the natural starting point for the vast majority of Umrah journeys.",
-      "Outside pilgrimage season, Jeddah also functions as a Red Sea business and leisure hub in its own right, with steady demand for Corniche hotel transfers and intercity trips to Taif, Yanbu, and Riyadh. Booking the airport leg and any onward journey together, before you land, is the most reliable way to have both confirmed on arrival rather than arranging each separately.",
+      "Jeddah is the main air gateway for Umrah and Hajj pilgrims, and much of the private-transfer demand here follows that pattern: an arrival at King Abdulaziz International Airport followed by a direct drive to Makkah, a Corniche hotel, or onward to Madinah. Because Jeddah sits closer to Makkah than any other major airport gateway, it's the natural starting point for the vast majority of Umrah journeys.",
+      "Outside pilgrimage season, Jeddah also functions as a Red Sea business and leisure hub in its own right, with steady demand for Corniche hotel transfers and intercity trips to Taif, Yanbu, and Riyadh. You can include the airport leg and any onward journey in one request, and both are confirmed with you before you travel.",
     ],
     sections: [
       {
@@ -199,8 +199,8 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "King Abdulaziz International Airport (JED) is the Kingdom's busiest pilgrim gateway, with a dedicated Hajj Terminal used during peak Hajj and Umrah seasons alongside the main terminal. We track your flight, the meeting point is confirmed individually when you book, and your driver takes you directly to your hotel or onward to Makkah or Madinah.",
-            "Because so many arrivals continue straight to the holy cities, we position drivers to move quickly from the terminal to the highway. See our <a href='/airport-transfer/jeddah-airport'>Jeddah Airport transfer page</a> for the full arrival process and vehicle options.",
+            "King Abdulaziz International Airport (JED) is about 19 km north of the city centre and has several passenger terminals, including the Hajj Terminal. Several airlines changed terminals in late 2026, so check with your airline which terminal your flight uses. Share your flight details when you request a quotation; the pickup point and arrangements are confirmed with you individually when you book.",
+            "Many arrivals continue straight to Makkah or Madinah, and you can request that in the same quotation. See our <a href='/airport-transfer/jeddah-airport'>Jeddah Airport transfer page</a> for the full arrival process and vehicle options.",
           ],
         },
       },
@@ -208,11 +208,11 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Jeddah to Makkah and Madinah Transfers",
         block: {
           kind: "cards",
-          intro: "The two most-booked journeys out of Jeddah, both available as fixed-price private transfers.",
+          intro: "The two most-requested journeys out of Jeddah, both arranged as private transfers by quotation.",
           columns: 2,
           cards: [
-            { title: "Jeddah to Makkah", body: "Roughly 90 km, typically a 60-90 minute drive to hotels near the Haram.", href: "/routes/jeddah-to-makkah", linkLabel: "Jeddah to Makkah route" },
-            { title: "Jeddah to Madinah", body: "A longer intercity transfer, roughly 420 km, with rest stops available on request.", href: "/routes/jeddah-to-madinah", linkLabel: "Jeddah to Madinah route" },
+            { title: "Jeddah to Makkah", body: "About 85 km, typically around 1–1.5 hours to hotels near the Haram, depending on traffic.", href: "/routes/jeddah-to-makkah", linkLabel: "Jeddah to Makkah route" },
+            { title: "Jeddah to Madinah", body: "A longer intercity transfer, roughly 420 km and about 4.5–5 hours of driving; mention any stops you would like in your request.", href: "/routes/jeddah-to-madinah", linkLabel: "Jeddah to Madinah route" },
           ],
         },
       },
@@ -221,9 +221,9 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Many pilgrims arrive already in ihram or intending to enter it during the journey, so drivers allow time for prayer and comfort stops and can plan a stop at a miqat point such as Qarn al-Manazil or Yalamlam if you haven't entered ihram before landing — mention this when you book.",
-            "Pilgrim groups often travel with Zamzam water and multiple suitcases, so an SUV, van, or minibus is worth requesting for extra space. Demand rises sharply during Ramadan and peak Umrah months, so booking earlier than usual is worthwhile during those periods, since vehicle availability tightens as flight banks land in quick succession.",
-            "Elderly relatives travelling as part of a family group are common on this route, and a driver who allows unhurried time at immigration and baggage claim, without a meter running, tends to matter more here than on an ordinary city transfer.",
+            "Many pilgrims arrive already in ihram. If you would like a prayer or comfort stop on the way, mention it in your request so it can be considered when your transfer is confirmed.",
+            "Pilgrim groups often travel with Zamzam water and several suitcases, so tell us the number of passengers and bags and a suitable vehicle will be suggested in your quotation. Demand rises during Ramadan and peak Umrah months, so it is worth requesting a quotation earlier than usual then.",
+            "If you are travelling with elderly relatives or anyone with reduced mobility, mention it when you request a quotation so it can be taken into account.",
           ],
         },
       },
@@ -232,8 +232,8 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "We cover the full Corniche stretch, Al-Balad, the King Fahd Fountain area, and nearby hotel districts for both sightseeing and point-to-point transfers. For a specific hotel, browse our <a href='/cities/jeddah'>Jeddah hotel transfer directory</a>, or send us the address directly and we'll arrange a private transfer to the door.",
-            "Guests staying near the airport business district for meetings can combine a hotel transfer with a full-day booking, keeping the same driver and vehicle available between appointments rather than arranging separate rides.",
+            "You can request point-to-point transfers along the Corniche, to Al-Balad, the King Fahd Fountain area and hotel districts across the city. For a specific hotel, browse our <a href='/cities/jeddah'>Jeddah hotel transfer directory</a>, or send us the address directly and we'll arrange a private transfer to the door.",
+            "If you have several stops on the same day, include them all in one request and we will quote for the whole plan.",
           ],
         },
       },
@@ -242,7 +242,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Business activity concentrates along the Corniche and around the airport business district. For a full business day, send your schedule of meetings on WhatsApp and we'll quote a fixed day-rate rather than booking each trip separately.",
+            "Business activity concentrates along the Corniche and around the airport business district. For a day of meetings, send your schedule on WhatsApp or through the quote form and we will send a quotation for it.",
           ],
         },
       },
@@ -250,7 +250,7 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Pickup Areas in Jeddah",
         block: {
           kind: "bullets",
-          intro: "Common pickup and drop-off points our drivers know well:",
+          intro: "Common pickup and drop-off points (any exact address can be requested):",
           items: ["King Abdulaziz International Airport", "Hajj Terminal", "Jeddah Corniche", "Al-Balad historic district", "King Fahd Fountain"],
         },
       },
@@ -259,7 +259,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Jeddah is a common starting point for private transfers beyond the holy cities too — the scenic mountain route to Taif, coastal trips to Yanbu, and cross-country transfers to Riyadh, Dammam, and AlUla are all available as fixed-price journeys agreed before you travel. Many travellers combine a Jeddah stay with one of these onward legs rather than flying separately to each destination.",
+            "Jeddah is a common starting point for private transfers beyond the holy cities too — the scenic mountain route to Taif, coastal trips to Yanbu, and longer journeys to Riyadh, Dammam and AlUla can all be requested, each arranged by quotation.",
           ],
         },
       },
@@ -268,7 +268,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your pickup location, destination, date, time, and passenger count on WhatsApp or through our quote form. We reply with a fixed price and confirm a driver assigned to your flight or pickup time, with no prepayment required to hold the booking.",
+            "Send your pickup location, destination, date, time, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and the details of your transfer are confirmed with you when you book.",
           ],
         },
       },
@@ -280,31 +280,31 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Do you offer transfers from the Hajj Terminal specifically?",
-        answer: "Yes, we handle pickups from the Hajj Terminal as well as the main North Terminal (T1), so tell us which terminal your flight uses when you book.",
+        answer: "You can request a pickup from any JED terminal, including the Hajj Terminal. Tell us your airline and flight number; the pickup point is confirmed with you when you book.",
       },
       {
-        question: "Can I stop at a miqat on the way from Jeddah to Makkah?",
-        answer: "Yes, many pilgrims request a stop at a miqat point such as Qarn al-Manazil or Yalamlam en route — just mention this when booking so your driver plans the stop into the journey.",
+        question: "Can I ask for a stop on the way from Jeddah to Makkah?",
+        answer: "Mention any stop you would like in your request so it can be considered when your transfer is confirmed.",
       },
       {
         question: "Is Jeddah to Madinah a long drive?",
-        answer: "Jeddah to Madinah is a longer intercity trip; we provide a fixed-price private transfer for the full route, with rest stops available on request.",
+        answer: "Yes. It is about 420 km and typically around 4.5–5 hours of driving. Mention any stops you would like in your request.",
       },
       {
         question: "What areas of Jeddah does your Corniche transfer service cover?",
-        answer: "We cover the full Corniche stretch along with Al-Balad, the King Fahd Fountain area, and nearby hotel districts for both sightseeing and point-to-point transfers.",
+        answer: "You can request transfers along the Corniche and to Al-Balad, the King Fahd Fountain area and hotel districts across the city.",
       },
       {
         question: "Do prices change during Umrah or Hajj season in Jeddah?",
-        answer: "We quote a fixed price for your specific trip before you travel; during peak Umrah and Hajj periods we recommend booking earlier since demand for vehicles rises sharply.",
+        answer: "Each trip is quoted individually before you travel. During peak Umrah and Hajj periods, request your quotation earlier, as demand rises.",
       },
       {
         question: "Can I book a Jeddah taxi for a family with elderly pilgrims?",
-        answer: "Yes, we offer comfortable vehicles suited to elderly or less mobile travellers — mention any mobility needs when requesting your quote so we assign an appropriate car.",
+        answer: "Yes. Mention any mobility needs when requesting your quotation so they can be taken into account.",
       },
       {
         question: "Is there a private transfer option from Jeddah to Taif?",
-        answer: "Yes, the Jeddah to Taif mountain route is available as a private transfer, popular with travellers seeking the cooler highland climate above Makkah.",
+        answer: "Yes, you can request a private transfer from Jeddah to Taif, a mountain city about 165–175 km away with a cooler climate.",
       },
     ],
     hubFaqs: [
@@ -318,19 +318,19 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Can I book a Jeddah Airport transfer that continues on to Makkah?",
-        answer: "Yes, many guests combine a Jeddah hotel stay with an onward Makkah transfer — mention both legs when booking and we'll quote each as a fixed price.",
+        answer: "Yes. Mention both legs in your request and we will include them in your quotation.",
       },
       {
         question: "Is a return transfer to Jeddah Airport included for hotel guests?",
         answer: "Every hotel route has a matching return leg back to the airport; open the route page for the reverse-direction transfer or tell us your departure flight when ready.",
       },
       {
-        question: "Which terminal will my Jeddah Airport transfer driver meet me at?",
-        answer: "Your driver waits at the terminal matching your flight, whether that's the Hajj Terminal or the main North Terminal (T1) — confirm your flight number so we plan accordingly.",
+        question: "Which Jeddah Airport terminal will I be picked up from?",
+        answer: "JED has several terminals, and some airlines changed terminals in late 2026, so check with your airline which terminal your flight uses. Share your airline and flight number when you request a quotation; the pickup point and arrangements are confirmed with you when you book.",
       },
       {
         question: "Do you provide transfers for large pilgrim groups from Jeddah Airport?",
-        answer: "Yes, group and family vans are available for larger parties arriving with more luggage — let us know your group size when requesting a quote.",
+        answer: "Yes, you can request a larger vehicle. Tell us the number of passengers and bags, and a suitable vehicle will be suggested in your quotation.",
       },
     ],
   },

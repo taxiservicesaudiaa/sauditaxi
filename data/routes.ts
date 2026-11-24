@@ -4,6 +4,7 @@ import { RIYADH_QASSIM_FAQS } from "./riyadh-to-qassim-route";
 import { JUBAIL_RIYADH_FAQS } from "./jubail-to-riyadh-route";
 import { NEOM_FAQS } from "./riyadh-to-neom-route";
 import { ABHA_FAQS } from "./riyadh-to-abha-route";
+import { TAIF_FAQS } from "./jeddah-to-taif-route";
 import { dammamRoutes } from "./dammam-routes";
 
 export type RouteCategory = "religious" | "intercity" | "border" | "airport";
@@ -434,16 +435,16 @@ const baseRoutes: Route[] = [
   {
     slug: "jeddah-to-madinah",
     metaTitle: "Jeddah to Madinah Transfer – Private Airport Taxi",
-    metaDescription: "Book a private transfer from Jeddah Airport to Madinah (420 km, about 4 hours). Comfortable vehicle, professional driver, door-to-door to your hotel.",
+    metaDescription: "Book a private transfer from Jeddah Airport to Madinah (420 km, about 4.5–5 hours). Comfortable vehicle, professional driver, door-to-door to your hotel.",
     from: "Jeddah",
     to: "Madinah",
     category: "religious",
     distance: "420 km",
-    duration: "4 hours",
+    duration: "4.5–5 hours",
     intro:
       "Some pilgrims deliberately plan their trip to visit Madinah before Makkah, landing in Jeddah and heading straight north rather than south. It's the longer, less-travelled option of the two Jeddah pilgrim corridors — which means less competition for vehicles at the airport, but also a longer stretch of driving right after a long-haul flight, so comfort and flight-delay tolerance matter more here than on the shorter Jeddah-to-Makkah run.",
     about:
-      "Some pilgrims fly into Jeddah but begin their pilgrimage in Madinah rather than Makkah. Our private Jeddah to Madinah transfer provides a direct, comfortable ride from the airport or city, with luggage help and flexible timing for evening or early-morning flights — a four-hour drive is a lot to ask straight off a long-haul flight, so we build in rest-stop flexibility as standard, not as an extra.",
+      "Some pilgrims fly into Jeddah but begin their pilgrimage in Madinah rather than Makkah. Our private Jeddah to Madinah transfer provides a direct, comfortable ride from the airport or city, with luggage help and flexible timing for evening or early-morning flights — a drive of four and a half to five hours is a lot to ask straight off a long-haul flight, so we build in rest-stop flexibility as standard, not as an extra.",
     notes: [
       "Pickup from Jeddah airport (any terminal) or city hotels",
       "Direct drop-off at Madinah hotels near the Prophet's Mosque",
@@ -488,7 +489,7 @@ const baseRoutes: Route[] = [
       {
         heading: "Jeddah to Madinah: route overview and distance",
         paragraphs: [
-          "The drive from Jeddah to Madinah covers about 420 kilometres and takes roughly four hours under normal highway conditions. Travellers who fly into Jeddah but begin their pilgrimage in Madinah, or who are visiting the Prophet's Mosque as a standalone trip before continuing on to Makkah later, use this route throughout the year — it's a different itinerary choice from the shorter Jeddah-to-Makkah run, and one many first-time Umrah travellers aren't aware they can make. For a closer look at how that distance and travel time breaks down, see our <a href='/distance/jeddah-to-madinah-distance'>Jeddah to Madinah distance and travel time guide</a>.",
+          "The drive from Jeddah to Madinah covers about 420 kilometres and typically takes around 4.5–5 hours of driving under normal highway conditions. Travellers who fly into Jeddah but begin their pilgrimage in Madinah, or who are visiting the Prophet's Mosque as a standalone trip before continuing on to Makkah later, use this route throughout the year — it's a different itinerary choice from the shorter Jeddah-to-Makkah run, and one many first-time Umrah travellers aren't aware they can make. For a closer look at how that distance and travel time breaks down, see our <a href='/distance/jeddah-to-madinah-distance'>Jeddah to Madinah distance and travel time guide</a>.",
           "There are no tolls on this or any Saudi highway, so the fixed price you agree before travelling covers the complete journey. Because this is a longer drive than the Jeddah-to-Makkah corridor, and often follows a long-haul international flight, fatigue is the bigger factor here than traffic — we plan the trip with that in mind rather than rushing straight through.",
         ],
       },
@@ -509,7 +510,7 @@ const baseRoutes: Route[] = [
     ],
     faqs: [
       { question: "Should I visit Madinah or Makkah first after landing in Jeddah?", answer: "Both are common — some pilgrims prefer to visit the Prophet's Mosque first and begin Umrah in Makkah afterward, which is exactly what this route is for; others go straight to Makkah. Either itinerary is fine, it's simply your choice." },
-      { question: "How long does the Jeddah to Madinah taxi take?", answer: "The drive covers about 420 kilometres and takes roughly four hours under normal traffic conditions, longer with a rest stop after a long-haul flight." },
+      { question: "How long does the Jeddah to Madinah taxi take?", answer: "The drive covers about 420 kilometres and typically takes around 4.5–5 hours of driving under normal traffic conditions, longer with a rest stop after a long-haul flight." },
       { question: "Is pickup available for early-morning or late-night flights into Jeddah?", answer: "Yes — give your flight number and arrival time when you request a quote. The pickup follows your actual landing, so a delay doesn't leave you without a driver." },
       { question: "Is the Haramain train a better option from Jeddah Airport?", answer: "The train runs from a station at JED to Madinah and is quicker on the track, but Madinah's station is outside the central area, so you'll still need a taxi to your hotel and must handle luggage through both stations. A private car takes longer but goes from the arrivals hall straight to your hotel." },
       { question: "Is a rest stop included given how long the drive is after a flight?", answer: "Yes, we build in rest-stop flexibility as standard on this route rather than rushing straight through — mention your preference when booking." },
@@ -900,94 +901,34 @@ const baseRoutes: Route[] = [
     keywords: ["madinah to alula taxi", "madinah alula private transfer", "madinah to hegra taxi", "madinah alula desert road taxi", "madinah alula private car"],
   },
   {
+    // Rendered by components/routes/JeddahTaifRouteView.tsx; copy and sources in
+    // data/jeddah-to-taif-route.ts. OSRM 165–171 km / ≈2 h 05; Valhalla 171–177 km / ≈2 h
+    // (centre to centre, via Al Hada). As-Sayl ≈205–225 km.
     slug: "jeddah-to-taif",
-    metaTitle: "Jeddah to Taif Taxi – Private Transfer & Chauffeur",
-    metaDescription: "Book a private taxi from Jeddah to Taif (170 km, about 2 hours). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
+    metaTitle: "Jeddah to Taif Private Transfer | Al Hada Mountain Road",
+    metaDescription: "Plan a private transfer from Jeddah to Taif, about 165–175 km up the Al Hada or As-Sayl road. Share your pickup, Taif hotel, date and passengers for a quotation.",
     from: "Jeddah",
     to: "Taif",
     category: "intercity",
-    distance: "170 km",
-    duration: "2 hours",
+    distance: "165–175 km",
+    duration: "approx. 2–2.5 hours",
+    lastUpdated: "2026-11-24",
+    h1: "Private Transfer from Jeddah to Taif",
     intro:
-      "This is the one route in our network where the drive itself is part of the point — the Al Hada road climbs roughly 1,700 metres out of coastal Jeddah's heat into Taif's noticeably cooler highland air, switchback by switchback, and families escaping the Jeddah summer treat that ascent as the start of the holiday rather than a stretch of highway to get through.",
+      "A private road transfer from Jeddah on the Red Sea coast up to Taif's highland plateau, about 165–175 km via Makkah and the Al Hada mountain road, or longer via As-Sayl.",
     about:
-      "Our private Jeddah to Taif transfer climbs the Al Hada mountain road to the rose city of Taif. It is a favourite summer escape for families and pilgrims, with comfortable vehicles for the winding ascent and cable-car add-on stops — a route where the temperature drop as you climb is as much a reason to travel as Taif itself.",
+      "Jeddah to Taif is about 165–175 km by road, roughly 2–2.5 hours of driving, climbing from sea level to nearly 2,000 m at Al Hada. The road used, the vehicle and the price are set out in a quotation you confirm.",
     notes: [
-      "Scenic Al Hada mountain road, climbing to Taif's cooler elevation",
-      "Pickup from Jeddah airport or hotels",
-      "Cable-car stop at Al Hada possible on the way up; Al Shafa is a separate trip south of Taif",
-      "Comfortable vehicles paced for the winding mountain climb",
+      "About 165–175 km, roughly 2–2.5 hours of driving",
+      "Al Hada mountain road, or the longer As-Sayl road",
+      "Route around Makkah planned for passengers who cannot enter it",
+      "Quotation-based pricing; child seats on request",
     ],
-    whoSuits: [
-      { title: "Families escaping the Jeddah summer", description: "A paced climb to Taif's cooler highland air, with a stop at the Al Hada cable car if the children want it." },
-      { title: "Non-Muslim residents and visitors", description: "The fastest road passes through Makkah, so the driver plans the bypass via the As-Sayl road instead — tell us when booking." },
-      { title: "Weekend and rose-season visitors", description: "A drop-off at your Taif hotel, farm stay or resort, which are spread across the highlands rather than one town centre." },
-    ],
-    richLayout: {
-      journeyFlow: [
-        { label: "Jeddah pickup", detail: "From your hotel, home or JED airport." },
-        { label: "East past Makkah", detail: "Muslim passengers via Makkah; non-Muslim passengers via the bypass." },
-        { label: "The climb", detail: "Al Hada's hairpin road up the escarpment — or the gentler As-Sayl road." },
-        { label: "Taif drop-off", detail: "Your hotel or resort in the highlands." },
-      ],
-      journeyFacts: [
-        { label: "Scenic route", value: "Al Hada mountain road (hairpin bends)", emphasis: true },
-        { label: "Alternative route", value: "As-Sayl road — longer, less winding" },
-        { label: "Non-Muslim passengers", value: "Bypass that avoids Makkah, usually via As-Sayl" },
-        { label: "Taif elevation", value: "Roughly 1,700–1,900 m above sea level" },
-      ],
-      mapOrigin: "Jeddah, Saudi Arabia",
-      mapDestination: "Taif, Saudi Arabia",
-      mapNote: "Map routing varies between the Al Hada and As-Sayl roads. Your driver chooses based on your passengers, road status on the day and whether you want to stop at the Al Hada cable car.",
-      pickupPoints: [
-        "Jeddah hotels, the Corniche and residential districts",
-        "King Abdulaziz International Airport (JED)",
-      ],
-      dropoffPoints: [
-        "Hotels in central Taif",
-        "Resorts and farm stays in Al Hada and the surrounding highlands",
-        "Taif cable car station at Al Hada, as a stop on the way",
-      ],
-    },
     relatedCitySlugs: ["jeddah", "taif"],
-    lastUpdated: "2026-08-05",
-    sections: [
-      {
-        heading: "Jeddah to Taif: route overview and distance",
-        paragraphs: [
-          "The drive from Jeddah to Taif covers about 170 kilometres and takes roughly two hours, most of it spent climbing the winding Al Hada mountain road up to Taif's cooler highland elevation. It's a popular summer escape route, since Taif sits noticeably cooler than coastal Jeddah for much of the year — a genuinely different climate at the top of the ascent, not just a change of scenery. For the full distance breakdown and flight-time comparison, see our <a href='/distance/jeddah-to-taif-distance'>Jeddah to Taif distance guide</a>.",
-          "There are no tolls on this route, so the fixed price you agree before travelling covers the full journey including the mountain ascent. If you're prone to motion sickness on winding roads, mention it when booking so your driver can plan a short stop partway up; this matters more on this route than almost any other we operate, given how sustained the climb is.",
-        ],
-      },
-      {
-        heading: "Travelling with families and children on the mountain road",
-        paragraphs: [
-          "The Al Hada road's steady sequence of curves is easy for an experienced driver but can be tiring for young children on a long car journey, so we're happy to plan the ascent around your kids' needs — a stop partway up, a slower pace, or simply timing departure for a cooler part of the day. Families heading up specifically for the Al Hada cable car should mention it at booking so the stop is built into the climb rather than requested on the road; Al Shafa, south of Taif, is better kept for a separate outing once you've arrived.",
-          "Taif's hotels and resorts sit at a range of elevations across the highland area, so tell us your specific accommodation when booking — drop-off points vary more here than on a flatter city route. Once you've arrived, our <a href='/taxi-service/taif'>Taif taxi service</a> covers local sightseeing for the rest of your stay.",
-        ],
-      },
-      {
-        heading: "Vehicle options and mountain-road travel advice",
-        paragraphs: [
-          "A standard sedan handles the Al Hada road comfortably for most travellers, while families planning a stop at the Al Hada cable car often prefer an SUV for the extra space. Mention any planned stops when booking so your driver can build them into the route.",
-          "The best time to travel this route for comfort is outside the height of the afternoon, when the coastal heat in Jeddah is at its most intense before the climb begins — drivers experienced with the road pace the ascent comfortably rather than rushing it either way.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How much cooler is Taif than Jeddah?", answer: "Taif's highland elevation makes it noticeably cooler than coastal Jeddah for much of the year, which is why it's a popular summer escape route." },
-      { question: "Is the mountain road manageable for young children?", answer: "Yes, though the steady curves on the climb can be tiring for kids on a long drive — mention this when booking and your driver can plan a slower pace or a stop partway up." },
-      { question: "How long does the Jeddah to Taif taxi take?", answer: "The drive covers about 170 kilometres and takes roughly two hours, including the climb up the Al Hada mountain road." },
-      { question: "Is the mountain road difficult for those prone to motion sickness?", answer: "The road involves a steady climb with curves, so if you're prone to motion sickness, mention it when booking and your driver can plan a short stop along the way." },
-      { question: "Can I add a stop at the Taif Cable Car or Al Shafa?", answer: "The cable car station is at Al Hada, on the climb itself, so it's an easy stop on the way up. Al Shafa lies south of Taif rather than on this route, so it works better as a separate trip once you've arrived — or mention it when booking and we quote it as an extra leg." },
-      { question: "Can non-Muslims travel from Jeddah to Taif?", answer: "Yes. Non-Muslims can't enter Makkah's restricted area, which the quickest road passes through, so the driver uses the bypass route — usually joining the As-Sayl road rather than climbing Al Hada. Tell us when booking so the route is planned that way." },
-      { question: "What if the Al Hada road is closed?", answer: "Al Hada is occasionally closed for maintenance or bad weather. When it is, the drive uses the As-Sayl road instead, which is longer but less steep — the fixed price you agreed doesn't change." },
-      { question: "Do I need to specify which Taif hotel or resort for drop-off?", answer: "Yes — accommodation in Taif is spread across a range of elevations in the highland area, so tell us your specific hotel or resort when booking." },
-      { question: "Are there tolls on the Jeddah to Taif route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
-      { question: "Can I book a return Taif to Jeddah transfer?", answer: "Yes, see our Taif to Jeddah route page for the reverse leg, or ask us to arrange both directions together." },
-    ],
-    keywords: ["jeddah to taif taxi", "jeddah taif private transfer", "al hada road taxi", "jeddah to taif mountain taxi", "jeddah taif private car"],
+    keywords: ["jeddah to taif private transfer", "jeddah to taif taxi", "private car jeddah to taif", "jeddah to taif road", "jeddah to taif distance", "al hada road"],
+    faqs: TAIF_FAQS,
   },
+
   {
     slug: "khobar-to-bahrain",
     metaTitle: "Khobar to Bahrain Private Transfer – Book Your Taxi",
@@ -1324,54 +1265,56 @@ const baseRoutes: Route[] = [
     ],
   },
   {
+    // OSRM 24 Nov 2026, central Taif → central Jeddah 168 km / 2 h 03; Valhalla 170 km /
+    // 1 h 56 (via Al Hada, consistent with /routes/jeddah-to-taif). Taif → KAIA: OSRM
+    // 184 km / 2 h 31; Valhalla 188 km / 2 h 27.
     slug: "taif-to-jeddah",
     from: "Taif",
     to: "Jeddah",
     category: "intercity",
-    distance: "170 km",
-    duration: "2 hours",
+    distance: "165–175 km",
+    duration: "approx. 2–2.5 hours",
     intro:
-      "This is the descent, not the climb — a genuinely different drive to the Jeddah-to-Taif ascent, since gravity, not elevation gain, shapes how the journey feels. Most travellers on this leg are ending a highland stay and heading back to the coast, often with a flight to catch, which puts more weight on departure timing from Taif than on the mountain road itself.",
+      "A private transfer from Taif's highland plateau down to Jeddah and the Red Sea coast, about 165–175 km via the Al Hada mountain road and Makkah.",
     about:
-      "After a summer escape in the highlands of Taif, our private Taif to Jeddah transfer brings you back down the Al Hada mountain road in comfort. We collect you from your Taif hotel or resort and drive door-to-door to Jeddah airport or the city, with a driver who knows the winding descent well and paces departure around your onward plans rather than a fixed schedule.",
+      "The journey home from the mountains: collection from your Taif hotel, resort or address, the long descent from Al Hada to the coastal plain, and drop-off at your Jeddah hotel, home or the airport. The route, vehicle and price are confirmed in your quotation.",
     notes: [
-      "Pickup from Taif hotels, resorts, or the airport",
-      "Scenic descent via the Al Hada mountain road, back to sea level",
-      "Drop-off at Jeddah airport, hotels, or the Corniche",
-      "Comfortable vehicles for the mountain journey, timed to onward flights",
+      "About 165–175 km to central Jeddah, roughly 2–2.5 hours of driving",
+      "Pickup from Taif hotels, resorts, homes or Taif Airport",
+      "A stop at Al Hada on the way down can be requested",
+      "Drop-off anywhere in Jeddah, including King Abdulaziz International Airport",
     ],
     relatedCitySlugs: ["taif", "jeddah"],
-    metaTitle: "Taif to Jeddah Taxi – Private Transfer & Chauffeur",
+    metaTitle: "Taif to Jeddah Private Transfer | Down the Al Hada Road",
     metaDescription:
-      "Travel from Taif to Jeddah (170 km, about 2 hours) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
-    lastUpdated: "2026-08-05",
+      "Request a private transfer from Taif to Jeddah, about 165–175 km down the Al Hada road. Share your Taif pickup, Jeddah destination or flight time for a quotation.",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "Departure timing: leaving the mountains for the coast",
+        heading: "Leaving the mountains for the coast",
         paragraphs: [
-          "The drive from Taif down to Jeddah covers about 170 kilometres and takes roughly two hours, most of it spent descending the winding Al Hada mountain road back to sea level and Jeddah's noticeably warmer coastal climate. It's the natural return leg after a highland stay, and — unlike the outbound climb, which is often the start of a relaxed holiday — this direction is more often tied to a specific departure need: a flight home, a hotel checkout, or the end of a summer break. See our <a href='/distance/jeddah-to-taif-distance'>Jeddah to Taif distance guide</a> for the full breakdown, including the flight-time alternative.",
-          "There are no tolls on this route, so the fixed price you agree before travelling covers the full journey including the mountain descent. If you're heading to Jeddah airport, mention your flight time when booking so pickup from your Taif hotel or resort is timed with enough buffer for both the drive and airport procedures.",
+          "From Taif's plateau at around 1,700 m, the road crosses Al Hada and then drops down the escarpment on a long series of bends before levelling out past Makkah and running across the coastal plain to Jeddah: about 165–175 km to the city centre, roughly 2–2.5 hours of driving. You don't need to plan the route; we take care of it and confirm it in your quotation.",
+          "Would you like one last look at the mountains? A stop at Al Hada on the way down can be requested; just mention it when you ask for your quotation. Travelling with someone who is not Muslim? Let us know when you enquire, as Makkah is open only to Muslims and the journey is planned around it.",
         ],
       },
       {
-        heading: "The mountain-to-coast descent",
+        heading: "Heading to Jeddah airport",
         paragraphs: [
-          "If you're prone to motion sickness on winding roads, mention it when booking so your driver can plan a short stop partway down — the descent involves the same sustained curves as the climb, just in reverse, and a driver experienced with the road paces it comfortably rather than rushing.",
-          "A standard sedan handles the descent comfortably for most travellers, while families often prefer an SUV for extra space, particularly if returning with more luggage than they arrived with after a longer stay.",
+          "King Abdulaziz International Airport is about 185–190 km from central Taif, roughly 2.5 hours of driving. Share your flight time when you request a quotation so the pickup time can be planned with a comfortable margin; see <a href='/routes/taif-to-jeddah-airport'>Taif to Jeddah Airport</a> for that journey in detail.",
+          "Travelling with children or anyone prone to travel sickness on bends? Mention it in your request and we'll plan a comfortable pace. Child seats can be provided on request; please tell us how many you need and the children's ages so availability can be confirmed.",
         ],
       },
     ],
     faqs: [
-      { question: "How is pickup timed for a Jeddah flight?", answer: "Mention your flight time when booking and we'll time your Taif hotel pickup with enough buffer for the roughly two-hour drive and Jeddah airport check-in." },
-      { question: "Is the descent different from the climb up to Taif?", answer: "The road itself is the same, but the experience differs — the descent involves the same curves in reverse, ending at sea level and Jeddah's warmer coastal climate rather than Taif's highland air." },
-      { question: "Is the mountain descent difficult for those prone to motion sickness?", answer: "The road involves a steady series of curves, so if you're prone to motion sickness, mention it when booking and your driver can plan a short stop along the way." },
-      { question: "How long does the Taif to Jeddah taxi take?", answer: "The drive covers about 170 kilometres and takes roughly two hours, including the descent down the Al Hada mountain road." },
-      { question: "Are there tolls on the Taif to Jeddah route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
-      { question: "Can I be picked up from a Taif resort rather than a hotel?", answer: "Yes, pickup is available from Taif hotels, resorts, or the airport — just confirm your exact address when booking." },
-      { question: "What vehicle suits a family descending from Taif?", answer: "An SUV is a good choice for families wanting extra space, though a sedan is comfortable for a direct transfer." },
-      { question: "Can I book a return Jeddah to Taif transfer?", answer: "Yes, see our Jeddah to Taif route page for the outbound climb, or ask us to arrange both directions together." },
+      { question: "How far is Jeddah from Taif?", answer: "About 165–175 km by road to central Jeddah, roughly 2–2.5 hours of driving. Jeddah airport is a little further, about 185–190 km." },
+      { question: "How is pickup timed for a flight from Jeddah?", answer: "Share your flight time when you request a quotation and the pickup is planned with a comfortable margin for the drive and airport check-in." },
+      { question: "Can we stop at Al Hada on the way down?", answer: "Yes. Mention the stop when you request your quotation and the arrangements will be confirmed with you." },
+      { question: "Is the descent comfortable for anyone prone to motion sickness?", answer: "The bends below Al Hada are the twistiest part. Tell us when you enquire and we'll plan a comfortable pace, with a short break if needed." },
+      { question: "Can I be picked up from a Taif resort rather than a hotel?", answer: "Yes. Give the resort name or address, whether it's in Taif, at Al Hada or elsewhere on the plateau." },
+      { question: "Can I book the journey up to Taif as well?", answer: "Yes. See our <a href='/routes/jeddah-to-taif'>Jeddah to Taif</a> page, or include both directions in one request." },
     ],
   },
+
   {
     slug: "jeddah-to-yanbu",
     from: "Jeddah",
@@ -7184,16 +7127,16 @@ const baseRoutes: Route[] = [
   {
     slug: "jeddah-to-riyadh",
     metaTitle: "Jeddah to Riyadh Transfer – Private Chauffeur Service",
-    metaDescription: "Get a private Jeddah to Riyadh transfer (950 km, about 9 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+    metaDescription: "Get a private Jeddah to Riyadh transfer (950 km, about 10–11 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
     from: "Jeddah",
     to: "Riyadh",
     category: "intercity",
     distance: "950 km",
-    duration: "9 hours",
+    duration: "10–11 hours",
     intro:
-      "Direct private transfer from Jeddah to Riyadh across the Kingdom with professional chauffeur, fixed upfront pricing, and 24/7 door-to-door service.",
+      "A private road transfer from Jeddah to Riyadh across the Kingdom, door to door, arranged by quotation.",
     about:
-      "Travel comfortably between Saudi Arabia's commercial port city and the capital without airport waiting or luggage restrictions. Our private Jeddah to Riyadh transfer offers a choice of sedans, SUVs, and family vans, with rest stops built into the nine-hour journey at a pace agreed with you at booking.",
+      "Travel comfortably between Saudi Arabia's commercial port city and the capital without airport waiting or luggage restrictions. Our private Jeddah to Riyadh transfer offers a choice of sedans, SUVs, and family vans, with rest stops built into the 10–11 hour journey at a pace agreed with you at booking.",
     notes: [
       "Door-to-door service from any Jeddah hotel, residential address, or airport",
       "Direct drop-off at any Riyadh district, hotel, or King Khalid International Airport",
@@ -7206,19 +7149,19 @@ const baseRoutes: Route[] = [
       {
         heading: "Jeddah to Riyadh: Journey details and highway route",
         paragraphs: [
-          "The overland journey from Jeddah to Riyadh covers approximately 950 kilometres along Highway 40, travelling past Taif, Zalim, and the central desert plains into Riyadh. Driving time is typically around 9 hours depending on rest breaks.",
+          "The overland journey from Jeddah to Riyadh covers approximately 950 kilometres along Highway 40, travelling past Taif, Zalim, and the central desert plains into Riyadh. Typical driving time is approximately 10–11 hours, plus any rest breaks.",
           "Our experienced chauffeurs are accustomed to long-distance highway driving, ensuring a smooth, air-conditioned ride in late-model vehicles equipped for family and business comfort.",
         ],
       },
       {
         heading: "Vehicle selection and executive service",
         paragraphs: [
-          "Choose between sedans for solo travellers, SUVs for families, or vans for larger groups with more luggage. Rest-stop timing and pacing for the nine-hour drive are agreed with you at booking rather than fixed in advance.",
+          "Choose between sedans for solo travellers, SUVs for families, or vans for larger groups with more luggage. Rest-stop timing and pacing for the 10–11 hour drive are agreed with you at booking rather than fixed in advance.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a private transfer from Jeddah to Riyadh take?", answer: "The 950 km drive takes approximately 8.5 to 9.5 hours, including scheduled rest stops along Highway 40." },
+      { question: "How long does a private transfer from Jeddah to Riyadh take?", answer: "The 950 km drive typically takes approximately 10–11 hours of driving, plus any rest stops along Highway 40." },
       { question: "Can we stop for meals and prayer along the way?", answer: "Yes, your driver accommodates rest stops at major modern service stations along the route at your convenience." },
       { question: "Is hotel or airport pickup included in Jeddah?", answer: "Yes, your driver meets you directly at your Jeddah hotel lobby, private residence, or terminal at King Abdulaziz Airport." },
       { question: "Are prices fixed before travelling?", answer: "Yes, our quotes are 100% fixed with no hidden fees, fuel surcharges, or toll charges." },
@@ -7235,7 +7178,7 @@ const baseRoutes: Route[] = [
     distance: "950 km",
     duration: "9 hours",
     intro:
-      "Direct meet-and-greet airport transfer from King Abdulaziz International Airport (JED) to any destination in Riyadh with flight tracking and executive vehicles.",
+      "A private transfer from King Abdulaziz International Airport (JED) to any destination in Riyadh, arranged by quotation.",
     about:
       "Avoid domestic flight connections or layovers by booking a seamless private transfer directly from Jeddah Airport (JED) to Riyadh. Your driver tracks your incoming flight, greets you in the arrival hall with a personalized name sign, assists with luggage, and provides a comfortable overland ride directly to your Riyadh hotel or office.",
     notes: [
@@ -7836,40 +7779,44 @@ const baseRoutes: Route[] = [
   },
 
   {
+    // OSRM 24 Nov 2026, King Abdulaziz International Airport (21.6796, 39.1565) → central
+    // Taif: 184 km / 2 h 30; Valhalla 188 km / 2 h 27. Airport-origin figures differ from the
+    // central Jeddah → Taif estimate (165–175 km, /routes/jeddah-to-taif).
     slug: "jeddah-airport-to-taif",
-    metaTitle: "Jeddah Airport Taxi to Taif – Fixed-Price Transfer",
-    metaDescription: "Get a fixed-price private transfer from Jeddah Airport to Taif (175 km, about 2 hours). Comfortable vehicles, English-speaking drivers, easy booking.",
+    metaTitle: "Jeddah Airport (JED) to Taif Private Transfer",
+    metaDescription: "Private transfer from King Abdulaziz International Airport (JED) to Taif, about 185–190 km. Share your flight and Taif hotel or address to receive a quotation.",
     from: "Jeddah Airport",
     to: "Taif",
     category: "airport",
-    distance: "175 km",
-    duration: "2 hours",
+    distance: "185–190 km",
+    duration: "approx. 2.5 hours",
     intro:
-      "Direct private airport transfer from King Abdulaziz International Airport (JED) in Jeddah to mountain resorts, hotels, and residences across Taif.",
+      "Private transfer from King Abdulaziz International Airport (JED) to hotels, resorts and homes in Taif, about 185–190 km.",
     about:
-      "Arriving at King Abdulaziz International Airport and heading to the cool mountain heights of Taif? Our private airport chauffeur meets you in the arrival terminal (T1, North, or Hajj Terminal), handles your baggage, and drives you directly via the Al Hada mountain highway to your Taif hotel or resort.",
+      "Landing at Jeddah and heading straight for the cooler air of Taif? Share your flight details and Taif address when you request a quotation; pickup arrangements at the airport are confirmed with you individually, and the route, vehicle and price are set out in your quotation.",
     notes: [
-      "Meet-and-greet pickup across all JED airport terminals with flight tracking",
-      "Direct scenic drive up the Al Hada mountain pass into Taif",
-      "Spacious SUVs and vans suited for family luggage and mountain ascents",
-      "Fixed rates with zero surge pricing during peak summer and weekend seasons",
+      "About 185–190 km from the airport to central Taif, roughly 2.5 hours of driving",
+      "Pickup arrangements at JED confirmed individually with your booking",
+      "A stop at Al Hada on the way up can be requested",
+      "Quotation-based pricing; child seats on request",
     ],
     relatedCitySlugs: ["jeddah", "taif"],
-    lastUpdated: "2026-08-16",
+    lastUpdated: "2026-11-24",
     sections: [
       {
-        heading: "Airport pickup at JED and scenic ascent to Taif",
+        heading: "From JED up to Taif",
         paragraphs: [
-          "Covering 175 km via the modern highway past Makkah and up the dramatic Al Hada escarpment, the drive from Jeddah Airport to Taif takes approximately 2 hours in comfort.",
+          "From the airport, north of Jeddah, the road heads inland past Makkah and climbs the Al Hada escarpment to Taif: about 185–190 km, roughly 2.5 hours of driving. For the full story of the climb, see our <a href='/routes/jeddah-to-taif'>Jeddah to Taif</a> route guide.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a taxi from Jeddah Airport to Taif take?", answer: "The 175 km journey takes approximately 2 hours depending on mountain traffic and weather conditions." },
-      { question: "Where will my driver meet me at Jeddah Airport?", answer: "Your chauffeur waits inside the arrivals hall holding a sign with your name after you clear customs and baggage claim." },
+      { question: "How long does the transfer from Jeddah Airport to Taif take?", answer: "About 185–190 km, roughly 2.5 hours of driving, plus any stop you'd like on the way." },
+      { question: "Where will I meet my driver at Jeddah Airport?", answer: "The pickup arrangements are confirmed with you individually when you book." },
     ],
     keywords: ["jeddah airport to taif taxi", "jed to taif transfer", "king abdulaziz airport to taif private car"],
   },
+
   {
     slug: "taif-to-jeddah-airport",
     metaTitle: "Taif to Jeddah Airport (JED) – Private Taxi",
@@ -8405,7 +8352,7 @@ const baseRoutes: Route[] = [
     distance: "330 km",
     duration: "3 hours 15 min",
     intro:
-      "Private meet-and-greet airport transfer from King Abdulaziz International Airport (JED) directly to Yanbu hotels, resorts, and industrial complexes.",
+      "A private transfer from King Abdulaziz International Airport (JED) directly to Yanbu hotels, resorts and industrial complexes, arranged by quotation.",
     about:
       "Arriving at King Abdulaziz International Airport in Jeddah and proceeding straight to Yanbu? Our private chauffeur tracks your incoming flight, greets you in the arrival hall, and drives you directly north along the coastal highway to your destination in Yanbu without delay.",
     notes: [
@@ -8430,73 +8377,87 @@ const baseRoutes: Route[] = [
     keywords: ["jeddah airport to yanbu taxi", "jed airport to yanbu transfer", "king abdulaziz airport to yanbu private car"],
   },
   {
+    // OSRM 24 Nov 2026 (central Riyadh 24.7136,46.6753 ↔ central Jazan 16.8892,42.5611):
+    // Riyadh → Jazan 1,141 km / 13.6 h, Jazan → Riyadh 1,140 km / 13.7 h; Valhalla 1,145 km /
+    // 15.0 h and 1,192 km / 15.2 h. Route: Bisha, Khamis Mushait, Abha, down the escarpment
+    // to Ad Darb, then the coastal plain via Sabya. Overnight arrangements NOT confirmed.
     slug: "riyadh-to-jizan",
-    metaTitle: "Riyadh to Jizan Taxi Service – Reliable Private Transfer",
-    metaDescription: "Get a private Riyadh to Jizan transfer (1,000 km, about 10 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+    metaTitle: "Riyadh to Jizan (Jazan) Private Transfer | Long-Distance Road Trip",
+    metaDescription: "Request a private road transfer from Riyadh to Jizan (Jazan), about 1,140–1,190 km. Share your pickup, Jazan destination, passengers and luggage for a quotation.",
     from: "Riyadh",
     to: "Jizan",
     category: "intercity",
-    distance: "1,000 km",
-    duration: "10 hours",
+    distance: "1,140–1,190 km",
+    duration: "approx. 13.5–15 hours",
+    lastUpdated: "2026-11-24",
     intro:
-      "Private long-distance chauffeur service from Riyadh directly to Jizan port city, economic zone, and Red Sea ferry terminals.",
+      "Private long-distance road transfer from Riyadh to Jizan (Jazan) on the southern Red Sea coast, about 1,140–1,190 km via Bisha, Abha and the coastal plain.",
     about:
-      "Connect the capital with Saudi Arabia's southern Red Sea economic hub and port city. Our private Riyadh to Jizan transfer provides dedicated executive chauffeurs, spacious late-model vehicles, and tailored routing for business executives, families, and project engineers.",
+      "A very long road journey: from your Riyadh address south-west past Bisha, through Khamis Mushait and Abha, down the escarpment and along the coastal plain to Jazan. Expect roughly 13.5–15 hours of driving before breaks. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup across all Riyadh districts and King Khalid Airport",
-      "Direct delivery to Jizan city center, port, King Abdullah Economic City, or Farasan ferry",
-      "Spacious SUVs and vans with unlimited luggage capacity",
-      "Experienced highway chauffeurs with safety and comfort protocols",
+      "About 1,140–1,190 km, roughly 13.5–15 hours of driving before breaks",
+      "Pickup across Riyadh, including King Khalid International Airport",
+      "Drop-off at your Jazan hotel, address or the Farasan ferry terminal",
+      "Quotation-based pricing; child seats on request, subject to availability",
     ],
     relatedCitySlugs: ["riyadh", "jazan"],
-    lastUpdated: "2026-08-16",
     sections: [
       {
-        heading: "Connecting the Capital to the Southern Economic Hub",
+        heading: "From the capital to the southern Red Sea coast",
         paragraphs: [
-          "Covering roughly 1,000 km south via Highway 10 and coastal routes into Jizan over approximately 10 hours, this route provides dependable overland connectivity.",
+          "The road leaves Riyadh south-west across the Riyadh Region, passes Bisha, climbs through Khamis Mushait and Abha in the Asir highlands, then drops down the escarpment to Ad Darb and runs south along the coastal plain past Sabya to Jazan: about 1,140–1,190 km, roughly 13.5–15 hours of driving before breaks.",
+          "It is a very long journey, so discuss your departure time and breaks when you request a quote. If you're continuing to the Farasan Islands, the transfer ends at the Jazan ferry terminal; the crossing is arranged separately. Once you arrive, see our <a href='/taxi-service/jazan'>Jazan transfers</a> page for local trips.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a private taxi from Riyadh to Jizan take?", answer: "The 1,000 km journey takes approximately 10 hours with scheduled highway rest stops." },
+      { question: "How far is Jizan from Riyadh by road?", answer: "About 1,140–1,190 km between the city centres, roughly 13.5–15 hours of driving before breaks." },
+      { question: "Which way does the road go?", answer: "South-west past Bisha, through Khamis Mushait and Abha, then down to the coast at Ad Darb and south to Jazan." },
     ],
-    keywords: ["riyadh to jizan taxi", "riyadh to jazan private transfer", "riyadh jizan chauffeur"],
+    keywords: ["riyadh to jizan taxi", "riyadh to jazan private transfer", "riyadh to jizan by road", "riyadh jizan distance"],
   },
+
   {
+    // OSRM 24 Nov 2026 (central Riyadh 24.7136,46.6753 ↔ central Jazan 16.8892,42.5611):
+    // Riyadh → Jazan 1,141 km / 13.6 h, Jazan → Riyadh 1,140 km / 13.7 h; Valhalla 1,145 km /
+    // 15.0 h and 1,192 km / 15.2 h. Route: Bisha, Khamis Mushait, Abha, down the escarpment
+    // to Ad Darb, then the coastal plain via Sabya. Overnight arrangements NOT confirmed.
     slug: "jizan-to-riyadh",
-    metaTitle: "Jizan to Riyadh Taxi Service – Reliable Private Transfer",
-    metaDescription: "Reserve a private car from Jizan to Riyadh (1,000 km, about 10 hours). Comfortable vehicles for solo travellers, families and small groups.",
+    metaTitle: "Jizan (Jazan) to Riyadh Private Transfer | Road Journey to the Capital",
+    metaDescription: "Request a private road transfer from Jizan (Jazan) to Riyadh, about 1,140–1,190 km. Share your Jazan pickup, Riyadh destination, passengers and luggage for a quotation.",
     from: "Jizan",
     to: "Riyadh",
     category: "intercity",
-    distance: "1,000 km",
-    duration: "10 hours",
+    distance: "1,140–1,190 km",
+    duration: "approx. 13.5–15 hours",
+    lastUpdated: "2026-11-24",
     intro:
-      "Private cross-country chauffeur transfer from Jizan and the southern Red Sea coast directly to Riyadh.",
+      "Private long-distance road transfer from Jizan (Jazan) on the southern Red Sea coast to Riyadh, about 1,140–1,190 km via Abha and Bisha.",
     about:
-      "Travel from Jizan port, economic city, or Farasan ferry terminal directly to Riyadh. Our private transfer service collects you from your hotel, office, or residence in Jizan and transports you comfortably across the Kingdom to any address or airport in Riyadh.",
+      "Collection from your Jazan hotel or address, Jazan Airport or the Farasan ferry terminal when you return from the islands, then the long drive north through the Asir highlands to your Riyadh address. Expect roughly 13.5–15 hours of driving before breaks. The vehicle, timing and price are set out in a quotation you confirm.",
     notes: [
-      "Door-to-door pickup in Jizan, Jazan Airport, or Farasan ferry terminal",
-      "Direct drop-off at any hotel, corporate office, or residence in Riyadh",
-      "Fully air-conditioned late-model fleet with spacious luggage capacity",
-      "Fixed upfront quotes with zero hidden fees",
+      "About 1,140–1,190 km, roughly 13.5–15 hours of driving before breaks",
+      "Pickup in Jazan, at Jazan Airport or at the Jazan ferry terminal",
+      "Drop-off at any Riyadh address or King Khalid International Airport",
+      "Quotation-based pricing; child seats on request, subject to availability",
     ],
     relatedCitySlugs: ["jazan", "riyadh"],
-    lastUpdated: "2026-08-16",
     sections: [
       {
-        heading: "Overland corridor from Jizan to the Capital",
+        heading: "From the southern coast to the capital",
         paragraphs: [
-          "Travel in comfort from the southwestern coast through southern valleys into Riyadh with professional long-distance drivers.",
+          "From Jazan the road runs north along the coastal plain past Sabya to Ad Darb, climbs the escarpment to Abha and Khamis Mushait, then crosses Bisha and the Riyadh Region plateau to the capital: about 1,140–1,190 km, roughly 13.5–15 hours of driving before breaks.",
+          "It is a very long journey, so discuss your departure time and breaks when you request a quote. For local trips before you leave, see our <a href='/taxi-service/jazan'>Jazan transfers</a> page.",
         ],
       },
     ],
     faqs: [
-      { question: "Can the driver pick us up from the Farasan Islands ferry terminal in Jizan?", answer: "Yes, we coordinate pickup directly at the Jizan ferry terminal according to your boat arrival." },
+      { question: "Can the driver pick us up at the Jazan ferry terminal when we return from Farasan?", answer: "Yes, a pickup at the Jazan ferry terminal can be arranged. Share your expected ferry arrival time and confirm the road transfer in advance; ferry timings aren't guaranteed, so message us if your sailing changes." },
+      { question: "How long does the drive from Jizan to Riyadh take?", answer: "Roughly 13.5–15 hours of driving for about 1,140–1,190 km, before breaks." },
     ],
-    keywords: ["jizan to riyadh taxi", "jazan to riyadh private transfer", "jizan riyadh chauffeur"],
+    keywords: ["jizan to riyadh taxi", "jazan to riyadh private transfer", "jizan to riyadh by road", "jizan riyadh distance"],
   },
+
   {
     slug: "dammam-to-qatar-border",
     metaTitle: "Dammam to Qatar Border Taxi – Private Cross-Border Transfer",

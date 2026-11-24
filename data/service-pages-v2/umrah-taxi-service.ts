@@ -51,7 +51,7 @@ export const umrahTaxiServiceContent: UmrahTransfersHubContent = {
     },
     {
       title: "Jeddah Airport to Madinah",
-      body: "For travellers beginning their visit in Madinah before continuing to Makkah — around 420 km, roughly 4 hours, direct to a hotel near the Prophet's Mosque.",
+      body: "For travellers beginning their visit in Madinah before continuing to Makkah — around 420 km, roughly 4.5–5 hours of driving, direct to a hotel near the Prophet's Mosque.",
       href: "/routes/jeddah-to-madinah",
       linkLabel: "Jeddah to Madinah route",
     },

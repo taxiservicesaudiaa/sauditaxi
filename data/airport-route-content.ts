@@ -891,34 +891,54 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
   },
 
   "jeddah-airport-to-taif": {
+    // No flight tracking, meeting-point, waiting, driver-assignment or fixed-price claims
+    // (24 Nov 2026). OSRM KAIA → Taif 184 km / 2 h 30; Valhalla 188 km / 2 h 27.
     intro:
-      "Taif's cool mountain climate has long made it a summer escape from Jeddah's heat, and this route covers the airport-to-mountain leg for travellers heading up rather than staying on the coast — the drive itself, up the Al Hada pass, is part of what makes the trip worthwhile.",
+      "Taif's cooler mountain air has long made it a retreat from the coast. This transfer takes you straight from King Abdulaziz International Airport up to Taif, so your stay in the highlands starts as soon as you land.",
     arrivalPickup: [
-      "Your flight into King Abdulaziz International Airport is tracked across its terminals, including the Hajj Terminal during pilgrimage season, and your driver waits once you've cleared customs.",
+      "Share your airline, flight number and arrival time, and your Taif hotel or address, when you request a quotation. The pickup arrangements at the airport are confirmed with you individually when you book.",
     ],
     roadJourney: [
-      "At 175 km and 2 hours, the drive climbs from Jeddah's coastal plain up the Al Hada mountain road into Taif's higher elevation — a noticeable change in scenery and temperature over the course of the journey.",
+      "From the airport the road heads inland past Makkah and climbs the Al Hada escarpment to Taif's plateau: about 185–190 km, roughly 2.5 hours of driving. You don't need to plan the route; it's confirmed in your quotation.",
+      "Would you like to stop at Al Hada on the way up, for the views or the cable car? Mention it in your request and the arrangements will be confirmed with you.",
     ],
     destinationArrival: [
-      "Taif's hotels and resorts are spread across the city and the surrounding highlands — confirm your exact destination so the driver plans the most direct route up.",
+      "Taif's hotels and resorts are spread across the city and the surrounding highlands, so include the exact name or address with your request.",
     ],
     vehicleLuggage:
-      "A sedan is comfortable for most travellers on this route; families with more luggage for an extended mountain stay should consider an SUV.",
+      "The vehicle is matched to your passengers and luggage in your quotation. Child seats can be provided on request; please tell us how many you need and the children's ages so availability can be confirmed.",
     whoSuits: [
-      { title: "Summer escape travellers", description: "A direct, private route up to Taif's cooler climate, away from Jeddah's coastal heat." },
-      { title: "Umrah pilgrims extending their trip", description: "Suited to those combining a Jeddah/Makkah pilgrimage with a Taif stay." },
+      { title: "Summer escape travellers", description: "Straight from the airport to Taif's cooler climate." },
+      { title: "Pilgrims extending their trip", description: "For visitors combining Jeddah or Makkah with a stay in Taif. If anyone in your group is not Muslim, let us know so the journey can be planned around Makkah." },
     ],
     checklist: [
-      "Flight number and JED terminal",
+      "Airline, flight number and arrival time",
       "Exact hotel or resort in Taif",
       "Passenger and luggage count",
+      "Any stop you'd like, such as Al Hada",
     ],
     faqs: [
-      { question: "How long does the Jeddah Airport to Taif drive take?", answer: "Around 2 hours for 175 km, including the climb up the Al Hada mountain road." },
-      { question: "Is the mountain road difficult for a private transfer?", answer: "No, it's a well-travelled route between Jeddah and Taif that drivers on this route know well." },
-      { question: "Is this route busier in summer?", answer: "Yes, demand rises in the warmer months as travellers head up to Taif's cooler climate." },
+      { question: "How long does the Jeddah Airport to Taif drive take?", answer: "About 185–190 km, roughly 2.5 hours of driving, plus any stop you'd like on the way." },
+      { question: "Can we stop at Al Hada on the way up?", answer: "Yes. Mention it when you request your quotation and the arrangements will be confirmed with you." },
+      { question: "Where will I meet my driver?", answer: "The pickup arrangements at the airport are confirmed with you individually when you book." },
     ],
+    overrides: {
+      arrivalSteps: [
+        { label: "Share your flight details", detail: "Send your airline, flight number, arrival time and Taif destination when you request a quotation." },
+        { label: "Receive your quotation", detail: "The pickup arrangements, vehicle and price are confirmed in your quotation." },
+        { label: "After landing", detail: "Follow the pickup arrangements confirmed with your booking." },
+        { label: "Up to Taif", detail: "You're driven to your Taif hotel or address, with any stop you've asked for." },
+      ],
+      bookingSteps: [
+        { label: "Share your journey details", detail: "Flight details, your Taif destination, passengers, luggage and any stop." },
+        { label: "Receive your quotation", detail: "The confirmed quotation sets the price and explains what it covers." },
+        { label: "Confirm", detail: "Review the quotation and confirm it to arrange your transfer." },
+        { label: "Travel", detail: "Follow the pickup arrangements confirmed with your booking." },
+      ],
+      ctaText: "Share your flight details and Taif destination, and we'll reply with a quotation for you to confirm.",
+    },
   },
+
 
   "alula-airport-to-riyadh": {
     intro:

@@ -32,6 +32,7 @@ export interface AirportDestinationCluster {
 export interface AirportGuide {
   metaTitle?: string;
   metaDescription?: string;
+  intro?: string;
   about?: string;
   heroImage?: string;
   heroAlt?: string;
@@ -774,79 +775,109 @@ export const airportGuides: Record<string, AirportGuide> = {
 
   // ── JAZAN · GIZ ───────────────────────────────────────────────────────────
   "jazan-airport": {
-    lastUpdated: "2026-09-17",
-    keywords: ["jazan airport taxi", "jazan airport transfer", "private transfer from jazan airport", "jazan corniche pickup", "jazan airport pickup"],
+    // GIZ consistency pass (24 Nov 2026). GIZ arrangements are NOT owner-confirmed: no
+    // name-board / arrivals-hall meet-and-greet, no automatic flight tracking, no free
+    // waiting, no luggage-help or fixed-price claims; meeting point confirmed individually;
+    // quotation-based pricing; child seats on request. Ferry: road transfer to/from the Jazan
+    // ferry terminal only (owner confirmed return pickups, 24 Nov 2026); crossing, tickets,
+    // schedules and on-island transport not included. OSRM: airport → centre ≈4 km, →
+    // ferry terminal ≈7 km, → Fayfa ≈100 km, → Abha ≈200–215 km, → Riyadh 1,140 km.
+    lastUpdated: "2026-11-24",
+    keywords: ["jazan airport taxi", "jazan airport transfer", "private transfer from jazan airport", "jazan airport to farasan ferry", "jazan airport pickup"],
+    metaTitle: "Jazan Airport Transfers (GIZ) | Private Pickup in Jazan",
+    intro:
+      "Jazan Airport (GIZ) is about 4 km from central Jazan, with private transfers to the city and corniche, the Farasan Islands ferry terminal, the Fayfa Mountains and onward cities.",
+    metaDescription:
+      "Private transfers from Jazan Airport (GIZ) to Jazan hotels, the Farasan ferry terminal, the Fayfa Mountains, Abha and Najran. Share your flight details for a quotation.",
+    about:
+      "Private transfers from Jazan Airport (GIZ) to hotels and addresses in Jazan, the Farasan Islands ferry terminal, the Fayfa Mountains and onward cities, each arranged by quotation.",
+    heroImage: "/images/jazan/jazan-mangroves.webp",
+    heroAlt: "Flamingos wading in shallow water in front of mangrove trees on the Jazan coast",
     coreServiceParagraph:
-      "Jazan Airport serves the tropical southwest coast, and we provide private transfers from arrivals to Jazan hotels, the corniche, and the Farasan Islands ferry terminal. Your driver tracks your flight, meets you in the arrivals hall, and drives directly to your destination at a fixed price agreed before you travel, with luggage assistance included at every step.",
+      "Jazan Airport (GIZ), officially King Abdullah bin Abdulaziz International Airport, is only about 4 km by road from central Jazan. We provide private, pre-booked transfers from the airport to hotels, homes and offices in Jazan, to the Farasan Islands ferry terminal, inland to the Fayfa Mountains and onward to other cities. Share your flight details and exact destination when you request a quotation; the meeting point is confirmed individually with your booking, and the confirmed quotation sets the price and explains what it covers.",
     arrivingParagraphs: [
-      "Jazan's single terminal has a simple arrivals flow, and your driver meets you in the hall with a name board. Tell us your destination and arrival time when you book, and your driver will be ready — whether it's a corniche hotel or the ferry terminal.",
-      "Jazan is tropical, hot, and humid year-round, quite different from much of the rest of the Kingdom, so vehicles are air-conditioned throughout for a comfortable ride from the terminal.",
+      "After landing, complete arrival formalities and collect your luggage, then go to the pickup point confirmed with your booking. Please follow those instructions rather than expecting a particular meeting arrangement in the terminal. If your flight time changes, message us as soon as you know.",
+      "Jazan is hot and humid for much of the year, and the airport is close to the city, so most hotel transfers are short.",
     ],
     destinationClusters: [
       {
-        title: "Jazan City and Corniche Transfers",
-        body: "Direct pickup to Jazan's corniche hotels and local trips around the city, priced and confirmed before you land.",
+        title: "Jazan city and the corniche",
+        body: "Transfers to hotels, homes and offices across Jazan, including the North and South Corniche, each priced in a quotation you confirm.",
         href: "/taxi-service/jazan",
-        linkLabel: "Jazan taxi service",
+        linkLabel: "Private transfers in Jazan",
       },
       {
-        title: "Farasan Islands Ferry Terminal",
-        body: "Private transfers to the Farasan ferry terminal for the crossing to the coral archipelago; ferry schedules and capacity vary, so confirm current sailing times in advance.",
+        title: "Farasan Islands ferry terminal",
+        body: "Road transfers to the Jazan ferry terminal, about 7 km from the airport, and return pickups when you arrive back from the islands. Ferry tickets, schedules, the crossing and transport on Farasan are not included.",
+        href: "/taxi-service/jazan",
+        linkLabel: "Ferry terminal guide",
       },
       {
-        title: "Fifa Mountains",
-        body: "Private transport inland to the terraced Fifa Mountains, with a local driver used to the steep, winding roads.",
+        title: "Fayfa Mountains",
+        body: "Transfers inland to the Fayfa Mountains, about 100 km from Jazan on steep, winding roads. Any stops or waiting are set out in your quotation.",
       },
       {
-        title: "Abha and Najran Connections",
-        body: "Private intercity transfers linking Jazan with the highlands at Abha and inland to Najran for a combined southern-Saudi itinerary.",
-        href: "/airport-transfer/abha-airport",
-        linkLabel: "Abha Airport transfers",
+        title: "Abha, Najran and Riyadh",
+        body: "Longer road transfers to Abha (about 200–215 km), Najran (about 325–330 km) and Riyadh (about 1,140–1,190 km), each quoted individually.",
+        href: "/routes/jizan-to-riyadh",
+        linkLabel: "Jizan to Riyadh",
       },
     ],
+    hubOverrides: {
+      meetGreetHeading: "Airport pickup at Jazan Airport",
+      meetGreetIntro: "How a pickup at GIZ is arranged, from your request to the start of the drive.",
+      meetGreetSteps: [
+        { title: "Before your flight", detail: "Share your airline, flight number, arrival date and time and your destination (hotel, address or the ferry terminal) when you request a quotation." },
+        { title: "Your quotation", detail: "The meeting point is confirmed individually with your booking, together with the vehicle and the price. If your flight changes, message us." },
+        { title: "After landing", detail: "Collect your luggage and go to the pickup point confirmed with your booking for the drive to your destination." },
+      ],
+      familyParagraph:
+        "Travelling with children, a larger group or extra luggage for Farasan? Tell us your passenger and luggage numbers, and describe any equipment with rough sizes, so a suitable vehicle can be quoted. Child seats can be provided on request, subject to availability: please share the number of seats and the children's ages.",
+      bookingIntro: "Four steps from your first message to a confirmed pickup.",
+      bookingSteps: [
+        { title: "1. Send your journey details", detail: "Your flight details, arrival date and destination, plus your ferry departure time if you're continuing to Farasan." },
+        { title: "2. Receive your quotation", detail: "A price and a vehicle recommendation. The confirmed quotation sets the price and explains what it covers." },
+        { title: "3. Confirm", detail: "Nothing is booked until you confirm; the quotation sets out its payment and cancellation terms." },
+        { title: "4. Follow your pickup arrangements", detail: "Go to the meeting point confirmed individually with your booking at Jazan Airport." },
+      ],
+      finalCtaText: "Add your flight details and destination, and we'll reply with a quotation; the meeting point is confirmed with your booking.",
+    },
     faqs: [
       {
+        question: "How far is Jazan Airport from the city and the ferry terminal?",
+        answer: "About 4 km by road to central Jazan and about 7 km to the Jazan ferry terminal for the Farasan Islands.",
+      },
+      {
         question: "Can you take me from Jazan Airport to the Farasan ferry?",
-        answer:
-          "Yes. We drive to the Farasan Islands ferry terminal. Sailing schedules and capacity vary, so please check the current ferry details and allow time at the terminal before your crossing.",
+        answer: "Yes, a road transfer to the Jazan ferry terminal can be arranged. Check sailing times with the ferry operator and give us your departure time; ferry tickets, schedules, the crossing and transport on Farasan are not included.",
       },
       {
         question: "Where will I meet my driver at Jazan Airport?",
-        answer:
-          "In the arrivals hall, holding a name board, ready as soon as you clear immigration and collect your luggage from the belt.",
-      },
-      {
-        question: "Can you connect Jazan Airport with Abha or Najran?",
-        answer:
-          "Yes. We provide private intercity transfers from Jazan to Abha and Najran, ideal for a combined southern-highlands and coast itinerary by private car.",
+        answer: "At the meeting point confirmed individually with your booking. Please follow those instructions rather than expecting a particular spot or sign.",
       },
       {
         question: "What happens if my flight to Jazan is delayed?",
-        answer:
-          "We track your flight and your driver waits with free wait time, so a delay doesn't change your fixed price or your booking.",
+        answer: "Message us with the new arrival time as soon as you know it. Any waiting arrangements are set out in your confirmed quotation.",
       },
       {
         question: "Can I book a Jazan Airport to hotel transfer?",
-        answer:
-          "Yes. Share your hotel name, flight details, and pickup time, and we'll confirm a fixed price and a driver for direct pickup to your hotel.",
+        answer: "Yes. Share your hotel name, flight details and arrival time; you receive a quotation, and the confirmed quotation sets the price and explains what it covers.",
       },
       {
         question: "Can families or groups book private transfers from Jazan Airport?",
-        answer:
-          "Yes. Choose an SUV, van, or minibus for families or groups, and request child seats when you book your transfer.",
+        answer: "Yes. Share your passenger and luggage numbers so a suitable vehicle can be quoted. Child seats can be provided on request, subject to availability; tell us the number of seats and the children's ages.",
+      },
+      {
+        question: "Can you connect Jazan Airport with Abha, Najran or Riyadh?",
+        answer: "Yes, these journeys can be requested: Abha is about 200–215 km, Najran about 325–330 km and Riyadh about 1,140–1,190 km by road. Each is quoted individually.",
       },
       {
         question: "How far ahead should I book a Jazan airport transfer?",
-        answer:
-          "A day or two ahead is usually enough. If you're timing your pickup around a specific Farasan ferry sailing, book a little earlier so we can plan around the current schedule.",
-      },
-      {
-        question: "Is meet-and-greet available for all Jazan flight times?",
-        answer:
-          "Yes, meet-and-greet pickup is available for any arrival time. Share your flight number when booking and your driver will be waiting regardless of the hour.",
+        answer: "As early as you can, particularly if you're timing the transfer around a Farasan ferry sailing, so the vehicle and timing can be confirmed in good time.",
       },
     ],
   },
+
 
   // ── HAIL · HAS ────────────────────────────────────────────────────────────
   "hail-airport": {

@@ -118,7 +118,6 @@ function Orientation() {
 
 export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] }) {
   const P = CITY_PHOTOS;
-  const all = Object.values(photos);
   return (
     <>
       {/* ── Hero ── */}
@@ -454,28 +453,6 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
             ))}
           </div>
           <p className="mt-8 text-xs leading-relaxed text-ink-muted">{c.method}</p>
-          <div className="mt-6 text-xs text-ink-muted">
-            <h3 className="font-semibold text-ink-soft">Photo credits</h3>
-            <ul className="mt-3 space-y-1.5">
-              {all.map((p) => (
-                <li key={p.src}>
-                  “{p.credit.title}” by {p.credit.author},{" "}
-                  {p.credit.licenceUrl ? (
-                    <a href={p.credit.licenceUrl} rel="license noopener" target="_blank" className="underline">
-                      {p.credit.licence}
-                    </a>
-                  ) : (
-                    p.credit.licence
-                  )}
-                  , via{" "}
-                  <a href={p.credit.source} rel="noopener" target="_blank" className="underline">
-                    Wikimedia Commons
-                  </a>
-                  ; resized and converted to WebP. Shown as: {p.caption}.
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 

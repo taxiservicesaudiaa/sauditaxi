@@ -876,7 +876,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         items: [
           { label: "Fastest option", value: "Direct flight, ~1 hour, 441 flights/week across 4 airlines" },
           { label: "Fastest ground option", value: "Haramain High-Speed Railway" },
-          { label: "Most flexible for families/luggage", value: "Private car, hotel to hotel, 4-5 hours" },
+          { label: "Most flexible for families/luggage", value: "Private car, hotel to hotel, approx. 4.5–5 hours" },
         ],
       },
       {
@@ -889,7 +889,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
       {
         type: "timeReality",
         heading: "How Long It Actually Takes",
-        pureDriving: "4-5 hours by road",
+        pureDriving: "approx. 4.5–5 hours by road",
         totalJourney: "~1 hour by direct flight",
         factors: [
           "One of the longer regularly-travelled routes out of Jeddah — a meaningful number of travellers choose not to drive it at all",
@@ -903,7 +903,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         options: [
           { mode: "Direct flight", suitability: "Travellers prioritising speed, or connecting onward internationally through Jeddah first", duration: "About 1 hour in the air", advantages: "By far the fastest option, very high flight frequency (around 441 flights per week)", limitations: "Airport check-in and security add time beyond the 1-hour flight itself; not door-to-door" },
           { mode: "Haramain High-Speed Railway", suitability: "Travellers wanting a fast option without flying", duration: "Part of the 449 km, up-to-300-km/h Jeddah–Makkah–Madinah line", advantages: "Fast, avoids road traffic, connects directly from Jeddah's King Abdulaziz Airport station", limitations: "The Madinah station is about 8-10 km from Masjid an-Nabawi, requiring a further local transfer" },
-          { mode: "Private car / taxi", suitability: "Families, groups with luggage, and travellers who'd rather not manage a station or airport transfer at either end", duration: "4-5 hours", advantages: "Hotel-to-hotel or airport-to-hotel, no transfers, flexible timing for early or late flights", limitations: "The longest of the three options in pure travel time" },
+          { mode: "Private car / taxi", suitability: "Families, groups with luggage, and travellers who'd rather not manage a station or airport transfer at either end", duration: "approx. 4.5–5 hours", advantages: "Hotel-to-hotel or airport-to-hotel, no transfers, flexible timing for early or late flights", limitations: "The longest of the three options in pure travel time" },
         ],
       },
       {
@@ -931,7 +931,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
       { question: "How far is Jeddah from Madinah?", answer: "Road distance is generally cited between 409 and 420 km via Highway 15." },
       { question: "Is there a direct flight from Jeddah to Madinah?", answer: "Yes, it's a very frequently served route — around 441 flights per week across four airlines, with a flight time of about one hour." },
       { question: "Is there a train between Jeddah and Madinah?", answer: "Yes, the Haramain High-Speed Railway connects Jeddah's King Abdulaziz Airport station directly to Madinah." },
-      { question: "How long does the road journey take?", answer: "Roughly four to five hours depending on traffic and driving conditions." },
+      { question: "How long does the road journey take?", answer: "Typically around 4.5–5 hours of driving, depending on traffic and driving conditions." },
       { question: "What is the fastest way to travel from Jeddah to Madinah?", answer: "A direct flight, at around one hour, is the fastest option; the Haramain train is the fastest ground option." },
       { question: "Is it worth driving this route at all?", answer: "It's done, particularly by families with a full vehicle-load of luggage or groups combining stops along the coastal highway, but most travellers without a specific reason to drive choose to fly or take the train instead." },
       { question: "Does a private transfer pick up directly from Jeddah's airport?", answer: "Yes — a pre-arranged private transfer can meet an international arrival at Jeddah's airport and drive directly to a Madinah hotel, without needing to enter central Jeddah first." },
@@ -1483,7 +1483,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         totalJourney: "~50 minutes by direct flight",
         factors: [
           "Most of the drive time is spent on the climb itself, not covering flat distance quickly",
-          "A direct flight is available, taking around 50 minutes, with roughly 27 flights a week operated primarily by Saudia",
+          "Direct flights between Jeddah and Taif take around 50 minutes in the air when they operate; schedules change, so check current flights with the airline",
           "The winding mountain road can cause motion sickness for some travellers, so pace matters more here than on a flat highway",
         ],
       },
@@ -1492,7 +1492,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         heading: "Ways to Make the Journey",
         options: [
           { mode: "Private car / taxi", suitability: "Most travellers, particularly families or anyone wanting to add stops along the mountain road", duration: "About 2 hours", advantages: "Door-to-door, and the ascent itself — with the changing scenery and temperature drop — is often part of the appeal rather than something to avoid", limitations: "The winding mountain road can cause motion sickness for some travellers, and pace matters more here than on a flat highway" },
-          { mode: "Direct flight", suitability: "Travellers prioritising speed over the scenic drive", duration: "About 50 minutes", advantages: "Fast, and a genuinely frequent route at roughly 27 flights a week", limitations: "Skips the Al-Hada road experience entirely, and still requires ground transport at both ends" },
+          { mode: "Direct flight", suitability: "Travellers prioritising speed over the scenic drive", duration: "About 50 minutes", advantages: "Fast in the air; check current schedules with the airline", limitations: "Skips the Al-Hada road experience entirely, and still requires ground transport at both ends" },
         ],
       },
       {
@@ -1519,7 +1519,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
     faqs: [
       { question: "How far is Taif from Jeddah?", answer: "Road-distance sources vary between roughly 171 and 200 km, with about 170-171 km most commonly cited." },
       { question: "What road connects Jeddah and Taif?", answer: "The Al-Hada Road, a mountain pass specifically engineered for the climb up to Taif's highland elevation, with guardrails and turnouts along the ascent." },
-      { question: "Is there a flight between Jeddah and Taif?", answer: "Yes, a direct flight takes about 50 minutes, with roughly 27 flights a week, primarily operated by Saudia." },
+      { question: "Is there a flight between Jeddah and Taif?", answer: "Direct flights have operated on this route, taking about 50 minutes in the air. Schedules change, so check current flights with the airline before planning around one." },
       { question: "How long does the road journey take?", answer: "Approximately two hours, most of it spent climbing the Al-Hada mountain road." },
       { question: "Is the mountain road difficult for those prone to motion sickness?", answer: "It involves a sustained series of curves during the climb, so travellers prone to motion sickness may want to plan for a stop partway up." },
       { question: "Is Taif's cooler climate noticeable immediately on arrival?", answer: "Yes — the elevation gain is substantial enough that the temperature difference from coastal Jeddah is genuinely noticeable, not a marginal change." },
@@ -1760,7 +1760,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         totalJourney: "~50 minutes by direct flight",
         factors: [
           "The descent down Al-Hada Road forms a substantial part of the journey before it levels out onto the coastal approach",
-          "A direct flight is available at around 50 minutes, roughly 27 flights a week, primarily Saudia",
+          "Direct flights between Taif and Jeddah take around 50 minutes in the air when they operate; schedules change, so check current flights with the airline",
           "Useful for a same-day connection to an onward flight from Jeddah, landing close to the airport itself",
         ],
       },
@@ -1796,7 +1796,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
     faqs: [
       { question: "How far is Jeddah from Taif?", answer: "Road-distance sources vary between roughly 171 and 200 km, with about 170-171 km most commonly cited — the same distance as the Jeddah-to-Taif direction." },
       { question: "Is the drive down from Taif easier than the drive up?", answer: "The distance and general road conditions are the same in both directions; some travellers find a descent more comfortable than a climb, though the road's curves are present either way." },
-      { question: "Is there a flight from Taif to Jeddah?", answer: "Yes, a direct flight takes about 50 minutes, with roughly 27 flights a week, primarily operated by Saudia." },
+      { question: "Is there a flight from Taif to Jeddah?", answer: "Direct flights have operated on this route, taking about 50 minutes in the air. Schedules change, so check current flights with the airline before planning around one." },
       { question: "How long does the road journey take?", answer: "Approximately two hours, including the descent down Al-Hada Road." },
       { question: "Is flying useful if I'm connecting to an international flight from Jeddah?", answer: "It can be — landing at Jeddah's airport directly avoids the drive into the city first, which may suit a tight onward connection better than the two-hour road option." },
       { question: "Does the temperature change noticeably during the descent?", answer: "Yes — leaving Taif's cooler highland climate for Jeddah's coastal heat is a genuine, noticeable shift, not a subtle one." },
