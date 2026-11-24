@@ -2,6 +2,7 @@ import { makkahRoutes } from "./makkah-routes";
 import { RIYADH_HAIL_FAQS } from "./riyadh-to-hail-route";
 import { RIYADH_QASSIM_FAQS } from "./riyadh-to-qassim-route";
 import { JUBAIL_RIYADH_FAQS } from "./jubail-to-riyadh-route";
+import { NEOM_FAQS } from "./riyadh-to-neom-route";
 import { dammamRoutes } from "./dammam-routes";
 
 export type RouteCategory = "religious" | "intercity" | "border" | "airport";
@@ -6781,111 +6782,83 @@ const baseRoutes: Route[] = [
     keywords: ["abha to riyadh taxi", "abha to riyadh transfer", "abha riyadh private car", "abha to riyadh airport taxi", "asir mountains to riyadh taxi"],
   },
   {
+    // OSRM 23 Nov 2026, central Riyadh → central Tabuk: fastest road ≈1,349 km /
+    // ≈13.8 h (Highway 65 via Qassim and Hail, Highway 80 west, Route 15);
+    // via Hail and Tayma ≈1,287 km / ≈13.9 h. King Khalid Airport → Tabuk ≈1,357 km.
     slug: "riyadh-to-tabuk",
     from: "Riyadh",
     to: "Tabuk",
     category: "intercity",
-    distance: "~1,050 km",
-    duration: "About 10 hours 30 min",
+    distance: "1,290–1,350 km",
+    duration: "approx. 14 hours",
+    lastUpdated: "2026-11-23",
+    h1: "Private Transfer from Riyadh to Tabuk",
     intro:
-      "The Riyadh to Tabuk taxi is a private long-distance transfer to the Kingdom's north-west gateway city, popular with heritage travellers, visitors connecting toward the Red Sea coast, and business travellers linked to the region's major development projects.",
+      "A private long-distance transfer from Riyadh to the city of Tabuk in the Kingdom's north-west, about 1,290–1,350 km by road through Qassim and the Hail region.",
     about:
-      "Our private Riyadh to Tabuk transfer covers one of the longest domestic routes we offer, with comfortable vehicles and structured rest-stop planning, delivering you door to door to your destination in Tabuk — a fixed price agreed before you travel.",
+      "Riyadh to Tabuk is a full day on the road: roughly 14 hours of driving before stops. The journey starts at your Riyadh address and ends at the Tabuk address you confirm, and the price, vehicle and timing are set out in a quotation before you travel.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off anywhere in Tabuk",
-      "Comfortable vehicles with structured rest-stop planning for the long drive",
-      "Onward connections toward the Red Sea coast and NEOM available",
+      "About 1,290–1,350 km, roughly 14 hours of driving before stops",
+      "From your Riyadh address to the Tabuk address you confirm",
+      "Breaks, and any overnight stop, are discussed when you request a quote",
+      "Quotation-based pricing, confirmed by you before booking",
     ],
     relatedCitySlugs: ["riyadh", "tabuk"],
-    metaTitle: "Private Car from Riyadh to Tabuk – Book Your Ride",
+    metaTitle: "Riyadh to Tabuk Taxi | Private Road Transfer",
     metaDescription:
-      "Get a private Riyadh to Tabuk transfer (~1,050 km, about 10 hours 30 min) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+      "Request a private road transfer from Riyadh to Tabuk, about 1,290–1,350 km. Share your Tabuk address, travel date, passengers and luggage to receive a quotation.",
     sections: [
       {
-        heading: "Riyadh to Tabuk: route overview and distance",
+        heading: "How far is Tabuk from Riyadh by road?",
         paragraphs: [
-          "The drive from Riyadh to Tabuk covers approximately 1,050 kilometres, one of the longest domestic routes we offer, taking around ten and a half hours in free-flowing traffic. This is genuinely a full-day journey best planned with proper structure — an overnight stop partway is worth considering for some travellers rather than treating it as a single push.",
-          "A private transfer covers the whole distance door to door, with rest-stop planning built in from the start given the journey's length.",
+          "Measured from central Riyadh to central Tabuk, the drive is about 1,290–1,350 km, with roughly 14 hours of driving before any stops. The figure depends on the road your driver takes north of Hail and on your exact pickup and drop-off points; a pickup at King Khalid International Airport adds a little.",
+          "These numbers come from OpenStreetMap-based routing in clear traffic. Traffic, weather, roadworks and the breaks you take all add time, so treat them as a planning guide rather than a promise.",
         ],
       },
       {
-        heading: "The fastest route north-west",
+        heading: "The road north-west",
         paragraphs: [
-          "The route runs north-west across a genuinely long stretch of the Kingdom, and drivers who cover this specific run plan it carefully around rest and prayer stops rather than attempting to minimise total time at the expense of comfort.",
+          "The journey leaves Riyadh on Highway 65 and runs north through Qassim, past Buraidah, to the Hail region. From there one road continues north before turning west on Highway 80 and dropping south-west into Tabuk; another heads west through Tayma. Both are long, open desert highways with few towns between them, which is why fuel, food and prayer breaks are planned around the larger stops.",
+          "If you'd like to break the trip, Hail sits roughly halfway. Our <a href='/routes/riyadh-to-hail'>Riyadh to Hail transfer</a> page describes that first leg. Accommodation isn't part of a transfer; if you want an overnight stop, ask in your request and how it would work is set out in your quotation.",
         ],
       },
       {
-        heading: "Scenic and historical highlights along the way",
+        heading: "Arriving in Tabuk",
         paragraphs: [
-          "Tabuk carries genuine historical weight — it's the site of the historical Expedition of Tabuk in early Islamic history, and the city is home to a restored station on the old Hijaz Railway, the Ottoman-era line that once connected Damascus to Madinah. Tabuk Castle, an Ottoman-period fort, is another notable heritage site. The city also serves as the practical gateway to Saudi Arabia's Red Sea coast and the NEOM development, making it a common staging point for travellers heading further north-west.",
+          "Tabuk is the main city of the north-west and the provincial capital. Visitors come for its history: Tabuk Castle and the restored station on the old Hijaz Railway are both in the city. It is also the usual base for onward travel to the Red Sea and Gulf of Aqaba coasts. For getting around once you arrive, see our <a href='/taxi-service/tabuk'>Tabuk taxi service</a>.",
+          "Give us the exact address, hotel or map pin in Tabuk so the distance and timing in your quotation are accurate.",
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Driving or flying?",
         paragraphs: [
-          "The highway is well-maintained for the length of the journey, though given the sheer distance involved, driver fatigue management is a genuine priority — this is one of our longest routes, and we structure it accordingly rather than treating it like a shorter regional transfer.",
+          "Tabuk has its own airport, and for one or two people travelling light a flight is often quicker. A road transfer makes more sense when you're travelling as a family or group, carrying more luggage than an airline allows, or simply prefer one vehicle from door to door. If you do fly, our <a href='/airport-transfer/tabuk-airport'>Tabuk Airport transfer</a> page covers the drive from the terminal.",
         ],
       },
       {
-        heading: "Tolls and highway fees",
+        heading: "Going further: NEOM and the coast",
         paragraphs: [
-          "There are no toll roads on this route or anywhere in Saudi Arabia. Your fixed price covers the complete journey.",
+          "Tabuk is a destination in its own right, but many travellers continue to the NEOM region. If NEOM is your final stop, our <a href='/routes/riyadh-to-neom'>Riyadh to NEOM transfer</a> page covers the whole journey, and <a href='/routes/tabuk-to-neom'>Tabuk to NEOM</a> covers the final stretch on its own.",
         ],
       },
       {
-        heading: "Best time to travel this route",
+        heading: "Requesting your Riyadh to Tabuk quotation",
         paragraphs: [
-          "Given the distance, an early-morning departure is strongly advisable, and travellers with flexibility should consider whether an overnight stop partway — for instance in Hail or Madinah — makes for a more comfortable overall trip than a single continuous drive.",
-        ],
-      },
-      {
-        heading: "Vehicle options for a very long journey",
-        paragraphs: [
-          "Given the drive's length, a comfort SUV is strongly preferred over a standard sedan, and families or groups typically choose a minivan for the extra room needed across ten-plus hours.",
-        ],
-      },
-      {
-        heading: "A note for business and heritage travellers",
-        paragraphs: [
-          "Tabuk's growing significance as a gateway to major north-western development projects brings a steady stream of business travellers alongside heritage visitors drawn to the Hijaz Railway history — both benefit from the same fixed-price, tracked service.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Within Tabuk, the historic railway station, Tabuk Castle, and the old town are the main heritage draws. Travellers continuing toward the Red Sea coast or NEOM can extend their journey from here — mention your full itinerary when booking so we can plan the most sensible route.",
-        ],
-      },
-      {
-        heading: "Safety on a very long-distance transfer",
-        paragraphs: [
-          "At over ten hours, this is one of the longest routes we cover, and structured rest and prayer stops are a genuine safety priority, not an optional extra. Our drivers plan accordingly and keep every trip tracked throughout.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to Tabuk transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your Tabuk destination, your preferred departure time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Send your Riyadh pickup address, your Tabuk destination, the date and preferred departure time, the number of passengers and how much luggage you have, plus any wish for an overnight stop. We reply with a quotation covering the vehicle, timing and price; nothing is booked until you confirm it. Use the <a href='/get-quote'>quote form</a> or WhatsApp.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Tabuk from Riyadh, and how long does the drive take?", answer: "The distance is approximately 1,050 kilometres, and the drive takes about ten and a half hours — one of the longest routes we cover from the capital." },
-      { question: "Should I consider an overnight stop for such a long drive?", answer: "It's worth considering, particularly for families or elderly travellers — an overnight stop in Hail or Madinah can make the overall trip more comfortable than a single continuous drive." },
-      { question: "Is the price fixed for such a long journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, including rest stops, with no meter, no surge, and no toll charges." },
-      { question: "What's Tabuk known for historically?", answer: "Tabuk is the site of the historical Expedition of Tabuk in early Islamic history, and it's home to a restored Hijaz Railway station and Tabuk Castle, an Ottoman-era fort." },
-      { question: "Can I continue from Tabuk to NEOM or the Red Sea coast?", answer: "Yes, Tabuk serves as a common gateway for both — mention your full itinerary when booking so we can plan the most sensible route." },
-      { question: "Which vehicle suits this very long journey best?", answer: "A comfort SUV is strongly preferred over a standard sedan given the distance, and families or groups typically choose a minivan for extra room." },
-      { question: "Are rest stops included on this drive?", answer: "Yes, given the over-ten-hour distance, we build in structured rest and prayer stops as a standard part of the journey." },
-      { question: "Is there a return Tabuk to Riyadh transfer?", answer: "Yes, see our <a href='/routes/tabuk-to-riyadh'>Tabuk to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your Tabuk destination, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is this drive suitable for elderly travellers given its length?", answer: "Given the distance, we generally recommend considering an overnight stop partway for elderly or frail travellers, or exploring flight options for this specific leg." },
-      { question: "Do you serve business travel connected to Tabuk's development projects?", answer: "Yes, we provide the same fixed-price, tracked service for business travellers as for heritage visitors." },
-      { question: "Is night travel on this route routine?", answer: "Given the drive's significant length, we strongly recommend a daytime departure with proper planning rather than night travel on this specific route." },
+      { question: "How far is Riyadh from Tabuk by road?", answer: "About 1,290–1,350 km from central Riyadh to central Tabuk, depending on the road taken north of Hail and on your exact pickup and drop-off points." },
+      { question: "How long does the drive from Riyadh to Tabuk take?", answer: "Roughly 14 hours of driving before stops. With fuel, meal and prayer breaks it is a long full day, so many travellers start early." },
+      { question: "Which road does the drive to Tabuk follow?", answer: "Highway 65 north through Qassim to the Hail region, then either north and west via Highway 80 or west through Tayma into Tabuk." },
+      { question: "Can I break the journey overnight?", answer: "You can ask for an overnight stop, commonly around Hail. Accommodation isn't included in a transfer; how a stop would work and what it costs is set out in your quotation." },
+      { question: "How is the price worked out?", answer: "Pricing is quotation-based. Share your pickup, destination, date, passengers and luggage and we send a quotation; nothing is booked until you confirm it." },
+      { question: "Is there a return transfer from Tabuk to Riyadh?", answer: "Yes. See our <a href='/routes/tabuk-to-riyadh'>Tabuk to Riyadh</a> page for the return direction." },
     ],
-    keywords: ["riyadh to tabuk taxi", "riyadh to tabuk transfer", "riyadh tabuk private car", "riyadh to tabuk distance", "riyadh tabuk long distance taxi"],
+    keywords: ["riyadh to tabuk taxi", "riyadh to tabuk transfer", "riyadh to tabuk distance", "riyadh to tabuk by road", "private car riyadh to tabuk"],
   },
+
   {
     slug: "tabuk-to-riyadh",
     from: "Tabuk",
@@ -7205,211 +7178,113 @@ const baseRoutes: Route[] = [
     keywords: ["yanbu to riyadh taxi", "yanbu to riyadh transfer", "yanbu riyadh private car", "yanbu to riyadh airport taxi", "red sea coast to riyadh taxi"],
   },
   {
+    // Rendered by components/routes/RiyadhNeomRouteView.tsx; page copy lives in
+    // data/riyadh-to-neom-route.ts. OSRM 23 Nov 2026: Riyadh → NEOM Bay Airport
+    // area ≈1,520 km / ≈16 h; Riyadh → Tabuk via Hail ≈1,290 km.
     slug: "riyadh-to-neom",
     from: "Riyadh",
     to: "NEOM",
     category: "intercity",
-    distance: "~1,150 km",
-    duration: "About 11 hours 30 min",
+    distance: "1,450–1,550 km",
+    duration: "approx. 15–16 hours",
+    lastUpdated: "2026-11-23",
+    h1: "Private Transfer from Riyadh to NEOM",
     intro:
-      "The Riyadh to NEOM taxi is a private long-distance transfer to Saudi Arabia's futuristic giga-project on the Red Sea coast, suited to business travellers, project staff, and visitors who specifically prefer road travel or are moving vehicles, equipment, or larger groups.",
+      "A long-distance private transfer from Riyadh to the NEOM region in Tabuk Province, about 1,450–1,550 km by road via Qassim, Hail and Tabuk, usually planned as a two-day journey.",
     about:
-      "Our private Riyadh to NEOM transfer covers the longest domestic route we offer, with structured rest-stop planning and comfortable vehicles, delivering you door to door to your destination within the NEOM development — a fixed price agreed before you travel.",
+      "Riyadh to NEOM is roughly 1,450–1,550 km by road, depending on the NEOM destination, with about 15–16 hours of driving before stops. Drop-offs are at road-accessible points you confirm; restricted-site access is never guaranteed.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off at NEOM destinations, including Sindalah and coastal areas",
-      "Structured rest-stop planning for one of our longest routes",
-      "A practical option for groups, equipment moves, or those who prefer road travel over flying",
+      "About 1,450–1,550 km, roughly 15–16 hours of driving",
+      "Often planned over two days; ask about an overnight stop",
+      "Drop-off at a road-accessible NEOM point you confirm",
+      "Return NEOM to Riyadh transfers available",
     ],
     relatedCitySlugs: ["riyadh", "tabuk"],
-    metaTitle: "Riyadh to NEOM Private Transfer – Fixed-Price Taxi",
+    metaTitle: "Riyadh to NEOM Private Transfer | Long-Distance Taxi",
     metaDescription:
-      "Travel from Riyadh to NEOM (~1,150 km, about 11 hours 30 min) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
-    sections: [
-      {
-        heading: "Riyadh to NEOM: route overview and distance",
-        paragraphs: [
-          "The drive from Riyadh to NEOM covers approximately 1,150 kilometres, the longest domestic route we offer, taking around eleven and a half hours in free-flowing traffic. Given the distance, most travellers making this journey have a specific reason to prefer the road — moving a vehicle, transporting equipment, travelling as a larger group where a private vehicle works out more practical than multiple flights, or simply a preference for road travel. For most individual travellers, flying remains the faster option, and we're happy to discuss which makes more sense for your specific trip.",
-          "For those who do choose the road, our private transfer covers the whole distance door to door, with rest-stop planning built in from the start given the journey's genuine length.",
-        ],
-      },
-      {
-        heading: "The fastest route north-west",
-        paragraphs: [
-          "The route broadly follows the corridor toward Tabuk before continuing to the NEOM development on the Red Sea coast, and it's the most direct practical highway option for this journey. Given the distance, this is genuinely a two-part drive in practice, and our drivers plan it with real structure rather than attempting to minimise total time at the expense of safety and comfort.",
-        ],
-      },
-      {
-        heading: "About the NEOM development",
-        paragraphs: [
-          "NEOM is Saudi Arabia's flagship futuristic development project on the Red Sea coast and in the surrounding mountains, encompassing ambitious infrastructure and urban concepts alongside striking natural coastline and terrain. Sindalah, an island development within the project, and NEOM Bay are among the areas currently accessible to visitors and staff, and the region's raw coastal and mountain scenery is genuinely striking, whatever stage of development you encounter.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "The highway is well-maintained for the length of the journey, though given this is our longest route, driver fatigue management is a genuine priority, not an afterthought — we structure the trip with proper rest and prayer stops throughout.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere in Saudi Arabia. Your fixed price covers the complete journey.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "Given the exceptional distance, we strongly recommend either an overnight stop partway — Hail or Tabuk both work well — or careful planning around a very early departure. This isn't a route to treat casually given its length.",
-        ],
-      },
-      {
-        heading: "Vehicle options for a very long journey",
-        paragraphs: [
-          "Given the distance, a comfort SUV is strongly recommended over a standard sedan, and groups or equipment moves typically require a minivan or, for larger parties, multiple coordinated vehicles.",
-        ],
-      },
-      {
-        heading: "A note for project staff and business travellers",
-        paragraphs: [
-          "NEOM's development phase brings a steady flow of project staff, contractors, and business visitors, and our fixed-price, tracked service is designed to handle exactly this kind of scheduled, planned long-distance movement reliably.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Given the distance, many travellers break this journey at Tabuk, which serves as the practical gateway to the NEOM area — see our <a href='/routes/riyadh-to-tabuk'>Riyadh to Tabuk transfer</a> if you're considering that structure for your trip instead of a single continuous drive.",
-        ],
-      },
-      {
-        heading: "Safety on our longest route",
-        paragraphs: [
-          "At over eleven hours, this is genuinely the longest route we offer, and structured rest and prayer stops are essential, not optional. We plan this journey with particular care and recommend discussing your specific timing needs with us before booking.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to NEOM transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your NEOM destination, your preferred departure time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, discuss whether an overnight stop makes sense for your trip, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
-        ],
-      },
-    ],
-    faqs: [
-      { question: "How far is NEOM from Riyadh, and how long does the drive take?", answer: "The distance is approximately 1,150 kilometres, and the drive takes about eleven and a half hours — the longest domestic route we offer." },
-      { question: "Should I fly instead of driving this route?", answer: "For most individual travellers, yes, flying is faster. Road transfer makes the most sense for groups, equipment or vehicle moves, or a specific preference for road travel — we're happy to discuss what suits your trip." },
-      { question: "Is the price fixed for such a long journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, including rest stops, with no meter, no surge, and no toll charges." },
-      { question: "Should I plan an overnight stop for this drive?", answer: "We strongly recommend it given the distance — Hail or Tabuk both work well as a stopping point partway." },
-      { question: "What can I expect to see at NEOM currently?", answer: "Sindalah island and the NEOM Bay area are among the currently accessible destinations, alongside genuinely striking Red Sea coastal and mountain scenery." },
-      { question: "Which vehicle suits this very long journey best?", answer: "A comfort SUV is strongly recommended given the distance, and groups or equipment moves typically need a minivan or multiple coordinated vehicles." },
-      { question: "Is there a return NEOM to Riyadh transfer?", answer: "Yes, see our <a href='/routes/neom-to-riyadh'>NEOM to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your specific NEOM destination, preferred date and time, passenger count, and luggage or equipment details." },
-      { question: "Do you serve project staff and contractors regularly?", answer: "Yes, we regularly handle scheduled transfers for NEOM project staff and contractors, and our fixed-price, tracked service suits this kind of planned travel well." },
-      { question: "Can I break this journey at Tabuk?", answer: "Yes, many travellers do — see our <a href='/routes/riyadh-to-tabuk'>Riyadh to Tabuk transfer</a> if you're considering that structure." },
-      { question: "Is this drive suitable for elderly travellers?", answer: "Given the exceptional distance, we generally recommend flying this specific route for elderly or frail travellers, or planning a substantial overnight break." },
-      { question: "Is night travel on this route routine?", answer: "Given the significant length, we strongly recommend careful daytime planning with an overnight stop rather than continuous travel on this specific route." },
-    ],
-    keywords: ["riyadh to neom taxi", "riyadh to neom transfer", "riyadh neom private car", "riyadh to neom distance", "riyadh neom long distance taxi"],
+      "Request a private transfer from Riyadh to NEOM. Share your exact destination, travel date, passengers and luggage to receive a journey quotation.",
+    keywords: ["riyadh to neom transfer", "riyadh to neom taxi", "private transfer riyadh to neom", "riyadh to neom distance", "riyadh to neom driving time"],
+    faqs: NEOM_FAQS,
   },
+
   {
+    // OSRM 23 Nov 2026 to central Riyadh: Sharma / NEOM Bay Airport area ≈1,517 km
+    // / ≈15.9 h; Gayal ≈1,494 km; Al Bad' ≈1,578 km. NEOM Bay area → King Khalid
+    // International Airport ≈1,524 km. Sindalah (island) is not reachable by road.
     slug: "neom-to-riyadh",
     from: "NEOM",
     to: "Riyadh",
     category: "intercity",
-    distance: "~1,150 km",
-    duration: "About 11 hours 30 min",
+    distance: "1,450–1,550 km",
+    duration: "approx. 15–16 hours",
+    lastUpdated: "2026-11-23",
+    h1: "Private Transfer from NEOM to Riyadh",
     intro:
-      "The NEOM to Riyadh taxi is a private long-distance transfer from Saudi Arabia's futuristic Red Sea coast development back to the capital, suited to project staff, business travellers, and groups who specifically prefer road travel.",
+      "A private road transfer from a road-accessible pickup point in the NEOM region back to Riyadh, about 1,450–1,550 km via Tabuk, Hail and Qassim, often planned over two days.",
     about:
-      "Our private NEOM to Riyadh transfer collects you from your destination within the development and drives our longest domestic route to your exact address in Riyadh — one vehicle, one fixed price, with structured rest-stop planning throughout.",
+      "Leaving NEOM by road starts with one question: where exactly are you being collected? NEOM is a region, not a single address, so the pickup point you confirm sets the distance, the timing and the start of the drive. The journey ends at your Riyadh address, hotel or King Khalid International Airport.",
     notes: [
-      "Door-to-door pickup at NEOM destinations, including Sindalah and coastal areas",
-      "Direct drop-off anywhere in Riyadh, including the airport",
-      "Structured rest-stop planning for one of our longest routes",
-      "Timed pickups available for onward Riyadh flight connections",
+      "About 1,450–1,550 km, roughly 15–16 hours of driving before stops",
+      "Pickup at a road-accessible NEOM point you confirm; site access is never guaranteed",
+      "Drop-off at your Riyadh address, hotel or King Khalid International Airport",
+      "Quotation-based pricing, confirmed by you before booking",
     ],
     relatedCitySlugs: ["tabuk", "riyadh"],
-    metaTitle: "NEOM to Riyadh Transfer – Private Chauffeur Service",
+    metaTitle: "NEOM to Riyadh Private Transfer | Road Journey Home",
     metaDescription:
-      "Get a private NEOM to Riyadh transfer (~1,150 km, about 11 hours 30 min) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+      "Request a private road transfer from NEOM to Riyadh. Share your NEOM pickup point, travel date, passengers, luggage and any Riyadh flight to receive a quotation.",
     sections: [
       {
-        heading: "NEOM to Riyadh: route overview and distance",
+        heading: "Where you'll be collected in NEOM",
         paragraphs: [
-          "The drive from NEOM to Riyadh covers approximately 1,150 kilometres, our longest domestic route, taking around eleven and a half hours in free-flowing traffic. Most travellers choosing the road for this leg have a specific reason — an equipment or vehicle move, group travel, or a preference for road over air travel.",
-          "A private transfer collects you from your exact destination within the NEOM development and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport.",
+          "Pickups are from road-accessible points: a hotel entrance, an address or map pin in a NEOM town, or a meeting point that a project site has agreed with you. Collection from inside a controlled or restricted site depends on your own permission from the site, and we never guarantee access.",
+          "Some NEOM locations can't be reached by road at all, the island of Sindalah among them. If you're starting from one of them, tell us the mainland point where you'll arrive, and the road transfer begins there.",
         ],
       },
       {
-        heading: "The fastest route south-east",
+        heading: "Distance and driving time to Riyadh",
         paragraphs: [
-          "This route runs the same corridor as the outbound leg, in reverse, broadly via Tabuk before continuing south-east to Riyadh. Given the exceptional length, we plan this journey with real structure rather than a single continuous push.",
+          "From the NEOM Bay Airport area near Sharma to central Riyadh is about 1,520 km, with roughly 16 hours of driving before stops. Depending on where in NEOM you start, the range is about 1,450–1,550 km. These are OpenStreetMap-based routing figures in clear traffic; breaks, weather and roadworks all add time.",
+          "The road heads south-east to Tabuk, then east across the north of the country to the Hail region and south on Highway 65 through Qassim to the capital.",
         ],
       },
       {
-        heading: "Road conditions and driving comfort",
+        heading: "Planning a two-day return",
         paragraphs: [
-          "The highway is well-maintained throughout, and given this is our longest route, planned rest and prayer stops are essential to how we structure the transfer.",
+          "Few people drive this in a single day. The two natural places to break it are Tabuk, only about two hours from the coast, and Hail, roughly halfway to Riyadh. Accommodation isn't part of a transfer; if you'd like an overnight stop, ask in your request and how it would work is set out in your quotation.",
+          "If you only need to reach Tabuk, or want to plan the trip as two separate legs, see <a href='/routes/tabuk-to-riyadh'>Tabuk to Riyadh</a>.",
         ],
       },
       {
-        heading: "Tolls and highway fees",
+        heading: "Arriving in Riyadh, or catching a flight",
         paragraphs: [
-          "No toll roads apply on this route or anywhere in Saudi Arabia. Your fixed price is fully inclusive.",
+          "Drop-off can be your home, hotel or office anywhere in Riyadh, or <a href='/airport-transfer/riyadh-airport'>King Khalid International Airport</a>. If you're flying out, tell us your departure time when you ask for a quote. We plan the arrival with a generous margin, and that timing is set out in your quotation. Flight changes aren't picked up automatically, so message us if your plans move.",
         ],
       },
       {
-        heading: "Best time to travel this route",
+        heading: "Road or air from NEOM?",
         paragraphs: [
-          "If your trip connects to a Riyadh flight, we build in a substantial buffer for the drive plus airport processing. Given the distance, we strongly recommend planning an overnight stop partway, at Tabuk or Hail, rather than a single continuous drive.",
+          "For one or two people travelling light, a flight from the region is often quicker; check current schedules with the airlines. The road suits teams travelling together, anyone with more luggage than an airline allows, and people who simply prefer one vehicle from pickup to door. If you're flying from the north-west, our <a href='/airport-transfer/neom-bay-airport'>NEOM Bay Airport</a> and <a href='/airport-transfer/tabuk-airport'>Tabuk Airport</a> pages cover the drive to the terminal.",
         ],
       },
       {
-        heading: "Vehicle options for the return journey",
+        heading: "Requesting your NEOM to Riyadh quotation",
         paragraphs: [
-          "A comfort SUV is strongly recommended for a drive of this length, and groups or equipment moves typically require a minivan or multiple coordinated vehicles.",
-        ],
-      },
-      {
-        heading: "A note for project staff and business travellers",
-        paragraphs: [
-          "NEOM project staff and contractors making scheduled trips to Riyadh benefit from our fixed-price, tracked service, designed specifically for reliable, planned long-distance movement.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Many travellers break this journey at Tabuk — see our <a href='/routes/tabuk-to-riyadh'>Tabuk to Riyadh transfer</a> if you're considering that structure rather than a single continuous drive from NEOM.",
-        ],
-      },
-      {
-        heading: "Safety on our longest route",
-        paragraphs: [
-          "As our longest domestic route, structured rest and prayer stops are essential here, and we recommend discussing your specific timing needs with us before booking so we can plan the safest, most comfortable journey.",
-        ],
-      },
-      {
-        heading: "Booking your NEOM to Riyadh transfer",
-        paragraphs: [
-          "Share your pickup point within the NEOM development, your Riyadh destination or flight details, preferred time, and group size and luggage or equipment. We confirm a suitable vehicle and fixed price before you travel, discuss overnight stop options, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Send your exact NEOM pickup point (and a site contact if it's a project location), your Riyadh destination or flight time, the date, passengers, luggage and any equipment with rough dimensions, plus whether you'd like an overnight stop. Vehicle, timing and price come back in a quotation, and nothing is booked until you confirm it. Use the <a href='/get-quote'>quote form</a> or WhatsApp.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Riyadh from NEOM, and how long does the drive take?", answer: "The distance is approximately 1,150 kilometres, and the drive takes about eleven and a half hours — our longest domestic route." },
-      { question: "Should I fly instead for this leg?", answer: "For most individual travellers, flying is faster. Road transfer makes the most sense for groups, equipment moves, or a specific preference for road travel." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
-      { question: "Is the fare fixed for such a long journey?", answer: "Yes, the price is agreed before you travel and covers the complete trip, including rest stops, with no meter, no surge, and no toll charges." },
-      { question: "Should I plan an overnight stop?", answer: "We strongly recommend it given the distance — Tabuk or Hail both work well as a stopping point." },
-      { question: "Which vehicle suits this journey best?", answer: "A comfort SUV is strongly recommended given the distance, and groups or equipment moves typically need a minivan or multiple vehicles." },
-      { question: "Is there a return Riyadh to NEOM transfer?", answer: "Yes, see our <a href='/routes/riyadh-to-neom'>Riyadh to NEOM</a> page to book that direction." },
-      { question: "What information do you need when booking?", answer: "Your pickup point within NEOM, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage or equipment details." },
-      { question: "Do you regularly serve NEOM project staff?", answer: "Yes, we regularly handle scheduled transfers for project staff and contractors travelling between NEOM and Riyadh." },
-      { question: "Can I break this journey at Tabuk?", answer: "Yes, many travellers do — see our <a href='/routes/tabuk-to-riyadh'>Tabuk to Riyadh transfer</a> if considering that structure." },
-      { question: "Is this drive suitable for elderly travellers?", answer: "Given the exceptional distance, we generally recommend flying this specific route for elderly or frail travellers, or planning a substantial overnight break." },
-      { question: "Is night travel on this route routine?", answer: "Given the significant length, we strongly recommend careful daytime planning with an overnight stop rather than continuous travel." },
+      { question: "How far is NEOM from Riyadh by road?", answer: "About 1,450–1,550 km, depending on where in NEOM you're collected. From the NEOM Bay Airport area near Sharma it is about 1,520 km to central Riyadh." },
+      { question: "How long is the drive from NEOM to Riyadh?", answer: "Roughly 15–16 hours of driving before stops, so most travellers plan it over two days." },
+      { question: "Where in NEOM can I be picked up?", answer: "At a road-accessible point you confirm, such as a hotel, an address or a meeting point agreed with a project site. Access to restricted sites needs your own permission and is never guaranteed." },
+      { question: "Can I be collected from Sindalah?", answer: "Not by road. Sindalah is an island, so the transfer starts at the mainland point where you arrive." },
+      { question: "Can the transfer take me to Riyadh airport for a flight?", answer: "Yes, King Khalid International Airport can be your drop-off. Share your flight time when you request a quote, and message us if it changes; changes aren't tracked automatically." },
+      { question: "Is there a transfer in the other direction?", answer: "Yes. Our <a href='/routes/riyadh-to-neom'>Riyadh to NEOM</a> page covers the journey from the capital." },
     ],
-    keywords: ["neom to riyadh taxi", "neom to riyadh transfer", "neom riyadh private car", "neom to riyadh airport taxi", "neom long distance taxi"],
+    keywords: ["neom to riyadh transfer", "neom to riyadh taxi", "neom to riyadh by road", "neom to riyadh airport", "private car neom to riyadh"],
   },
+
 
   {
     slug: "jeddah-to-riyadh",

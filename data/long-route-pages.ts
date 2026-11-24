@@ -5,6 +5,7 @@ import { RIYADH_HAIL, RIYADH_HAIL_FAQS } from "@/data/riyadh-to-hail-route";
 import { RIYADH_QASSIM, RIYADH_QASSIM_FAQS, RIYADH_QASSIM_PATH, RIYADH_QASSIM_REVIEWED } from "@/data/riyadh-to-qassim-route";
 import { JUBAIL_RIYADH, JUBAIL_RIYADH_FAQS, JUBAIL_RIYADH_PATH, JUBAIL_RIYADH_REVIEWED } from "@/data/jubail-to-riyadh-route";
 import { DMM_ABQAIQ, DMM_ABQAIQ_FAQS, DMM_ABQAIQ_PATH, DMM_ABQAIQ_REVIEWED } from "@/data/dammam-airport-to-abqaiq-route";
+import { NEOM, NEOM_FAQS, NEOM_PATH, NEOM_REVIEWED } from "@/data/riyadh-to-neom-route";
 import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_REVIEWED } from "@/data/dammam-to-al-khafji-route";
 
 /**
@@ -17,6 +18,7 @@ import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_RE
  *   "qassim"      → components/routes/RiyadhQassimRouteView.tsx
  *   "jubail"      → components/routes/JubailRiyadhRouteView.tsx
  *   "dmm-abqaiq"  → components/routes/DmmAbqaiqRouteView.tsx
+ *   "neom"        → components/routes/RiyadhNeomRouteView.tsx
  */
 export interface LongRoutePage {
   path: string;
@@ -27,7 +29,9 @@ export interface LongRoutePage {
   faqs: Faq[];
   serviceName: string;
   areaServed: string[];
-  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq";
+  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom";
+  /** Primary page image (emitted as WebPage.primaryImageOfPage). */
+  image?: { src: string; alt: string };
   /** Related route cards for views without shared-template content. */
   related?: { slug: string; text: string }[];
   /** Shared-template content (needed by "default" and "riyadh-hail"). */
@@ -98,5 +102,16 @@ export const longRoutePages: Record<string, LongRoutePage> = {
     areaServed: ["Dammam", "Abqaiq"],
     view: "dmm-abqaiq",
     related: DMM_ABQAIQ.related.routes,
+  },
+  "riyadh-to-neom": {
+    path: NEOM_PATH,
+    reviewed: NEOM_REVIEWED,
+    h1: NEOM.hero.h1,
+    summary: NEOM.glance.answer,
+    faqs: NEOM_FAQS,
+    serviceName: "Riyadh to NEOM Private Transfer",
+    areaServed: ["Riyadh", "Tabuk", "NEOM"],
+    view: "neom",
+    image: NEOM.hero.image,
   },
 };

@@ -66,6 +66,7 @@ import { DammamKhafjiRouteView } from "@/components/routes/DammamKhafjiRouteView
 import { RiyadhQassimRouteView } from "@/components/routes/RiyadhQassimRouteView";
 import { JubailRiyadhRouteView } from "@/components/routes/JubailRiyadhRouteView";
 import { DmmAbqaiqRouteView } from "@/components/routes/DmmAbqaiqRouteView";
+import { RiyadhNeomRouteView } from "@/components/routes/RiyadhNeomRouteView";
 import { longRoutePages } from "@/data/long-route-pages";
 
 const gccCountryDisplayName: Record<string, string> = {
@@ -256,6 +257,15 @@ export default async function RoutePage({
               isPartOf: { "@id": `${siteConfig.url}/#website` },
               about: { "@id": `${pageUrl}#service` },
               dateModified: longPage.reviewed,
+              ...(longPage.image
+                ? {
+                    primaryImageOfPage: {
+                      "@type": "ImageObject",
+                      url: absoluteUrl(longPage.image.src),
+                      caption: longPage.image.alt,
+                    },
+                  }
+                : {}),
             },
             {
               ...serviceSchema({
@@ -271,7 +281,9 @@ export default async function RoutePage({
             faqSchema(longPage.faqs),
           ]}
         />
-        {longPage.view === "dmm-abqaiq" ? (
+        {longPage.view === "neom" ? (
+          <RiyadhNeomRouteView faqs={longPage.faqs} crumbs={crumbs} />
+        ) : longPage.view === "dmm-abqaiq" ? (
           <DmmAbqaiqRouteView faqs={longPage.faqs} crumbs={crumbs} relatedRoutes={related} />
         ) : longPage.view === "jubail" ? (
           <JubailRiyadhRouteView faqs={longPage.faqs} crumbs={crumbs} />
