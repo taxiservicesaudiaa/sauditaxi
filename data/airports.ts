@@ -218,9 +218,9 @@ const baseAirports: Airport[] = [
       "dammam-airport-to-riyadh",
       "dammam-airport-to-hofuf",
     ],
-    metaTitle: "Private Dammam Airport Transfer (DMM) | Saudi Private Transfers",
+    metaTitle: "Dammam Airport Transfers | King Fahd Airport (DMM)",
     metaDescription:
-      "Private transfers from King Fahd Airport (DMM) to Khobar, Jubail, Dhahran, Riyadh and Bahrain, with flight tracking. Your confirmed quotation sets the price.",
+      "From King Fahd International Airport (DMM) to Dammam, Al Khobar, Dhahran, Jubail, Abqaiq or Bahrain: private transfers with flight tracking, priced by quotation.",
     // DMM service rules (owner, 21 Nov 2026 — supersedes Oct 2026): flight tracking yes; meeting
     // point confirmed individually (no arrivals-hall/name-board promise); no free-waiting allowance
     // advertised; no luggage-assistance promise; quotation-based pricing. See lib/airport-ops.ts.

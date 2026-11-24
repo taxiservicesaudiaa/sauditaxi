@@ -12,6 +12,8 @@ import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { breadcrumbSchema, serviceSchema, taxiServiceSchema, faqSchema, howToSchema } from "@/lib/schema";
 import { RiyadhAirportView } from "@/components/airport-transfer/RiyadhAirportView";
 import { RUH_PAGE, RUH_PAGE_FAQS, RUH_PAGE_REVIEWED } from "@/data/riyadh-airport-page";
+import { DammamAirportView } from "@/components/airport-transfer/DammamAirportView";
+import { DMM_PAGE, DMM_PAGE_FAQS, DMM_PAGE_REVIEWED } from "@/data/dammam-airport-page";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 // 2026 restructuring — new page-specific AirportTransferHub component (see
@@ -200,6 +202,61 @@ export default async function AirportPage({ params }: { params: Promise<Params> 
           ]}
         />
         <RiyadhAirportView faqs={RUH_PAGE_FAQS} crumbs={crumbs} routeLabels={routeLabels} />
+      </>
+    );
+  }
+
+  // King Fahd International Airport has its own arrivals-guide layout
+  // (data/dammam-airport-page.ts); owner-confirmed DMM rules apply there.
+  if (airport.slug === "dammam-airport") {
+    const pageUrl = absoluteUrl(path);
+    const routeSlugs = [
+      ...DMM_PAGE.destinations.map((d) => d.link.href),
+      ...DMM_PAGE.routes.featured.map((r) => r.href),
+      ...DMM_PAGE.routes.more.map((r) => r.href),
+    ]
+      .filter((h) => h.startsWith("/routes/"))
+      .map((h) => h.replace("/routes/", ""));
+    const liveRoutes = Object.fromEntries(routeSlugs.map((slug) => [slug, !!getRoute(slug)]));
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: airport.metaTitle,
+              description: airport.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: [{ "@id": `${pageUrl}#service` }, { "@id": `${pageUrl}#airport` }],
+              dateModified: DMM_PAGE_REVIEWED,
+            },
+            {
+              ...serviceSchema({
+                name: "Dammam Airport Transfers (DMM)",
+                description: DMM_PAGE.hero.intro,
+                path,
+                serviceType: "Airport Transfer",
+                areaServed: "Eastern Province, Saudi Arabia",
+                dateModified: DMM_PAGE_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              availableAtOrFrom: {
+                "@type": "Airport",
+                "@id": `${pageUrl}#airport`,
+                name: airport.name,
+                iataCode: airport.code,
+                address: { "@type": "PostalAddress", addressLocality: "Dammam", addressRegion: "Eastern Province", addressCountry: "SA" },
+              },
+            },
+            faqSchema(DMM_PAGE_FAQS),
+          ]}
+        />
+        <DammamAirportView faqs={DMM_PAGE_FAQS} crumbs={crumbs} liveRoutes={liveRoutes} />
       </>
     );
   }
