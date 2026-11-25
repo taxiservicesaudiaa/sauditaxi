@@ -15,7 +15,7 @@ import { whatsappLink } from "@/lib/site";
  * steps, a ferry-journey diagram that marks where the road transfer ends,
  * a transfer-vs-tour comparison for the Fayfa Mountains, a journey board, a
  * connections table, fleet table, a two-column checklist (prepare vs confirmed),
- * the shared QuoteForm, FAQs and visible photo credits.
+ * the shared QuoteForm and FAQs (photo credits: /image-credits).
  * Copy and facts: data/jazan-city-page.ts.
  */
 
@@ -42,14 +42,6 @@ function RichText({ text }: { text: string }) {
   );
 }
 
-function Credit({ p, light = false }: { p: JazanPhoto; light?: boolean }) {
-  return (
-    <span className={light ? "text-white/60" : "text-ink-muted"}>
-      {" "}
-      Photo: {p.credit.author} ({p.credit.licence})
-    </span>
-  );
-}
 
 function Pic({ p, ratio, sizes, className = "", light = false }: { p: JazanPhoto; ratio: string; sizes: string; className?: string; light?: boolean }) {
   return (
@@ -58,7 +50,7 @@ function Pic({ p, ratio, sizes, className = "", light = false }: { p: JazanPhoto
         <Image src={p.src} alt={p.alt} fill sizes={sizes} className="object-cover" />
       </div>
       <figcaption className={`mt-2 text-xs leading-relaxed ${light ? "text-white/70" : "text-ink-soft"}`}>
-        {p.caption}.<Credit p={p} light={light} />
+        {p.caption}.
       </figcaption>
     </figure>
   );
@@ -112,7 +104,7 @@ export function JazanCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] }
             ))}
           </dl>
           <p className="mt-4 text-[11px] text-white/55">
-            {P.sunset.caption}.<Credit p={P.sunset} light />
+            {P.sunset.caption}.
           </p>
         </div>
       </section>
@@ -146,7 +138,7 @@ export function JazanCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] }
                       </div>
                     </dl>
                     <p className="mt-auto pt-4 text-[11px] text-ink-muted">
-                      {p.caption}.<Credit p={p} />
+                      {p.caption}.
                     </p>
                   </div>
                 </article>

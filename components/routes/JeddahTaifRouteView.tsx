@@ -14,7 +14,7 @@ import { whatsappLink } from "@/lib/site";
  * "what to expect" table with an Al Hada stop callout, a three-tier "beyond arrival"
  * guide (drop-off / agreed stop / separate trip), family guidance, a provide-vs-
  * confirmed checklist, an options table, fleet table, the shared QuoteForm and
- * visible photo credits. Copy and sources: data/jeddah-to-taif-route.ts.
+ * photo credits on /image-credits. Copy and sources: data/jeddah-to-taif-route.ts.
  */
 
 const WA = "Hello! I'd like a quotation for a private transfer from Jeddah to Taif.";
@@ -22,14 +22,6 @@ const GRANITE = "#3a2f2a";
 const photos = TAIF_PHOTOS as Record<string, TaifPhoto>;
 const MAX_ALT = 2000;
 
-function Credit({ p, light = false }: { p: TaifPhoto; light?: boolean }) {
-  return (
-    <span className={light ? "text-white/60" : "text-ink-muted"}>
-      {" "}
-      Photo: {p.credit.author} ({p.credit.licence})
-    </span>
-  );
-}
 
 function Pic({ p, ratio, sizes, light = false, className = "" }: { p: TaifPhoto; ratio: string; sizes: string; light?: boolean; className?: string }) {
   return (
@@ -38,7 +30,7 @@ function Pic({ p, ratio, sizes, light = false, className = "" }: { p: TaifPhoto;
         <Image src={p.src} alt={p.alt} fill sizes={sizes} className="object-cover" />
       </div>
       <figcaption className={`mt-2 text-xs leading-relaxed ${light ? "text-white/70" : "text-ink-soft"}`}>
-        {p.caption}.<Credit p={p} light={light} />
+        {p.caption}.
       </figcaption>
     </figure>
   );
@@ -87,7 +79,7 @@ export function JeddahTaifRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
               </a>
             </div>
             <p className="mt-8 text-[11px] text-white/55">
-              {P.hero.caption}.<Credit p={P.hero} light />
+              {P.hero.caption}.
             </p>
           </div>
           {/* Ascent gauge */}
@@ -274,7 +266,7 @@ export function JeddahTaifRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
                           <h3 className="font-bold text-ink">{it.title}</h3>
                           <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{it.text}</p>
                           <p className="mt-2 text-[11px] text-ink-muted">
-                            {p.caption}.<Credit p={p} />
+                            {p.caption}.
                           </p>
                         </div>
                       </article>
@@ -457,7 +449,7 @@ export function JeddahTaifRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
         </div>
       </section>
 
-      {/* ── Related, method, credits ── */}
+      {/* ── Related and method ── */}
       <section aria-labelledby="related-h" className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 id="related-h" className="text-2xl font-bold tracking-tight text-ink">{c.related.heading}</h2>
@@ -474,24 +466,6 @@ export function JeddahTaifRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
             ))}
           </ul>
           <p className="mt-10 max-w-4xl text-xs leading-relaxed text-ink-muted">{c.method}</p>
-          <div className="mt-6 max-w-4xl text-xs text-ink-muted">
-            <h3 className="font-semibold text-ink-soft">Photo credits</h3>
-            <ul className="mt-3 space-y-1.5">
-              {Object.values(photos).map((p) => (
-                <li key={p.src}>
-                  “{p.credit.title}” by {p.credit.author},{" "}
-                  <a href={p.credit.licenceUrl} rel="license noopener" target="_blank" className="underline">
-                    {p.credit.licence}
-                  </a>
-                  , via{" "}
-                  <a href={p.credit.source} rel="noopener" target="_blank" className="underline">
-                    Wikimedia Commons
-                  </a>
-                  ; resized and converted to WebP. Shown as: {p.caption}.
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 

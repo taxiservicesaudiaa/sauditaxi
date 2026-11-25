@@ -5,7 +5,6 @@ import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { HomeSectionCards, type HomeSectionCard } from "@/components/home/HomeSectionCards";
 import { HomeFAQSection } from "@/components/home/HomeFAQSection";
 import type { Faq } from "@/data/faqs";
-import { IMAGE_CREDITS } from "@/data/image-credits";
 
 export interface AirportTransferStep {
   title: string;
@@ -121,7 +120,6 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
     finalCtaHeading,
     finalCtaText,
   } = content;
-  const heroCredit = IMAGE_CREDITS[heroImage];
 
   return (
     <>
@@ -152,23 +150,6 @@ export function AirportTransferHub({ content, crumbs }: { content: AirportTransf
               </Link>
             )}
           </div>
-          {heroCredit && (
-            <p className="mt-6 text-[11px] text-white/55">
-              {heroCredit.caption}. Photo: “{heroCredit.title}” by {heroCredit.author},{" "}
-              {heroCredit.licenceUrl ? (
-                <a href={heroCredit.licenceUrl} rel="license noopener" target="_blank" className="underline">
-                  {heroCredit.licence}
-                </a>
-              ) : (
-                heroCredit.licence
-              )}
-              , via{" "}
-              <a href={heroCredit.source} rel="noopener" target="_blank" className="underline">
-                Wikimedia Commons
-              </a>
-              .
-            </p>
-          )}
         </div>
 
         {facts.length > 0 && (

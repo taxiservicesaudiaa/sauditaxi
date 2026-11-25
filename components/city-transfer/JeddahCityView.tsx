@@ -47,7 +47,7 @@ function Pic({ p, ratio, sizes, light = false, priority = false }: { p: JeddahPh
         <Image src={p.src} alt={p.alt} fill sizes={sizes} priority={priority} className="object-cover" />
       </div>
       <figcaption className={`mt-2 text-xs ${light ? "text-white/65" : "text-ink-soft"}`}>
-        {p.caption}. <span className={light ? "text-white/50" : "text-ink-muted"}>Photo: {p.credit.author} ({p.credit.licence})</span>
+        {p.caption}.
       </figcaption>
     </figure>
   );
@@ -221,9 +221,6 @@ export function JeddahCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] 
                   <div className="p-5">
                     <h3 className="font-bold text-ink">{pl.title}</h3>
                     <p className="mt-1 text-sm text-ink-soft">{pl.text}</p>
-                    <p className="mt-3 text-[11px] text-ink-muted">
-                      {p.caption}. Photo: {p.credit.author} ({p.credit.licence})
-                    </p>
                   </div>
                 </article>
               );

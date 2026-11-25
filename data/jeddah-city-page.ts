@@ -29,7 +29,20 @@ import type { Faq } from "@/data/faqs";
 
 export const JEDDAH_REVIEWED = "2026-11-24";
 
-type Credit = { author: string; licence: string };
+type Credit = { title: string; author: string; licence: string; licenceUrl?: string; source: string };
+
+const commons = (f: string) => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(f.replace(/ /g, "_"))}`;
+const L = {
+  by4: ["CC BY 4.0", "https://creativecommons.org/licenses/by/4.0/"],
+  bysa4: ["CC BY-SA 4.0", "https://creativecommons.org/licenses/by-sa/4.0/"],
+} as const;
+const cr = (author: string, lic: readonly [string, string], file: string): Credit => ({
+  title: file.replace(/.(jpe?g|png)$/i, ""),
+  author,
+  licence: lic[0],
+  licenceUrl: lic[1],
+  source: commons(file),
+});
 export type JeddahPhoto = { src: string; alt: string; caption: string; credit: Credit };
 
 export const JEDDAH_PHOTOS = {
@@ -37,43 +50,43 @@ export const JEDDAH_PHOTOS = {
     src: "/images/jeddah/jeddah-waterfront-aerial.webp",
     alt: "Aerial view of the Jeddah Waterfront, with the Corniche road, a mosque on the shore and towers beside the Red Sea",
     caption: "The Jeddah Waterfront and Corniche on the Red Sea",
-    credit: { author: "Saudi Press Agency", licence: "CC BY-SA 4.0" },
+    credit: cr("Saudi Press Agency", L.bysa4, "Jeddah Waterfront, Western Saudi Arabia (2026).jpg"),
   },
   airport: {
     src: "/images/jeddah/kaia-hajj-terminal.webp",
     alt: "Pilgrims walking with their bags under the white tent canopies of the Hajj Terminal at King Abdulaziz International Airport",
     caption: "The Hajj Terminal at King Abdulaziz International Airport",
-    credit: { author: "Shah134pk", licence: "CC BY-SA 4.0" },
+    credit: cr("Shah134pk", L.bysa4, "KSA Jeddah - Hajj Terminal -20171206 11 11 06 Pro.jpg"),
   },
   rahmah: {
     src: "/images/jeddah/al-rahmah-mosque.webp",
     alt: "The white Al-Rahmah Mosque standing over the water on the Jeddah Corniche, beside a large bronze sculpture",
     caption: "The Al-Rahmah Mosque on the Corniche",
-    credit: { author: "xiquinhosilva", licence: "CC BY 4.0" },
+    credit: cr("xiquinhosilva", L.by4, "Jeddah - 55362179623.jpg"),
   },
   fountain: {
     src: "/images/jeddah/king-fahd-fountain.webp",
     alt: "King Fahd's Fountain shooting a jet of water into an orange sunset sky above palm trees",
     caption: "King Fahd's Fountain at sunset",
-    credit: { author: "Saudi Press Agency", licence: "CC BY-SA 4.0" },
+    credit: cr("Saudi Press Agency", L.bysa4, "نافورة الملك فهد في جدة غرب السعودية (2025).jpg"),
   },
   gate: {
     src: "/images/jeddah/al-balad-gate.webp",
     alt: "A restored coral-stone city gate with round towers in historic Al-Balad, Jeddah",
     caption: "A restored gate in historic Al-Balad",
-    credit: { author: "xiquinhosilva", licence: "CC BY 4.0" },
+    credit: cr("xiquinhosilva", L.by4, "Old Jeddah - 55362181118.jpg"),
   },
   balad: {
     src: "/images/jeddah/bait-al-balad.webp",
     alt: "Traditional Hijazi houses with wooden balconies around a square in Al-Balad, Jeddah",
     caption: "Traditional houses around Bait Al Balad in the old town",
-    credit: { author: "Tahir mq", licence: "CC BY-SA 4.0" },
+    credit: cr("Tahir mq", L.bysa4, "Bait Al Balad, Jeddah 3.jpg"),
   },
   corniche: {
     src: "/images/taif/jeddah-corniche.webp",
     alt: "The Jeddah Corniche promenade with street lamps and towers beside the Red Sea",
     caption: "The Corniche promenade",
-    credit: { author: "Tahir mq", licence: "CC BY-SA 4.0" },
+    credit: cr("Tahir mq", L.bysa4, "Jeddah Corniche.jpg"),
   },
 } satisfies Record<string, JeddahPhoto>;
 

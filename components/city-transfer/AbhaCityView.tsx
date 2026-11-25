@@ -15,7 +15,7 @@ import { whatsappLink } from "@/lib/site";
  * an airport how-to, editorial destination rows tagged by journey type, a
  * numbered journey board, planning advice, fleet table with the child-seat
  * rule, verified intercity routes, a request panel with the shared QuoteForm,
- * FAQs and a visible photo-credit list. Copy and facts: data/abha-city-page.ts.
+ * FAQs (photo credits: /image-credits). Copy and facts: data/abha-city-page.ts.
  */
 
 const WA = "Hello! I'd like a quotation for a private transfer in Abha.";
@@ -52,14 +52,6 @@ function Head({ id, kicker, title, children, dark = false }: { id: string; kicke
   );
 }
 
-function PhotoCredit({ p, light = false }: { p: CityPhoto; light?: boolean }) {
-  return (
-    <span className={light ? "text-white/60" : "text-ink-muted"}>
-      {" "}
-      Photo: {p.credit.author} ({p.credit.licence})
-    </span>
-  );
-}
 
 const LABEL_DY: Record<string, number> = { "Al-Soudah": -3.5, "Rijal Almaa": 3.5, "Abha Airport (AHB)": 4, "Khamis Mushait": -3 };
 
@@ -153,7 +145,7 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
             ))}
           </dl>
           <p className="mt-5 text-[11px] text-white/55">
-            {P.greenMountain.caption}.<PhotoCredit p={P.greenMountain} light />
+            {P.greenMountain.caption}.
           </p>
         </div>
       </section>
@@ -192,7 +184,7 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
                   <Image src={P.iss.src} alt={P.iss.alt} fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
                 </div>
                 <figcaption className="mt-2 text-xs leading-relaxed text-white/60">
-                  {P.iss.caption}.<PhotoCredit p={P.iss} light />
+                  {P.iss.caption}.
                 </figcaption>
               </figure>
             </div>
@@ -227,7 +219,7 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
               <Image src={P.street.src} alt={P.street.alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
             </div>
             <figcaption className="mt-2 text-xs text-ink-soft">
-              {P.street.caption}.<PhotoCredit p={P.street} />
+              {P.street.caption}.
             </figcaption>
           </figure>
         </div>
@@ -250,7 +242,7 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
                         <Image src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                       </div>
                       <figcaption className="mt-2 text-xs text-ink-soft">
-                        {p.caption}.<PhotoCredit p={p} />
+                        {p.caption}.
                       </figcaption>
                     </figure>
                   ) : (
@@ -286,7 +278,7 @@ export function AbhaCityView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Crumb[] })
                   <Image src={p.src} alt={p.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
                 </div>
                 <figcaption className="mt-2 text-xs text-ink-soft">
-                  {p.caption}.<PhotoCredit p={p} />
+                  {p.caption}.
                 </figcaption>
               </figure>
             ))}

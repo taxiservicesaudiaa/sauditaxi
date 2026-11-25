@@ -1,8 +1,8 @@
 /**
  * Attribution for licensed hero images rendered by shared templates that have
  * no caption slot of their own (e.g. components/airport-transfer/AirportTransferHub).
- * A template looks up its hero `src` here and shows the credit only when an
- * entry exists, so pages using project-owned images render unchanged.
+ * Credits are no longer shown on the pages themselves; they are listed on
+ * /image-credits (data/photo-credits.ts), owner decision 25 Nov 2026.
  * Licence metadata verified via the Wikipedia API, 24 Nov 2026.
  */
 export interface ImageCredit {

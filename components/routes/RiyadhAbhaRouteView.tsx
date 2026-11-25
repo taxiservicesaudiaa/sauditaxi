@@ -14,7 +14,7 @@ import { whatsappLink } from "@/lib/site";
  * with an altitude silhouette, an altimeter-style chapter bar, a real
  * elevation profile of the road (Copernicus DEM), stepped landscape stages, a
  * photo mosaic of Abha, destination cards with photos, a fleet table, a
- * checklist, the shared QuoteForm and a credits list for every licensed photo.
+ * checklist and the shared QuoteForm (photo credits: /image-credits).
  * Copy and sources: data/riyadh-to-abha-route.ts.
  */
 
@@ -39,15 +39,6 @@ function RichText({ text }: { text: string }) {
   );
 }
 
-function Credit({ p, dark = false }: { p: Photo; dark?: boolean }) {
-  if (!p.credit) return null;
-  return (
-    <span className={dark ? "text-white/60" : "text-ink-muted"}>
-      {" "}
-      Photo: {p.credit.author} ({p.credit.licence})
-    </span>
-  );
-}
 
 function Figure({ p, sizes, className = "", ratio }: { p: Photo; sizes: string; className?: string; ratio?: string }) {
   return (
@@ -60,7 +51,7 @@ function Figure({ p, sizes, className = "", ratio }: { p: Photo; sizes: string; 
         )}
       </div>
       <figcaption className="mt-2 text-xs leading-relaxed text-ink-soft">
-        {p.caption}.<Credit p={p} />
+        {p.caption}.
       </figcaption>
     </figure>
   );
@@ -204,9 +195,6 @@ export function RiyadhAbhaRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
               </div>
             ))}
           </dl>
-          <p className="mt-6 text-[11px] text-white/55">
-            {PHOTOS.hero.caption}. Photo: {PHOTOS.hero.credit.author} ({PHOTOS.hero.credit.licence}).
-          </p>
         </div>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="block h-16 w-full sm:h-24" aria-hidden="true">
           <polygon points={`0,100 ${sil} 100,100`} fill="#ffffff" />
@@ -383,11 +371,6 @@ export function RiyadhAbhaRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
                       {pl.linkLabel}
                     </Link>
                   ) : null}
-                  {p?.credit ? (
-                    <p className="mt-3 text-[11px] text-ink-muted">
-                      Photo: {p.credit.author} ({p.credit.licence})
-                    </p>
-                  ) : null}
                 </div>
               </article>
             );
@@ -497,7 +480,7 @@ export function RiyadhAbhaRouteView({ faqs, crumbs }: { faqs: Faq[]; crumbs: Cru
         </div>
       </Chapter>
 
-      {/* ── Related, method and credits ── */}
+      {/* ── Related and method ── */}
       <section aria-labelledby="related-h" className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 id="related-h" className="text-2xl font-bold tracking-tight text-ink">{c.related.heading}</h2>

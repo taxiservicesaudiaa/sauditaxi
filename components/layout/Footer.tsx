@@ -197,6 +197,7 @@ export function Footer() {
               <li><Link href={isAr ? "/ar/اطلب-عرض-سعر" : "/get-quote"} className="hover:text-brass">{dict.footer.getAQuote}</Link></li>
               <li><Link href={isAr ? "/ar/خدماتنا" : "/services"} className="hover:text-brass">{dict.footer.allServices}</Link></li>
               {!isAr && <li><Link href="/sitemap" className="hover:text-brass">Sitemap</Link></li>}
+              {!isAr && <li><Link href="/image-credits" className="hover:text-brass">Image credits</Link></li>}
               <li><Link href={isAr ? "/ar/الشروط-والأحكام" : "/terms-and-conditions"} className="hover:text-brass">{dict.footer.termsAndConditions}</Link></li>
               <li><Link href={isAr ? "/ar/سياسة-الخصوصية" : "/privacy-policy"} className="hover:text-brass">{dict.footer.privacyPolicy}</Link></li>
             </ul>
