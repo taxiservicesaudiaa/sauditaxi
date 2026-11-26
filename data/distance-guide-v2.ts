@@ -1149,7 +1149,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         layout: "strip",
         items: [
           { label: "Fastest option", value: "Direct flight, ~1h50m" },
-          { label: "Best for groups/luggage", value: "Private car, ~9 hours" },
+          { label: "Best for groups/luggage", value: "Private car, roughly 9.5–10.5 hours of driving" },
           { label: "Key fact", value: "One of the longest regularly-driven domestic routes in the Kingdom" },
         ],
       },
@@ -1175,12 +1175,12 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
       {
         type: "timeReality",
         heading: "How Long It Actually Takes",
-        pureDriving: "~8.5 hours (theoretical, non-stop)",
-        totalJourney: "~9 hours or more, once realistic stops are included",
+        pureDriving: "Roughly 9.5–10.5 hours of driving (routing estimates vary)",
+        totalJourney: "10–11 hours or more, once realistic stops are included",
         factors: [
           "This is one of the longest single drives in the country by any regular domestic standard",
           "A direct flight takes around one hour fifty minutes, operated by four airlines",
-          "Most realistic planning treats this as a nine-hour-plus journey once stops are included",
+          "Most realistic planning treats this as a ten-hour-plus journey once stops are included",
           "Departure time affects how much Riyadh morning traffic you clear before the highway opens up, and how much Jeddah congestion you meet on arrival",
         ],
       },
@@ -1189,7 +1189,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         heading: "Driving vs Flying from Riyadh to Jeddah",
         options: [
           { mode: "Direct flight", suitability: "Travellers prioritising time over the road-trip experience", duration: "About 1 hour 50 minutes", advantages: "By far the fastest option for a distance of this length, served by four airlines", limitations: "Not door-to-door; requires airport transfers and check-in time at both ends" },
-          { mode: "Private car / taxi", suitability: "Families and groups with a full vehicle-load of luggage, or anyone continuing on to Makkah or Taif on arrival in the west", duration: "Around 9 hours, typically with rest stops", advantages: "Door-to-door, one vehicle for the whole group and its luggage, no repeated security/check-in process", limitations: "A genuinely long single day of driving, or a day split with an overnight stop" },
+          { mode: "Private car / taxi", suitability: "Families and groups with a full vehicle-load of luggage, or anyone continuing on to Makkah or Taif on arrival in the west", duration: "Roughly 9.5–10.5 hours of driving, plus rest stops", advantages: "Door-to-door, one vehicle for the whole group and its luggage, no repeated security/check-in process", limitations: "A genuinely long single day of driving, or a day split with an overnight stop" },
           { mode: "SAPTCO intercity bus", suitability: "Budget travellers who don't need door-to-door service", duration: "Longer than a direct drive, fixed schedule", advantages: "Lower cost than flying or a private car, part of the national SAPTCO network", limitations: "A very long journey on a shared, fixed-schedule vehicle, station-to-station rather than door-to-door" },
         ],
       },
@@ -1197,7 +1197,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         type: "planningNotes",
         heading: "Planning Stops on the Riyadh to Jeddah Drive",
         items: [
-          { question: "Is a rest stop necessary on this route?", answer: "For most drivers, yes — 8.5 hours of continuous driving is demanding, and service stations along Highway 40 make at least one proper break practical rather than a luxury." },
+          { question: "Is a rest stop necessary on this route?", answer: "For most drivers, yes — 9.5–10.5 hours of driving is demanding, and service stations along Highway 40 make at least one proper break practical rather than a luxury." },
           { question: "How many stops do travellers typically plan?", answer: "This varies by driver and passengers rather than being fixed — some treat it as one long push with a single fuel-and-stretch stop, others split it into two shorter driving blocks with a longer midway break." },
           { question: "Is an overnight stop common?", answer: "Some travellers departing later in the day choose to split the journey with an overnight stop rather than arriving very late; it's a personal-preference decision rather than an operational requirement." },
           { question: "Does the route pass through any major towns?", answer: "The highway is largely a direct desert corridor rather than routing through major intermediate cities, so services are found at highway rest stops rather than town centres." },
@@ -1207,7 +1207,7 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
         type: "contextCard",
         heading: "Who Might Prefer Travelling by Road?",
         paragraphs: [
-          "Objectively, most travellers without a specific reason to drive choose the roughly two-hour flight over a nine-hour road trip. The road makes sense for a narrower set of situations: a family or group travelling with more luggage than standard checked-baggage allowances comfortably cover, a party that wants to stay together in one vehicle rather than splitting across flights, or someone continuing directly on to Makkah or Taif once they reach the west — turning a single long drive into one journey rather than a flight plus a second overland transfer.",
+          "Objectively, most travellers without a specific reason to drive choose the roughly two-hour flight over a road trip of around ten hours. The road makes sense for a narrower set of situations: a family or group travelling with more luggage than standard checked-baggage allowances comfortably cover, a party that wants to stay together in one vehicle rather than splitting across flights, or someone continuing directly on to Makkah or Taif once they reach the west — turning a single long drive into one journey rather than a flight plus a second overland transfer.",
           "Door-to-door convenience is the other genuine advantage: no airport transfers, no check-in or security queues at either end, and a fixed departure time that isn't subject to flight schedules. Against that, it is a full day given over to travel, and realistically requires planning around rest breaks rather than treating the 8.5-hour estimate as the whole story.",
         ],
       },
@@ -1225,9 +1225,9 @@ export const distanceGuideV2Pages: DistanceGuideV2Page[] = [
     ],
     faqs: [
       { question: "How far is Jeddah from Riyadh?", answer: "Road-distance sources vary between about 842 and 967 km, with roughly 948 km commonly cited; the more direct flight distance is around 852 km." },
-      { question: "How long does it take to travel from Riyadh to Jeddah?", answer: "Around nine hours by road including stops, or about one hour fifty minutes by direct flight." },
+      { question: "How long does it take to travel from Riyadh to Jeddah?", answer: "Roughly 9.5–10.5 hours of driving, plus stops, or about one hour fifty minutes by direct flight." },
       { question: "Is it practical to drive from Riyadh to Jeddah?", answer: "It's done regularly, particularly by families with a full vehicle-load of luggage or groups wanting to travel together, but most travellers who don't have a specific reason to drive choose the roughly two-hour flight instead." },
-      { question: "What is the fastest way to travel this route?", answer: "A direct flight, at under two hours, compared to roughly nine hours by road." },
+      { question: "What is the fastest way to travel this route?", answer: "A direct flight, at under two hours, compared to roughly 9.5–10.5 hours of driving by road." },
       { question: "Is there a train between Riyadh and Jeddah?", answer: "No direct passenger rail line connects Riyadh and Jeddah; road and air are the two practical options." },
       { question: "Is an overnight stop common on this drive?", answer: "Some travellers split the drive with an overnight stop rather than attempting it in one push, particularly if departing later in the day." },
       { question: "Why do road-distance sources vary so much for this route?", answer: "Different measurement tools use different reference points within each large city and sometimes slightly different routing, which produces a wider spread than on shorter, more clearly defined routes." },

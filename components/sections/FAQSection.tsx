@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * FAQ accordion using native <details>/<summary> — accessible, no client JS,
@@ -35,7 +36,7 @@ export function FAQSection({
                 <ChevronDown className="size-5 shrink-0 text-gold transition-transform group-open:rotate-180" />
               </summary>
               <p className="pb-4 text-sm leading-relaxed text-muted-foreground">
-                {faq.answer}
+                {inlineLinks(faq.answer)}
               </p>
             </details>
           ))}

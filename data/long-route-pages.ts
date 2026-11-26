@@ -8,6 +8,8 @@ import { DMM_ABQAIQ, DMM_ABQAIQ_FAQS, DMM_ABQAIQ_PATH, DMM_ABQAIQ_REVIEWED } fro
 import { NEOM, NEOM_FAQS, NEOM_PATH, NEOM_REVIEWED } from "@/data/riyadh-to-neom-route";
 import { ABHA, ABHA_FAQS, ABHA_PATH, ABHA_REVIEWED, PHOTOS as ABHA_PHOTOS } from "@/data/riyadh-to-abha-route";
 import { TAIF, TAIF_FAQS, TAIF_PATH, TAIF_PHOTOS, TAIF_REVIEWED } from "@/data/jeddah-to-taif-route";
+import { YANBU, YANBU_FAQS, YANBU_PATH, YANBU_PHOTOS, YANBU_REVIEWED } from "@/data/riyadh-to-yanbu-route";
+import { JUBAIL_DAMMAM, JUBAIL_DAMMAM_FAQS, JUBAIL_DAMMAM_PATH, JUBAIL_DAMMAM_PHOTOS, JUBAIL_DAMMAM_REVIEWED } from "@/data/jubail-to-dammam-route";
 import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_REVIEWED } from "@/data/dammam-to-al-khafji-route";
 
 /**
@@ -23,6 +25,8 @@ import { DAMMAM_KHAFJI, DAMMAM_KHAFJI_FAQS, DAMMAM_KHAFJI_PATH, DAMMAM_KHAFJI_RE
  *   "neom"        → components/routes/RiyadhNeomRouteView.tsx
  *   "abha"        → components/routes/RiyadhAbhaRouteView.tsx
  *   "taif"        → components/routes/JeddahTaifRouteView.tsx
+ *   "yanbu"       → components/routes/RiyadhYanbuRouteView.tsx
+ *   "jubail-dammam" → components/routes/JubailDammamRouteView.tsx
  */
 export interface LongRoutePage {
   path: string;
@@ -33,7 +37,7 @@ export interface LongRoutePage {
   faqs: Faq[];
   serviceName: string;
   areaServed: string[];
-  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom" | "abha" | "taif";
+  view: "default" | "riyadh-hail" | "khafji" | "qassim" | "jubail" | "dmm-abqaiq" | "neom" | "abha" | "taif" | "yanbu" | "jubail-dammam";
   /** Primary page image (emitted as WebPage.primaryImageOfPage). */
   image?: { src: string; alt: string; credit?: { author: string; licence: string; licenceUrl?: string; source: string } };
   /** Places with coordinates: emitted as areaServed City nodes with GeoCoordinates. */
@@ -156,5 +160,37 @@ export const longRoutePages: Record<string, LongRoutePage> = {
       { name: "Taif", lat: 21.2703, lon: 40.4158, region: "Makkah Province" },
     ],
     ogImage: TAIF_PHOTOS.hero.src,
+  },
+  "riyadh-to-yanbu": {
+    path: YANBU_PATH,
+    reviewed: YANBU_REVIEWED,
+    h1: YANBU.hero.h1,
+    summary: YANBU.glance.answer,
+    faqs: YANBU_FAQS,
+    serviceName: "Riyadh to Yanbu Private Transfer",
+    areaServed: ["Riyadh", "Yanbu"],
+    view: "yanbu",
+    image: { src: YANBU_PHOTOS.space.src, alt: YANBU_PHOTOS.space.alt, credit: YANBU_PHOTOS.space.credit },
+    places: [
+      { name: "Riyadh", lat: 24.7136, lon: 46.6753, region: "Riyadh Region" },
+      { name: "Yanbu", lat: 24.0895, lon: 38.0618, region: "Madinah Province" },
+    ],
+    ogImage: YANBU_PHOTOS.street.src,
+  },
+  "jubail-to-dammam": {
+    path: JUBAIL_DAMMAM_PATH,
+    reviewed: JUBAIL_DAMMAM_REVIEWED,
+    h1: JUBAIL_DAMMAM.hero.h1,
+    summary: JUBAIL_DAMMAM.glance.answer,
+    faqs: JUBAIL_DAMMAM_FAQS,
+    serviceName: "Jubail to Dammam Private Transfer",
+    areaServed: ["Jubail", "Dammam"],
+    view: "jubail-dammam",
+    image: { src: JUBAIL_DAMMAM_PHOTOS.corniche.src, alt: JUBAIL_DAMMAM_PHOTOS.corniche.alt, credit: JUBAIL_DAMMAM_PHOTOS.corniche.credit },
+    places: [
+      { name: "Jubail", lat: 27.005, lon: 49.658, region: "Eastern Province" },
+      { name: "Dammam", lat: 26.4367, lon: 50.1039, region: "Eastern Province" },
+    ],
+    ogImage: JUBAIL_DAMMAM_PHOTOS.corniche.src,
   },
 };

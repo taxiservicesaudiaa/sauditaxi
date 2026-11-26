@@ -23,12 +23,14 @@ export interface CityGuide {
 
 export const cityGuides: Record<string, CityGuide> = {
   riyadh: {
+    // /taxi-service/riyadh renders data/riyadh-city-page.ts; the fields below remain
+    // because the shared template requires them. hubFaqs feed /cities/riyadh (unchanged).
     lastUpdated: "2026-09-17",
     localInsight:
-      "Riyadh's business travel centres on King Fahd Road, Olaya, and the Diplomatic Quarter, with King Abdullah Financial District (KAFD) now a major pickup and drop-off point for corporate riders. Riyadh Season (winter) and major exhibitions at Riyadh Front pull in heavy short-notice demand, so booking a day or two ahead is worthwhile during peak weeks. Getting around the city by private transfer is generally easier than relying on ride-hailing during large events, since a booked car has your route and pickup point confirmed in advance rather than searching for a match. For business trips, request a car with WhatsApp confirmation the night before so your driver is outside your hotel or office at the exact time you asked for.",
+      "Riyadh's business travel centres on Olaya and King Fahd Road, KAFD and the Diplomatic Quarter, with King Khalid International Airport to the north. During Riyadh Season and major exhibitions many people arrange their transport in advance.",
     introParagraphs: [
-      "Riyadh is the Kingdom's capital and its largest business centre, so most private-transfer demand here is corporate: airport arrivals heading straight to a meeting, teams moving between offices in KAFD and Olaya, and executives who need a driver waiting between appointments rather than a taxi hailed on the street. The city's sheer size — spreading well beyond the historic core into Olaya, the Diplomatic Quarter, and the newer financial district — makes a pre-booked, fixed-price car more predictable than arranging transport on arrival.",
-      "The city is also a hub for longer journeys — travellers routing through Riyadh to reach Jeddah, Makkah, Madinah, the Eastern Province, or AlUla commonly book a private car for the whole leg rather than switching between transport types. Pre-booking matters most during Riyadh Season and major exhibitions at Riyadh Front, when short-notice demand spikes across the city and vehicle availability tightens quickly.",
+      "Riyadh is the capital of Saudi Arabia, a wide city where the airport, business districts, embassies and Diriyah are far apart.",
+      "You can request private transfers to and from the airport, across the city and on to other Saudi cities, each arranged by quotation.",
     ],
     sections: [
       {
@@ -36,89 +38,16 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "King Khalid International Airport (RUH) sits north of the city, roughly 30-45 minutes from central districts like Olaya or KAFD depending on traffic. Your driver tracks your flight and meets you in the arrivals hall with a name board, then drives directly to your hotel, office, or onward destination at a fixed price agreed before you travel — the same price whether your flight lands early or is delayed.",
-            "The reverse leg works the same way — a driver collects you from your hotel or office and drives to the terminal for your departure, timed around your flight, with time built in for Airport Road traffic. See our <a href='/airport-transfer/riyadh-airport'>Riyadh Airport transfer page</a> for the full arrival process and vehicle options.",
-          ],
-        },
-      },
-      {
-        heading: "Business and Corporate Transportation in Riyadh",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "King Abdullah Financial District (KAFD) is one of the most-requested Riyadh pickup points for corporate travel, alongside King Fahd Road and the Diplomatic Quarter. For a full day of meetings, send your schedule of stops on WhatsApp and we'll quote a fixed day-rate with the same driver and vehicle waiting between them, rather than booking a separate ride each time.",
-            "During Riyadh Season, major exhibitions, or large conferences, demand rises quickly and a booked car has your route and pickup point confirmed in advance — generally more reliable than searching for a ride-hailing match during a large event. Booking a day or two ahead is worthwhile during peak weeks.",
+            "King Khalid International Airport (RUH) is north of the city, about 32–37 km by road from KAFD and Olaya. Pickup arrangements are confirmed individually. See our <a href='/airport-transfer/riyadh-airport'>Riyadh Airport transfer page</a>.",
           ],
         },
       },
       {
         heading: "Private Transfers from Riyadh to Other Cities",
         block: {
-          kind: "cards",
-          intro: "A selection of the most-requested long-distance journeys from Riyadh, each a fixed-price private transfer.",
-          columns: 3,
-          cards: [
-            { title: "Riyadh to Jeddah", body: "A cross-country transfer connecting the capital with the Red Sea coast.", href: "/routes/riyadh-to-jeddah", linkLabel: "Riyadh to Jeddah route" },
-            { title: "Riyadh to Makkah", body: "A direct private transfer for pilgrims travelling on to Umrah.", href: "/routes/riyadh-to-makkah", linkLabel: "Riyadh to Makkah route" },
-            { title: "Riyadh to Madinah", body: "A private long-distance transfer to the Prophet's Mosque.", href: "/routes/riyadh-to-madinah", linkLabel: "Riyadh to Madinah route" },
-            { title: "Riyadh to Dammam", body: "A private transfer across to the Eastern Province and Khobar metro area.", href: "/routes/riyadh-to-dammam", linkLabel: "Riyadh to Dammam route" },
-            { title: "Riyadh to AlUla", body: "A private long-distance transfer to the heritage sites and resorts of AlUla.", href: "/routes/riyadh-to-alula", linkLabel: "Riyadh to AlUla route" },
-            { title: "Riyadh to Qassim", body: "A private transfer north to Buraidah, Unaizah and the wider Qassim region.", href: "/routes/riyadh-to-qassim", linkLabel: "Riyadh to Qassim route" },
-          ],
-        },
-      },
-      {
-        heading: "Riyadh Hotel Transfers",
-        block: {
           kind: "prose",
           paragraphs: [
-            "Fixed-price private transfers are available between King Khalid Airport and hotels across Olaya, KAFD, the Diplomatic Quarter, and greater Riyadh. Browse our <a href='/cities/riyadh'>Riyadh hotel transfer directory</a> for a specific hotel, or send us your hotel's name and address directly and we'll arrange a private transfer to the door.",
-            "Guests staying for a multi-day business trip often book a return airport transfer at the same time as the arrival pickup, which removes the need to arrange departure transport separately once the meetings are done.",
-          ],
-        },
-      },
-      {
-        heading: "Diriyah and Cultural Destination Transfers",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Diriyah and At-Turaif, the birthplace of the first Saudi state, sit on the opposite side of the city from many hotel districts, so private transfers here are booked as a fixed-price round trip with waiting time included if you'd like the same driver for the return leg. The same applies to Riyadh Front and other major event venues during Riyadh Season.",
-          ],
-        },
-      },
-      {
-        heading: "Families, Groups, and Business Delegations",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "For families visiting during Riyadh Season, a larger sedan or van suits most groups depending on passenger count and luggage — mention numbers and any car seats needed when requesting a quote. For a visiting business delegation, a van keeps the whole group together for one fixed price, and a full-day chauffeur booking removes the need to arrange separate local transport between venues.",
-          ],
-        },
-      },
-      {
-        heading: "Pickup Areas in Riyadh",
-        block: {
-          kind: "bullets",
-          intro: "Common pickup and drop-off points our drivers know well:",
-          items: ["King Khalid International Airport", "Kingdom Centre Tower and King Fahd Road", "King Abdullah Financial District (KAFD)", "Diplomatic Quarter", "Diriyah and At-Turaif", "Riyadh Front"],
-        },
-      },
-      {
-        heading: "Riyadh's Regional Connections",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Riyadh functions as a hub for journeys across central and eastern Saudi Arabia — private intercity transfers run east to Dammam, Khobar, and Jubail, north toward Qassim and Hail, and west toward Jeddah, Makkah, Madinah, and AlUla. Long-distance travellers frequently route through Riyadh rather than book each leg separately, particularly when a trip combines a business stop in the capital with onward pilgrimage or leisure travel.",
-            "For any of these longer routes, the price is agreed and fixed before you travel, so the length of the drive or the time of day doesn't change what you pay.",
-          ],
-        },
-      },
-      {
-        heading: "How to Book a Riyadh Transfer",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
+            "Transfers from Riyadh to Dammam, Qassim, Jeddah, Makkah, Madinah and AlUla can be requested; each route has its own page and is arranged by quotation.",
           ],
         },
       },
@@ -126,35 +55,11 @@ export const cityGuides: Record<string, CityGuide> = {
     faqs: [
       {
         question: "How far is King Khalid International Airport from central Riyadh?",
-        answer: "King Khalid International Airport sits north of the city, roughly a 30-45 minute drive to central districts like Olaya or KAFD depending on traffic. We track your flight so pickup timing adjusts automatically.",
+        answer: "About 32–37 km by road to KAFD and Olaya, roughly 25–45 minutes with ordinary traffic.",
       },
       {
-        question: "Can I book a taxi in Riyadh for a full business day?",
-        answer: "Yes. Send us your schedule of meetings or venues on WhatsApp and we'll quote a fixed day-rate with the same driver and vehicle waiting between stops.",
-      },
-      {
-        question: "Is there a taxi service near King Abdullah Financial District (KAFD)?",
-        answer: "Yes, KAFD is one of our most requested Riyadh pickup points for corporate travel. We recommend booking with your office or hotel address as the exact pickup location.",
-      },
-      {
-        question: "What vehicle should I book for a family visiting Riyadh Season?",
-        answer: "For families we recommend a larger sedan or van depending on group size and luggage — mention passenger count and any car seats needed when requesting your quote.",
-      },
-      {
-        question: "How much notice do I need to book a Riyadh taxi during major events?",
-        answer: "During Riyadh Season, exhibitions, or large conferences, demand rises quickly, so booking at least a day in advance gives you more vehicle choice, though we do accept same-day requests when available.",
-      },
-      {
-        question: "Do you offer transfers between Riyadh and Diriyah?",
-        answer: "Yes, private transfers to Diriyah and At-Turaif are available as a fixed-price ride from anywhere in Riyadh, including waiting time if you'd like a round trip.",
-      },
-      {
-        question: "Can I get a taxi from Riyadh to Dammam or the Eastern Province?",
-        answer: "Yes, intercity private transfers from Riyadh to Dammam, Khobar, and other Eastern Province cities are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Are your Riyadh drivers familiar with the Diplomatic Quarter's access rules?",
-        answer: "Yes, our drivers regularly serve the Diplomatic Quarter and are used to its entry procedures; just confirm your exact building or gate when booking so the driver can plan accordingly.",
+        question: "Can I book transport for business meetings in Riyadh?",
+        answer: "Yes. Send your schedule and addresses, and we will quote for the journeys you need.",
       },
     ],
     hubFaqs: [
@@ -172,7 +77,7 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Is airport pickup available for early morning or late night Riyadh flights?",
-        answer: "Yes, pickups and drop-offs run 24/7 at King Khalid International Airport regardless of your flight's arrival or departure time.",
+        answer: "You can request a pickup or drop-off at King Khalid International Airport for early-morning or late-night flights. Share your flight number and time when you request a quotation; availability and pickup arrangements are confirmed with you individually.",
       },
       {
         question: "What if my hotel isn't listed in the Riyadh transfer list?",
@@ -789,111 +694,25 @@ export const cityGuides: Record<string, CityGuide> = {
   },
 
   khobar: {
-    lastUpdated: "2026-09-17",
+    lastUpdated: "2026-11-26",
     localInsight:
-      "Khobar's waterfront hotels and malls along the Corniche draw both business and leisure travellers, and the city sits close enough to the King Fahd Causeway that a Bahrain day trip is a common add-on to a Khobar stay. Weekend afternoons see heavier Causeway-bound traffic as travellers cross for the weekend, so factor in extra time on Thursdays and Fridays. Khobar, Dammam, and Dhahran form one connected metro area, so combining a Khobar hotel with a Dhahran business meeting or a Dammam Corniche visit in the same private transfer plan is straightforward.",
+      "Khobar is the waterfront side of the Dammam metropolitan area, with the Corniche, many of the region's hotels and the road to the King Fahd Causeway. Dhahran and Dammam are close by, so many journeys are short hops between the three cities.",
     introParagraphs: [
-      "Al Khobar is the lively coastal twin of Dammam, and most private-transfer demand here comes from two directions: waterfront hotel guests along the Corniche, and travellers using Khobar as the closest Saudi base for a Bahrain crossing via the King Fahd Causeway.",
-      "Khobar, Dammam, and Dhahran effectively function as one metro area, so a single transfer plan can combine a King Fahd Airport pickup, a Dhahran meeting, and a Khobar hotel stay without booking separate rides for each leg.",
+      "Al Khobar is the Eastern Province's waterfront city on the Arabian Gulf, neighbour to Dhahran and Dammam and the Saudi end of the King Fahd Causeway to Bahrain.",
+      "Private transfers can be requested from King Fahd International Airport, between Corniche hotels and destinations across the region, and towards the causeway. Every journey is arranged by quotation.",
     ],
     sections: [
       {
-        heading: "Khobar to Bahrain Causeway Transfers",
+        heading: "Khobar transfers",
         block: {
           kind: "prose",
           paragraphs: [
-            "Khobar is one of the closest Saudi cities to the King Fahd Causeway, typically a short drive to the border point — actual crossing time varies with border processing, which we can't guarantee in advance. Thursday and Friday afternoons see the heaviest Causeway-bound traffic as weekend travellers cross, so allow extra time then. See our <a href='/border-transfers/bahrain-causeway'>Bahrain Causeway transfer</a> for the full crossing details.",
-          ],
-        },
-      },
-      {
-        heading: "Airport Transfers via Dammam",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Khobar is served by King Fahd International Airport (DMM). Your driver tracks your flight and meets you in the arrivals hall, then drives directly to your Khobar hotel or destination with flight tracking included. See our <a href='/airport-transfer/dammam-airport'>Dammam Airport transfer page</a> for the full arrival process.",
-          ],
-        },
-      },
-      {
-        heading: "Corniche and Waterfront Hotel Transfers",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Waterfront hotels along the Corniche and areas near Al Rashid Mall are covered for both airport and point-to-point transfers, along with short trips to Half Moon Bay for a beach day or family outing.",
-          ],
-        },
-      },
-      {
-        heading: "Private Transfers to Riyadh and the Eastern Province",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Private intercity transfers from Khobar to Riyadh are available with a fixed price agreed before you travel, along with short trips within the metro area to Dammam, Dhahran, and Ithra (King Abdulaziz Center for World Culture).",
-          ],
-        },
-      },
-      {
-        heading: "Business and Family Transfers in Khobar",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Corniche hotels see a mix of business travellers attending meetings in Dhahran and families visiting for a waterfront weekend, sometimes combined with a short Bahrain crossing. Larger vehicles are available for families or groups with extra luggage — mention your numbers when requesting a quote.",
-          ],
-        },
-      },
-      {
-        heading: "Landmarks and Pickup Points in Khobar",
-        block: {
-          kind: "bullets",
-          intro: "Places our drivers regularly serve:",
-          items: ["Khobar Corniche", "King Fahd Causeway", "Al Rashid Mall", "Half Moon Bay", "Ithra (Dhahran)"],
-        },
-      },
-      {
-        heading: "How to Book a Khobar Transfer",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Send your pickup location, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
+            "This page is rendered by a dedicated layout (components/city-transfer/KhobarCityView.tsx, copy in data/khobar-city-page.ts).",
           ],
         },
       },
     ],
-    faqs: [
-      {
-        question: "How far is Khobar from the Bahrain Causeway?",
-        answer: "Khobar is one of the closest Saudi cities to the King Fahd Causeway, typically a short drive; actual border processing time varies and isn't something we can guarantee.",
-      },
-      {
-        question: "Can I book a Khobar taxi from King Fahd International Airport?",
-        answer: "Yes, we provide private transfers from King Fahd International Airport to hotels and destinations across Khobar with flight tracking included.",
-      },
-      {
-        question: "Do you cover hotels along the Khobar Corniche and Al Rashid Mall?",
-        answer: "Yes, waterfront hotels along the Corniche and areas near Al Rashid Mall are all covered for both airport and point-to-point transfers.",
-      },
-      {
-        question: "Is weekend traffic worse toward Bahrain from Khobar?",
-        answer: "Thursday and Friday afternoons typically see heavier traffic as weekend travellers cross to Bahrain, so allow extra time if travelling during those windows.",
-      },
-      {
-        question: "Can I book a transfer from Khobar to Ithra in Dhahran?",
-        answer: "Yes, transfers to Ithra (King Abdulaziz Center for World Culture) in Dhahran are available as a short private ride from Khobar.",
-      },
-      {
-        question: "Do you offer intercity transfers from Khobar to Riyadh?",
-        answer: "Yes, private intercity transfers from Khobar to Riyadh are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Is Half Moon Bay accessible by private transfer from Khobar?",
-        answer: "Yes, Half Moon Bay is a popular short trip from Khobar, suitable for a beach day or family outing.",
-      },
-      {
-        question: "Can I book a family van for a Khobar to Dammam transfer?",
-        answer: "Yes, family and group vans are available for transfers across the Dammam metro area, including Khobar to Dammam or Dhahran.",
-      },
-    ],
+    faqs: [],
   },
 
   jubail: {
@@ -1931,12 +1750,14 @@ export const cityGuides: Record<string, CityGuide> = {
   },
 
   hofuf: {
-    lastUpdated: "2026-09-17",
+    // /taxi-service/hofuf renders data/hofuf-city-page.ts; these fields remain
+    // because the shared template requires them (25 Nov 2026).
+    lastUpdated: "2026-11-25",
     localInsight:
-      "Hofuf is the main gateway to the Al-Ahsa Oasis, a UNESCO World Heritage site, so most transfer requests centre on heritage tours of the Qaisariah Souq and Ibrahim Palace alongside the Jabal Al-Qarah caves. As the principal city of the oasis, Hofuf also handles most onward intercity demand toward the Eastern Province coast rather than being a pure business destination.",
+      "Hofuf is the main city of the Al-Ahsa Oasis, a UNESCO World Heritage site since 2018, with Qasr Ibrahim, the Qaisariah Souq and Jabal Al-Qarah close by. Al-Ahsa International Airport is about 17–20 km from the centre.",
     introParagraphs: [
-      "Hofuf is the principal city of the Al-Ahsa Oasis, a UNESCO World Heritage site, so most private-transfer demand here centres on heritage tours within the city itself — the Qaisariah Souq, Ibrahim Palace, and the nearby Jabal Al-Qarah caves — alongside onward intercity travel toward the Eastern Province coast.",
-      "As the oasis's principal city, Hofuf functions as a practical base for exploring the surrounding palm groves and heritage towns; for transfers across the wider oasis governorate, see our Al-Ahsa taxi service.",
+      "Hofuf is the main city of the Al-Ahsa Oasis, with heritage sites, hotels and markets at its centre.",
+      "You can request private transfers from Al-Ahsa International Airport, around the city and its heritage sites, and on to Dammam, Khobar and Riyadh, each arranged by quotation.",
     ],
     sections: [
       {
@@ -1944,53 +1765,16 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Al-Ahsa International Airport is a short transfer from central Hofuf. We track your flight and provide meet-and-greet pickup with a name board in the arrivals hall.",
-          ],
-        },
-      },
-      {
-        heading: "Heritage Sightseeing in Hofuf",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Qaisariah Souq and Ibrahim Palace sit close together in Hofuf and are commonly combined into one heritage sightseeing trip, along with a visit to the Jabal Al-Qarah caves, a short private transfer from the city centre.",
+            "Al-Ahsa International Airport (HOF) is about 17–20 km by road from central Hofuf. Pickup arrangements are confirmed with you individually.",
           ],
         },
       },
       {
         heading: "Private Transfers from Hofuf to Other Cities",
         block: {
-          kind: "cards",
-          intro: "Fixed-price long-distance transfers from Hofuf.",
-          columns: 2,
-          cards: [
-            { title: "Hofuf to Riyadh", body: "A private intercity transfer to the capital.", href: "/routes/hofuf-to-riyadh", linkLabel: "Hofuf to Riyadh route" },
-          ],
-        },
-      },
-      {
-        heading: "Regional Connections from Hofuf",
-        block: {
           kind: "prose",
           paragraphs: [
-            "Private intercity transfers from Hofuf to Dammam and Khobar are available with a fixed price agreed before you travel, along with transfers toward the Bahrain Causeway crossing for travellers continuing across the border.",
-          ],
-        },
-      },
-      {
-        heading: "Landmarks and Pickup Points in Hofuf",
-        block: {
-          kind: "bullets",
-          intro: "Places our drivers regularly serve:",
-          items: ["Al-Ahsa International Airport", "Qaisariah Souq", "Ibrahim Palace", "Jabal Al-Qarah"],
-        },
-      },
-      {
-        heading: "How to Book a Hofuf Transfer",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
+            "Transfers from Hofuf to Dammam, Khobar and Riyadh can be requested and are arranged by quotation.",
           ],
         },
       },
@@ -1998,35 +1782,11 @@ export const cityGuides: Record<string, CityGuide> = {
     faqs: [
       {
         question: "How far is Hofuf from Al-Ahsa International Airport?",
-        answer: "Al-Ahsa International Airport is a short transfer from central Hofuf; we track your flight and provide meet-and-greet pickup.",
+        answer: "About 17–20 km by road to the historic centre, usually around 20–30 minutes.",
       },
       {
-        question: "Can I visit Qaisariah Souq and Ibrahim Palace on the same trip?",
-        answer: "Yes, Qaisariah Souq and Ibrahim Palace are close together in Hofuf and commonly combined into one heritage sightseeing trip.",
-      },
-      {
-        question: "Are the Jabal Al-Qarah caves accessible from Hofuf?",
-        answer: "Yes, the Jabal Al-Qarah caves are a short private transfer from central Hofuf.",
-      },
-      {
-        question: "Do you offer transfers from Hofuf to Dammam or Riyadh?",
-        answer: "Yes, private intercity transfers from Hofuf to both Dammam and Riyadh are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Is Hofuf a good base for exploring the Al-Ahsa Oasis?",
-        answer: "Yes, as the principal city of the oasis, Hofuf is a practical base for touring the palm groves, springs, and heritage sites of Al-Ahsa.",
-      },
-      {
-        question: "Can I book a transfer from Hofuf to the Bahrain Causeway?",
-        answer: "Yes, private transfers from Hofuf toward the Bahrain Causeway crossing are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Do you provide family vehicles for oasis sightseeing in Hofuf?",
-        answer: "Yes, comfortable family vehicles are available for oasis and heritage sightseeing — mention passenger count when requesting a quote.",
-      },
-      {
-        question: "Can I book a transfer from Hofuf to Khobar?",
-        answer: "Yes, Hofuf to Khobar is available as a fixed-price private intercity transfer.",
+        question: "Can I request a transfer to Jabal Al-Qarah?",
+        answer: "Yes. It is about 14 km east of central Hofuf.",
       },
     ],
   },
@@ -2054,7 +1814,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Al-Ahsa International Airport is a short transfer from most oasis heritage sites and palm groves. We track your flight and quote based on your exact destination.",
+            "Al-Ahsa International Airport is about 17–20 km from central Hofuf. Share your flight details and destination when you request a quotation; pickup arrangements are confirmed with you individually.",
           ],
         },
       },
@@ -2063,7 +1823,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Private intercity transfers from Al-Ahsa to Dammam and Riyadh are available with a fixed price agreed before you travel, along with transfers toward the Bahrain Causeway crossing.",
+            "Private intercity transfers from Al-Ahsa to Dammam and Riyadh can be requested and are arranged by quotation, along with road transfers toward the Bahrain Causeway crossing.",
           ],
         },
       },
@@ -2080,7 +1840,7 @@ export const cityGuides: Record<string, CityGuide> = {
         heading: "Landmarks and Pickup Points in Al-Ahsa",
         block: {
           kind: "bullets",
-          intro: "Places our drivers regularly serve:",
+          intro: "Common pickup and drop-off points (any exact address can be given):",
           items: ["Al-Ahsa International Airport", "Al-Ahsa Oasis palm groves", "Jabal Al-Qarah", "Yellow Lake"],
         },
       },
@@ -2089,7 +1849,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Send your flight number or pickup address, preferred stops, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
+            "Send your flight number or pickup address, preferred stops, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation for you to review and confirm.",
           ],
         },
       },
@@ -2101,7 +1861,7 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "How far is Al-Ahsa International Airport from the oasis sites?",
-        answer: "Al-Ahsa International Airport is a short transfer from most oasis heritage sites and palm groves; we track your flight and quote based on your exact destination.",
+        answer: "Al-Ahsa International Airport is about 17–20 km from central Hofuf. Share your flight details and destination when you request a quotation.",
       },
       {
         question: "Can I tour multiple Al-Ahsa oasis sites in one day?",
@@ -2113,11 +1873,11 @@ export const cityGuides: Record<string, CityGuide> = {
       },
       {
         question: "Do you offer transfers from Al-Ahsa to Dammam or Riyadh?",
-        answer: "Yes, private intercity transfers from Al-Ahsa to both Dammam and Riyadh are available with a fixed price agreed before you travel.",
+        answer: "Yes. Transfers from Al-Ahsa to Dammam and Riyadh can be requested and are arranged by quotation.",
       },
       {
         question: "Can I book a transfer from Al-Ahsa toward the Bahrain Causeway?",
-        answer: "Yes, private transfers from Al-Ahsa toward the Bahrain Causeway crossing are available with a fixed price agreed before you travel.",
+        answer: "Yes, as a road transfer towards the King Fahd Causeway, arranged by quotation. Travel documents, entry permission and border formalities are your own responsibility.",
       },
       {
         question: "Are Jabal Al-Qarah caves included in Al-Ahsa sightseeing routes?",
@@ -2131,12 +1891,14 @@ export const cityGuides: Record<string, CityGuide> = {
   },
 
   "khamis-mushait": {
-    lastUpdated: "2026-09-17",
+    // /taxi-service/khamis-mushait renders data/khamis-mushait-city-page.ts; these
+    // fields remain because the shared template requires them (25 Nov 2026).
+    lastUpdated: "2026-11-25",
     localInsight:
-      "Khamis Mushait functions as the larger commercial twin to nearby Abha, sharing the same airport and highland climate but with more of the region's markets and city-centre business activity. It's a practical base for travellers who want highland sightseeing during the day but a more commercial city base at night, and it sits well-placed for onward trips south toward Najran and Jazan.",
+      "Khamis Mushait is the largest city in the Asir Region and a commercial centre beside Abha, sharing Abha International Airport, about 20 km away. It is a practical starting point for journeys to Abha, the highlands, Najran and Jazan.",
     introParagraphs: [
-      "Khamis Mushait is the largest city of the Asir region and the commercial twin of nearby Abha, sharing the same airport and highland climate but with more of the region's markets and city-centre business activity — a practical base for travellers who want highland sightseeing during the day but a more commercial city at night.",
-      "Its central southern location also makes it well placed for onward trips toward Najran and Jazan, and for travellers comparing where to base themselves against neighbouring Abha.",
+      "Khamis Mushait is the largest city in the Asir Region, with markets, businesses and residential districts on the highland plateau a short drive from Abha.",
+      "You can request private transfers around the city, from Abha International Airport, and on to Abha, Najran, Jazan and Riyadh, each arranged by quotation.",
     ],
     sections: [
       {
@@ -2144,16 +1906,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Khamis Mushait shares Abha International Airport (AHB) with nearby Abha; the transfer typically takes a similar amount of time to reaching central Abha. See our <a href='/airport-transfer/abha-airport'>Abha Airport transfer page</a> for the full arrival process.",
-          ],
-        },
-      },
-      {
-        heading: "Khamis Mushait or Abha: Where to Base Yourself",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Khamis Mushait is the larger commercial city with more markets and city-centre business activity, while Abha leans more toward tourism and highland scenery — both share the same airport and climate, and Asir highland sites including Al Soudah and Green Mountain are reachable as day trips from either.",
+            "Khamis Mushait uses Abha International Airport (AHB), about 20 km by road from the city centre. See our <a href='/airport-transfer/abha-airport'>Abha Airport transfer page</a> for arrival details.",
           ],
         },
       },
@@ -2162,33 +1915,7 @@ export const cityGuides: Record<string, CityGuide> = {
         block: {
           kind: "prose",
           paragraphs: [
-            "Private intercity transfers from Khamis Mushait to both Najran and Jazan are available with a fixed price agreed before you travel, alongside longer routes north to Riyadh.",
-          ],
-        },
-      },
-      {
-        heading: "City and Market Transfers",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "We provide city and market transfers around central Khamis Mushait in addition to airport and intercity trips, along with sightseeing rides to Al Mahalah Heritage Village, a short private transfer from the centre.",
-          ],
-        },
-      },
-      {
-        heading: "Landmarks and Pickup Points in Khamis Mushait",
-        block: {
-          kind: "bullets",
-          intro: "Places our drivers regularly serve:",
-          items: ["Abha International Airport", "Al Mahalah Heritage Village", "Asir highlands", "Khamis Mushait city centre"],
-        },
-      },
-      {
-        heading: "How to Book a Khamis Mushait Transfer",
-        block: {
-          kind: "prose",
-          paragraphs: [
-            "Send your flight number or pickup address, destination, date, and passenger count on WhatsApp or through our quote form. We reply with a quotation, and once you confirm it we schedule your driver.",
+            "Transfers to Abha, Najran (about 230 km), Jazan (about 230 km) and Riyadh (about 920 km) can be requested and are quoted individually.",
           ],
         },
       },
@@ -2196,35 +1923,11 @@ export const cityGuides: Record<string, CityGuide> = {
     faqs: [
       {
         question: "How far is Khamis Mushait from Abha Airport?",
-        answer: "Khamis Mushait shares Abha International Airport with nearby Abha; the transfer typically takes a similar amount of time to reaching central Abha.",
-      },
-      {
-        question: "What's the difference between staying in Khamis Mushait or Abha?",
-        answer: "Khamis Mushait is the larger commercial city with more markets and city-centre business activity, while Abha leans more toward tourism and highland scenery — both share the same airport and climate.",
-      },
-      {
-        question: "Can I do Asir highland sightseeing from Khamis Mushait?",
-        answer: "Yes, Asir highland sites including Al Soudah and Green Mountain are reachable as day trips from Khamis Mushait, similar to from Abha.",
+        answer: "About 20 km by road from central Khamis Mushait, usually around 20–35 minutes.",
       },
       {
         question: "Do you offer transfers from Khamis Mushait to Najran or Jazan?",
-        answer: "Yes, private intercity transfers from Khamis Mushait to both Najran and Jazan are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Is Al Mahalah Heritage Village accessible from Khamis Mushait?",
-        answer: "Yes, Al Mahalah Heritage Village is a short private transfer from central Khamis Mushait.",
-      },
-      {
-        question: "Can I book a market or city-centre transfer in Khamis Mushait?",
-        answer: "Yes, we provide city and market transfers around central Khamis Mushait in addition to airport and intercity trips.",
-      },
-      {
-        question: "Do you offer transfers from Khamis Mushait to Riyadh?",
-        answer: "Yes, private intercity transfers from Khamis Mushait to Riyadh are available with a fixed price agreed before you travel.",
-      },
-      {
-        question: "Can I book a business account for regular Khamis Mushait travel?",
-        answer: "Yes, we work with corporate and business travel accounts for regular Khamis Mushait trips — contact us on WhatsApp to set this up.",
+        answer: "Yes. Each is about 230 km; request a quotation with your pickup and destination.",
       },
     ],
   },

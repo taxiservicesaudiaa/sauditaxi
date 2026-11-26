@@ -18,6 +18,7 @@ import { getArPathForEnPathLight } from "@/data/translations/ar-index";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { formatBlogDate } from "@/lib/format";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 import {
   getPublishedBlogBySlugStrict,
   listPublishedBlogsStrict,
@@ -213,7 +214,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
                         <summary className="cursor-pointer list-none font-semibold text-ink marker:hidden">
                           {f.question}
                         </summary>
-                        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.answer}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{inlineLinks(f.answer)}</p>
                       </details>
                     ))}
                   </div>

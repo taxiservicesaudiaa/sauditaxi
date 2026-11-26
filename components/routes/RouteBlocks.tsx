@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import type { RouteBlock } from "@/data/routes";
 import { CtaButtons } from "@/components/CtaButtons";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * Presentational renderers for `Route.customLayout` blocks — a small,
@@ -203,7 +204,7 @@ function BorderPanel({ heading, paragraphs }: Extract<RouteBlock, { type: "borde
       <h2 className="text-xl font-bold text-navy sm:text-2xl">{heading}</h2>
       <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-muted-foreground">
         {paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>{inlineLinks(p)}</p>
         ))}
       </div>
     </div>

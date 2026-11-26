@@ -24,7 +24,8 @@ export function organizationSchema(): JsonLd {
     logo: absoluteUrl("/logo.svg"),
     email: siteConfig.email,
     telephone: siteConfig.phoneDisplay,
-    sameAs: [] as string[],
+    // Owner-provided public profiles (lib/site.ts social).
+    sameAs: Object.values(siteConfig.social) as string[],
   };
 }
 

@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * H2 #12 — homepage FAQ. A near-copy of components/sections/FAQSection.tsx,
@@ -24,7 +25,7 @@ export function HomeFAQSection({ faqs, heading }: { faqs: Faq[]; heading: string
                 <h3 className="font-semibold text-navy">{faq.question}</h3>
                 <ChevronDown className="size-5 shrink-0 text-gold transition-transform group-open:rotate-180" />
               </summary>
-              <p className="pb-4 text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+              <p className="pb-4 text-sm leading-relaxed text-muted-foreground">{inlineLinks(faq.answer)}</p>
             </details>
           ))}
         </div>

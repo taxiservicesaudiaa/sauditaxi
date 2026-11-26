@@ -702,16 +702,17 @@ const baseRoutes: Route[] = [
   {
     slug: "riyadh-to-jeddah",
     metaTitle: "Riyadh to Jeddah Transfer – Private Chauffeur Service",
-    metaDescription: "Private Riyadh to Jeddah transfer by road (950 km, about 9 hours) via Taif, with rest stops planned with you and a fixed price — one vehicle for your group and luggage.",
+    metaDescription: "Private Riyadh to Jeddah transfer by road (950 km, roughly 9.5–10.5 hours of driving) via Taif, with rest stops planned with you and a quotation before you confirm — one vehicle for your group and luggage.",
     from: "Riyadh",
     to: "Jeddah",
     category: "intercity",
     distance: "950 km",
-    duration: "9 hours",
+    // OSRM 948 km / 10.4 h; Valhalla 960 km / 8.8 h (25 Nov 2026).
+    duration: "9.5–10.5 hours",
     intro:
       "At 950 kilometres, this is one of the longest domestic routes we operate — and almost nobody chooses it by accident. Travellers who book this transfer have usually already weighed it against a two-hour domestic flight and decided the road wins anyway: a family that doesn't want to repack for security twice, a group that wants to travel together in one vehicle, or someone continuing straight on to Makkah once they reach the west and would rather skip the airport entirely.",
     about:
-      "Our private Riyadh to Jeddah transfer covers the cross-country highway with comfortable vehicles and planned rest stops. While many fly this route, private road transfer suits families with luggage, groups, and those continuing to Makkah after arrival — and unlike a flight, the fixed price and the vehicle are yours alone for the whole nine hours, with no connecting shuttle needed at either end.",
+      "Our private Riyadh to Jeddah transfer covers the cross-country highway with comfortable vehicles and planned rest stops. While many fly this route, private road transfer suits families with luggage, groups, and those continuing to Makkah after arrival — and unlike a flight, the vehicle is yours alone for the whole journey, with no connecting shuttle needed at either end.",
     notes: [
       "Comfortable vehicles for the 950 km cross-country journey",
       "Planned rest and fuel stops built into every booking",
@@ -756,14 +757,14 @@ const baseRoutes: Route[] = [
       {
         heading: "Riyadh to Jeddah: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to Jeddah covers about 950 kilometres cross-country and takes roughly nine hours in free-flowing traffic — one of the longest domestic routes we cover. While most travellers fly this distance, a private road transfer suits families with a full vehicle-load of luggage, groups who want to travel together, and anyone continuing on to Makkah or Taif after arriving in the west.",
-          "There are no tolls anywhere on this route, and the fixed price agreed before you travel covers the entire nine-hour journey. Given the distance, we plan the trip with rest and fuel stops built in, and can split the drive across a full day rather than rushing it — the exact pacing is worked out with you at booking, not fixed in advance.",
+          "The drive from Riyadh to Jeddah covers about 950 kilometres cross-country and typically takes about 9.5–10.5 hours of driving — one of the longest domestic routes we cover. While most travellers fly this distance, a private road transfer suits families with a full vehicle-load of luggage, groups who want to travel together, and anyone continuing on to Makkah or Taif after arriving in the west.",
+          "Your quotation sets out the price for the journey before you confirm. Given the distance, we plan the trip with rest and fuel stops built in, and can split the drive across a full day rather than rushing it — the exact pacing is worked out with you at booking, not fixed in advance.",
         ],
       },
       {
         heading: "Planning a journey of this length",
         paragraphs: [
-          "Nine hours is a real commitment, so we treat the planning conversation as seriously as the drive itself: how many people, how much luggage, whether you'd prefer one long push with two or three short stops or a more relaxed day with a proper meal break, and what time you actually need to arrive in Jeddah. None of this changes the fixed price — it just changes how the day feels.",
+          "A drive of this length is a real commitment, so we treat the planning conversation as seriously as the drive itself: how many people, how much luggage, whether you'd prefer one long push with two or three short stops or a more relaxed day with a proper meal break, and what time you actually need to arrive in Jeddah. Tell us your preferences when you request a quotation.",
           "For pilgrims and tourists, the most common onward step is continuing straight to Makkah rather than stopping in Jeddah first — our <a href='/routes/jeddah-to-makkah'>Jeddah to Makkah route</a> covers that final 85 kilometres if you'd rather quote the whole itinerary in one booking. If Taif is your real destination, there's no need to go on to Jeddah and double back: the highway passes Taif on the way west, so it can simply be the drop-off — see our <a href='/taxi-service/taif'>Taif taxi service</a> for getting around once you're there.",
         ],
       },
@@ -777,10 +778,10 @@ const baseRoutes: Route[] = [
     ],
     faqs: [
       { question: "Is it practical to travel from Riyadh to Jeddah by private car?", answer: "It depends what you value — a domestic flight is faster, but a private car means no repacking for security, one vehicle for the whole group and its luggage, and the option to stop or continue straight to Makkah without a separate airport leg." },
-      { question: "How many rest stops are recommended for this route?", answer: "Most travellers do well with two or three short stops across the nine hours; if you'd rather push through with minimal stopping or split the day differently, tell us when booking and we'll plan around it." },
+      { question: "How many rest stops are recommended for this route?", answer: "Most travellers do well with two or three short stops across the journey; if you'd rather push through with minimal stopping or split the day differently, tell us when booking and we'll plan around it." },
       { question: "Which vehicle is best for a long journey like this?", answer: "We generally recommend an SUV or van for the extra comfort and luggage space a journey of this length calls for, though a sedan is available for lighter loads." },
-      { question: "How long does the Riyadh to Jeddah taxi take?", answer: "The drive covers about 950 kilometres and takes roughly nine hours in free-flowing traffic; we plan rest and fuel stops into the journey given the distance." },
-      { question: "Are there tolls on the Riyadh to Jeddah route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
+      { question: "How long does the Riyadh to Jeddah taxi take?", answer: "The drive covers about 950 kilometres and typically takes about 9.5–10.5 hours of driving; we plan rest and fuel stops into the journey given the distance." },
+      { question: "What does the quotation cover?", answer: "Your quotation sets out the price for the journey you request and what it includes. Review it before you confirm, and ask us if anything is unclear." },
       { question: "Can I end the journey in Makkah or Taif instead of Jeddah?", answer: "Yes. The highway reaches Taif and the Makkah area before Jeddah, so a drop-off at a Makkah hotel (for Muslim passengers) or in Taif is on the way rather than an extra leg — mention it when booking and we quote that destination directly." },
       { question: "Is this route possible for non-Muslim passengers?", answer: "Yes. Non-Muslims can't enter Makkah's restricted area, so the driver uses the designated bypass road into Jeddah. Let us know when booking so the route is planned that way from the start." },
       { question: "Can I choose an overnight departure for this route?", answer: "Yes, we can plan an overnight or early-morning departure to suit your schedule — let us know your preference when booking." },
@@ -790,20 +791,21 @@ const baseRoutes: Route[] = [
   },
   {
     slug: "riyadh-to-alula",
-    metaTitle: "Riyadh to AlUla Private Transfer – Fixed-Price Taxi",
-    metaDescription: "Book a private taxi from Riyadh to AlUla (1,000 km, about 9 hours 30 min). Professional driver, comfortable vehicle, fixed price agreed before you travel.",
+    metaTitle: "Riyadh to AlUla Private Transfer – Desert Road by Quotation",
+    metaDescription: "Book a private taxi from Riyadh to AlUla (about 1,035–1,045 km, roughly 10.5–11 hours of driving). Private vehicle for your group, with a quotation before you travel.",
     from: "Riyadh",
     to: "AlUla",
     category: "intercity",
-    distance: "1,000 km",
-    duration: "9 hours 30 min",
+    // OSRM 1,034–1,035 km / 10.9–11.0 h; Valhalla 1,040–1,042 km / 10.3–10.4 h (25 Nov 2026).
+    distance: "1,035–1,045 km",
+    duration: "10.5–11 hours",
     intro:
-      "Travellers booking this route are almost always going somewhere specific for its own sake, not passing through — AlUla's resorts, Hegra's UNESCO-listed tombs, and the restored Old Town draw a heritage-tourism crowd distinct from the pilgrim traffic on most of our other long routes. A private car for the near-ten-hour crossing suits travellers who want the desert landscape to be part of the trip, not just an obstacle between two airports.",
+      "Travellers booking this route are almost always going somewhere specific for its own sake, not passing through — AlUla's resorts, Hegra's UNESCO-listed tombs, and the restored Old Town draw a heritage-tourism crowd distinct from the pilgrim traffic on most of our other long routes. A private car for the long desert crossing suits travellers who want the desert landscape to be part of the trip, not just an obstacle between two airports.",
     about:
       "Our private Riyadh to AlUla transfer is designed for travellers heading to Hegra and the AlUla resorts who prefer a private vehicle for the scenic desert journey. Comfortable SUVs and vans make the long drive relaxed, with flexible rest stops — and because AlUla's own attractions are spread across a wide desert site, the same style of vehicle that gets you there comfortably is often what you'll want once you arrive too.",
     notes: [
       "Comfortable SUVs and vans for the desert crossing and AlUla touring alike",
-      "Flexible rest stops on the roughly ten-hour route",
+      "Rest stops planned with you on the 10.5–11 hour drive",
       "Drop-off at AlUla resorts, Old Town, and heritage-site accommodation",
       "Often combined with Madinah or Hail as a multi-stop itinerary",
     ],
@@ -813,8 +815,8 @@ const baseRoutes: Route[] = [
       {
         heading: "Riyadh to AlUla: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to AlUla covers roughly 1,000 kilometres across open desert and takes about nine and a half hours in free-flowing traffic — the longest domestic route we operate. It's popular with travellers heading to Hegra and the AlUla resorts who prefer a private vehicle for the scenic desert crossing over flying, or who want to combine the trip with stops in Hail or Madinah.",
-          "There are no tolls on this route, and the fixed price agreed before you travel covers the full journey. Given the distance, we plan fuel and rest stops throughout, and the trip can be split across a full day rather than driven straight through.",
+          "The drive from Riyadh to AlUla covers about 1,035–1,045 kilometres across open desert and typically takes about 10.5–11 hours of driving — the longest domestic route we operate. It's popular with travellers heading to Hegra and the AlUla resorts who prefer a private vehicle for the scenic desert crossing over flying, or who want to combine the trip with stops in Hail or Madinah.",
+          "Your quotation sets out the price for the journey before you confirm. Given the distance, we plan fuel and rest stops throughout, and the trip can be split across a full day rather than driven straight through.",
         ],
       },
       {
@@ -833,13 +835,13 @@ const baseRoutes: Route[] = [
       },
     ],
     faqs: [
-      { question: "Is AlUla worth the ten-hour drive from Riyadh, or should I fly?", answer: "That depends on what you value — flying is faster, but a private car lets you treat the desert crossing as part of the trip, carry as much luggage as you need, and arrive already set up with a vehicle for AlUla's own spread-out attractions." },
-      { question: "How long does the Riyadh to AlUla taxi take?", answer: "The drive covers roughly 1,000 kilometres and takes about nine and a half hours in free-flowing traffic, with rest and fuel stops planned into the journey." },
+      { question: "Is AlUla worth the long drive from Riyadh, or should I fly?", answer: "That depends on what you value — flying is faster, but a private car lets you treat the desert crossing as part of the trip, carry as much luggage as you need, and arrive already set up with a vehicle for AlUla's own spread-out attractions." },
+      { question: "How long does the Riyadh to AlUla taxi take?", answer: "The drive covers about 1,035–1,045 kilometres and typically takes about 10.5–11 hours of driving, with rest and fuel stops planned into the journey." },
       { question: "What vehicle is best for this long desert route?", answer: "We recommend a comfortable SUV or van for the extra space and comfort a journey of this length calls for, which also suits AlUla's own desert-touring roads on arrival." },
       { question: "Do I need to specify which AlUla resort or hotel for drop-off?", answer: "Yes — accommodation in AlUla is spread across a large area, so tell us your exact resort, Old Town stay, or heritage-site hotel when booking rather than just the general destination." },
       { question: "Can I stop in Hail or Madinah along the way?", answer: "Yes, Hail sits roughly on this route and Madinah is a common detour for travellers combining pilgrimage with heritage sightseeing — mention this when booking and we'll plan the itinerary." },
-      { question: "Are there tolls on the Riyadh to AlUla route?", answer: "No, there are no toll roads anywhere on Saudi Arabia's highway network, so your fixed price covers the full journey." },
-      { question: "Are rest stops included on this journey?", answer: "Yes, given the near-ten-hour distance we plan fuel and rest stops as part of the transfer, at no extra cost since the fare is fixed." },
+      { question: "What does the quotation cover?", answer: "Your quotation sets out the price for the journey you request and what it includes. Review it before you confirm, and ask us if anything is unclear." },
+      { question: "Can I stop along the way?", answer: "Yes. Given the length of the drive, fuel and rest stops are planned with you; mention any stops you would like when you request your quotation." },
       { question: "Can I book a return AlUla to Riyadh transfer?", answer: "Yes, we cover both directions — contact us with your travel dates and we can arrange the return leg." },
     ],
     keywords: ["riyadh to alula taxi", "riyadh alula private transfer", "riyadh to hegra taxi", "riyadh alula long distance car", "riyadh alula desert road trip taxi"],
@@ -1311,7 +1313,7 @@ const baseRoutes: Route[] = [
       { question: "Can we stop at Al Hada on the way down?", answer: "Yes. Mention the stop when you request your quotation and the arrangements will be confirmed with you." },
       { question: "Is the descent comfortable for anyone prone to motion sickness?", answer: "The bends below Al Hada are the twistiest part. Tell us when you enquire and we'll plan a comfortable pace, with a short break if needed." },
       { question: "Can I be picked up from a Taif resort rather than a hotel?", answer: "Yes. Give the resort name or address, whether it's in Taif, at Al Hada or elsewhere on the plateau." },
-      { question: "Can I book the journey up to Taif as well?", answer: "Yes. See our <a href='/routes/jeddah-to-taif'>Jeddah to Taif</a> page, or include both directions in one request." },
+      { question: "Can I book the journey up to Taif as well?", answer: "Yes. See the Jeddah to Taif route page, or include both directions in one request." },
     ],
   },
 
@@ -5606,12 +5608,13 @@ const baseRoutes: Route[] = [
     from: "Riyadh",
     to: "Hofuf",
     category: "intercity",
-    distance: "~330 km",
-    duration: "About 3 hours 15 min",
+    // OSRM 325 km / 3.70 h; Valhalla 327 km / 3.66 h (central Riyadh → central Hofuf 25.3797, 49.5865), 25 Nov 2026.
+    distance: "325–330 km",
+    duration: "3.5–4 hours",
     intro:
       "The Riyadh to Hofuf taxi is a private highway transfer to the heart of Al-Ahsa, home to one of the largest oasis regions in the world and a UNESCO World Heritage site, popular with families, heritage travellers, and business visitors alike.",
     about:
-      "Our private Riyadh to Hofuf transfer takes the direct southeastern highway rather than routing through Dammam, delivering you door to door to Al-Ahsa's historic centre, a hotel, or a family home in around three hours — a fixed price, a private vehicle, and no changes along the way.",
+      "Our private Riyadh to Hofuf transfer takes the direct southeastern highway rather than routing through Dammam, delivering you door to door to Al-Ahsa's historic centre, a hotel, or a family home in roughly 3.5–4 hours — one private vehicle, with a quotation before you travel.",
     notes: [
       "Door-to-door pickup anywhere in Riyadh",
       "Direct drop-off in Hofuf and across Al-Ahsa oasis",
@@ -5621,12 +5624,12 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["riyadh", "hofuf", "dammam"],
     metaTitle: "Riyadh to Hofuf Transfer – Private Chauffeur Service",
     metaDescription:
-      "Reserve a private car from Riyadh to Hofuf (~330 km, about 3 hours 15 min). Comfortable vehicles for solo travellers, families and small groups.",
+      "Reserve a private car from Riyadh to Hofuf (about 325–330 km, roughly 3.5–4 hours). Comfortable vehicles for solo travellers, families and small groups.",
     sections: [
       {
         heading: "Riyadh to Hofuf: route overview and distance",
         paragraphs: [
-          "The drive from Riyadh to Hofuf, the main city of the Al-Ahsa oasis region, covers approximately 330 kilometres — notably shorter than the Dammam or Khobar runs, since Hofuf sits southeast of the main Eastern Province cities rather than requiring the full coastal highway distance. In free-flowing traffic, the journey takes around three hours fifteen minutes on a direct southeastern highway route.",
+          "The drive from Riyadh to Hofuf, the main city of the Al-Ahsa oasis region, covers about 325–330 kilometres — notably shorter than the Dammam or Khobar runs, since Hofuf sits southeast of the main Eastern Province cities rather than requiring the full coastal highway distance. The drive itself is typically roughly 3.5–4 hours on a direct highway route.",
           "A private transfer covers the distance door to door, taking you straight to your destination in Hofuf or elsewhere in the Al-Ahsa oasis — a family home, a hotel, or a specific heritage site — without needing to route through Dammam or arrange a second local taxi.",
         ],
       },
@@ -5645,13 +5648,13 @@ const baseRoutes: Route[] = [
       {
         heading: "Road conditions and driving comfort",
         paragraphs: [
-          "The southeastern highway to Hofuf is well-maintained and generally carries lighter traffic than the busier Dammam-bound corridor, making for a genuinely comfortable three-hour-plus drive. Speed cameras are present at intervals as on any Saudi highway, and the shorter overall distance means driver fatigue is less of a factor here than on the longer Eastern Province crossings.",
+          "The highway to Hofuf is a direct route that avoids the busier Dammam-bound corridor, a drive of roughly 3.5–4 hours. Speed cameras are present at intervals as on any Saudi highway, and the shorter overall distance means driver fatigue is less of a factor here than on the longer Eastern Province crossings.",
         ],
       },
       {
         heading: "Tolls and highway fees",
         paragraphs: [
-          "There are no toll roads on this route, or anywhere on Saudi Arabia's highway network. The fixed price you agree covers the complete journey.",
+          "Your quotation sets out the price for the journey before you confirm, based on your pickup, destination, date and group.",
         ],
       },
       {
@@ -5669,7 +5672,7 @@ const baseRoutes: Route[] = [
       {
         heading: "A note for business travel",
         paragraphs: [
-          "Al-Ahsa has a growing agricultural and light-industrial business base alongside its heritage tourism profile, and business travellers making the trip from Riyadh find the same fixed-price, driver-tracked service valuable for meeting-day reliability as on any other intercity route.",
+          "Al-Ahsa has a growing agricultural and light-industrial business base alongside its heritage tourism profile, and business travellers making the trip from Riyadh can request the same private transfer by quotation, timed around their meetings.",
         ],
       },
       {
@@ -5687,23 +5690,23 @@ const baseRoutes: Route[] = [
       {
         heading: "Booking your Riyadh to Hofuf transfer",
         paragraphs: [
-          "Share your Riyadh pickup point, your destination in Hofuf or elsewhere in Al-Ahsa, your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit simply to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Share your Riyadh pickup point, your destination in Hofuf or elsewhere in Al-Ahsa, your preferred time, and your group size and luggage. We reply with a suggested vehicle and a quotation to review before you confirm. Request a quotation on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Hofuf from Riyadh, and how long does the drive take?", answer: "The distance is approximately 330 kilometres, and the drive takes about three hours fifteen minutes via the direct southeastern highway, genuinely shorter than the Dammam or Khobar routes." },
-      { question: "Is the price fixed for the whole journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, with no meter, no surge, and no toll charges." },
+      { question: "How far is Hofuf from Riyadh, and how long does the drive take?", answer: "The distance is about 325–330 kilometres, and the drive takes roughly 3.5–4 hours via the direct highway, shorter than the Dammam or Khobar routes." },
+      { question: "What does the quotation cover?", answer: "Your quotation sets out the price for the journey you request and what it includes. Review it before you confirm, and ask us if anything is unclear." },
       { question: "What can I visit in Hofuf and Al-Ahsa?", answer: "The historic Qaisariya Souq, Jawatha Mosque, Al-Asfar Lake, and Ibrahim Palace are the main heritage sites, alongside the oasis's extensive date palm plantations — one of the largest oasis regions in the world." },
       { question: "Can you drop me at a specific heritage site rather than a hotel?", answer: "Yes, we drop off anywhere in Hofuf and the wider Al-Ahsa oasis, including specific heritage sites, family homes, or hotels — just share your exact destination." },
-      { question: "Is this route shorter than going to Dammam or Khobar?", answer: "Yes, noticeably. Hofuf sits southeast of the main coastal cities and is reached via a more direct highway, making it around an hour shorter than the Khobar or Dammam runs." },
+      { question: "Is this route shorter than going to Dammam or Khobar?", answer: "Yes, noticeably. Hofuf sits southeast of the main coastal cities and is reached via a more direct highway, making it roughly 90 km shorter than the Dammam or Khobar runs." },
       { question: "What's the best season to visit Al-Ahsa?", answer: "Winter and spring offer the most comfortable conditions for exploring the oasis's heritage sites on foot; summer is best managed with an early or evening visit to the outdoor sites." },
       { question: "Can a family group tour multiple sites in one day?", answer: "Yes, many families use a private transfer to visit several Al-Ahsa sites across a single day — let us know your planned stops when booking so we can suggest a sensible vehicle and schedule." },
       { question: "Are rest stops available on this shorter route?", answer: "Yes, though given the shorter overall distance, most travellers complete the journey without needing a formal rest stop, and we're happy to include one on request at no extra charge." },
       { question: "Is there a return Hofuf to Riyadh transfer?", answer: "Yes, see our <a href='/routes/hofuf-to-riyadh'>Hofuf to Riyadh</a> page to book the return leg." },
       { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your destination in Hofuf or Al-Ahsa, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is the drive suitable for elderly travellers or young children?", answer: "Yes, at just over three hours it's one of the more manageable Eastern Province routes for elderly travellers and families with young children, and we're happy to build in a short break if helpful." },
-      { question: "Do you serve business travellers heading to Al-Ahsa?", answer: "Yes, Al-Ahsa has a growing agricultural and light-industrial business base, and we provide the same fixed-price, tracked service for business trips as for heritage visits." },
+      { question: "Is the drive suitable for elderly travellers or young children?", answer: "Yes, at roughly 3.5–4 hours it's one of the more manageable Eastern Province routes for elderly travellers and families with young children, and we're happy to build in a short break if helpful." },
+      { question: "Do you serve business travellers heading to Al-Ahsa?", answer: "Yes, Al-Ahsa has a growing agricultural and light-industrial business base, and business travellers can request the same private transfer by quotation as heritage visitors." },
     ],
     keywords: ["riyadh to hofuf taxi", "riyadh to al-ahsa taxi", "riyadh to hofuf transfer", "riyadh al-ahsa private car", "riyadh hofuf distance"],
   },
@@ -5712,12 +5715,13 @@ const baseRoutes: Route[] = [
     from: "Hofuf",
     to: "Riyadh",
     category: "intercity",
-    distance: "~330 km",
-    duration: "About 3 hours 15 min",
+    // OSRM 326 km / 3.73 h; Valhalla 326 km / 3.72 h (central Hofuf 25.3797, 49.5865 → central Riyadh), 25 Nov 2026.
+    distance: "325–330 km",
+    duration: "3.5–4 hours",
     intro:
       "The Hofuf to Riyadh taxi is a private highway transfer from the heart of the Al-Ahsa oasis to the capital, popular with residents, heritage travellers heading home, and business visitors connecting to Riyadh's airport.",
     about:
-      "Our private Hofuf to Riyadh transfer collects you from your home, hotel, or a heritage site anywhere in Al-Ahsa and drives you the direct southeastern highway to your exact destination in Riyadh — one vehicle, one fixed price, in around three hours.",
+      "Our private Hofuf to Riyadh transfer collects you from your home, hotel, or a heritage site anywhere in Al-Ahsa and drives you the direct southeastern highway to your exact destination in Riyadh — one vehicle for your group, with a quotation before you travel, in roughly 3.5–4 hours.",
     notes: [
       "Door-to-door pickup anywhere in Hofuf and Al-Ahsa",
       "Direct drop-off anywhere in Riyadh, including the airport",
@@ -5727,12 +5731,12 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["hofuf", "riyadh", "dammam"],
     metaTitle: "Hofuf to Riyadh Transfer – Private Chauffeur Service",
     metaDescription:
-      "Travel from Hofuf to Riyadh (~330 km, about 3 hours 15 min) in a comfortable private car with an English-speaking driver. No shared rides, fixed price.",
+      "Travel from Hofuf to Riyadh (about 325–330 km, roughly 3.5–4 hours) in a private car for your group. No shared rides; request a quotation.",
     sections: [
       {
         heading: "Hofuf to Riyadh: route overview and distance",
         paragraphs: [
-          "The drive from Hofuf to Riyadh covers approximately 330 kilometres via the direct southeastern highway, taking around three hours fifteen minutes in free-flowing traffic — the shortest of the main Eastern Province to Riyadh routes, since Hofuf doesn't require the longer coastal detour that Dammam, Khobar, or Jubail transfers involve.",
+          "The drive from Hofuf to Riyadh covers about 325–330 kilometres via the direct highway, roughly 3.5–4 hours of driving — the shortest of the main Eastern Province to Riyadh routes, since Hofuf doesn't require the longer coastal detour that Dammam, Khobar, or Jubail transfers involve.",
           "A private transfer collects you from your exact address in Hofuf or elsewhere in Al-Ahsa and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport for onward flights.",
         ],
       },
@@ -5751,19 +5755,19 @@ const baseRoutes: Route[] = [
       {
         heading: "Road conditions and driving comfort",
         paragraphs: [
-          "The highway is well-maintained with generally lighter traffic than the Dammam-bound corridor, making this one of the more comfortable Eastern Province drives to the capital. The shorter overall distance also means less concern around driver fatigue compared with the longer coastal routes.",
+          "The route avoids the busier Dammam-bound corridor, making it one of the more direct Eastern Province drives to the capital. The shorter overall distance also means less concern around driver fatigue compared with the longer coastal routes.",
         ],
       },
       {
-        heading: "Tolls and highway fees",
+        heading: "Your quotation",
         paragraphs: [
-          "No toll roads apply on this route or anywhere in Saudi Arabia. Your fixed price is fully inclusive.",
+          "Your quotation sets out the price for the journey before you confirm, based on your pickup, destination, date and group.",
         ],
       },
       {
         heading: "Best time to travel this route",
         paragraphs: [
-          "If your trip connects to a Riyadh flight, we build in a sensible buffer against the roughly three-hour drive plus airport processing, tracking your booking so the pickup adjusts if your flight schedule shifts. For general travel, the shorter distance makes timing less critical than on longer Eastern Province routes.",
+          "If your trip connects to a Riyadh flight, allow for the 3.5–4 hour drive plus airport processing, and share your flight time when you request a quotation so the pickup time can be agreed. For general travel, the shorter distance makes timing less critical than on longer Eastern Province routes.",
         ],
       },
       {
@@ -5775,7 +5779,7 @@ const baseRoutes: Route[] = [
       {
         heading: "A note for business and airport-connection travel",
         paragraphs: [
-          "Business travellers based in Al-Ahsa's agricultural or light-industrial sector making the trip to Riyadh, along with visitors connecting onward by air, benefit from the same fixed-price, flight-tracked service standard across our intercity routes.",
+          "Business travellers based in Al-Ahsa's agricultural or light-industrial sector making the trip to Riyadh, along with visitors connecting onward by air, can request the same private transfer by quotation.",
         ],
       },
       {
@@ -5793,23 +5797,23 @@ const baseRoutes: Route[] = [
       {
         heading: "Booking your Hofuf to Riyadh transfer",
         paragraphs: [
-          "Share your pickup point in Hofuf or Al-Ahsa, your Riyadh destination or flight details, preferred time, and group size and luggage. We confirm a suitable vehicle and fixed price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Share your pickup point in Hofuf or Al-Ahsa, your Riyadh destination or flight details, preferred time, and group size and luggage. We reply with a suggested vehicle and a quotation to review before you confirm. Request a quotation on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Riyadh from Hofuf, and how long does the drive take?", answer: "The distance is approximately 330 kilometres, and the drive takes about three hours fifteen minutes — the shortest of the main Eastern Province to Riyadh routes." },
-      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
-      { question: "Is the fare fixed regardless of traffic?", answer: "Yes, the price is agreed before you travel and covers the complete journey with no meter, no surge, and no toll charges." },
+      { question: "How far is Riyadh from Hofuf, and how long does the drive take?", answer: "The distance is about 325–330 kilometres, and the drive takes roughly 3.5–4 hours — the shortest of the main Eastern Province to Riyadh routes." },
+      { question: "Can you drop me directly at Riyadh airport?", answer: "Yes. Share your flight time when you request a quotation, and the pickup time is agreed with you." },
+      { question: "What does the quotation cover?", answer: "Your quotation sets out the price for the journey you request and what it includes. Review it before you confirm, and ask us if anything is unclear." },
       { question: "Where can I be picked up in Al-Ahsa?", answer: "Anywhere — a home, hotel, or one of Al-Ahsa's heritage sites such as the Qaisariya Souq or Jawatha Mosque. Just share your exact pickup point when booking." },
-      { question: "Is this a shorter drive than from Dammam or Khobar?", answer: "Yes, noticeably. At roughly 330 kilometres and about three hours fifteen minutes, it's genuinely the shortest of the main Eastern Province routes to Riyadh." },
+      { question: "Is this a shorter drive than from Dammam or Khobar?", answer: "Yes, noticeably. At about 325–330 kilometres and roughly 3.5–4 hours, it's genuinely the shortest of the main Eastern Province routes to Riyadh." },
       { question: "Can I bring dates or gifts purchased in Al-Ahsa?", answer: "Yes, our vehicles have ample luggage space for items picked up during your visit — just let us know if you have an unusually large amount when booking." },
       { question: "Are rest stops available?", answer: "Yes, on request, though given the shorter distance most travellers complete the journey without needing a formal stop." },
-      { question: "Is there a return Riyadh to Hofuf transfer?", answer: "Yes, see our <a href='/routes/riyadh-to-hofuf'>Riyadh to Hofuf</a> page to book that direction." },
+      { question: "Is there a return Riyadh to Hofuf transfer?", answer: "Yes. See the Riyadh to Hofuf route page, or mention both directions in one request." },
       { question: "What information do you need when booking?", answer: "Your pickup point in Hofuf or Al-Ahsa, your Riyadh destination or flight details, preferred date and time, passenger count, and luggage amount." },
-      { question: "Is this route suitable for elderly travellers?", answer: "Yes, at just over three hours it's one of the more comfortable Eastern Province routes for elderly travellers, and we're happy to include a short break if helpful." },
-      { question: "Do you serve business travel from Al-Ahsa?", answer: "Yes, we provide the same fixed-price, tracked service for business travellers from Al-Ahsa's agricultural and light-industrial sector as for heritage visitors." },
-      { question: "Is night travel on this route routine?", answer: "Yes, our drivers cover this route at all hours as a matter of routine." },
+      { question: "Is this route suitable for elderly travellers?", answer: "Yes, at roughly 3.5–4 hours it's one of the more comfortable Eastern Province routes for elderly travellers, and we're happy to include a short break if helpful." },
+      { question: "Do you serve business travel from Al-Ahsa?", answer: "Yes. Business travellers from Al-Ahsa can request the same private transfer by quotation as heritage visitors." },
+      { question: "Can I travel early in the morning or at night?", answer: "You can request an early-morning or evening departure; availability is confirmed with your quotation." },
     ],
     keywords: ["hofuf to riyadh taxi", "al-ahsa to riyadh taxi", "hofuf to riyadh transfer", "al-ahsa riyadh private car", "hofuf to riyadh airport taxi"],
   },
@@ -6808,114 +6812,52 @@ const baseRoutes: Route[] = [
     from: "Riyadh",
     to: "Yanbu",
     category: "intercity",
-    distance: "~950 km",
-    duration: "About 9 hours 30 min",
+    // Rendered by components/routes/RiyadhYanbuRouteView.tsx (data/riyadh-to-yanbu-route.ts).
+    // OSRM / Valhalla, 25 Nov 2026: 1,037–1,063 km, 9.6–10.4 h of driving.
+    distance: "1,040–1,060 km",
+    duration: "9.5–10.5 hours",
     intro:
-      "The Riyadh to Yanbu taxi is a private long-distance transfer to the Red Sea coastal city, popular with families heading for the beach, divers and snorkellers drawn to the coral reefs, and business travellers connected to Yanbu's industrial sector.",
+      "A private long-distance transfer from Riyadh to the Red Sea coast, to Yanbu Al-Bahr or Yanbu Industrial City, arranged by quotation.",
     about:
-      "Our private Riyadh to Yanbu transfer covers one of our longer coastal routes, with comfortable vehicles and structured rest-stop planning, delivering you door to door to your hotel or address in Yanbu — a fixed price agreed before you travel.",
+      "Request one private vehicle from your Riyadh address to your hotel, home or business address in Yanbu. The journey is about 1,040–1,060 km, roughly 9.5–10.5 hours of driving before breaks, and the quotation is sent before you confirm.",
     notes: [
-      "Door-to-door pickup anywhere in Riyadh",
-      "Direct drop-off anywhere in Yanbu, including the historic old town and beach areas",
-      "Comfortable vehicles with rest-stop planning for the long drive",
-      "Familiar with both leisure and industrial-city destinations in Yanbu",
+      "Pickup from your Riyadh address",
+      "Drop-off in Yanbu Al-Bahr or Yanbu Industrial City",
+      "Vehicle suggested for your group and luggage",
+      "Breaks can be requested and are agreed when you book",
     ],
     relatedCitySlugs: ["riyadh", "yanbu"],
-    metaTitle: "Riyadh to Yanbu Transfer – Private Chauffeur Service",
+    lastUpdated: "2026-11-25",
+    metaTitle: "Riyadh to Yanbu Private Transfer | Capital to the Red Sea",
     metaDescription:
-      "Private transfer from Riyadh to Yanbu (~950 km, about 9 hours 30 min) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
+      "Request a private transfer from Riyadh to Yanbu Al-Bahr or Yanbu Industrial City: about 1,040–1,060 km, roughly 9.5–10.5 hours of driving. Get a quotation.",
     sections: [
       {
-        heading: "Riyadh to Yanbu: route overview and distance",
+        heading: "Riyadh to Yanbu: distance and route",
         paragraphs: [
-          "The drive from Riyadh to Yanbu covers approximately 950 kilometres west to the Red Sea coast, taking around nine and a half hours in free-flowing traffic. This is genuinely one of the longer routes we cover, and travellers making this journey are typically heading for a coastal leisure trip or connecting to Yanbu's substantial industrial and port sector.",
-          "A private transfer covers the whole distance door to door, with structured rest-stop planning given the journey's length.",
+          "The road from Riyadh to Yanbu is about 1,040–1,060 km, roughly 9.5–10.5 hours of driving before breaks. It runs north-west through the Al-Qassim area, west across the desert past the outskirts of Madinah, and down to the Red Sea coast.",
         ],
       },
       {
-        heading: "The fastest route to the coast",
+        heading: "Yanbu Al-Bahr and Yanbu Industrial City",
         paragraphs: [
-          "The route runs west across the Kingdom, broadly following the corridor toward Madinah before continuing to the coast, and it remains the most direct practical highway option for this journey. Drivers experienced with this long westward run plan proper rest stops rather than an unbroken drive.",
-        ],
-      },
-      {
-        heading: "Scenic highlights along the way",
-        paragraphs: [
-          "Yanbu Al-Bahr, the city's historic old town, is known for its coral-stone buildings and traditional wind-tower architecture, a genuinely distinctive coastal heritage district. The surrounding Red Sea offers some of the Kingdom's most accessible diving and snorkelling reefs, drawing visitors specifically for the marine life and clear water. Yanbu is also a significant industrial city, home to petrochemical facilities and a major port, giving it a dual identity as both a leisure destination and a working industrial centre.",
-        ],
-      },
-      {
-        heading: "Road conditions and driving comfort",
-        paragraphs: [
-          "The highway is well-maintained across the length of the journey, and given the near-ten-hour duration, driver fatigue management and planned rest stops are a genuine priority for how we structure this transfer.",
-        ],
-      },
-      {
-        heading: "Tolls and highway fees",
-        paragraphs: [
-          "There are no toll roads on this route or anywhere in Saudi Arabia. Your fixed price covers the complete journey.",
-        ],
-      },
-      {
-        heading: "Best time to travel this route",
-        paragraphs: [
-          "An early-morning departure is advisable given the distance. For diving and beach visits specifically, winter and spring offer the most comfortable conditions, while summer heat makes early-morning or evening beach time more pleasant than midday.",
-        ],
-      },
-      {
-        heading: "Vehicle options for a long coastal journey",
-        paragraphs: [
-          "Given the distance, a comfort SUV is generally preferred, and families or diving groups travelling with equipment often choose a minivan for the extra room needed across a near-ten-hour journey.",
-        ],
-      },
-      {
-        heading: "A note for business and industrial-sector travellers",
-        paragraphs: [
-          "Yanbu's petrochemical and port industry brings a steady stream of business travellers alongside leisure visitors, and both benefit from the same fixed-price, tracked service, with our drivers familiar with both the historic old town and the industrial city's layout.",
-        ],
-      },
-      {
-        heading: "Popular stops and onward connections",
-        paragraphs: [
-          "Within Yanbu, the historic old town, the Corniche, and the surrounding dive sites are the main leisure draws. Travellers whose journey continues to Jeddah or Madinah can extend their trip — see our <a href='/routes/yanbu-to-jeddah'>Yanbu to Jeddah transfer</a> for that connection.",
-        ],
-      },
-      {
-        heading: "Safety on a long-distance coastal transfer",
-        paragraphs: [
-          "At close to ten hours, this is one of our longer routes, and structured rest stop planning is a genuine safety consideration. Our drivers pace the journey accordingly and keep every trip tracked.",
-        ],
-      },
-      {
-        heading: "Booking your Riyadh to Yanbu transfer",
-        paragraphs: [
-          "Share your Riyadh pickup point, your Yanbu destination, your preferred time, and your group size and luggage. We confirm a suitable vehicle and fixed, all-in price before you travel, operate 24/7, and require no deposit to see a quote. Request a fixed-price quote on WhatsApp or through our <a href='/get-quote'>get a quote</a> form.",
+          "Yanbu Al-Bahr is the coastal city with hotels, the waterfront and the historic quarter. Yanbu Industrial City is a separate planned city about 20–30 km to the south-east. Give your exact address when you request a quotation.",
         ],
       },
     ],
     faqs: [
-      { question: "How far is Yanbu from Riyadh, and how long does the drive take?", answer: "The distance is approximately 950 kilometres, and the drive takes about nine and a half hours — one of the longer routes we cover from the capital." },
-      { question: "Is the price fixed for such a long journey?", answer: "Yes, the fare is agreed before you travel and covers the complete door-to-door trip, including rest stops, with no meter, no surge, and no toll charges." },
-      { question: "What's Yanbu known for?", answer: "Yanbu Al-Bahr's historic old town features coral-stone buildings and traditional wind-tower architecture, and the surrounding Red Sea offers some of the Kingdom's most accessible diving and snorkelling reefs." },
-      { question: "Can you drop me at a specific dive site or hotel?", answer: "Yes, we drop off anywhere in Yanbu, including specific hotels, the old town, or dive centres — just share your exact destination." },
-      { question: "Do you serve Yanbu's industrial city as well as the leisure areas?", answer: "Yes, our drivers are familiar with both the historic old town and the industrial city's layout for business travel." },
-      { question: "Which vehicle suits this longer journey best?", answer: "A comfort SUV is generally preferred given the distance, and families or diving groups often choose a minivan for extra room, particularly with equipment." },
-      { question: "Are rest stops included?", answer: "Yes, given the near-ten-hour distance, we build in structured rest stops as standard." },
-      { question: "Is there a return Yanbu to Riyadh transfer?", answer: "Yes, see our <a href='/routes/yanbu-to-riyadh'>Yanbu to Riyadh</a> page to book the return leg." },
-      { question: "What information do you need when booking?", answer: "Your Riyadh pickup point, your Yanbu destination, preferred date and time, passenger count, and luggage amount." },
-      { question: "Can I continue from Yanbu to Jeddah or Madinah?", answer: "Yes, see our <a href='/routes/yanbu-to-jeddah'>Yanbu to Jeddah transfer</a> for that onward connection." },
-      { question: "What's the best season for diving in Yanbu?", answer: "Winter and spring offer the most comfortable conditions for diving and beach visits, though the reefs are accessible year-round." },
-      { question: "Is night travel on this route routine?", answer: "Given the drive's length we generally recommend a daytime departure, though night travel is handled routinely when needed." },
+      { question: "How far is Yanbu from Riyadh?", answer: "About 1,040–1,060 km by road, roughly 9.5–10.5 hours of driving before breaks." },
+      { question: "Can I travel to Yanbu Industrial City?", answer: "Yes. Give the office, accommodation or site details. Entry permits for controlled sites are for you or your host to arrange." },
     ],
-    keywords: ["riyadh to yanbu taxi", "riyadh to yanbu transfer", "riyadh yanbu private car", "riyadh to yanbu distance", "riyadh red sea coast taxi"],
+    keywords: ["riyadh to yanbu taxi", "riyadh to yanbu transfer", "riyadh yanbu private car", "riyadh to yanbu distance", "riyadh to yanbu industrial city"],
   },
   {
     slug: "yanbu-to-riyadh",
     from: "Yanbu",
     to: "Riyadh",
     category: "intercity",
-    distance: "~950 km",
-    duration: "About 9 hours 30 min",
+    distance: "1,040–1,060 km",
+    duration: "9.5–10.5 hours",
     intro:
       "The Yanbu to Riyadh taxi is a private long-distance transfer from the Red Sea coastal city back to the capital, popular with residents, beach and diving visitors heading home, and business travellers connecting to Riyadh's airport.",
     about:
@@ -6929,12 +6871,12 @@ const baseRoutes: Route[] = [
     relatedCitySlugs: ["yanbu", "riyadh"],
     metaTitle: "Yanbu to Riyadh Private Transfer – Fixed-Price Taxi",
     metaDescription:
-      "Private transfer from Yanbu to Riyadh (~950 km, about 9 hours 30 min) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
+      "Private transfer from Yanbu to Riyadh (about 1,040–1,060 km, roughly 9.5–10.5 hours of driving) with a fixed fare and door-to-door service. Reserve online or via WhatsApp.",
     sections: [
       {
         heading: "Yanbu to Riyadh: route overview and distance",
         paragraphs: [
-          "The drive from Yanbu to Riyadh covers approximately 950 kilometres east, taking around nine and a half hours in free-flowing traffic. Many travellers making this leg are heading home after a coastal trip or connecting onward from Riyadh by air.",
+          "The drive from Yanbu to Riyadh covers about 1,040–1,060 kilometres east, roughly 9.5–10.5 hours of driving before breaks. Many travellers making this leg are heading home after a coastal trip or connecting onward from Riyadh by air.",
           "A private transfer collects you from your exact address in Yanbu and delivers you precisely where you need to be in Riyadh, including a direct run to King Khalid International Airport.",
         ],
       },
@@ -7000,7 +6942,7 @@ const baseRoutes: Route[] = [
       },
     ],
     faqs: [
-      { question: "How far is Riyadh from Yanbu, and how long does the drive take?", answer: "The distance is approximately 950 kilometres, and the drive takes about nine and a half hours — one of the longer routes we cover." },
+      { question: "How far is Riyadh from Yanbu, and how long does the drive take?", answer: "The distance is about 1,040–1,060 kilometres, roughly 9.5–10.5 hours of driving before breaks — one of the longer routes we cover." },
       { question: "Can you drop me directly at Riyadh airport?", answer: "Yes, and if you share your flight details we track your departure and adjust the pickup time automatically if it changes." },
       { question: "Is the fare fixed for such a long journey?", answer: "Yes, the price is agreed before you travel and covers the complete trip, including rest stops, with no meter, no surge, and no toll charges." },
       { question: "Which vehicle suits this journey best?", answer: "A comfort SUV is generally preferred given the distance, and families or diving groups often choose a minivan for extra room." },
@@ -7127,16 +7069,17 @@ const baseRoutes: Route[] = [
   {
     slug: "jeddah-to-riyadh",
     metaTitle: "Jeddah to Riyadh Transfer – Private Chauffeur Service",
-    metaDescription: "Get a private Jeddah to Riyadh transfer (950 km, about 10–11 hours) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
+    metaDescription: "Get a private Jeddah to Riyadh transfer (950 km, roughly 9.5–10.5 hours of driving) with rest-stop flexibility and 24/7 booking. Reliable, on-time, fixed price.",
     from: "Jeddah",
     to: "Riyadh",
     category: "intercity",
     distance: "950 km",
-    duration: "10–11 hours",
+    // OSRM 945 km / 10.4 h; Valhalla 965 km / 8.9 h (25 Nov 2026).
+    duration: "9.5–10.5 hours",
     intro:
       "A private road transfer from Jeddah to Riyadh across the Kingdom, door to door, arranged by quotation.",
     about:
-      "Travel comfortably between Saudi Arabia's commercial port city and the capital without airport waiting or luggage restrictions. Our private Jeddah to Riyadh transfer offers a choice of sedans, SUVs, and family vans, with rest stops built into the 10–11 hour journey at a pace agreed with you at booking.",
+      "Travel comfortably between Saudi Arabia's commercial port city and the capital without airport waiting or luggage restrictions. Our private Jeddah to Riyadh transfer offers a choice of sedans, SUVs, and family vans, with rest stops built into the journey at a pace agreed with you at booking.",
     notes: [
       "Door-to-door service from any Jeddah hotel, residential address, or airport",
       "Direct drop-off at any Riyadh district, hotel, or King Khalid International Airport",
@@ -7149,19 +7092,19 @@ const baseRoutes: Route[] = [
       {
         heading: "Jeddah to Riyadh: Journey details and highway route",
         paragraphs: [
-          "The overland journey from Jeddah to Riyadh covers approximately 950 kilometres along Highway 40, travelling past Taif, Zalim, and the central desert plains into Riyadh. Typical driving time is approximately 10–11 hours, plus any rest breaks.",
+          "The overland journey from Jeddah to Riyadh covers approximately 950 kilometres along Highway 40, travelling past Taif, Zalim, and the central desert plains into Riyadh. Typical driving time is roughly 9.5–10.5 hours, plus any rest breaks.",
           "Our experienced chauffeurs are accustomed to long-distance highway driving, ensuring a smooth, air-conditioned ride in late-model vehicles equipped for family and business comfort.",
         ],
       },
       {
         heading: "Vehicle selection and executive service",
         paragraphs: [
-          "Choose between sedans for solo travellers, SUVs for families, or vans for larger groups with more luggage. Rest-stop timing and pacing for the 10–11 hour drive are agreed with you at booking rather than fixed in advance.",
+          "Choose between sedans for solo travellers, SUVs for families, or vans for larger groups with more luggage. Rest-stop timing and pacing for the drive are agreed with you at booking rather than fixed in advance.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does a private transfer from Jeddah to Riyadh take?", answer: "The 950 km drive typically takes approximately 10–11 hours of driving, plus any rest stops along Highway 40." },
+      { question: "How long does a private transfer from Jeddah to Riyadh take?", answer: "The 950 km drive typically takes roughly 9.5–10.5 hours of driving, plus any rest stops along Highway 40." },
       { question: "Can we stop for meals and prayer along the way?", answer: "Yes, your driver accommodates rest stops at major modern service stations along the route at your convenience." },
       { question: "Is hotel or airport pickup included in Jeddah?", answer: "Yes, your driver meets you directly at your Jeddah hotel lobby, private residence, or terminal at King Abdulaziz Airport." },
       { question: "Are prices fixed before travelling?", answer: "Yes, our quotes are 100% fixed with no hidden fees, fuel surcharges, or toll charges." },
@@ -7354,12 +7297,13 @@ const baseRoutes: Route[] = [
   {
     slug: "alula-to-riyadh",
     metaTitle: "AlUla to Riyadh Transfer – Private Chauffeur Service",
-    metaDescription: "Reserve a private car from AlUla to Riyadh (1,050 km, about 10 hours). Comfortable vehicles for solo travellers, families and small groups.",
+    metaDescription: "Reserve a private car from AlUla to Riyadh (about 1,030–1,040 km, roughly 10.5–11 hours of driving). Comfortable vehicles for solo travellers, families and small groups.",
     from: "AlUla",
     to: "Riyadh",
     category: "intercity",
-    distance: "1,050 km",
-    duration: "10 hours",
+    // OSRM 1,032–1,033 km / 10.9–11.0 h; Valhalla 1,038–1,039 km / 10.3–10.4 h (25 Nov 2026).
+    distance: "1,030–1,040 km",
+    duration: "10.5–11 hours",
     intro:
       "Private long-distance chauffeur service from AlUla heritage resorts to Riyadh city center, business districts, and King Khalid Airport.",
     about:
@@ -7376,12 +7320,12 @@ const baseRoutes: Route[] = [
       {
         heading: "AlUla to Riyadh: Crossing the historic central plains",
         paragraphs: [
-          "The 1,050 km highway route connects AlUla through Hail and Qassim into Riyadh over approximately 10 hours. Relax in a spacious cabin with personalized stops at modern highway facilities.",
+          "The highway route of about 1,030–1,040 km connects AlUla through Hail and Qassim into Riyadh, with roughly 10.5–11 hours of driving. Relax in a spacious cabin with personalized stops at modern highway facilities.",
         ],
       },
     ],
     faqs: [
-      { question: "How long does the transfer from AlUla to Riyadh take?", answer: "The journey covers roughly 1,050 km and takes approximately 10 hours including rest and meal stops." },
+      { question: "How long does the transfer from AlUla to Riyadh take?", answer: "The journey covers about 1,030–1,040 km and typically takes roughly 10.5–11 hours of driving, plus rest and meal stops." },
       { question: "Can we request stops in Hail or Qassim along the way?", answer: "Yes, route stops for meals and sightseeing can be arranged when booking your private transfer." },
     ],
     keywords: ["alula to riyadh taxi", "alula to riyadh private transfer", "chauffeur alula to riyadh", "car service alula riyadh"],

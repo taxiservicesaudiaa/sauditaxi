@@ -15,6 +15,14 @@ import { JazanCityView } from "@/components/city-transfer/JazanCityView";
 import { JAZAN, JAZAN_FAQS, JAZAN_PHOTOS, JAZAN_REVIEWED } from "@/data/jazan-city-page";
 import { JeddahCityView } from "@/components/city-transfer/JeddahCityView";
 import { JEDDAH, JEDDAH_FAQS, JEDDAH_PHOTOS, JEDDAH_REVIEWED } from "@/data/jeddah-city-page";
+import { KhamisMushaitCityView } from "@/components/city-transfer/KhamisMushaitCityView";
+import { RiyadhCityView } from "@/components/city-transfer/RiyadhCityView";
+import { HofufCityView } from "@/components/city-transfer/HofufCityView";
+import { HOFUF, HOFUF_FAQS, HOFUF_PHOTOS, HOFUF_REVIEWED } from "@/data/hofuf-city-page";
+import { KhobarCityView } from "@/components/city-transfer/KhobarCityView";
+import { KHOBAR, KHOBAR_FAQS, KHOBAR_PHOTOS, KHOBAR_REVIEWED } from "@/data/khobar-city-page";
+import { RIYADH, RIYADH_FAQS, RIYADH_PHOTOS, RIYADH_REVIEWED } from "@/data/riyadh-city-page";
+import { KHAMIS, KHAMIS_FAQS, KHAMIS_PHOTOS, KHAMIS_REVIEWED } from "@/data/khamis-mushait-city-page";
 
 /** Destination geo meta for cities with a dedicated, fact-checked layout. */
 const CITY_GEO: Record<string, { region: string; placename: string; lat: number; lon: number; image: string }> = {
@@ -48,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       city.metaDescription ??
       `Private transportation in ${city.name} — airport pickup, hotel transfers, and intercity rides, priced before you travel.`,
     path,
-    ...(CITY_GEO[city.slug] ? { image: CITY_GEO[city.slug].image } : city.slug === "jeddah" ? { image: JEDDAH_PHOTOS.waterfront.src } : {}),
+    ...(CITY_GEO[city.slug] ? { image: CITY_GEO[city.slug].image } : city.slug === "jeddah" ? { image: JEDDAH_PHOTOS.waterfront.src } : city.slug === "khamis-mushait" ? { image: KHAMIS_PHOTOS.city.src } : city.slug === "riyadh" ? { image: RIYADH_PHOTOS.skyline.src } : city.slug === "hofuf" ? { image: HOFUF_PHOTOS.palace.src } : city.slug === "khobar" ? { image: KHOBAR_PHOTOS.waterTower.src } : {}),
     ...(arPath ? { alternateLanguages: { en: path, ar: arPath } } : {}),
   });
   const g = CITY_GEO[city.slug];
@@ -132,6 +140,214 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
   }
 
   // Jeddah has its own "gateway city" layout (data/jeddah-city-page.ts).
+  // Hofuf has its own "oasis heritage" layout (data/hofuf-city-page.ts).
+  if (city.slug === "hofuf") {
+    const pageUrl = absoluteUrl(path);
+    const img = HOFUF_PHOTOS.palace;
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: HOFUF_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(img.src),
+                caption: img.alt,
+                creditText: img.credit.author,
+                ...(img.credit.licenceUrl ? { license: img.credit.licenceUrl } : {}),
+                acquireLicensePage: img.credit.source,
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Hofuf",
+                description: HOFUF.hero.intro,
+                path,
+                serviceType: "Private Transfer",
+                dateModified: HOFUF_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Hofuf",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Eastern Province" },
+              },
+            },
+            faqSchema(HOFUF_FAQS),
+          ]}
+        />
+        <HofufCityView faqs={HOFUF_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
+  // Khobar has its own "Gulf waterfront and causeway" layout (data/khobar-city-page.ts).
+  if (city.slug === "khobar") {
+    const pageUrl = absoluteUrl(path);
+    const img = KHOBAR_PHOTOS.waterTower;
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: KHOBAR_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(img.src),
+                caption: img.alt,
+                creditText: img.credit.author,
+                ...(img.credit.licenceUrl ? { license: img.credit.licenceUrl } : {}),
+                acquireLicensePage: img.credit.source,
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Khobar",
+                description: KHOBAR.hero.intro,
+                path,
+                serviceType: "Private Transfer",
+                dateModified: KHOBAR_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Al Khobar",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Eastern Province" },
+              },
+            },
+            faqSchema(KHOBAR_FAQS),
+          ]}
+        />
+        <KhobarCityView faqs={KHOBAR_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
+  // Riyadh has its own "capital grid" layout (data/riyadh-city-page.ts).
+  if (city.slug === "riyadh") {
+    const pageUrl = absoluteUrl(path);
+    const img = RIYADH_PHOTOS.skyline;
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: RIYADH_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(img.src),
+                caption: img.alt,
+                creditText: img.credit.author,
+                ...(img.credit.licenceUrl ? { license: img.credit.licenceUrl } : {}),
+                acquireLicensePage: img.credit.source,
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Riyadh",
+                description: RIYADH.hero.intro,
+                path,
+                serviceType: "Private Transfer",
+                dateModified: RIYADH_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Riyadh",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Riyadh Region" },
+              },
+            },
+            faqSchema(RIYADH_FAQS),
+          ]}
+        />
+        <RiyadhCityView faqs={RIYADH_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
+  // Khamis Mushait has its own "plateau market town" layout (data/khamis-mushait-city-page.ts).
+  if (city.slug === "khamis-mushait") {
+    const pageUrl = absoluteUrl(path);
+    const img = KHAMIS_PHOTOS.city;
+    return (
+      <>
+        <SchemaScript
+          schema={[
+            breadcrumbSchema(crumbs),
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": `${pageUrl}#webpage`,
+              url: pageUrl,
+              name: city.metaTitle,
+              description: city.metaDescription,
+              inLanguage: "en",
+              isPartOf: { "@id": `${siteConfig.url}/#website` },
+              about: { "@id": `${pageUrl}#service` },
+              dateModified: KHAMIS_REVIEWED,
+              primaryImageOfPage: {
+                "@type": "ImageObject",
+                url: absoluteUrl(img.src),
+                caption: img.alt,
+                creditText: img.credit.author,
+                ...(img.credit.licenceUrl ? { license: img.credit.licenceUrl } : {}),
+                acquireLicensePage: img.credit.source,
+              },
+            },
+            {
+              ...serviceSchema({
+                name: "Private Transfers in Khamis Mushait",
+                description: KHAMIS.hero.intro,
+                path,
+                serviceType: "Private Transfer",
+                dateModified: KHAMIS_REVIEWED,
+              }),
+              "@id": `${pageUrl}#service`,
+              areaServed: {
+                "@type": "City",
+                name: "Khamis Mushait",
+                containedInPlace: { "@type": "AdministrativeArea", name: "Asir Region" },
+              },
+            },
+            faqSchema(KHAMIS_FAQS),
+          ]}
+        />
+        <KhamisMushaitCityView faqs={KHAMIS_FAQS} crumbs={crumbs} />
+      </>
+    );
+  }
+
   if (city.slug === "jeddah") {
     const pageUrl = absoluteUrl(path);
     return (

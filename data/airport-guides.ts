@@ -90,9 +90,9 @@ export const airportGuides: Record<string, AirportGuide> = {
     ],
     faqs: [
       {
-        question: "Is King Khalid International Airport operating?",
+        question: "Which terminal will I use at King Khalid International Airport?",
         answer:
-          "King Khalid International Airport announced that Terminal 1 (domestic flights) and Terminal 2 (international flights operated by Saudi national carriers) resumed operations on 25 October 2026, after a suspension that began on 10 October. It has not announced when its other terminals will reopen, and airline schedules may still be affected (last checked 2 November 2026). Confirm your flight's status and terminal directly with your airline.",
+          "Terminal arrangements at King Khalid International Airport can change. Confirm your flight and your arrival or departure terminal with your airline before you travel, and include the terminal in your request if you know it.",
       },
       {
         question: "Can you pick me up or drop me off at Riyadh airport?",

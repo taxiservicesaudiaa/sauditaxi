@@ -557,7 +557,7 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
       "We collect from anywhere in Hofuf or the wider Al-Ahsa Oasis area, direct to your address.",
     ],
     roadJourney: [
-      "At about 155 km, this is the longest of the Dammam Airport regional transfers, taking roughly 1 hour 40 minutes along the highway north.",
+      "At about 170–195 km, this is the longest of the Dammam Airport regional transfers, taking around 2 hours of driving.",
     ],
     airportDropoff: [
       "Drop-off is at the terminal, with extra time built in for the airport's large size.",
@@ -579,7 +579,7 @@ export const cityAirportRouteContent: Record<string, CityAirportRouteContent> = 
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How long does the drive from Hofuf to the airport take?", answer: "About 1 hour 40 minutes for roughly 155 km — the longest of our Dammam Airport regional routes." },
+      { question: "How long does the drive from Hofuf to the airport take?", answer: "Around 2 hours for about 170–195 km — the longest of our Dammam Airport regional routes." },
       { question: "Should I leave earlier given the distance?", answer: "Yes, this is the longest regional drive in the group, so build in more buffer than the shorter Eastern Province routes." },
     ],
   },

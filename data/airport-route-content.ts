@@ -445,10 +445,10 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
     intro:
       "Hofuf is the gateway to Al-Ahsa, the UNESCO-listed oasis region — the longest of the Dammam Airport regional routes, and one used by both business travellers and visitors heading to the Qaisariah Souq and Ibrahim Palace heritage sites.",
     arrivalPickup: [
-      "Standard flight tracking and arrivals-hall pickup apply — your driver waits once you've cleared customs.",
+      "We track your flight to coordinate the pickup; the meeting point is confirmed with you individually when you book.",
     ],
     roadJourney: [
-      "At about 155 km, this is the longest of the Dammam Airport regional transfers, taking roughly 1 hour 40 minutes on the highway south from the airport toward Al-Ahsa.",
+      "At about 165–170 km, this is the longest of the Dammam Airport regional transfers, taking around 2 hours of driving south from the airport toward Al-Ahsa.",
     ],
     destinationArrival: [
       "Hofuf's Qaisariah Souq and Ibrahim Palace sit in the older heritage core of the city, while hotels and business addresses are more spread out — tell us your exact destination so the driver plans directly to it.",
@@ -465,7 +465,7 @@ export const airportRouteContent: Record<string, AirportRouteContent> = {
       "Passenger and luggage count",
     ],
     faqs: [
-      { question: "How far is Hofuf from King Fahd Airport?", answer: "About 155 km, typically 1 hour 40 minutes of driving." },
+      { question: "How far is Hofuf from King Fahd Airport?", answer: "About 165–170 km, typically around 2 hours of driving." },
       { question: "Can the driver take us to Qaisariah Souq directly?", answer: "Yes, confirm this as your destination when booking." },
       { question: "Is this a long enough drive to need rest stops?", answer: "It's manageable in one stretch for most travellers, but if you'd prefer a stop, mention it when booking." },
     ],

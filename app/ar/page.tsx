@@ -1,127 +1,67 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Car, Plane, Building2, MapPinned, ShieldCheck } from "lucide-react";
-import { HeroSection } from "@/components/sections/HeroSection";
+import { HomeView } from "@/components/home/HomeView";
 import { HeroQuickForm } from "@/components/HeroQuickForm";
-import { TrustBadges } from "@/components/sections/TrustBadges";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { FAQSection } from "@/components/sections/FAQSection";
-import { CTASection } from "@/components/sections/CTASection";
-import { Card } from "@/components/ui/card";
 import { SchemaScript } from "@/components/seo/SchemaScript";
-import { faqSchema, breadcrumbSchema } from "@/lib/schema";
+import { faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { getDictionary } from "@/lib/i18n";
-import { getArPages, arPath } from "@/data/translations/ar";
-import { heroImages } from "@/lib/hero";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+import { getArPathForEnPathLight } from "@/data/translations/ar-index";
+import { HOME_PHOTOS, HOME_REVIEWED } from "@/data/home-page";
+import { HOME_AR, HOME_FAQS_AR, HOME_PHOTO_ALT_AR } from "@/data/home-page-ar";
 
-const dict = getDictionary("ar");
+// Arabic homepage rebuild (task 71): same layout as the English homepage
+// (components/home/HomeView.tsx) with Arabic copy (data/home-page-ar.ts —
+// needs native-speaker review). Links map to the Arabic equivalent of each
+// English page where one exists; otherwise they fall back to the English page.
 
 export const metadata: Metadata = buildMetadata({
-  title: "نقل خاص وتاكسي في السعودية | مطارات، مدن، حدود، عمرة وحج",
-  description:
-    "احجز خدمة نقل خاص موثوقة في جميع أنحاء المملكة العربية السعودية — نقل من المطار، تنقلات المدينة، رحلات بين المدن، النقل عبر الحدود، والعمرة والحج. أسعار ثابتة وحجز سريع عبر واتساب.",
+  title: HOME_AR.meta.title,
+  description: HOME_AR.meta.description,
   path: "/ar",
+  image: HOME_PHOTOS.hero.src,
   alternateLanguages: { en: "/", ar: "/ar" },
 });
 
-const homeFaqs = [
-  { question: "هل يمكنني حجز نقل خاص بالعربية بالكامل؟", answer: "نعم، توفر صفحاتنا العربية محتوى كاملًا بالعربية مع نموذج حجز يعمل بالعربية أيضًا، ويمكنك أيضًا التواصل معنا عبر واتساب بالعربية." },
-  { question: "هل الأسعار ثابتة فعلًا؟", answer: "نعم، نتفق على السعر الكامل قبل بدء الرحلة، بدون عداد وبدون أي رسوم مفاجئة في أوقات الذروة." },
-  { question: "ما هي المدن التي تغطونها؟", answer: "نغطي أكثر من 19 مدينة سعودية، بما في ذلك الرياض وجدة ومكة المكرمة والمدينة المنورة والدمام والخبر وغيرها." },
-  { question: "هل تقدمون خدمة نقل للعمرة والحج؟", answer: "نعم، نوفر خدمات مخصصة لنقل المعتمرين والحجاج من المطارات إلى مكة المكرمة والمدينة المنورة، مع مركبات مناسبة للعائلات والمجموعات." },
-  { question: "كيف أحجز رحلتي؟", answer: "يمكنك تعبئة نموذج طلب عرض السعر في أعلى الصفحة، أو التواصل معنا مباشرة عبر واتساب، وسنرد عليك خلال دقائق بسعر ثابت." },
-];
-
-const serviceIcons = [Plane, Car, MapPinned, ShieldCheck, Building2, MapPinned, MapPinned, MapPinned];
+const toAr = (enPath: string) => getArPathForEnPathLight(enPath) ?? enPath;
 
 export default function ArabicHomePage() {
-  const crumbs = [{ name: dict.nav.home, path: "/ar" }];
-  // Inside the component, not at module scope: the page is prerendered, so this
-  // only runs at build time and never on a cache hit (see getArPages in ar.ts).
-  const arServices = getArPages().filter((p) => p.type === "serviceV2");
-
+  const url = absoluteUrl("/ar");
   return (
     <>
-      <SchemaScript schema={[breadcrumbSchema(crumbs), faqSchema(homeFaqs)]} />
-
-      <HeroSection
-        title="نقل خاص وتاكسي في جميع أنحاء المملكة العربية السعودية"
-        subtitle="احجز نقلًا خاصًا موثوقًا للمطارات والمدن والفنادق والعمرة والحج والحدود عبر واتساب في دقائق. أسعار ثابتة، سائقون محترفون، وعروض أسعار سريعة."
-        badge="خدمة تاكسي في السعودية"
-        points={[
-          "استقبال داخل الصالة مع متابعة الرحلة",
-          "نقل خاص من وإلى جدة ومكة والمدينة",
-          "نقل عبر الحدود إلى البحرين وقطر",
-          "أسعار ثابتة بدون عداد أو مفاجآت",
+      <SchemaScript
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `${url}#webpage`,
+            url,
+            name: HOME_AR.meta.title,
+            description: HOME_AR.meta.description,
+            inLanguage: "ar",
+            isPartOf: { "@id": `${siteConfig.url}/#website` },
+            about: { "@id": `${siteConfig.url}/#organization` },
+            dateModified: HOME_REVIEWED,
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              url: absoluteUrl(HOME_PHOTOS.hero.src),
+              caption: HOME_PHOTO_ALT_AR.hero,
+              creditText: HOME_PHOTOS.hero.credit.author,
+              ...(HOME_PHOTOS.hero.credit.licenceUrl ? { license: HOME_PHOTOS.hero.credit.licenceUrl } : {}),
+              acquireLicensePage: HOME_PHOTOS.hero.credit.source,
+            },
+          },
+          faqSchema(HOME_FAQS_AR),
         ]}
-        backgroundImage={heroImages.default}
-        formCard={<HeroQuickForm />}
-        ctaLabel="اطلب عرض سعر"
-        ctaHref="/ar/اطلب-عرض-سعر"
-        contactLabel="تواصل معنا"
-        contactHref="/ar/اتصل-بنا"
       />
-
-      <TrustBadges
-        labels={{
-          rating: dict.trustBadges.rating,
-          support: dict.trustBadges.support,
-          private: dict.trustBadges.private,
-          cities: dict.trustBadges.cities,
-        }}
-      />
-
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-              خدماتنا في السعودية
-            </h2>
-            <p className="mt-3 text-ink-soft">
-              نقل خاص بأسعار ثابتة لكل نوع من أنواع الرحلات في المملكة.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {arServices.map((service, i) => {
-              const Icon = serviceIcons[i] ?? Car;
-              return (
-                <Link key={service.slug} href={arPath(service)} className="group">
-                  <Card className="h-full border-hairline p-6 transition-all hover:-translate-y-1 hover:border-brass hover:shadow-md">
-                    <span className="flex size-12 items-center justify-center rounded-xl bg-midnight text-brass transition-colors group-hover:bg-brass group-hover:text-midnight">
-                      <Icon className="size-6" />
-                    </span>
-                    <h3 className="mt-4 text-lg font-semibold text-ink">{service.h1}</h3>
-                    <p className="mt-1.5 text-sm text-ink-soft">{service.intro}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink group-hover:text-brass">
-                      المزيد
-                      <ArrowRight className="size-4 rtl:rotate-180 transition-transform ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
-                    </span>
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <HowItWorks
-        heading={dict.howItWorks.heading}
-        subheading={dict.howItWorks.subheading}
-        steps={dict.howItWorks.steps}
-        stepLabel={(n) => dict.howItWorks.step.replace("{n}", String(n))}
-        background="muted"
-      />
-
-      <FAQSection faqs={homeFaqs} heading={dict.faq.heading} background="white" />
-
-      <CTASection
-        title="هل أنت مستعد لحجز تاكسي في السعودية؟"
-        subtitle="أرسل تفاصيل موقع الانطلاق والوجهة الآن واحصل على عرض سعر ثابت وسريع عبر واتساب."
-        whatsappLabel={dict.cta.getAQuote}
-        contactLabel={dict.cta.contactUs}
-        contactHref="/ar/اتصل-بنا"
+      <HomeView
+        c={HOME_AR}
+        faqs={HOME_FAQS_AR}
+        locale="ar"
+        href={toAr}
+        quoteHref="/ar/اطلب-عرض-سعر"
+        photoAlt={HOME_PHOTO_ALT_AR}
+        waMessage="مرحبًا! أرغب في عرض سعر لنقل خاص في السعودية."
+        form={<HeroQuickForm />}
       />
     </>
   );

@@ -3,6 +3,12 @@ import { JAZAN_PHOTOS } from "./jazan-city-page";
 import { JEDDAH_PHOTOS } from "./jeddah-city-page";
 import { TAIF_PHOTOS } from "./jeddah-to-taif-route";
 import { PHOTOS as RIYADH_ABHA_PHOTOS } from "./riyadh-to-abha-route";
+import { YANBU_PHOTOS } from "./riyadh-to-yanbu-route";
+import { JUBAIL_DAMMAM_PHOTOS } from "./jubail-to-dammam-route";
+import { KHAMIS_PHOTOS } from "./khamis-mushait-city-page";
+import { RIYADH_PHOTOS } from "./riyadh-city-page";
+import { HOFUF_PHOTOS } from "./hofuf-city-page";
+import { KHOBAR_PHOTOS } from "./khobar-city-page";
 import { IMAGE_CREDITS } from "./image-credits";
 
 /**
@@ -47,11 +53,17 @@ function hubItem(src: string): PhotoCreditItem[] {
 }
 
 export const PHOTO_CREDIT_GROUPS: PhotoCreditGroup[] = [
+  { page: "Private Transfers in Riyadh", href: "/taxi-service/riyadh", items: items(RIYADH_PHOTOS) },
+  { page: "Private Transfers in Hofuf", href: "/taxi-service/hofuf", items: items(HOFUF_PHOTOS) },
+  { page: "Private Transfers in Khobar", href: "/taxi-service/khobar", items: items(KHOBAR_PHOTOS) },
   { page: "Private Transfers in Jeddah", href: "/taxi-service/jeddah", items: items(JEDDAH_PHOTOS) },
   { page: "Jeddah to Taif", href: "/routes/jeddah-to-taif", items: items(TAIF_PHOTOS) },
+  { page: "Riyadh to Yanbu", href: "/routes/riyadh-to-yanbu", items: items(YANBU_PHOTOS) },
+  { page: "Jubail to Dammam", href: "/routes/jubail-to-dammam", items: items(JUBAIL_DAMMAM_PHOTOS) },
   { page: "Riyadh to Abha", href: "/routes/riyadh-to-abha", items: items(RIYADH_ABHA_PHOTOS) },
   { page: "Private Transfers in Abha", href: "/taxi-service/abha", items: items(CITY_PHOTOS) },
   { page: "Abha Airport Transfers", href: "/airport-transfer/abha-airport", items: hubItem("/images/asir/abha-city-view.webp") },
+  { page: "Private Transfers in Khamis Mushait", href: "/taxi-service/khamis-mushait", items: items(KHAMIS_PHOTOS) },
   { page: "Private Transfers in Jazan", href: "/taxi-service/jazan", items: items(JAZAN_PHOTOS) },
   { page: "Jazan Airport Transfers", href: "/airport-transfer/jazan-airport", items: hubItem("/images/jazan/jazan-mangroves.webp") },
 ].filter((g) => g.items.length > 0);

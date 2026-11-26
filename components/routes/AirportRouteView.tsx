@@ -6,6 +6,7 @@ import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
 import { RouteStatusNotice, type RouteStatusNoticeContent } from "@/components/routes/RouteStatusNotice";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * "Airport Arrival Journey Guide" — the dedicated visual identity for
@@ -249,7 +250,7 @@ export function AirportRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{roadJourneyHeading}</h2>
               <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {roadJourneyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>
@@ -257,7 +258,7 @@ export function AirportRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{destinationHeading}</h2>
               <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {destinationParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>

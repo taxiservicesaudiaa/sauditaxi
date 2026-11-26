@@ -15,6 +15,7 @@ import {
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * "Border Departure Planner" — the dedicated visual identity for Saudi
@@ -298,7 +299,7 @@ export function CityToBorderRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{roadJourneyHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {roadJourneyParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
           <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-ink-muted">{timelineHeading}</h3>
@@ -366,7 +367,7 @@ export function CityToBorderRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{handoverHeading}</h2>
               <div className="mt-3 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {handoverParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
               {borderPageHref && borderPageLabel && (

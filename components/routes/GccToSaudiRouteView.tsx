@@ -14,6 +14,7 @@ import {
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * "Cross-Border Arrival Journey" — the dedicated visual identity for GCC ->
@@ -313,7 +314,7 @@ export function GccToSaudiRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{departureHeading}</h2>
               <div className="mt-3 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {departureParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>
@@ -337,7 +338,7 @@ export function GccToSaudiRouteView({
           </div>
           <div className="mt-6 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {borderParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
           {borderPageHref && borderPageLabel && (
@@ -422,7 +423,7 @@ export function GccToSaudiRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{saudiJourneyHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {saudiJourneyParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
         </div>
@@ -434,7 +435,7 @@ export function GccToSaudiRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{destinationHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {destinationParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
         </div>

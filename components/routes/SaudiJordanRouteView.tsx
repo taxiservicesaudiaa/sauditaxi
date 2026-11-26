@@ -15,6 +15,7 @@ import {
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * "Saudi-Jordan International Journey" — the dedicated visual identity for
@@ -269,7 +270,7 @@ export function SaudiJordanRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{journeyHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {journeyParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
           <h3 className="mt-8 text-sm font-semibold uppercase tracking-wide text-ink-muted">{timelineHeading}</h3>
@@ -311,7 +312,7 @@ export function SaudiJordanRouteView({
               <h2 className="text-lg font-bold text-ink">{heritageLinkHeading}</h2>
               <div className="mt-2 max-w-3xl space-y-3 text-sm leading-relaxed text-ink-soft">
                 {heritageLinkParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>
@@ -330,7 +331,7 @@ export function SaudiJordanRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{borderHeading}</h2>
               <div className="mt-3 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {borderParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
               {borderPageHref && borderPageLabel && (
@@ -439,7 +440,7 @@ export function SaudiJordanRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{destinationHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {destinationParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
         </div>

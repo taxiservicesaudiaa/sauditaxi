@@ -5,6 +5,7 @@ import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { HomeSectionCards, type HomeSectionCard } from "@/components/home/HomeSectionCards";
 import { HomeFAQSection } from "@/components/home/HomeFAQSection";
 import type { Faq } from "@/data/faqs";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 export interface CitySectionCardsBlock {
   kind: "cards";
@@ -63,7 +64,7 @@ function SectionBody({ block }: { block: CitySectionBlock }) {
     return (
       <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
         {block.paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i}>{inlineLinks(p)}</p>
         ))}
       </div>
     );
@@ -192,7 +193,7 @@ export function CityTransferHub({ content, crumbs }: { content: CityTransferHubC
           <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">{introHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {introParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
         </div>

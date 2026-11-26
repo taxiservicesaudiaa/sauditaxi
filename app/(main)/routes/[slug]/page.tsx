@@ -69,6 +69,8 @@ import { DmmAbqaiqRouteView } from "@/components/routes/DmmAbqaiqRouteView";
 import { RiyadhNeomRouteView } from "@/components/routes/RiyadhNeomRouteView";
 import { RiyadhAbhaRouteView } from "@/components/routes/RiyadhAbhaRouteView";
 import { JeddahTaifRouteView } from "@/components/routes/JeddahTaifRouteView";
+import { RiyadhYanbuRouteView } from "@/components/routes/RiyadhYanbuRouteView";
+import { JubailDammamRouteView } from "@/components/routes/JubailDammamRouteView";
 import { longRoutePages } from "@/data/long-route-pages";
 
 const gccCountryDisplayName: Record<string, string> = {
@@ -311,7 +313,11 @@ export default async function RoutePage({
             faqSchema(longPage.faqs),
           ]}
         />
-        {longPage.view === "taif" ? (
+        {longPage.view === "jubail-dammam" ? (
+          <JubailDammamRouteView faqs={longPage.faqs} crumbs={crumbs} />
+        ) : longPage.view === "yanbu" ? (
+          <RiyadhYanbuRouteView faqs={longPage.faqs} crumbs={crumbs} />
+        ) : longPage.view === "taif" ? (
           <JeddahTaifRouteView faqs={longPage.faqs} crumbs={crumbs} />
         ) : longPage.view === "abha" ? (
           <RiyadhAbhaRouteView faqs={longPage.faqs} crumbs={crumbs} />

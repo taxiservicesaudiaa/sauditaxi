@@ -6,6 +6,7 @@ import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { FAQSection } from "@/components/sections/FAQSection";
 import type { Faq } from "@/data/faqs";
 import { RouteStatusNotice, type RouteStatusNoticeContent } from "@/components/routes/RouteStatusNotice";
+import { inlineLinks } from "@/components/ui/InlineLinks";
 
 /**
  * "Airport Departure Planner" — the dedicated visual identity for Saudi
@@ -249,7 +250,7 @@ export function CityAirportRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{pickupHeading}</h2>
               <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {pickupParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>
@@ -257,7 +258,7 @@ export function CityAirportRouteView({
               <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{roadJourneyHeading}</h2>
               <div className="mt-4 space-y-4 text-[15px] leading-relaxed text-ink-soft">
                 {roadJourneyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{inlineLinks(p)}</p>
                 ))}
               </div>
             </div>
@@ -271,7 +272,7 @@ export function CityAirportRouteView({
           <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">{dropoffHeading}</h2>
           <div className="mt-4 max-w-3xl space-y-4 text-[15px] leading-relaxed text-ink-soft">
             {dropoffParagraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{inlineLinks(p)}</p>
             ))}
           </div>
         </div>

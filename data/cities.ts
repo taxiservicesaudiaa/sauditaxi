@@ -47,14 +47,14 @@ const baseCities: City[] = [
     name: "Riyadh",
     region: "Riyadh Province",
     intro:
-      "Riyadh is the capital and largest city of Saudi Arabia, a sprawling business hub where reliable private transfers matter from the moment you land at King Khalid International Airport.",
+      "Riyadh is the capital of Saudi Arabia, a wide city of business districts, embassies and heritage sites, with King Khalid International Airport to the north.",
     about:
-      "As the political and commercial heart of the Kingdom, Riyadh sees constant demand for airport pickups, corporate travel, and long-distance trips to the Eastern Province and the Holy Cities. Our Riyadh taxi service connects every district — from the financial towers of King Fahd Road to Diriyah, Olaya, and the Diplomatic Quarter — with fixed-quote private cars.",
+      "Private transfers in Riyadh: King Khalid International Airport, Olaya and King Fahd Road, KAFD, the Diplomatic Quarter, Diriyah and journeys to other cities, each arranged by quotation.",
     highlights: [
-      "Meet-and-greet pickup at King Khalid International Airport",
-      "Corporate and business travel accounts",
+      "Transfers to and from King Khalid International Airport",
+      "Business travel between Olaya, KAFD and the Diplomatic Quarter",
       "Long-distance transfers to Dammam, Jeddah, and AlUla",
-      "24/7 WhatsApp booking and English-speaking drivers",
+      "Quotations by WhatsApp or the online form",
     ],
     landmarks: [
       "King Khalid International Airport",
@@ -80,9 +80,9 @@ const baseCities: City[] = [
       "riyadh-to-jizan",
     ],
     nearestAirportSlug: "riyadh-airport",
-    metaTitle: "Riyadh Taxi Service – Private Airport & City Transfers",
+    metaTitle: "Private Transfers in Riyadh | Airport, Business & Intercity",
     metaDescription:
-      "Book a private taxi in Riyadh for airport pickups, business travel, and city rides. Fixed pricing, professional drivers, 24/7 WhatsApp booking.",
+      "Private transfers in Riyadh: King Khalid Airport, Olaya, KAFD, the Diplomatic Quarter, Diriyah and journeys to Dammam, Jeddah and Makkah. Request a quotation.",
   },
   {
     slug: "jeddah",
@@ -235,12 +235,12 @@ const baseCities: City[] = [
     intro:
       "Al Khobar is the lively coastal city of the Eastern Province, minutes from the Bahrain Causeway and full of waterfront hotels.",
     about:
-      "Our Khobar taxi service handles King Fahd Airport pickups, Corniche hotel transfers, and the popular Khobar to Bahrain crossing. It is well suited to weekend travellers, families, and business visitors moving between Khobar, Dammam, and Dhahran.",
+      "Private transfers in Khobar: King Fahd International Airport, Corniche hotels, Ithra, Half Moon Bay, journeys across Khobar, Dammam and Dhahran, and road transfers towards the King Fahd Causeway, each arranged by quotation.",
     highlights: [
-      "Khobar to Bahrain Causeway transfers",
-      "King Fahd Airport pickups",
-      "Waterfront hotel and mall transfers",
-      "Rides across the Dammam metro area",
+      "Road transfers towards the King Fahd Causeway",
+      "King Fahd International Airport transfers",
+      "Corniche hotel and mall transfers",
+      "Journeys across Khobar, Dammam and Dhahran",
     ],
     landmarks: [
       "Khobar Corniche",
@@ -257,9 +257,9 @@ const baseCities: City[] = [
       "khobar-to-bahrain",
     ],
     nearestAirportSlug: "dammam-airport",
-    metaTitle: "Khobar Taxi Service – Private Corniche & Causeway Transfers",
+    metaTitle: "Private Transfers in Khobar | Airport, Corniche & Bahrain Causeway",
     metaDescription:
-      "Book a private taxi in Khobar for Corniche hotel pickups, King Fahd Airport transfers, and the popular crossing to Bahrain. Fixed price, 24/7.",
+      "Private transfers in Khobar: Dammam Airport (DMM), Corniche hotels, Dhahran, Ithra, Half Moon Bay, Dammam and road journeys towards the Bahrain causeway. Get a quotation.",
   },
   {
     slug: "jubail",
@@ -577,11 +577,11 @@ const baseCities: City[] = [
     intro:
       "Hofuf is the principal city of the Al-Ahsa Oasis, a UNESCO World Heritage site of palm groves, springs, and historic markets.",
     about:
-      "Our Hofuf taxi service covers Al-Ahsa airport transfers, heritage tours of Qaisariah Souq and Ibrahim Palace, and intercity rides to Dammam, Khobar, and Riyadh. It is a comfortable way to explore the largest oasis in the world.",
+      "Private transfers in Hofuf: Al-Ahsa International Airport, the Qaisariah Souq, Qasr Ibrahim and Jabal Al-Qarah, and journeys to Dammam, Khobar and Riyadh, each arranged by quotation.",
     highlights: [
       "Al-Ahsa airport transfers",
-      "Qaisariah Souq and Ibrahim Palace tours",
-      "Jabal Al-Qarah cave visits",
+      "Transfers to Qaisariah Souq and Qasr Ibrahim",
+      "Transfers to Jabal Al-Qarah",
       "Intercity rides to Dammam and Riyadh",
     ],
     landmarks: [
@@ -595,9 +595,9 @@ const baseCities: City[] = [
       "hofuf-to-riyadh",
       "riyadh-to-hofuf",
     ],
-    metaTitle: "Hofuf Taxi Service – Private Al-Ahsa Oasis Transfers",
+    metaTitle: "Private Transfers in Hofuf | Al-Ahsa Airport & Oasis Heritage",
     metaDescription:
-      "Private taxi service in Hofuf covering Al-Ahsa airport transfers, Qaisariah Souq heritage tours, and intercity rides to Dammam and Riyadh.",
+      "Private transfers in Hofuf: Al-Ahsa International Airport, Qaisariah Souq, Qasr Ibrahim, Jabal Al-Qarah, and journeys to Dammam, Khobar and Riyadh. Get a quotation.",
   },
   {
     slug: "al-ahsa",
@@ -629,9 +629,9 @@ const baseCities: City[] = [
     name: "Khamis Mushait",
     region: "Asir Province",
     intro:
-      "Khamis Mushait is the largest city of the Asir region and the commercial twin of nearby Abha in the southern highlands.",
+      "Khamis Mushait is the largest city in the Asir Region, a commercial centre on the highland plateau a short drive from Abha and Abha International Airport.",
     about:
-      "Our Khamis Mushait taxi service offers Abha airport transfers, city rides, and highland sightseeing across the Asir mountains. Its central location makes it a practical base for trips to Abha, Najran, and Jazan.",
+      "Private transfers in Khamis Mushait: Abha Airport pickups, rides around the city, and onward journeys to Abha, Najran and Jazan, each arranged by quotation.",
     highlights: [
       "Abha airport to Khamis Mushait transfers",
       "Asir highland sightseeing",
@@ -640,15 +640,15 @@ const baseCities: City[] = [
     ],
     landmarks: [
       "Abha International Airport",
-      "Al Mahalah Heritage Village",
-      "Asir highlands",
+      "Al-Mushait Palaces",
+      "Bin Hamsan Heritage Village",
       "Khamis Mushait city centre",
     ],
     popularDestinations: ["Abha", "Najran", "Jazan", "Riyadh"],
     nearestAirportSlug: "abha-airport",
-    metaTitle: "Khamis Mushait Taxi – Private Abha Airport Transfers",
+    metaTitle: "Private Transfers in Khamis Mushait | Abha Airport & Asir",
     metaDescription:
-      "Private taxi service in Khamis Mushait covering Abha Airport transfers, city rides, and highland sightseeing across the Asir mountains.",
+      "Private transfers in Khamis Mushait: Abha Airport (about 20 km), city rides, Abha, the Asir highlands, Najran and Jazan. Share your trip for a quotation.",
   },
 ];
 
